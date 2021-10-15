@@ -10,13 +10,20 @@ import MusculationScreen from "../screens/videos/MusculationScreen";
 import DrillScreen from "../screens/videos/DrillScreen";
 import RecettesScreen from "../screens/others/RecettesScreen";
 import { FontAwesome } from '@expo/vector-icons';
-const AuthStackNavigator = createNativeStackNavigator();
+
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 import { AntDesign } from '@expo/vector-icons';
 import InformationsScreen from "../screens/auth/InformationsScreen";
 import ViewVideoScreen from "../screens/videos/ViewVideoScreen";
 import RecetteDetailScreen from "../screens/others/RecetteDetailScreen";
+import NutritionSportiveScreen from "../screens/others/NutritionSportiveScreen";
+import EquipementSportifScreen from "../screens/others/EquipementSportifScreen";
+import ProfileScreen from "../screens/others/ProfileScreen";
+import EntraineurPersonnelScreen from "../screens/others/EntraineurPersonnelScreen";
+
+const AuthStackNavigator = createNativeStackNavigator();
+const ProfileStackNavigator = createNativeStackNavigator();
 const AppTabNavigator = createBottomTabNavigator();
 
 const CustomHeader = props => {
@@ -30,13 +37,6 @@ const CustomHeader = props => {
 export const AuthNavigator = () => {
     return (
     <AuthStackNavigator.Navigator>
-        <AuthStackNavigator.Screen
-            name="LoginScreen"
-            component={LoginScreen}
-            options={{
-                header: props => <CustomHeader title="BURNPOWER"/>,
-            }}
-        />
         <AuthStackNavigator.Screen
             name="InformationsScreen"
             component={InformationsScreen}
@@ -53,6 +53,13 @@ export const AuthNavigator = () => {
             }}
         />
 
+        <AuthStackNavigator.Screen
+            name="LoginScreen"
+            component={LoginScreen}
+            options={{
+                header: props => <CustomHeader title="BURNPOWER"/>,
+            }}
+        />
         <AuthStackNavigator.Screen
             name="AbonnementsScreen"
             component={AbonnementsScreen}
@@ -107,12 +114,44 @@ export const AuthNavigator = () => {
                 header: props => <CustomHeader title="BURNPOWER"/>,
             }}
         />
+        <AuthStackNavigator.Screen
+            name="NutritionSportiveScreen"
+            component={NutritionSportiveScreen}
+            options={{
+                header: props => <CustomHeader title="BURNPOWER"/>,
+            }}
+        />
+        <AuthStackNavigator.Screen
+            name="EquipementSportifScreen"
+            component={EquipementSportifScreen}
+            options={{
+                header: props => <CustomHeader title="BURNPOWER"/>,
+            }}
+        />
+        <AuthStackNavigator.Screen
+            name="ProfileScreen"
+            component={ProfileScreen}
+            options={{
+                header: props => <CustomHeader title="BURNPOWER"/>,
+            }}
+        />
 
     </AuthStackNavigator.Navigator>
     )
 }
 
-const progressNavigator = () => {
+const profileNavigator = () => {
+    return (
+        <ProfileStackNavigator.Navigator>
+            <ProfileStackNavigator.Screen
+                name='ProfilScreen'
+                component={ProfileScreen}
+                options={{
+                    headerShown: false
+                }}
+            />
+        </ProfileStackNavigator.Navigator>
+        )
 
 }
 
@@ -127,6 +166,13 @@ const accueilNavigator = () => {
                 }}
             />
 
+            <AuthStackNavigator.Screen
+                name="RecettesScreen"
+                component={RecettesScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
             <AuthStackNavigator.Screen
                 name="MusculationScreen"
                 component={MusculationScreen}
@@ -144,8 +190,44 @@ const accueilNavigator = () => {
             />
 
             <AuthStackNavigator.Screen
-                name="RecettesScreen"
-                component={RecettesScreen}
+                name="ViewVideoScreen"
+                component={ViewVideoScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+
+            <AuthStackNavigator.Screen
+                name="RecetteDetailScreen"
+                component={RecetteDetailScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+            <AuthStackNavigator.Screen
+                name="NutritionSportiveScreen"
+                component={NutritionSportiveScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+            <AuthStackNavigator.Screen
+                name="EquipementSportifScreen"
+                component={EquipementSportifScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+            <AuthStackNavigator.Screen
+                name="ProfileScreen"
+                component={ProfileScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+            <AuthStackNavigator.Screen
+                name="EntraineurPersonnelScreen"
+                component={EntraineurPersonnelScreen}
                 options={{
                     header: props => <CustomHeader title="BURNPOWER"/>,
                 }}
@@ -168,15 +250,17 @@ export const TabNavigator = () => {
                 name="Progrès"
                 component={accueilNavigator}
                 options={{
+                    headerShown: false,
                     tabBarLabel: 'Entrainements',
                     tabBarIcon: ({color, size}) => (
-                        <FontAwesome name="line-chart" size={24} color="black" />
+                        <FontAwesome name="line-chart" size={24} color="white" />
                     ),
                 }}/>
             <AppTabNavigator.Screen
                 name="Profil"
-                component={accueilNavigator}
+                component={profileNavigator}
                 options={{
+                    headerShown: false,
                     tabBarLabel: 'Profil',
                     tabBarIcon: ({color, size}) => (
                         <AntDesign name="user" size={24} color="white" />
@@ -184,7 +268,7 @@ export const TabNavigator = () => {
                 }}
             />
             <AppTabNavigator.Screen
-                name="Profil"
+                name="Bouboub"
                 component={accueilNavigator}
                 options={{
                     tabBarLabel: 'Profil',

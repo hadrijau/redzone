@@ -1,13 +1,38 @@
 import React from 'react';
 import {View, Text, TextInput, StyleSheet, ImageBackground, TouchableOpacity, Image, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard} from 'react-native';
 import {Formik} from "formik";
+import firebase from 'firebase';
+import * as Yup from "yup";
 
-const SignupScreen = ({navigation}) => {
+const SignupScreen = (props) => {
+
+
+    const age = props.route.params.age
+    const nom = props.route.params.nom
+    const prenom = props.route.params.prenom
+    const sexe = props.route.params.sexe
+    const poids = props.route.params.poids
+    const taille = props.route.params.taille
+    const poste = props.route.params.poste
+    const phone = props.route.params.poste
 
     const initialValues = {
-        email: '',
-        password: ''
+        mail: '',
+        password: '',
+        passwordConfirm: ''
     }
+
+    const SignupSchema = Yup.object().shape({
+        mail: Yup.string()
+            .required('Ce champ est requis'),
+        password: Yup.string()
+            .required('Ce champ est requis'),
+        passwordConfirm: Yup.string()
+            .required('Ce champ est requis')
+
+    });
+
+    console.log(age, sexe, poids, taille, poste)
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -21,36 +46,24 @@ const SignupScreen = ({navigation}) => {
                 <Text style={styles.inscriptionBigText}>Inscription</Text>
                 <Formik
                     initialValues={initialValues}
+                    validationSchema={SignupSchema}
                     onSubmit={(values) => {
-                        console.log(values)
+                        props.navigation.navigate('AbonnementsScreen', {
+                            nom: nom,
+                            prenom: prenom,
+                            phone: phone,
+                            age: age,
+                            sexe: sexe,
+                            poids: poids,
+                            taille: taille,
+                            poste: poste,
+                            email: values.mail,
+                            password: values.password
+                        })
                     }}
                 >
                     {props => (
                         <View style={styles.formContainer}>
-                            <View style={styles.inscriptionInnerForm}>
-                                <View style={styles.textInscriptionContainer}>
-                                    <Text style={styles.label}>Nom</Text>
-                                </View>
-                                <View style={styles.inputContainer}>
-                                    <TextInput
-                                        value={props.values.nom}
-                                        style={styles.textInput}
-                                    />
-                                </View>
-                            </View>
-
-                            <View style={styles.inscriptionInnerForm}>
-                                <View style={styles.textInscriptionContainer}>
-                                    <Text style={styles.label}>Prénom</Text>
-                                </View>
-                                <View style={styles.inputContainer}>
-                                    <TextInput
-                                        value={props.values.prenom}
-                                        style={styles.textInput}
-                                    />
-                                </View>
-                            </View>
-
                             <View style={styles.inscriptionInnerForm}>
                                 <View style={styles.textInscriptionContainer}>
                                     <Text style={styles.label}>Adresse Email</Text>
@@ -59,33 +72,14 @@ const SignupScreen = ({navigation}) => {
                                     <TextInput
                                         value={props.values.mail}
                                         style={styles.textInput}
+                                        onChangeText={props.handleChange('mail')}
                                     />
                                 </View>
                             </View>
 
-                            <View style={styles.inscriptionInnerForm}>
-                                <View style={styles.textInscriptionContainer}>
-                                    <Text style={styles.label}>Téléphone</Text>
-                                </View>
-                                <View style={styles.inputContainer}>
-                                    <TextInput
-                                        value={props.values.phone}
-                                        style={styles.textInput}
-                                    />
-                                </View>
-                            </View>
-
-                            <View style={styles.inscriptionInnerForm}>
-                                <View style={styles.textInscriptionContainer}>
-                                    <Text style={styles.label}>Pseudo</Text>
-                                </View>
-                                <View style={styles.inputContainer}>
-                                    <TextInput
-                                        value={props.values.pseudo}
-                                        style={styles.textInput}
-                                    />
-                                </View>
-                            </View>
+                            {props.errors.mail && props.touched.mail ? (
+                                <Text style={styles.errors}>{props.errors.mail}</Text>
+                            ) : null}
 
                             <View style={styles.inscriptionInnerForm}>
                                 <View style={styles.textInscriptionContainer}>
@@ -95,9 +89,15 @@ const SignupScreen = ({navigation}) => {
                                     <TextInput
                                         value={props.values.password}
                                         style={styles.textInput}
+                                        secureTextEntry={true}
+                                        onChangeText={props.handleChange('password')}
                                     />
                                 </View>
                             </View>
+
+                            {props.errors.password && props.touched.password ? (
+                                <Text style={styles.errors}>{props.errors.password}</Text>
+                            ) : null}
 
                             <View style={styles.inscriptionInnerForm}>
                                 <View style={styles.textInscriptionContainer}>
@@ -107,13 +107,21 @@ const SignupScreen = ({navigation}) => {
                                     <TextInput
                                         value={props.values.passwordConfirm}
                                         style={styles.textInput}
+                                        secureTextEntry={true}
+                                        onChangeText={props.handleChange('passwordConfirm')}
                                     />
                                 </View>
                             </View>
 
-                            <TouchableOpacity style={styles.inscriptionButton} onPress={() => navigation.navigate('AbonnementsScreen')}>
+                            {props.errors.passwordConfirm && props.touched.passwordConfirm ? (
+                                <Text style={styles.errors}>{props.errors.passwordConfirm}</Text>
+                            ) : null}
+
+                            <TouchableOpacity style={styles.inscriptionButton} onPress={props.handleSubmit}>
                                 <Text style={styles.inscriptionText}>S'inscrire</Text>
                             </TouchableOpacity>
+
+
                         </View>
                     )}
 
@@ -141,7 +149,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'right',
         marginBottom: '5%',
-        marginTop: '15%',
+        marginTop: '10%',
     },
     textInscriptionContainer: {
         width : '35%',
@@ -167,6 +175,12 @@ const styles = StyleSheet.create({
     },
     passwordForgotText: {
         color: 'white'
+    },
+    errors: {
+        color: 'white',
+        textAlign: 'center',
+        marginLeft: 70,
+        marginTop: -10
     },
     inscriptionText: {
         color: 'red',

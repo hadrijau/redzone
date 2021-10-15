@@ -9,7 +9,7 @@ const AccueilScreen = ({navigation}) => {
                 <View style={styles.row}>
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('MusculationScreen')}>
                         <View style={styles.iconContainer}>
-                            <Image source={require('../../assets/bigLogo.jpg')} style={styles.imageCard}/>
+                            <Image source={require('../../assets/muscu.jpg')} style={styles.imageCard}/>
                         </View>
                         <Text style={styles.abonnementFreeText}>Musculation</Text>
                     </TouchableOpacity>
@@ -30,7 +30,7 @@ const AccueilScreen = ({navigation}) => {
                 </View>
 
                 <View style={styles.row}>
-                    <TouchableOpacity style={styles.accueilCard}>
+                    <TouchableOpacity style={styles.accueilCard} onPress={() => {navigation.navigate('ProfileScreen')}}>
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/bigLogo.jpg')} style={styles.imageCard}/>
                         </View>
@@ -53,7 +53,7 @@ const AccueilScreen = ({navigation}) => {
                 </View>
 
                 <View style={styles.row}>
-                    <TouchableOpacity style={styles.accueilCard}>
+                    <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('EquipementSportifScreen')}>
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/bigLogo.jpg')} style={styles.imageCard}/>
                         </View>
@@ -67,7 +67,7 @@ const AccueilScreen = ({navigation}) => {
                         <Text style={styles.abonnementFreeText}>Mon club</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.accueilCard}>
+                    <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('NutritionSportiveScreen')}>
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/bigLogo.jpg')} style={styles.imageCard}/>
                         </View>
@@ -77,11 +77,11 @@ const AccueilScreen = ({navigation}) => {
                 </View>
 
                 <View style={styles.row}>
-                    <TouchableOpacity style={styles.accueilCard}>
+                    <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('EntraineurPersonnelScreen')}>
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/bigLogo.jpg')} style={styles.imageCard}/>
                         </View>
-                        <Text style={styles.abonnementFreeText}>Entrainements personnels</Text>
+                        <Text style={styles.abonnementFreeText}>Entraineurs personnels</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.accueilCard}>

@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import firebase from "firebase";
 import {NavigationContainer} from "@react-navigation/native";
 import {AuthNavigator} from "./navigation/AppNavigator";
+import {TabNavigator} from "./navigation/AppNavigator";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBmckJtSmZNsuU-200xoo3acPAB2VNrDCU",
@@ -38,8 +39,7 @@ export default function App() {
   }
   return (
         <NavigationContainer>
-          {/*} {loggedIn ? <TabNavigator/> : <AuthNavigator/>} */}
-          <AuthNavigator />
+          {loggedIn ? <TabNavigator/> : <AuthNavigator/>}
         </NavigationContainer>
   );
 }
