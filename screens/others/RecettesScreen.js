@@ -20,13 +20,13 @@ const RecettesScreen = ({navigation}) => {
                     <View style={styles.row}>
                         <View>
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen')}>
-                                <Text style={styles.abonnementFreeText}>Poulet Mariné</Text>
+                                <Text style={styles.abonnementFreeText}>Toast d'avocat</Text>
                             </TouchableOpacity>
                         </View>
 
                         <View>
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
-                                <Text style={styles.abonnementFreeText}>Wraps d'avocat</Text>
+                                <Text style={styles.abonnementFreeText}>Avocat saumon</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -34,13 +34,13 @@ const RecettesScreen = ({navigation}) => {
                     <View style={styles.row}>
                         <View>
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
-                                <Text style={styles.abonnementFreeText}>Poulet Mariné</Text>
+                                <Text style={styles.abonnementFreeText}>Dôme avocat saumon</Text>
                             </TouchableOpacity>
                         </View>
 
                         <View>
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
-                                <Text style={styles.abonnementFreeText}>Wraps d'avocat</Text>
+                                <Text style={styles.abonnementFreeText}>Wraps avocat thon</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -48,13 +48,13 @@ const RecettesScreen = ({navigation}) => {
                     <View style={styles.row}>
                         <View>
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
-                                <Text style={styles.abonnementFreeText}>Poulet Mariné</Text>
+                                <Text style={styles.abonnementFreeText}>Wrap saumon</Text>
                             </TouchableOpacity>
                         </View>
 
                         <View>
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
-                                <Text style={styles.abonnementFreeText}>Wraps d'avocat</Text>
+                                <Text style={styles.abonnementFreeText}>Boule de fromage</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -62,13 +62,13 @@ const RecettesScreen = ({navigation}) => {
                     <View style={styles.row}>
                         <View>
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
-                                <Text style={styles.abonnementFreeText}>Poulet Mariné</Text>
+                                <Text style={styles.abonnementFreeText}>Bagel saumon fumé</Text>
                             </TouchableOpacity>
                         </View>
 
                         <View>
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
-                                <Text style={styles.abonnementFreeText}>Wraps d'avocat</Text>
+                                <Text style={styles.abonnementFreeText}>Pancakes rapides</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -76,13 +76,13 @@ const RecettesScreen = ({navigation}) => {
                     <View style={styles.row}>
                         <View>
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
-                                <Text style={styles.abonnementFreeText}>Poulet Mariné</Text>
+                                <Text style={styles.abonnementFreeText}>Bowlcake au chocolat</Text>
                             </TouchableOpacity>
                         </View>
 
                         <View>
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
-                                <Text style={styles.abonnementFreeText}>Wraps d'avocat</Text>
+                                <Text style={styles.abonnementFreeText}>Omelette blanc de dinde et champignons</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -90,17 +90,100 @@ const RecettesScreen = ({navigation}) => {
                     <View style={styles.row}>
                         <View>
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
-                                <Text style={styles.abonnementFreeText}>Poulet Mariné</Text>
+                                <Text style={styles.abonnementFreeText}>Nuggets de poulet</Text>
                             </TouchableOpacity>
                         </View>
 
                         <View>
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
-                                <Text style={styles.abonnementFreeText}>Wraps d'avocat</Text>
+                                <Text style={styles.abonnementFreeText}>Chicken tender</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
 
+
+                    <View style={styles.row}>
+                        <View>
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
+                                <Text style={styles.abonnementFreeText}>Escalope milanaise</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <View>
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
+                                <Text style={styles.abonnementFreeText}>Brochette de saumon</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
+
+                    <View style={styles.row}>
+                        <View>
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
+                                <Text style={styles.abonnementFreeText}>Nouilles au saumon</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <View>
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
+                                <Text style={styles.abonnementFreeText}>Croquettes de poisson</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
+
+                    <View style={styles.row}>
+                        <View>
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
+                                <Text style={styles.abonnementFreeText}>Burger au poulet</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <View>
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
+                                <Text style={styles.abonnementFreeText}>Poke bowl saumon avocat</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
+
+                    <View style={styles.row}>
+                        <View>
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
+                                <Text style={styles.abonnementFreeText}>Poke bowl poulet mangue</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <View>
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
+                                <Text style={styles.abonnementFreeText}>Frite de patate douce</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
+
+                    <View style={styles.row}>
+                        <View>
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
+                                <Text style={styles.abonnementFreeText}>Barres protéinées</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <View>
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
+                                <Text style={styles.abonnementFreeText}>Energy balls</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
+
+                    <View style={styles.row}>
+                        <View>
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
+                                <Text style={styles.abonnementFreeText}>Egg muffins</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
 
                 </ScrollView>
 
