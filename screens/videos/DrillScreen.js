@@ -12,7 +12,13 @@ const DrillScreen = ({navigation}) => {
                 <View style={styles.scrollView}>
 
                     <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ViewVideoScreen')}>
-                        <Text style={styles.abonnementFreeText}>DRILL</Text>
+                        <ImageBackground
+                            source={{
+                                uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/image%20dossier%2FAgility%20drill.png?alt=media&token=2857c33f-09d3-4c79-ab79-c870374987a0'
+                            }}
+                            style={styles.imageBackground}
+                        >
+                        </ImageBackground>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('AccueilScreen')}>
@@ -75,5 +81,9 @@ const styles = StyleSheet.create({
         marginTop: 150,
         marginBottom: 30
     },
+    imageBackground: {
+        width: '100%',
+        height: '100%'
+    }
 })
 export default DrillScreen;

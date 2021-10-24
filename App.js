@@ -37,6 +37,7 @@ export default function App() {
   if (!loaded) {
     return <ActivityIndicator/>
   }
+
   return (
         <NavigationContainer>
           {loggedIn ? <TabNavigator/> : <AuthNavigator/>}

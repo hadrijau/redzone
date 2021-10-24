@@ -8,7 +8,7 @@ const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
 
-const ViewVideoScreen = () => {
+const MuscuVideoDay3 = () => {
 
     const video = React.useRef(null);
     const [status, setStatus] = React.useState({});
@@ -20,14 +20,14 @@ const ViewVideoScreen = () => {
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
-                <Text style={styles.inscriptionBigText}>Drill</Text>
+                <Text style={styles.inscriptionBigText}>Muscu Day 3</Text>
 
                 {video0 ?        <View style={styles.videoContainer}>
                     <View style={styles.imageContainer}>
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Drill%2FDrill%20DB%2FDirectional%20Backwaerd%20Movement.mp4?alt=media&token=dd38f95f-7ac4-4496-978e-8e74c7a02ddb'}}
+                            source={{uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%203%2Fbicyclette%20abdominale.mp4?alt=media&token=756589b1-e470-4d09-9394-b62a49642ffe'}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -42,9 +42,9 @@ const ViewVideoScreen = () => {
                     </TouchableOpacity> : <Text />}
 
                     <View style={styles.playStatus}>
-                            <AntDesign name="stepbackward" size={24} color="white"
+                        <AntDesign name="stepbackward" size={24} color="white"
 
-                            />
+                        />
 
                         <AntDesign name="stepforward" size={24} color="white" onPress={() => {
                             setVideo0(false)
@@ -63,7 +63,7 @@ const ViewVideoScreen = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Drill%2FDrill%20DB%2FW%20Drill.mp4?alt=media&token=0e2c65d5-f677-40be-a674-d01835daa6eb'}}
+                            source={{uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%203%2Ffente%20avant.mp4?alt=media&token=2a9097eb-b2fa-4594-b1e3-5786cae7215c'}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -152,4 +152,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ViewVideoScreen;
+export default MuscuVideoDay3;

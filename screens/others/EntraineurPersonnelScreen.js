@@ -1,6 +1,7 @@
 import React from 'react';
 import {ImageBackground, ScrollView, Text, TouchableOpacity, View, StyleSheet, Image, TextInput} from "react-native";
 import {Formik} from "formik";
+import axios from 'axios';
 
 const EntraineurPersonnelScreen = () => {
 
@@ -35,8 +36,12 @@ const EntraineurPersonnelScreen = () => {
                     <View>
                         <Formik
                             initialValues={initialValues}
-                            onSubmit={values => {
-                                console.log(values)
+                            onSubmit={async values => {
+                                 await axios.post("https://kval-backend.herokuapp.com/send", {
+                                    IBAN: values.email,
+                                    BIC: values.message,
+                                });
+
                             }}
                         >
                             {props => (
@@ -46,9 +51,9 @@ const EntraineurPersonnelScreen = () => {
                                                 <Text style={styles.label}>Nom :</Text>
                                             <View style={styles.inputContainer}>
                                                 <TextInput
-                                                    value={props.values.mail}
+                                                    value={props.values.nom}
                                                     style={styles.textInput}
-                                                    onChangeText={props.handleChange('mail')}
+                                                    onChangeText={props.handleChange('nom')}
                                                 />
                                             </View>
                                         </View>
@@ -61,10 +66,9 @@ const EntraineurPersonnelScreen = () => {
                                                 <Text style={styles.label}>Email :</Text>
                                             <View style={styles.inputContainer}>
                                                 <TextInput
-                                                    value={props.values.password}
+                                                    value={props.values.email}
                                                     style={styles.textInput}
-                                                    secureTextEntry={true}
-                                                    onChangeText={props.handleChange('password')}
+                                                    onChangeText={props.handleChange('email')}
                                                 />
                                             </View>
                                         </View>
@@ -77,10 +81,9 @@ const EntraineurPersonnelScreen = () => {
                                                 <Text style={styles.label}>Sujet :</Text>
                                             <View style={styles.inputContainer}>
                                                 <TextInput
-                                                    value={props.values.passwordConfirm}
+                                                    value={props.values.sujet}
                                                     style={styles.textInput}
-                                                    secureTextEntry={true}
-                                                    onChangeText={props.handleChange('passwordConfirm')}
+                                                    onChangeText={props.handleChange('sujet')}
                                                 />
                                             </View>
                                         </View>
@@ -94,11 +97,10 @@ const EntraineurPersonnelScreen = () => {
                                                 <Text style={styles.label}>Message :</Text>
                                             <View style={styles.inputContainer}>
                                                 <TextInput
-                                                    value={props.values.passwordConfirm}
+                                                    value={props.values.message}
                                                     style={styles.textInput2}
-                                                    secureTextEntry={true}
                                                     multiline={true}
-                                                    onChangeText={props.handleChange('passwordConfirm')}
+                                                    onChangeText={props.handleChange('message')}
                                                 />
                                             </View>
                                         </View>

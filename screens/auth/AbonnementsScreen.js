@@ -213,8 +213,25 @@ const AbonnementsScreen = (props) => {
 
                         <ScrollView style={styles.scrollView}>
 
-
-                            <TouchableOpacity style={styles.abonnementCard} onPress={() => props.navigation.navigate('AccueilScreen')}>
+                            <TouchableOpacity style={styles.abonnementCard} onPress={() =>
+                                firebase.auth().createUserWithEmailAndPassword(email, password)
+                                    .then(result => {
+                                        firebase.firestore().collection("users")
+                                            .doc(firebase.auth().currentUser.uid)
+                                            .set({
+                                                taille,
+                                                poids,
+                                                prenom,
+                                                email,
+                                                age,
+                                                poste,
+                                                nom,
+                                                sexe,
+                                                abonnement: 'free'
+                                            })
+                                    })
+                                    .then(() => props.navigation.navigate('AccueilScreen'))
+                            }>
                                 <Text style={styles.abonnementFreeText}>Free</Text>
                             </TouchableOpacity>
 

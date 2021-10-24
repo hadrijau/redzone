@@ -12,18 +12,29 @@ const MusculationScreen = ({navigation}) => {
                 <View style={styles.scrollView}>
 
 
-                    <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('AccueilScreen')}>
-                        <Text style={styles.abonnementFreeText}>Préparation Physique</Text>
+                    <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ViewVideoMuscuScreen')}>
+                        <ImageBackground
+                            source={require('../../assets/Day_1.png')}
+                            style={styles.imageBackground}
+                        >
+                        </ImageBackground>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('AccueilScreen')}>
-                        <Text style={styles.abonnementText}>Explosivité</Text>
+                    <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('MuscuVideoDay2')}>
+                        <ImageBackground
+                            source={require('../../assets/Day_2.png')}
+                            style={styles.imageBackground}
+                        >
+                        </ImageBackground>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('AccueilScreen')}>
-                        <Text style={styles.abonnementText}>Pliométrie</Text>
+                    <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('MuscuVideoDay3')}>
+                        <ImageBackground
+                            source={require('../../assets/Day_3.png')}
+                            style={styles.imageBackground}
+                        >
+                        </ImageBackground>
                     </TouchableOpacity>
-
                 </View>
             </ImageBackground>
         </View>
@@ -76,5 +87,9 @@ const styles = StyleSheet.create({
         marginTop: 150,
         marginBottom: 30
     },
+    imageBackground: {
+        width: '100%',
+        height: '100%'
+    }
 })
 export default MusculationScreen;

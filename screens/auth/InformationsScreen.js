@@ -1,14 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, TextInput, ScrollView, StyleSheet, ImageBackground, TouchableOpacity, Image, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard} from 'react-native';
 import {Formik} from "formik";
 import * as Yup from 'yup';
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 const InformationsScreen = (props) => {
-
+    const [toggleCheckBox, setToggleCheckBox] = useState(false)
     const initialValues = {
         phone: '',
         age: '',
-        sexe: '',
         poids: '',
         taille: '',
         poste: '',
@@ -20,8 +20,6 @@ const InformationsScreen = (props) => {
         phone: Yup.string()
             .required('Ce champ est requis'),
         age: Yup.string()
-            .required('Ce champ est requis'),
-        sexe: Yup.string()
             .required('Ce champ est requis'),
         poids: Yup.string()
             .required('Ce champ est requis'),
@@ -140,18 +138,31 @@ const InformationsScreen = (props) => {
                                         <View style={styles.textInscriptionContainer}>
                                             <Text style={styles.label}>Sexe</Text>
                                         </View>
-                                        <View style={styles.inputContainer}>
-                                            <TextInput
-                                                value={props.values.sexe}
-                                                style={styles.textInput}
-                                                onChangeText={props.handleChange('sexe')}
-                                            />
+                                        <View style={styles.checkBoxContainer}>
+                                            <View style={styles.checkboxInner}>
+                                                <BouncyCheckbox
+                                                    size={25}
+                                                    fillColor="red"
+                                                    unfillColor="#FFFFFF"
+                                                    style={styles.checkbox}
+                                                    iconStyle={{ borderColor: "red" }}
+                                                />
+                                                <Text style={styles.textCheckBox}>Homme</Text>
+                                            </View>
+
+                                            <View style={styles.checkboxInner}>
+                                                <BouncyCheckbox
+                                                    size={25}
+                                                    fillColor="red"
+                                                    unfillColor="#FFFFFF"
+                                                    style={styles.checkbox}
+                                                    iconStyle={{ borderColor: "red" }}
+                                                />
+                                                <Text style={styles.textCheckBox}>Femme</Text>
+                                            </View>
                                         </View>
                                     </View>
 
-                                    {props.errors.sexe && props.touched.sexe ? (
-                                        <Text style={styles.errors}>{props.errors.sexe}</Text>
-                                    ) : null}
 
                                     <View style={styles.inscriptionInnerForm}>
                                         <View style={styles.textInscriptionContainer}>
@@ -161,6 +172,8 @@ const InformationsScreen = (props) => {
                                             <TextInput
                                                 value={props.values.poids}
                                                 keyboardType="numeric"
+                                                placeholder="en kg"
+                                                placeholderTextColor="black"
                                                 style={styles.textInput}
                                                 onChangeText={props.handleChange('poids')}
                                             />
@@ -180,6 +193,8 @@ const InformationsScreen = (props) => {
                                                 value={props.values.taille}
                                                 style={styles.textInput}
                                                 keyboardType="numeric"
+                                                placeholder="en cm"
+                                                placeholderTextColor="black"
                                                 onChangeText={props.handleChange('taille')}
                                             />
                                         </View>
@@ -252,6 +267,9 @@ const styles = StyleSheet.create({
     inputContainer: {
         width: '55%'
     },
+    checkbox: {
+        marginTop: 10
+    },
     passwordForgot: {
         marginLeft: '33%',
         marginTop: '5%'
@@ -267,12 +285,21 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white'
     },
+    checkBoxContainer: {
+        width: '55%',
+        marginLeft: 20
+    },
     passwordForgotText: {
         color: 'white'
     },
     inscriptionText: {
         color: 'red',
         fontSize: 25
+    },
+    textCheckBox: {
+        color: 'white',
+        fontSize: 20,
+        marginTop: 10
     },
     textInput: {
         backgroundColor: 'white',
@@ -290,6 +317,10 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginLeft: '37%'
     },
+    checkboxInner: {
+        display: 'flex',
+        flexDirection: 'row',
+    }
 });
 
 export default InformationsScreen;

@@ -21,9 +21,13 @@ import NutritionSportiveScreen from "../screens/others/NutritionSportiveScreen";
 import EquipementSportifScreen from "../screens/others/EquipementSportifScreen";
 import ProfileScreen from "../screens/others/ProfileScreen";
 import EntraineurPersonnelScreen from "../screens/others/EntraineurPersonnelScreen";
-
+import ProgressScreen from "../screens/progress/ProgressScreen";
+import ViewVideoMuscuScreen from "../screens/videos/ViewVideoMuscuScreen";
+import MuscuVideoDay2 from "../screens/videos/MuscuVideoDay2";
+import MuscuVideoDay3 from "../screens/videos/MuscuVideoDay3";
 const AuthStackNavigator = createNativeStackNavigator();
 const ProfileStackNavigator = createNativeStackNavigator();
+const ProgressStackNavigator = createNativeStackNavigator();
 const AppTabNavigator = createBottomTabNavigator();
 
 const CustomHeader = props => {
@@ -32,6 +36,17 @@ const CustomHeader = props => {
             <Image source={require('../assets/smallLogo.jpg')} style={{height: 70, width: '80%', marginTop: 50, alignSelf: 'center', marginRight: 20}}/>
         </View>
     )
+}
+
+export const progressNavigator = () => {
+    return (
+        <ProgressStackNavigator.Navigator>
+            <ProgressStackNavigator.Screen
+                name="ProgressScreen"
+                component={ProgressScreen}
+            />
+        </ProgressStackNavigator.Navigator>
+        )
 }
 
 export const AuthNavigator = () => {
@@ -76,66 +91,6 @@ export const AuthNavigator = () => {
             }}
         />
 
-        <AuthStackNavigator.Screen
-            name="MusculationScreen"
-            component={MusculationScreen}
-            options={{
-                header: props => <CustomHeader title="BURNPOWER"/>,
-            }}
-        />
-
-        <AuthStackNavigator.Screen
-            name="DrillScreen"
-            component={DrillScreen}
-            options={{
-                header: props => <CustomHeader title="BURNPOWER"/>,
-            }}
-        />
-
-        <AuthStackNavigator.Screen
-            name="ViewVideoScreen"
-            component={ViewVideoScreen}
-            options={{
-                header: props => <CustomHeader title="BURNPOWER"/>,
-            }}
-        />
-
-        <AuthStackNavigator.Screen
-            name="RecettesScreen"
-            component={RecettesScreen}
-            options={{
-                header: props => <CustomHeader title="BURNPOWER"/>,
-            }}
-        />
-        <AuthStackNavigator.Screen
-            name="RecetteDetailScreen"
-            component={RecetteDetailScreen}
-            options={{
-                header: props => <CustomHeader title="BURNPOWER"/>,
-            }}
-        />
-        <AuthStackNavigator.Screen
-            name="NutritionSportiveScreen"
-            component={NutritionSportiveScreen}
-            options={{
-                header: props => <CustomHeader title="BURNPOWER"/>,
-            }}
-        />
-        <AuthStackNavigator.Screen
-            name="EquipementSportifScreen"
-            component={EquipementSportifScreen}
-            options={{
-                header: props => <CustomHeader title="BURNPOWER"/>,
-            }}
-        />
-        <AuthStackNavigator.Screen
-            name="ProfileScreen"
-            component={ProfileScreen}
-            options={{
-                header: props => <CustomHeader title="BURNPOWER"/>,
-            }}
-        />
-
     </AuthStackNavigator.Navigator>
     )
 }
@@ -150,6 +105,7 @@ const profileNavigator = () => {
                     headerShown: false
                 }}
             />
+
         </ProfileStackNavigator.Navigator>
         )
 
@@ -192,6 +148,30 @@ const accueilNavigator = () => {
             <AuthStackNavigator.Screen
                 name="ViewVideoScreen"
                 component={ViewVideoScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+
+            <AuthStackNavigator.Screen
+                name="ViewVideoMuscuScreen"
+                component={ViewVideoMuscuScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+
+            <AuthStackNavigator.Screen
+                name="MuscuVideoDay2"
+                component={MuscuVideoDay2}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+
+            <AuthStackNavigator.Screen
+                name="MuscuVideoDay3"
+                component={MuscuVideoDay3}
                 options={{
                     header: props => <CustomHeader title="BURNPOWER"/>,
                 }}
@@ -247,30 +227,32 @@ export const TabNavigator = () => {
             }}
         >
             <AppTabNavigator.Screen
-                name="Progrès"
+                name="Accueil"
                 component={accueilNavigator}
                 options={{
                     headerShown: false,
-                    tabBarLabel: 'Entrainements',
+                    tabBarLabel: 'Accueil',
+                    tabBarIcon: ({color, size}) => (
+                        <AntDesign name="home" size={24} color="white" />
+                    ),
+                }}/>
+
+            <AppTabNavigator.Screen
+                name="Progrès"
+                component={progressNavigator}
+                options={{
+                    tabBarLabel: 'Progrès',
+                    headerShown: false,
                     tabBarIcon: ({color, size}) => (
                         <FontAwesome name="line-chart" size={24} color="white" />
                     ),
-                }}/>
+                }}
+            />
             <AppTabNavigator.Screen
                 name="Profil"
                 component={profileNavigator}
                 options={{
                     headerShown: false,
-                    tabBarLabel: 'Profil',
-                    tabBarIcon: ({color, size}) => (
-                        <AntDesign name="user" size={24} color="white" />
-                    ),
-                }}
-            />
-            <AppTabNavigator.Screen
-                name="Bouboub"
-                component={accueilNavigator}
-                options={{
                     tabBarLabel: 'Profil',
                     tabBarIcon: ({color, size}) => (
                         <AntDesign name="user" size={24} color="white" />
