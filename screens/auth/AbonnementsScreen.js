@@ -10,7 +10,6 @@ const AbonnementsScreen = (props) => {
     const age = props.route.params.age
     const nom = props.route.params.nom
     const prenom = props.route.params.prenom
-    const sexe = props.route.params.sexe
     const poids = props.route.params.poids
     const taille = props.route.params.taille
     const poste = props.route.params.poste
@@ -210,8 +209,8 @@ const AbonnementsScreen = (props) => {
 
                         <ScrollView style={styles.scrollView}>
 
-                            <TouchableOpacity style={styles.abonnementCard} onPress={() =>
-                                firebase.auth().createUserWithEmailAndPassword(email, password)
+                            <TouchableOpacity style={styles.abonnementCard} onPress={async () =>
+                                await firebase.auth().createUserWithEmailAndPassword(email, password)
                                     .then(result => {
                                         firebase.firestore().collection("users")
                                             .doc(firebase.auth().currentUser.uid)
