@@ -11,7 +11,7 @@ const AccueilScreen = ({navigation}) => {
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/logo_muscu.jpg')} style={styles.imageCard}/>
                         </View>
-                        <Text style={styles.abonnementFreeText}>Musculation</Text>
+                        <Text style={styles.abonnementFreeText}>Préparation physique</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('DrillScreen')}>
@@ -108,22 +108,22 @@ const styles = StyleSheet.create({
     abonnementFreeText: {
         color: 'white',
         textAlign: 'center',
-        fontSize: 18,
+        fontSize: 15,
         marginTop: 10
     },
     abonnementFreeTextNut: {
         color: 'white',
         textAlign: 'center',
-        fontSize: 18,
+        fontSize: 15,
     },
     accueilCard: {
-        width: '27%'
+        width: 80
     },
     iconContainer: {
         backgroundColor: '#D91830',
         width: '100%',
         alignItems: 'center',
-        height: 100,
+        height: 80,
         borderRadius: 20,
         overflow: 'hidden'
     },
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         width: '100%',
-        marginBottom: 20
+        marginBottom: 10
     }
 })
 
