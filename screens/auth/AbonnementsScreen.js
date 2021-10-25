@@ -62,7 +62,6 @@ const AbonnementsScreen = (props) => {
                                     age,
                                     poste,
                                     nom,
-                                    sexe,
                                     abonnement: 'hebdomadaire',
                                     subscriptionId: stripeResponse.data.id
                                 })
@@ -120,7 +119,6 @@ const AbonnementsScreen = (props) => {
                                     age,
                                     poste,
                                     nom,
-                                    sexe,
                                     abonnement: 'hebdomadaire',
                                     subscriptionId: stripeResponse.data.id
                                 })
@@ -178,7 +176,6 @@ const AbonnementsScreen = (props) => {
                                     age,
                                     poste,
                                     nom,
-                                    sexe,
                                     abonnement: 'hebdomadaire',
                                     subscriptionId: stripeResponse.data.id
                                 })
@@ -226,11 +223,9 @@ const AbonnementsScreen = (props) => {
                                                 age,
                                                 poste,
                                                 nom,
-                                                sexe,
                                                 abonnement: 'free'
                                             })
                                     })
-                                    .then(() => props.navigation.navigate('AccueilScreen'))
                             }>
                                 <Text style={styles.abonnementFreeText}>Free</Text>
                             </TouchableOpacity>
