@@ -3,9 +3,13 @@ import {View, Text, TextInput, ScrollView, StyleSheet, ImageBackground, Touchabl
 import {Formik} from "formik";
 import * as Yup from 'yup';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import {Picker} from '@react-native-picker/picker';
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 const InformationsScreen = (props) => {
-    const [toggleCheckBox, setToggleCheckBox] = useState(false)
+
+    const [toggleCheckBox, setToggleCheckBox] = useState(false);
+    const [selectedPoste, setSelectedPoste] = useState('');
     const initialValues = {
         phone: '',
         age: '',
@@ -25,22 +29,18 @@ const InformationsScreen = (props) => {
             .required('Ce champ est requis'),
         taille: Yup.string()
             .required('Ce champ est requis'),
-        poste: Yup.string()
-            .required('Ce champ est requis'),
         nom: Yup.string()
             .required('Ce champ est requis'),
         prenom: Yup.string()
             .required('Ce champ est requis'),
 
     });
+
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <ScrollView style={{flex: 1, backgroundColor: 'black'}}>
-            <KeyboardAvoidingView
-                style={styles.container}
-                behavior="padding"
-            >
-
+                <KeyboardAwareScrollView
+                    style={styles.container}
+                >
                 <View style={styles.container}>
 
                     <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
@@ -209,13 +209,86 @@ const InformationsScreen = (props) => {
                                         <View style={styles.textInscriptionContainer}>
                                             <Text style={styles.label}>Poste</Text>
                                         </View>
-                                        <View style={styles.inputContainer}>
-                                            <TextInput
-                                                value={props.values.poste}
-                                                style={styles.textInput}
-                                                onChangeText={props.handleChange('poste')}
-                                            />
+
+                                        <View style={styles.checkBoxContainer}>
+                                            <View style={styles.checkboxInner}>
+                                                <BouncyCheckbox
+                                                    size={25}
+                                                    fillColor="red"
+                                                    unfillColor="#FFFFFF"
+                                                    style={styles.checkbox}
+                                                    iconStyle={{ borderColor: "red" }}
+                                                />
+                                                <Text style={styles.textCheckBox}>Defensive Back</Text>
+                                            </View>
+
+                                            <View style={styles.checkboxInner}>
+                                                <BouncyCheckbox
+                                                    size={25}
+                                                    fillColor="red"
+                                                    unfillColor="#FFFFFF"
+                                                    style={styles.checkbox}
+                                                    iconStyle={{ borderColor: "red" }}
+                                                />
+                                                <Text style={styles.textCheckBox}>Defensive Linemen</Text>
+                                            </View>
+
+                                            <View style={styles.checkboxInner}>
+                                                <BouncyCheckbox
+                                                    size={25}
+                                                    fillColor="red"
+                                                    unfillColor="#FFFFFF"
+                                                    style={styles.checkbox}
+                                                    iconStyle={{ borderColor: "red" }}
+                                                />
+                                                <Text style={styles.textCheckBox}>Linebacker</Text>
+                                            </View>
+
+                                            <View style={styles.checkboxInner}>
+                                                <BouncyCheckbox
+                                                    size={25}
+                                                    fillColor="red"
+                                                    unfillColor="#FFFFFF"
+                                                    style={styles.checkbox}
+                                                    iconStyle={{ borderColor: "red" }}
+                                                />
+                                                <Text style={styles.textCheckBox}>Offensive Linemen</Text>
+                                            </View>
+
+                                            <View style={styles.checkboxInner}>
+                                                <BouncyCheckbox
+                                                    size={25}
+                                                    fillColor="red"
+                                                    unfillColor="#FFFFFF"
+                                                    style={styles.checkbox}
+                                                    iconStyle={{ borderColor: "red" }}
+                                                />
+                                                <Text style={styles.textCheckBox}>Quaterback</Text>
+                                            </View>
+
+                                            <View style={styles.checkboxInner}>
+                                                <BouncyCheckbox
+                                                    size={25}
+                                                    fillColor="red"
+                                                    unfillColor="#FFFFFF"
+                                                    style={styles.checkbox}
+                                                    iconStyle={{ borderColor: "red" }}
+                                                />
+                                                <Text style={styles.textCheckBox}>Running back</Text>
+                                            </View>
+
+                                            <View style={styles.checkboxInner}>
+                                                <BouncyCheckbox
+                                                    size={25}
+                                                    fillColor="red"
+                                                    unfillColor="#FFFFFF"
+                                                    style={styles.checkbox}
+                                                    iconStyle={{ borderColor: "red" }}
+                                                />
+                                                <Text style={styles.textCheckBox}>Wide receiver</Text>
+                                            </View>
                                         </View>
+
                                     </View>
 
                                     {props.errors.poste && props.touched.poste ? (
@@ -223,7 +296,7 @@ const InformationsScreen = (props) => {
                                     ) : null}
 
                                     <TouchableOpacity style={styles.inscriptionButton} onPress={props.handleSubmit}>
-                                        <Text style={styles.inscriptionText}>S'inscrire</Text>
+                                        <Text style={styles.inscriptionText}>Suivant</Text>
                                     </TouchableOpacity>
                                 </View>
                             )}
@@ -234,8 +307,7 @@ const InformationsScreen = (props) => {
 
                 </View>
 
-            </KeyboardAvoidingView>
-            </ScrollView>
+                </KeyboardAwareScrollView>
         </TouchableWithoutFeedback>
     );
 };
@@ -252,6 +324,11 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginLeft: 70,
         marginTop: -10
+    },
+    picker: {
+        backgroundColor: 'white',
+        width: 200,
+        paddingTop: 0
     },
     label: {
         color: 'white',
@@ -315,7 +392,8 @@ const styles = StyleSheet.create({
     },
     inscriptionButton: {
         textAlign: 'center',
-        marginLeft: '37%'
+        marginLeft: '37%',
+        marginBottom: 80
     },
     checkboxInner: {
         display: 'flex',

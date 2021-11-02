@@ -17,13 +17,13 @@ const SignupScreen = (props) => {
     const phone = props.route.params.poste
 
     const initialValues = {
-        mail: '',
+        email: '',
         password: '',
         passwordConfirm: ''
     }
 
     const SignupSchema = Yup.object().shape({
-        mail: Yup.string()
+        email: Yup.string()
             .required('Ce champ est requis'),
         password: Yup.string()
             .required('Ce champ est requis'),
@@ -47,19 +47,22 @@ const SignupScreen = (props) => {
                 <Formik
                     initialValues={initialValues}
                     validationSchema={SignupSchema}
-                    onSubmit={(values) => {
-                        props.navigation.navigate('AbonnementsScreen', {
-                            nom: nom,
-                            prenom: prenom,
-                            phone: phone,
-                            age: age,
-                            sexe: sexe,
-                            poids: poids,
-                            taille: taille,
-                            poste: poste,
-                            email: values.mail,
-                            password: values.password
-                        })
+                    onSubmit={async (values) => {
+                        await firebase.auth().createUserWithEmailAndPassword(values.email, values.password)
+                            .then(result => {
+                                firebase.firestore().collection("users")
+                                    .doc(firebase.auth().currentUser.uid)
+                                    .set({
+                                        taille,
+                                        poids,
+                                        prenom,
+                                        email: values.email,
+                                        age,
+                                        poste,
+                                        phone,
+                                        nom
+                                    })
+                            })
                     }}
                 >
                     {props => (
@@ -70,15 +73,15 @@ const SignupScreen = (props) => {
                                 </View>
                                 <View style={styles.inputContainer}>
                                     <TextInput
-                                        value={props.values.mail}
+                                        value={props.values.email}
                                         style={styles.textInput}
-                                        onChangeText={props.handleChange('mail')}
+                                        onChangeText={props.handleChange('email')}
                                     />
                                 </View>
                             </View>
 
-                            {props.errors.mail && props.touched.mail ? (
-                                <Text style={styles.errors}>{props.errors.mail}</Text>
+                            {props.errors.email && props.touched.email ? (
+                                <Text style={styles.errors}>{props.errors.email}</Text>
                             ) : null}
 
                             <View style={styles.inscriptionInnerForm}>

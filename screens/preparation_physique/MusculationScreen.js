@@ -5,14 +5,14 @@ import {Formik} from "formik";
 const MusculationScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
-            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
+            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                <ScrollView>
                 <Text style={styles.inscriptionBigText}>Musculation</Text>
 
                 <View style={styles.scrollView}>
 
-
-                    <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ViewVideoMuscuScreen')}>
+                    <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('MuscuVideoDay1')}>
                         <ImageBackground
                             source={require('../../assets/Day_1.png')}
                             style={styles.imageBackground}
@@ -35,8 +35,14 @@ const MusculationScreen = ({navigation}) => {
                         >
                         </ImageBackground>
                     </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.abonnementButton} onPress={() => navigation.navigate('AbonnementScreen')}>
+                        <Text style={styles.abonnementText}>Pour profiter pleinement de l'application, abonnez-vous !</Text>
+                    </TouchableOpacity>
                 </View>
+                </ScrollView>
             </ImageBackground>
+
         </View>
     );
 };
@@ -57,6 +63,11 @@ const styles = StyleSheet.create({
         marginBottom: '3%',
         alignItems: 'center'
     },
+    abonnementButton: {
+        borderColor: 'white',
+        borderWidth: 2,
+        marginTop: 15
+    },
     abonnementTextInner: {
         fontSize: 25,
         color: 'white',
@@ -73,18 +84,17 @@ const styles = StyleSheet.create({
         marginTop: 55
     },
     abonnementText: {
-        fontSize: 30,
+        fontSize: 20,
         fontWeight: 'bold',
         color: 'white',
         textAlign: 'center',
-        marginTop: 55
     },
     inscriptionBigText: {
         fontSize: 50,
         fontWeight: 'bold',
         textAlign: 'center',
         color: 'white',
-        marginTop: 150,
+        marginTop: 20,
         marginBottom: 30
     },
     imageBackground: {

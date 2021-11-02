@@ -5,7 +5,7 @@ import firebase from "firebase";
 import axios from 'axios';
 import {PaymentView} from "../../components/PaymentView";
 
-const AbonnementsScreen = (props) => {
+const AbonnementScreen = (props) => {
 
     const age = props.route.params.age
     const nom = props.route.params.nom
@@ -386,4 +386,4 @@ const styles = StyleSheet.create({
         marginBottom: 30
     },
 })
-export default AbonnementsScreen;
+export default AbonnementScreen;

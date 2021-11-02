@@ -4,30 +4,31 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SignupScreen from "../screens/auth/SignupScreen";
 import LoginScreen from "../screens/auth/LoginScreen";
-import AbonnementsScreen from "../screens/auth/AbonnementsScreen";
+import AbonnementScreen from "../screens/auth/AbonnementScreen";
 import AccueilScreen from "../screens/accueil/AccueilScreen";
-import MusculationScreen from "../screens/videos/MusculationScreen";
-import DrillScreen from "../screens/videos/DrillScreen";
-import RecettesScreen from "../screens/others/RecettesScreen";
+import MusculationScreen from "../screens/preparation_physique/MusculationScreen";
+import DrillScreen from "../screens/drill/DrillScreen";
+import RecettesScreen from "../screens/recettes/RecettesScreen";
 import { FontAwesome } from '@expo/vector-icons';
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 import { AntDesign } from '@expo/vector-icons';
 import InformationsScreen from "../screens/auth/InformationsScreen";
-import ViewVideoScreen from "../screens/videos/ViewVideoScreen";
-import RecetteDetailScreen from "../screens/others/RecetteDetailScreen";
-import NutritionSportiveScreen from "../screens/others/NutritionSportiveScreen";
-import EquipementSportifScreen from "../screens/others/EquipementSportifScreen";
-import ProfileScreen from "../screens/others/ProfileScreen";
+import ViewVideoScreen from "../screens/drill/ViewVideoScreen";
+import RecetteDetailScreen from "../screens/recettes/RecetteDetailScreen";
+import NutritionSportiveScreen from "../screens/nutrition_sportive/NutritionSportiveScreen";
+import EquipementSportifScreen from "../screens/equipement_sportif/EquipementSportifScreen";
+import ProfileScreen from "../screens/profil/ProfileScreen";
 import EntraineurPersonnelScreen from "../screens/others/EntraineurPersonnelScreen";
 import ProgressScreen from "../screens/progress/ProgressScreen";
-import ViewVideoMuscuScreen from "../screens/videos/ViewVideoMuscuScreen";
-import MuscuVideoDay2 from "../screens/videos/MuscuVideoDay2";
-import MuscuVideoDay3 from "../screens/videos/MuscuVideoDay3";
+import MuscuVideoDay1 from "../screens/preparation_physique/MuscuVideoDay1";
+import MuscuVideoDay2 from "../screens/preparation_physique/MuscuVideoDay2";
+import MuscuVideoDay3 from "../screens/preparation_physique/MuscuVideoDay3";
 const AuthStackNavigator = createNativeStackNavigator();
 const ProfileStackNavigator = createNativeStackNavigator();
 const ProgressStackNavigator = createNativeStackNavigator();
+const AccueilStackNavigator = createNativeStackNavigator();
 const AppTabNavigator = createBottomTabNavigator();
 
 const CustomHeader = props => {
@@ -77,7 +78,7 @@ export const AuthNavigator = () => {
         />
         <AuthStackNavigator.Screen
             name="AbonnementsScreen"
-            component={AbonnementsScreen}
+            component={AbonnementScreen}
             options={{
                 header: props => <CustomHeader title="BURNPOWER"/>,
             }}
@@ -113,23 +114,30 @@ const profileNavigator = () => {
 
 const accueilNavigator = () => {
     return (
-        <AuthStackNavigator.Navigator>
-            <AuthStackNavigator.Screen
+        <AccueilStackNavigator.Navigator>
+            <AccueilStackNavigator.Screen
                 name="AccueilScreen"
                 component={AccueilScreen}
                 options={{
                     header: props => <CustomHeader title="BURNPOWER"/>,
                 }}
             />
+            <AccueilStackNavigator.Screen
+                name="AbonnementScreen"
+                component={AbonnementScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
 
-            <AuthStackNavigator.Screen
+            <AccueilStackNavigator.Screen
                 name="RecettesScreen"
                 component={RecettesScreen}
                 options={{
                     header: props => <CustomHeader title="BURNPOWER"/>,
                 }}
             />
-            <AuthStackNavigator.Screen
+            <AccueilStackNavigator.Screen
                 name="MusculationScreen"
                 component={MusculationScreen}
                 options={{
@@ -137,7 +145,7 @@ const accueilNavigator = () => {
                 }}
             />
 
-            <AuthStackNavigator.Screen
+            <AccueilStackNavigator.Screen
                 name="DrillScreen"
                 component={DrillScreen}
                 options={{
@@ -145,7 +153,7 @@ const accueilNavigator = () => {
                 }}
             />
 
-            <AuthStackNavigator.Screen
+            <AccueilStackNavigator.Screen
                 name="ViewVideoScreen"
                 component={ViewVideoScreen}
                 options={{
@@ -153,15 +161,15 @@ const accueilNavigator = () => {
                 }}
             />
 
-            <AuthStackNavigator.Screen
-                name="ViewVideoMuscuScreen"
-                component={ViewVideoMuscuScreen}
+            <AccueilStackNavigator.Screen
+                name="MuscuVideoDay1"
+                component={MuscuVideoDay1}
                 options={{
                     header: props => <CustomHeader title="BURNPOWER"/>,
                 }}
             />
 
-            <AuthStackNavigator.Screen
+            <AccueilStackNavigator.Screen
                 name="MuscuVideoDay2"
                 component={MuscuVideoDay2}
                 options={{
@@ -169,7 +177,7 @@ const accueilNavigator = () => {
                 }}
             />
 
-            <AuthStackNavigator.Screen
+            <AccueilStackNavigator.Screen
                 name="MuscuVideoDay3"
                 component={MuscuVideoDay3}
                 options={{
@@ -177,42 +185,42 @@ const accueilNavigator = () => {
                 }}
             />
 
-            <AuthStackNavigator.Screen
+            <AccueilStackNavigator.Screen
                 name="RecetteDetailScreen"
                 component={RecetteDetailScreen}
                 options={{
                     header: props => <CustomHeader title="BURNPOWER"/>,
                 }}
             />
-            <AuthStackNavigator.Screen
+            <AccueilStackNavigator.Screen
                 name="NutritionSportiveScreen"
                 component={NutritionSportiveScreen}
                 options={{
                     header: props => <CustomHeader title="BURNPOWER"/>,
                 }}
             />
-            <AuthStackNavigator.Screen
+            <AccueilStackNavigator.Screen
                 name="EquipementSportifScreen"
                 component={EquipementSportifScreen}
                 options={{
                     header: props => <CustomHeader title="BURNPOWER"/>,
                 }}
             />
-            <AuthStackNavigator.Screen
+            <AccueilStackNavigator.Screen
                 name="ProfileScreen"
                 component={ProfileScreen}
                 options={{
                     header: props => <CustomHeader title="BURNPOWER"/>,
                 }}
             />
-            <AuthStackNavigator.Screen
+            <AccueilStackNavigator.Screen
                 name="EntraineurPersonnelScreen"
                 component={EntraineurPersonnelScreen}
                 options={{
                     header: props => <CustomHeader title="BURNPOWER"/>,
                 }}
             />
-        </AuthStackNavigator.Navigator>
+        </AccueilStackNavigator.Navigator>
         )
 }
 
