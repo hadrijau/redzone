@@ -7,17 +7,6 @@ import {PaymentView} from "../../components/PaymentView";
 
 const AbonnementScreen = (props) => {
 
-    const age = props.route.params.age
-    const nom = props.route.params.nom
-    const prenom = props.route.params.prenom
-    const poids = props.route.params.poids
-    const taille = props.route.params.taille
-    const poste = props.route.params.poste
-    const email = props.route.params.email
-    const password = props.route.params.password
-
-    console.log(age)
-    console.log(email)
     const [response, setResponse ] = useState()
     const [annuel, setAnnuel] = useState(false);
     const [ makePayment, setMakePayment ] = useState(false)
@@ -49,22 +38,6 @@ const AbonnementScreen = (props) => {
                 console.log(stripeResponse)
                 const paid = stripeResponse.data.items.data[0].plan.active;
                 if(paid === true){
-                    firebase.auth().createUserWithEmailAndPassword(email, password)
-                        .then(result => {
-                            firebase.firestore().collection("users")
-                                .doc(firebase.auth().currentUser.uid)
-                                .set({
-                                    taille,
-                                    poids,
-                                    prenom,
-                                    email,
-                                    age,
-                                    poste,
-                                    nom,
-                                    abonnement: 'hebdomadaire',
-                                    subscriptionId: stripeResponse.data.id
-                                })
-                        })
                     setPaymentStatus('Votre paiement a été validé ! Bienvenue chez RoundPower')
                 }else{
                     setPaymentStatus('Le paiement a échoué')
@@ -106,22 +79,6 @@ const AbonnementScreen = (props) => {
                 console.log(stripeResponse.data.items.data[0].plan.active)
                 const paid = stripeResponse.data.items.data[0].plan.active;
                 if(paid === true){
-                    firebase.auth().createUserWithEmailAndPassword(email, password)
-                        .then(result => {
-                            firebase.firestore().collection("users")
-                                .doc(firebase.auth().currentUser.uid)
-                                .set({
-                                    taille,
-                                    poids,
-                                    prenom,
-                                    email,
-                                    age,
-                                    poste,
-                                    nom,
-                                    abonnement: 'hebdomadaire',
-                                    subscriptionId: stripeResponse.data.id
-                                })
-                        })
                     setPaymentStatus('Votre paiement a été validé ! Bienvenue chez RoundPower')
                 }else{
                     setPaymentStatus('Le paiement a échoué')
@@ -163,22 +120,6 @@ const AbonnementScreen = (props) => {
                 console.log(stripeResponse.data.items.data[0].plan.active)
                 const paid = stripeResponse.data.items.data[0].plan.active;
                 if(paid === true){
-                    firebase.auth().createUserWithEmailAndPassword(email, password)
-                        .then(result => {
-                            firebase.firestore().collection("users")
-                                .doc(firebase.auth().currentUser.uid)
-                                .set({
-                                    taille,
-                                    poids,
-                                    prenom,
-                                    email,
-                                    age,
-                                    poste,
-                                    nom,
-                                    abonnement: 'hebdomadaire',
-                                    subscriptionId: stripeResponse.data.id
-                                })
-                        })
                     setPaymentStatus('Votre paiement a été validé ! Bienvenue chez RoundPower')
                 }else{
                     setPaymentStatus('Le paiement a échoué')
@@ -208,26 +149,6 @@ const AbonnementScreen = (props) => {
                         <Text style={styles.inscriptionBigText}>Abonnements</Text>
 
                         <ScrollView style={styles.scrollView}>
-
-                            <TouchableOpacity style={styles.abonnementCard} onPress={async () =>
-                                await firebase.auth().createUserWithEmailAndPassword(email, password)
-                                    .then(result => {
-                                        firebase.firestore().collection("users")
-                                            .doc(firebase.auth().currentUser.uid)
-                                            .set({
-                                                taille,
-                                                poids,
-                                                prenom,
-                                                email,
-                                                age,
-                                                poste,
-                                                nom,
-                                                abonnement: 'free'
-                                            })
-                                    })
-                            }>
-                                <Text style={styles.abonnementFreeText}>Free</Text>
-                            </TouchableOpacity>
 
                             <TouchableOpacity style={styles.abonnementCard} onPress={() => {
                                 setMakePaymentMuscu(true)
@@ -382,7 +303,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         color: 'white',
-        marginTop: 150,
+        marginTop: 40,
         marginBottom: 30
     },
 })
