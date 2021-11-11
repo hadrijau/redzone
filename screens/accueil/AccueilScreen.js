@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, Image, ImageBackground, ScrollView, TouchableOpacity, StyleSheet} from 'react-native';
 
+
 const AccueilScreen = ({navigation}) => {
 
     return (
@@ -30,14 +31,14 @@ const AccueilScreen = ({navigation}) => {
                 </View>
 
                 <View style={styles.row}>
-                    <TouchableOpacity style={styles.accueilCard} onPress={() => {navigation.navigate('ProfileScreen')}}>
+                    <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('ProfileScreen')}>
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/logo_profil.jpg')} style={styles.imageCard}/>
                         </View>
                         <Text style={styles.abonnementFreeText}>Mon profil</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.accueilCard}>
+                    <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('ProgressScreen')}>
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/logo_progres.jpg')} style={styles.imageCard}/>
                         </View>
@@ -84,13 +85,6 @@ const AccueilScreen = ({navigation}) => {
                         <Text style={styles.abonnementFreeText}>Entraineurs personnels</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.accueilCard}>
-                        <View style={styles.iconContainer}>
-                            <Image source={require('../../assets/logo_contact.jpg')} style={styles.imageCard}/>
-                        </View>
-                        <Text style={styles.abonnementFreeText}>Contact</Text>
-                    </TouchableOpacity>
-
                 </View>
             </ImageBackground>
         </View>
@@ -117,18 +111,18 @@ const styles = StyleSheet.create({
         fontSize: 15,
     },
     accueilCard: {
-        width: 80
+        width: 90
     },
     iconContainer: {
         backgroundColor: '#D91830',
         width: '100%',
         alignItems: 'center',
-        height: 80,
+        height: 90,
         borderRadius: 20,
         overflow: 'hidden'
     },
     imageCard: {
-        width: '100%',
+        width: '130%',
         height: '100%'
     },
     row: {
@@ -136,7 +130,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         width: '100%',
-        marginBottom: 10
+        marginBottom: 20
     }
 })
 

@@ -58,6 +58,7 @@ const SignupScreen = (props) => {
                                         prenom,
                                         email: values.email,
                                         age,
+                                        sexe,
                                         poste,
                                         phone,
                                         nom

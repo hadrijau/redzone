@@ -12,11 +12,9 @@ const RecettesScreen = ({navigation}) => {
 
             <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
-                <Text style={styles.inscriptionBigText}>Recettes</Text>
                 <ScrollView style={styles.scrollView}>
 
-                    <View style={styles.row}>
-                        <View>
+
                             <TouchableOpacity onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 name: 'Toast d\'avocat',
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FToast%20Avocat%20Oeuf.png?alt=media&token=876236cc-956e-4f8a-9506-db8e24f22f10',
@@ -29,16 +27,10 @@ const RecettesScreen = ({navigation}) => {
                             })} style={styles.recetteCard}>
                                 <Image
                                     style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FToast%20Avocat%20Oeuf.png?alt=media&token=876236cc-956e-4f8a-9506-db8e24f22f10"
-                                    }}
-                                >
-                                </Image>
-                                <Text style={styles.abonnementFreeText}>Toast d'avocat</Text>
+                                    source={require('../../assets/photos-recettes/ToastAvocatOeuflarge.png')}
+                                />
                             </TouchableOpacity>
-                        </View>
 
-                        <View>
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FAvocat%20Oeuf%20Saumon.jpg?alt=media&token=68e895fa-8c21-4729-b9e8-11b5872ea969',
                                 ingredient1: '2 œufs',
@@ -50,18 +42,10 @@ const RecettesScreen = ({navigation}) => {
                             })}>
                                 <Image
                                     style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FAvocat%20Oeuf%20Saumon.jpg?alt=media&token=68e895fa-8c21-4729-b9e8-11b5872ea969"
-                                    }}
-                                >
-                                </Image>
-                                <Text style={styles.abonnementFreeText}>Avocat saumon</Text>
+                                    source={require('../../assets/photos-recettes/AvocatOeufSaumonlarge.jpg.png')}
+                                />
                             </TouchableOpacity>
-                        </View>
-                    </View>
 
-                    <View style={styles.row}>
-                        <View>
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBurger%20Chicken%20Tenders.png?alt=media&token=9a14b1e8-1ed4-4d57-9d60-38510ae3f5da',
                                 ingredient1: '4 tranches de saumon fumé',
@@ -86,9 +70,9 @@ const RecettesScreen = ({navigation}) => {
                                 </Image>
                                 <Text style={styles.abonnementFreeText}>Dôme avocat saumon</Text>
                             </TouchableOpacity>
-                        </View>
 
-                        <View>
+
+
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBurger%20Chicken%20Tenders.png?alt=media&token=9a14b1e8-1ed4-4d57-9d60-38510ae3f5da',
                                 ingredient1: '200g de thon',
@@ -112,11 +96,9 @@ const RecettesScreen = ({navigation}) => {
                                 </Image>
                                 <Text style={styles.abonnementFreeText}>Wraps avocat thon</Text>
                             </TouchableOpacity>
-                        </View>
-                    </View>
 
-                    <View style={styles.row}>
-                        <View>
+
+
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBurger%20Chicken%20Tenders.png?alt=media&token=9a14b1e8-1ed4-4d57-9d60-38510ae3f5da',
                                 ingredient1: '200gr de saumon fumé',
@@ -137,9 +119,9 @@ const RecettesScreen = ({navigation}) => {
                                 </Image>
                                 <Text style={styles.abonnementFreeText}>Wrap saumon</Text>
                             </TouchableOpacity>
-                        </View>
 
-                        <View>
+
+
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen')}>
                                 <Image
                                     style={styles.imageCard}
@@ -150,11 +132,7 @@ const RecettesScreen = ({navigation}) => {
                                 </Image>
                                 <Text style={styles.abonnementFreeText}>Boule de fromage</Text>
                             </TouchableOpacity>
-                        </View>
-                    </View>
 
-                    <View style={styles.row}>
-                        <View>
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBagel%20au%20Saumon.jpg?alt=media&token=4046dc58-edcd-4d57-a8b3-9f4ccbc20d51',
                                 ingredient1: '1 oeuf',
@@ -167,16 +145,11 @@ const RecettesScreen = ({navigation}) => {
                             })}>
                                 <Image
                                     style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBagel%20au%20Saumon.jpg?alt=media&token=4046dc58-edcd-4d57-a8b3-9f4ccbc20d51"
-                                    }}
-                                >
-                                </Image>
-                                <Text style={styles.abonnementFreeText}>Bagel saumon fumé</Text>
+                                    source={require('../../assets/photos-recettes/BagelauSaumonlarge.jpg.png')}
+                                />
                             </TouchableOpacity>
-                        </View>
 
-                        <View>
+
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBagel%20au%20Thon.jpg?alt=media&token=0bf61b42-eb72-46f0-87fc-f0d251a15b76',
                                 ingredient1: '1 oeuf',
@@ -192,20 +165,13 @@ const RecettesScreen = ({navigation}) => {
                             })}>
                                 <Image
                                     style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBagel%20au%20Thon.jpg?alt=media&token=0bf61b42-eb72-46f0-87fc-f0d251a15b76"
-                                    }}
-                                >
-                                </Image>
-                                <Text style={styles.abonnementFreeText}>Bagel au thon</Text>
+                                    source={require('../../assets/photos-recettes/BagelauThonlarge.jpg.png')}
+                                />
                             </TouchableOpacity>
-                        </View>
 
 
-                    </View>
 
-                    <View style={styles.row}>
-                        <View>
+
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FSalade%20Ch%C3%A8vre%20Chaud.png?alt=media&token=4b93846c-5aea-4e90-82b0-d8129093d350',
                                 ingredient1: 'Feuilles de salade',
@@ -224,16 +190,12 @@ const RecettesScreen = ({navigation}) => {
                             })}>
                                 <Image
                                     style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FSalade%20Ch%C3%A8vre%20Chaud.png?alt=media&token=4b93846c-5aea-4e90-82b0-d8129093d350"
-                                    }}
-                                >
-                                </Image>
-                                <Text style={styles.abonnementFreeText}>Salade de chèvre chaud</Text>
+                                    source={require('../../assets/photos-recettes/SaladeChèvreChaudlarge.png')}
+                                />
                             </TouchableOpacity>
-                        </View>
 
-                        <View>
+
+
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FQuiche%20thon%20champignon.png?alt=media&token=5d29bb42-45e7-4797-8328-073ba69fd8f2',
                                 ingredient1: '1 pâte à quiche',
@@ -250,18 +212,12 @@ const RecettesScreen = ({navigation}) => {
                             })}>
                                 <Image
                                     style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FQuiche%20thon%20champignon.png?alt=media&token=5d29bb42-45e7-4797-8328-073ba69fd8f2"
-                                    }}
-                                >
-                                </Image>
-                                <Text style={styles.abonnementFreeText}>Quiche Thon Champignons</Text>
+                                    source={require('../../assets/photos-recettes/Quichethonchampignonlarge.png')}
+                                />
                             </TouchableOpacity>
-                        </View>
-                    </View>
 
-                    <View style={styles.row}>
-                        <View>
+
+
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FNuggets.png?alt=media&token=9b8ddbe0-7ece-4925-9575-1ffc8a05f7fc',
                                 ingredient1: "3 blancs d'oeuf",
@@ -280,16 +236,12 @@ const RecettesScreen = ({navigation}) => {
                             })}>
                                 <Image
                                     style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FNuggets.png?alt=media&token=9b8ddbe0-7ece-4925-9575-1ffc8a05f7fc"
-                                    }}
-                                >
-                                </Image>
-                                <Text style={styles.abonnementFreeText}>Nuggets de poulet</Text>
+                                    source={require('../../assets/photos-recettes/Nuggetslarge.png')}
+                                />
                             </TouchableOpacity>
-                        </View>
 
-                        <View>
+
+
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FChicken%20Tenders.png?alt=media&token=5e4a6ebd-3b75-4dd8-b092-1b558f4d2f59",
                                 ingredient1: "2 blancs de poulet",
@@ -307,19 +259,12 @@ const RecettesScreen = ({navigation}) => {
                             })}>
                                 <Image
                                     style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FChicken%20Tenders.png?alt=media&token=5e4a6ebd-3b75-4dd8-b092-1b558f4d2f59"
-                                    }}
-                                >
-                                </Image>
-                                <Text style={styles.abonnementFreeText}>Chicken tender</Text>
+                                    source={require('../../assets/photos-recettes/Chickentenderslarge.png')}
+                                />
                             </TouchableOpacity>
-                        </View>
-                    </View>
 
 
-                    <View style={styles.row}>
-                        <View>
+
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FChicken%20Tenders.png?alt=media&token=5e4a6ebd-3b75-4dd8-b092-1b558f4d2f59",
                                 ingredient1: "Fleur de sel",
@@ -349,9 +294,8 @@ const RecettesScreen = ({navigation}) => {
                                 </Image>
                                 <Text style={styles.abonnementFreeText}>Escalope milanaise</Text>
                             </TouchableOpacity>
-                        </View>
 
-                        <View>
+
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FChicken%20Tenders.png?alt=media&token=5e4a6ebd-3b75-4dd8-b092-1b558f4d2f59",
                                 ingredient1: "1 pavé de saumon",
@@ -381,12 +325,9 @@ const RecettesScreen = ({navigation}) => {
                                 </Image>
                                 <Text style={styles.abonnementFreeText}>Brochette de saumon</Text>
                             </TouchableOpacity>
-                        </View>
-                    </View>
 
 
-                    <View style={styles.row}>
-                        <View>
+
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FChicken%20Tenders.png?alt=media&token=5e4a6ebd-3b75-4dd8-b092-1b558f4d2f59",
                                 ingredient1: "3 pavés de saumon",
@@ -415,9 +356,9 @@ const RecettesScreen = ({navigation}) => {
                                 </Image>
                                 <Text style={styles.abonnementFreeText}>Nouilles au saumon</Text>
                             </TouchableOpacity>
-                        </View>
 
-                        <View>
+
+
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBurger%20Chicken%20Tenders.png?alt=media&token=9a14b1e8-1ed4-4d57-9d60-38510ae3f5da",
                                 ingredient1: "170g de filet de poulet",
@@ -433,19 +374,13 @@ const RecettesScreen = ({navigation}) => {
                             })}>
                                 <Image
                                     style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBurger%20Chicken%20Tenders.png?alt=media&token=9a14b1e8-1ed4-4d57-9d60-38510ae3f5da"
-                                    }}
-                                >
-                                </Image>
-                                <Text style={styles.abonnementFreeText}>Burger au poulet tenders</Text>
+                                    source={require('../../assets/photos-recettes/burgerchickentenderslarge.png')}
+                                />
                             </TouchableOpacity>
-                        </View>
-                    </View>
 
 
-                    <View style={styles.row}>
-                        <View>
+
+
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FPoke%20Bowl%20Poulet%20Avocat-Melon.png?alt=media&token=b343da6d-7e4f-43d1-bfb4-2ddeac830535",
                                 ingredient1: "1 filet de poulet",
@@ -462,16 +397,11 @@ const RecettesScreen = ({navigation}) => {
                             })}>
                                 <Image
                                     style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FPoke%20Bowl%20Poulet%20Avocat-Melon.png?alt=media&token=b343da6d-7e4f-43d1-bfb4-2ddeac830535"
-                                    }}
-                                >
-                                </Image>
-                                <Text style={styles.abonnementFreeText}>Poke bowl avocat/melon</Text>
+                                    source={require('../../assets/photos-recettes/PokeBowlPouletAvocat-Melonlarge.png')}
+                                />
                             </TouchableOpacity>
-                        </View>
 
-                        <View>
+
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FPoke%20Bowl%20Poulet%20Avocat-Melon.png?alt=media&token=b343da6d-7e4f-43d1-bfb4-2ddeac830535",
                                 ingredient1: "1 pavé de saumon coupé en dès",
@@ -498,12 +428,10 @@ const RecettesScreen = ({navigation}) => {
                                 </Image>
                                 <Text style={styles.abonnementFreeText}>Poke bowl saumon mangue</Text>
                             </TouchableOpacity>
-                        </View>
-                    </View>
 
 
-                    <View style={styles.row}>
-                        <View>
+
+
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FPoke%20Bowl%20Poulet%20Avocat-Melon.png?alt=media&token=b343da6d-7e4f-43d1-bfb4-2ddeac830535",
                                 ingredient1: "1 patate douce",
@@ -520,60 +448,9 @@ const RecettesScreen = ({navigation}) => {
                             })}>
                                 <Image
                                     style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FChicken%20Tenders.png?alt=media&token=5e4a6ebd-3b75-4dd8-b092-1b558f4d2f59"
-                                    }}
-                                >
-                                </Image>
-                                <Text style={styles.abonnementFreeText}>Frite de patate douce</Text>
+                                    source={require('../../assets/photos-recettes/Fritepatatedoucelarge.png')}
+                                />
                             </TouchableOpacity>
-                        </View>
-                    </View>
-
-
-                    <View style={styles.row}>
-                        <View>
-                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
-                                <Image
-                                    style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FChicken%20Tenders.png?alt=media&token=5e4a6ebd-3b75-4dd8-b092-1b558f4d2f59"
-                                    }}
-                                >
-                                </Image>
-                                <Text style={styles.abonnementFreeText}>Barres protéinées</Text>
-                            </TouchableOpacity>
-                        </View>
-
-                        <View>
-                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
-                                <Image
-                                    style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FChicken%20Tenders.png?alt=media&token=5e4a6ebd-3b75-4dd8-b092-1b558f4d2f59"
-                                    }}
-                                >
-                                </Image>
-                                <Text style={styles.abonnementFreeText}>Energy balls</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-
-
-                    <View style={styles.row}>
-                        <View>
-                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
-                                <Image
-                                    style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FChicken%20Tenders.png?alt=media&token=5e4a6ebd-3b75-4dd8-b092-1b558f4d2f59"
-                                    }}
-                                >
-                                </Image>
-                                <Text style={styles.abonnementFreeText}>Egg muffins</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
 
                 </ScrollView>
 
@@ -591,11 +468,12 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     recetteCard: {
-        width: windowWidth/2,
+        width: windowWidth/1,
         backgroundColor: 'white',
         borderColor: 'lightgrey',
-        borderWidth: 5,
-        height: 150,
+        borderWidth: 2,
+        height: 180,
+        marginBottom: 3
     },
     imageCard: {
         position: 'absolute',
@@ -603,7 +481,8 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0,
-        height: 100,
+        height: '100%',
+        width: '100%',
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -614,7 +493,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: 'black',
         textAlign: 'center',
-        marginTop: 110
+        marginTop: 145
     },
     row: {
         display: 'flex',

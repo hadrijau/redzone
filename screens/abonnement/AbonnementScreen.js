@@ -1,11 +1,24 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {ImageBackground, Text, TextInput, TouchableOpacity, View, StyleSheet, ScrollView, ActivityIndicator} from 'react-native';
 import {Formik} from "formik";
 import firebase from "firebase";
 import axios from 'axios';
+import {useDispatch, useSelector} from "react-redux";
+import * as userActions from "../../store/actions/users";
+
 import {PaymentView} from "../../components/PaymentView";
 
 const AbonnementScreen = (props) => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(userActions.fetchUser())
+    }, [dispatch]);
+
+    const userData = useSelector(state => state.user.currentUser)
+
+    console.log(userData);
 
     const [response, setResponse ] = useState()
     const [annuel, setAnnuel] = useState(false);
@@ -14,6 +27,16 @@ const AbonnementScreen = (props) => {
     const [ makePaymentMuscu, setMakePaymentMuscu ] = useState(false);
     const [ makePaymentDrill, setMakePaymentDrill ] = useState(false);
     const [ makePaymentPremium, setMakePaymentPremium ] = useState(false);
+
+    const changeAbonnement = async (abonnement) => {
+        await firebase
+            .firestore()
+            .collection('users')
+            .doc(firebase.auth().currentUser.uid)
+            .update({
+                abonnement: abonnement
+            })
+    };
 
     const onCheckStatusMuscu = async (paymentResponse) => {
         setPaymentStatus('Votre paiement est en cours de traitement')
@@ -26,7 +49,7 @@ const AbonnementScreen = (props) => {
         try {
 
             const stripeResponse = await axios.post('https://stopgene.herokuapp.com/payment', {
-                email: email,
+                email: userData.email,
                 authToken: jsonResponse,
                 planId: 'price_1Imf3rE4O07UQhcfasxQsjQA',
             })
@@ -38,6 +61,7 @@ const AbonnementScreen = (props) => {
                 console.log(stripeResponse)
                 const paid = stripeResponse.data.items.data[0].plan.active;
                 if(paid === true){
+                    await changeAbonnement('Musculation')
                     setPaymentStatus('Votre paiement a été validé ! Bienvenue chez RoundPower')
                 }else{
                     setPaymentStatus('Le paiement a échoué')
@@ -67,7 +91,7 @@ const AbonnementScreen = (props) => {
         try {
 
             const stripeResponse = await axios.post('https://stopgene.herokuapp.com/payment', {
-                email: email,
+                email: userData.email,
                 authToken: jsonResponse,
                 planId: 'price_1Imf3rE4O07UQhcfasxQsjQA',
             })
@@ -79,6 +103,7 @@ const AbonnementScreen = (props) => {
                 console.log(stripeResponse.data.items.data[0].plan.active)
                 const paid = stripeResponse.data.items.data[0].plan.active;
                 if(paid === true){
+                    await changeAbonnement('Drill')
                     setPaymentStatus('Votre paiement a été validé ! Bienvenue chez RoundPower')
                 }else{
                     setPaymentStatus('Le paiement a échoué')
@@ -108,7 +133,7 @@ const AbonnementScreen = (props) => {
         try {
 
             const stripeResponse = await axios.post('https://stopgene.herokuapp.com/payment', {
-                email: email,
+                email: userData.email,
                 authToken: jsonResponse,
                 planId: 'price_1Imf4HE4O07UQhcfRSK3AcP6',
             })
@@ -120,6 +145,7 @@ const AbonnementScreen = (props) => {
                 console.log(stripeResponse.data.items.data[0].plan.active)
                 const paid = stripeResponse.data.items.data[0].plan.active;
                 if(paid === true){
+                    await changeAbonnement('Premium')
                     setPaymentStatus('Votre paiement a été validé ! Bienvenue chez RoundPower')
                 }else{
                     setPaymentStatus('Le paiement a échoué')
@@ -128,17 +154,13 @@ const AbonnementScreen = (props) => {
             }else{
                 setPaymentStatus('Le paiement a échoué')
             }
-
-
         } catch (error) {
-
             console.log(error)
             setPaymentStatus('Le paiement a échoué')
 
         }
 
     }
-
 
     const paymentUI = (props) => {
         if (!makePaymentMuscu && !makePaymentPremium && !makePaymentDrill) {
@@ -179,7 +201,8 @@ const AbonnementScreen = (props) => {
 
         if (makePaymentMuscu && !makePaymentDrill && !makePaymentPremium) {
             if(response !== undefined){
-                return <View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: 300, marginTop: 50}}>
+                return <View style={styles.container}>
+                    <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
                     {paymentStatus === 'Votre paiement est en cours de traitement' ?
                         <View>
                             <Text style={styles.paymentStatusText}>{ paymentStatus}</Text>
@@ -189,12 +212,13 @@ const AbonnementScreen = (props) => {
                     {paymentStatus === 'Votre paiement a été validé ! Bienvenue chez RoundPower' ?
                         <View>
                             <View style={styles.finContainer}>
-                                <Text style={styles.paymentStatusText2}>Votre paiement a été validé ! Votre numéro de téléphone est désormais disponible !</Text>
+                                <Text style={styles.paymentStatusText2}>Votre paiement a été validé ! Profitez de vos nouvelles vidéos !</Text>
                             </View>
-                            <TouchableOpacity onPress={() => props.navigation.navigate('ChoiceScreen')} style={styles.button}>
+                            <TouchableOpacity onPress={() => props.navigation.navigate('AccueilScreen')} style={styles.button}>
                                 <Text style={styles.buttonText}>Retour au menu principal</Text>
                             </TouchableOpacity>
                         </View> : <Text></Text>}
+                    </ImageBackground>
                 </View>
 
             }else{
@@ -204,7 +228,8 @@ const AbonnementScreen = (props) => {
 
         if (!makePaymentMuscu && makePaymentDrill && !makePaymentPremium) {
             if(response !== undefined){
-                return <View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: 300, marginTop: 50}}>
+                return <View style={styles.container}>
+                    <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
                     {paymentStatus === 'Votre paiement est en cours de traitement' ?
                         <View>
                             <Text style={styles.paymentStatusText}>{ paymentStatus}</Text>
@@ -214,12 +239,13 @@ const AbonnementScreen = (props) => {
                     {paymentStatus === 'Votre paiement a été validé ! Bienvenue chez RoundPower' ?
                         <View>
                             <View style={styles.finContainer}>
-                                <Text style={styles.paymentStatusText2}>Votre paiement a été validé ! Votre numéro de téléphone est désormais disponible !</Text>
+                                <Text style={styles.paymentStatusText2}>Votre paiement a été validé ! Profitez de vos nouvelles vidéos !</Text>
                             </View>
-                            <TouchableOpacity onPress={() => props.navigation.navigate('ChoiceScreen')} style={styles.button}>
+                            <TouchableOpacity onPress={() => props.navigation.navigate('AccueilScreen')} style={styles.button}>
                                 <Text style={styles.buttonText}>Retour au menu principal</Text>
                             </TouchableOpacity>
                         </View> : <Text></Text>}
+                    </ImageBackground>
                 </View>
 
             }else{
@@ -229,7 +255,9 @@ const AbonnementScreen = (props) => {
 
         if (!makePaymentMuscu && !makePaymentDrill && makePaymentPremium) {
             if(response !== undefined){
-                return <View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: 300, marginTop: 50}}>
+                return <View style={styles.container}>
+                    <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+
                     {paymentStatus === 'Votre paiement est en cours de traitement' ?
                         <View>
                             <Text style={styles.paymentStatusText}>{ paymentStatus}</Text>
@@ -239,12 +267,13 @@ const AbonnementScreen = (props) => {
                     {paymentStatus === 'Votre paiement a été validé ! Bienvenue chez RoundPower' ?
                         <View>
                             <View style={styles.finContainer}>
-                                <Text style={styles.paymentStatusText2}>Votre paiement a été validé ! Votre numéro de téléphone est désormais disponible !</Text>
+                                <Text style={styles.paymentStatusText2}>Votre paiement a été validé ! Profitez de vos nouvelles vidéos !</Text>
                             </View>
-                            <TouchableOpacity onPress={() => props.navigation.navigate('ChoiceScreen')} style={styles.button}>
+                            <TouchableOpacity onPress={() => props.navigation.navigate('AccueilScreen')} style={styles.button}>
                                 <Text style={styles.buttonText}>Retour au menu principal</Text>
                             </TouchableOpacity>
                         </View> : <Text></Text>}
+                    </ImageBackground>
                 </View>
 
             }else{
@@ -268,6 +297,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    paymentStatusText: {
+        color: 'white',
+        textAlign: 'center',
+        fontSize: 20
+    },
     abonnementCard: {
         width: '100%',
         height: 200,
@@ -283,6 +317,13 @@ const styles = StyleSheet.create({
     },
     scrollView: {
       height: '100%'
+    },
+    paymentStatusText2: {
+      textAlign: 'center',
+        color: 'white',
+        fontSize: 20,
+        maxWidth: '90%',
+        marginLeft: '5%'
     },
     abonnementFreeText: {
         fontSize: 30,
@@ -306,5 +347,16 @@ const styles = StyleSheet.create({
         marginTop: 40,
         marginBottom: 30
     },
+    button: {
+        backgroundColor: 'red',
+        alignSelf: 'center',
+        paddingHorizontal: '5%',
+        paddingVertical: '2%',
+        marginTop: '15%'
+    },
+    buttonText: {
+        color: 'white',
+        fontSize: 20
+    }
 })
 export default AbonnementScreen;

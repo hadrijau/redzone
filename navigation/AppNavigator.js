@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SignupScreen from "../screens/auth/SignupScreen";
 import LoginScreen from "../screens/auth/LoginScreen";
-import AbonnementScreen from "../screens/auth/AbonnementScreen";
+import AbonnementScreen from "../screens/abonnement/AbonnementScreen";
 import AccueilScreen from "../screens/accueil/AccueilScreen";
 import MusculationScreen from "../screens/preparation_physique/MusculationScreen";
 import DrillScreen from "../screens/drill/DrillScreen";
@@ -25,6 +25,8 @@ import ProgressScreen from "../screens/progress/ProgressScreen";
 import MuscuVideoDay1 from "../screens/preparation_physique/MuscuVideoDay1";
 import MuscuVideoDay2 from "../screens/preparation_physique/MuscuVideoDay2";
 import MuscuVideoDay3 from "../screens/preparation_physique/MuscuVideoDay3";
+import ForgotPasswordScreen from "../screens/auth/ForgotPasswordScreen";
+import CombineScreen from "../screens/progress/CombineScreen";
 const AuthStackNavigator = createNativeStackNavigator();
 const ProfileStackNavigator = createNativeStackNavigator();
 const ProgressStackNavigator = createNativeStackNavigator();
@@ -45,6 +47,16 @@ export const progressNavigator = () => {
             <ProgressStackNavigator.Screen
                 name="ProgressScreen"
                 component={ProgressScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+            <ProgressStackNavigator.Screen
+                name="CombineScreen"
+                component={CombineScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
             />
         </ProgressStackNavigator.Navigator>
         )
@@ -72,6 +84,13 @@ export const AuthNavigator = () => {
         <AuthStackNavigator.Screen
             name="LoginScreen"
             component={LoginScreen}
+            options={{
+                header: props => <CustomHeader title="BURNPOWER"/>,
+            }}
+        />
+        <AuthStackNavigator.Screen
+            name="ForgotPasswordScreen"
+            component={ForgotPasswordScreen}
             options={{
                 header: props => <CustomHeader title="BURNPOWER"/>,
             }}
@@ -220,6 +239,22 @@ const accueilNavigator = () => {
                     header: props => <CustomHeader title="BURNPOWER"/>,
                 }}
             />
+
+            <AccueilStackNavigator.Screen
+                name="ProgressScreen"
+                component={ProgressScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+            <AccueilStackNavigator.Screen
+                name="CombineScreen"
+                component={CombineScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+
         </AccueilStackNavigator.Navigator>
         )
 }
@@ -228,11 +263,18 @@ export const TabNavigator = () => {
 
     return (
         <AppTabNavigator.Navigator
-            tabBarOptions={{
-                activeTintColor: 'white',
-                activeBackgroundColor: 'black',
-                inactiveBackgroundColor: 'black'
-            }}
+            screenOptions={{
+                "tabBarActiveTintColor": "white",
+                "tabBarActiveBackgroundColor": "black",
+                "tabBarInactiveBackgroundColor": "black",
+                "tabBarStyle": [
+                    {
+                        "display": "flex"
+                    },
+                    null
+                ]
+            }
+            }
         >
             <AppTabNavigator.Screen
                 name="Accueil"

@@ -5,6 +5,11 @@ import firebase from "firebase";
 import {NavigationContainer} from "@react-navigation/native";
 import {AuthNavigator} from "./navigation/AppNavigator";
 import {TabNavigator} from "./navigation/AppNavigator";
+import ReduxThunk from 'redux-thunk'
+import {Provider} from "react-redux";
+import {createStore, applyMiddleware, combineReducers} from "redux";
+import userReducer from "./store/reducers/users";
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyBmckJtSmZNsuU-200xoo3acPAB2VNrDCU",
@@ -19,6 +24,14 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 export default function App() {
+
+
+  const rootReducer = combineReducers({
+    user: userReducer,
+  });
+
+  const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
+
   const [loaded, setIsLoaded] = useState(false);
   const [loggedIn, setIsLoggedIn] = useState(false);
 
@@ -39,9 +52,11 @@ export default function App() {
   }
 
   return (
+      <Provider store={store}>
         <NavigationContainer>
           {loggedIn ? <TabNavigator/> : <AuthNavigator/>}
         </NavigationContainer>
+      </Provider>
   );
 }
 

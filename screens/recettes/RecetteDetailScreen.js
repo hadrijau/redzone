@@ -32,45 +32,9 @@ const RecetteDetailScreen = ({title, navigation, route}) => {
                         <Text style={styles.abonnementFreeTextBig}>{name}</Text>
                         <View style={styles.infoContainer}>
                             <Text>{time}</Text>
-                            <Text>130 Kcal</Text>
                             <Text>Facile</Text>
                         </View>
                     </TouchableOpacity>
-
-                <Text style={styles.infoNutrition}>Informations nutritives</Text>
-                <Text style={styles.portion}>Par portion</Text>
-
-                <View style={styles.row}>
-                    <View>
-                        <TouchableOpacity style={styles.recetteCardMini} onPress={() => navigation.navigate('AccueilScreen')}>
-                            <Text style={styles.abonnementFreeText}>Valeurs énergétiques</Text>
-                            <Text style={styles.addition}><Text style={styles.redText}>130</Text> Kcal</Text>
-                        </TouchableOpacity>
-                    </View>
-
-                    <View>
-                        <TouchableOpacity style={styles.recetteCardMini} onPress={() => navigation.navigate('AccueilScreen')}>
-                            <Text style={styles.abonnementFreeText}>Glucides</Text>
-                            <Text style={styles.addition}><Text style={styles.redText}>50</Text> g</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-                <View style={styles.row}>
-                    <View>
-                        <TouchableOpacity style={styles.recetteCardMini} onPress={() => navigation.navigate('AccueilScreen')}>
-                            <Text style={styles.abonnementFreeText}>Protéines</Text>
-                            <Text style={styles.addition}><Text style={styles.redText}>30</Text> g</Text>
-                        </TouchableOpacity>
-                    </View>
-
-                    <View>
-                        <TouchableOpacity style={styles.recetteCardMini} onPress={() => navigation.navigate('AccueilScreen')}>
-                            <Text style={styles.abonnementFreeText}>Lipides</Text>
-                            <Text style={styles.addition}><Text style={styles.redText}>10</Text> g</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-
 
                 <View>
                     <Text style={styles.infoNutrition}>Ingrédients</Text>

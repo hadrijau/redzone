@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     View,
     Text,
@@ -13,15 +13,28 @@ import {
 } from 'react-native';
 import {Formik} from "formik";
 import firebase from "firebase";
+import {useDispatch, useSelector} from "react-redux";
+import * as userActions from "../../store/actions/users";
 
 const ProfileScreen = ({navigation}) => {
 
 
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(userActions.fetchUser())
+    }, [dispatch]);
+
+    const userData = useSelector(state => state.user.currentUser)
+
+    console.log(userData)
     const initialValues = {
-        age: '',
+        prenom: userData?.prenom,
+        nom: userData?.nom,
+        age: userData?.age,
         sexe: '',
-        poids: '',
-        taille: '',
+        poids: userData?.poids,
+        taille: userData?.taille,
         poste: ''
     }
 
@@ -45,6 +58,7 @@ const ProfileScreen = ({navigation}) => {
 
                         <Formik
                             initialValues={initialValues}
+                            enableReinitialize
                             onSubmit={(values) => {
                                 console.log(values)
                             }}
@@ -57,8 +71,9 @@ const ProfileScreen = ({navigation}) => {
                                         </View>
                                         <View style={styles.inputContainer}>
                                             <TextInput
-                                                value={props.values.age}
+                                                value={props.values.prenom}
                                                 style={styles.textInput}
+                                                onChangeText={props.handleChange('prenom')}
                                             />
                                         </View>
                                     </View>
@@ -68,8 +83,9 @@ const ProfileScreen = ({navigation}) => {
                                         </View>
                                         <View style={styles.inputContainer}>
                                             <TextInput
-                                                value={props.values.age}
+                                                value={props.values.nom}
                                                 style={styles.textInput}
+                                                onChangeText={props.handleChange('nom')}
                                             />
                                         </View>
                                     </View>
@@ -81,6 +97,7 @@ const ProfileScreen = ({navigation}) => {
                                             <TextInput
                                                 value={props.values.age}
                                                 style={styles.textInput}
+                                                onChangeText={props.handleChange('age')}
                                             />
                                         </View>
                                     </View>
@@ -105,6 +122,7 @@ const ProfileScreen = ({navigation}) => {
                                             <TextInput
                                                 value={props.values.poids}
                                                 style={styles.textInput}
+                                                onChangeText={props.handleChange('poids')}
                                             />
                                         </View>
                                     </View>
@@ -117,6 +135,7 @@ const ProfileScreen = ({navigation}) => {
                                             <TextInput
                                                 value={props.values.taille}
                                                 style={styles.textInput}
+                                                onChange={props.handleChange('taille')}
                                             />
                                         </View>
                                     </View>
@@ -209,7 +228,8 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginTop: 15,
         width: '100%',
-        marginLeft: '10%'
+        marginLeft: '10%',
+        paddingLeft: '3%'
     },
     disconnectText: {
         color: 'white',

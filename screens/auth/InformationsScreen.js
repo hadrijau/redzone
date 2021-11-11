@@ -1,9 +1,18 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, ScrollView, StyleSheet, ImageBackground, TouchableOpacity, Image, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard} from 'react-native';
+import {View,
+    Text,
+    TextInput,
+    StyleSheet,
+    ImageBackground,
+    TouchableOpacity,
+    SafeAreaView,
+    TouchableWithoutFeedback,
+    Keyboard,
+    Modal
+} from 'react-native';
 import {Formik} from "formik";
 import * as Yup from 'yup';
-import BouncyCheckbox from "react-native-bouncy-checkbox";
-import {Picker} from '@react-native-picker/picker';
+import Picker from "../../components/Picker";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 const InformationsScreen = (props) => {
@@ -33,10 +42,34 @@ const InformationsScreen = (props) => {
             .required('Ce champ est requis'),
         prenom: Yup.string()
             .required('Ce champ est requis'),
-
     });
 
+    const [sexe, setSexe] = useState('Choisir');
+    const [poste, setPoste] = useState('Choisir');
+    const [isModalSexeVisible, setIsModalSexeVisible] = useState(false);
+    const [isModalPosteVisible, setIsModalPosteVisible] = useState(false);
+
+    const changeModalSexeVisibility = (bool) => {
+        setIsModalSexeVisible(bool)
+    }
+
+    const changeModalPosteVisibility = (bool) => {
+        setIsModalPosteVisible(bool)
+    }
+
+    const setDataPoste = (option) => {
+        setSexe(option)
+    }
+
+    const setDataSexe = (option) => {
+        setPoste(option)
+    }
+
+    const [errorSexe, setErrorSexe] = useState(false);
+    const [errorPoste, setErrorPoste] = useState(false);
+
     return (
+        <SafeAreaView style={styles.container}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <KeyboardAwareScrollView
                     style={styles.container}
@@ -46,21 +79,31 @@ const InformationsScreen = (props) => {
                     <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
                         <Text style={styles.inscriptionBigText}>Informations</Text>
-
+                        <View style={{display: 'flex', flexDirection: 'row', alignSelf: 'center', marginVertical: 10}}>
+                            <Text style={styles.alreadyAccount}>Déjà un compte ? </Text>
+                            <TouchableOpacity onPress={() => props.navigation.navigate('LoginScreen')}>
+                                <Text style={styles.connect}>Se connecter</Text>
+                            </TouchableOpacity>
+                        </View>
                         <Formik
                             initialValues={initialValues}
                             validationSchema={InformationsSchema}
                             onSubmit={(values) => {
-                                props.navigation.navigate('SignupScreen', {
-                                    nom: values.nom,
-                                    prenom: values.prenom,
-                                    phone: values.phone,
-                                    age: values.age,
-                                    sexe: values.sexe,
-                                    poids: values.poids,
-                                    taille: values.taille,
-                                    poste: values.poste
-                                })
+                                if (sexe === 'Choisir' || poste === 'Choisir') {
+                                    setErrorPoste(true)
+                                    setErrorSexe(true)
+                                } else {
+                                    props.navigation.navigate('SignupScreen', {
+                                        nom: values.nom,
+                                        prenom: values.prenom,
+                                        phone: values.phone,
+                                        age: values.age,
+                                        sexe: poste,
+                                        poids: values.poids,
+                                        taille: values.taille,
+                                        poste: sexe
+                                    })
+                                }
                             }}
                         >
                             {props => (
@@ -138,45 +181,44 @@ const InformationsScreen = (props) => {
                                         <View style={styles.textInscriptionContainer}>
                                             <Text style={styles.label}>Sexe</Text>
                                         </View>
-                                        <View style={styles.checkBoxContainer}>
-                                            <View style={styles.checkboxInner}>
-                                                <BouncyCheckbox
-                                                    size={25}
-                                                    fillColor="red"
-                                                    unfillColor="#FFFFFF"
-                                                    style={styles.checkbox}
-                                                    iconStyle={{ borderColor: "red" }}
-                                                />
-                                                <Text style={styles.textCheckBox}>Homme</Text>
-                                            </View>
-
-                                            <View style={styles.checkboxInner}>
-                                                <BouncyCheckbox
-                                                    size={25}
-                                                    fillColor="red"
-                                                    unfillColor="#FFFFFF"
-                                                    style={styles.checkbox}
-                                                    iconStyle={{ borderColor: "red" }}
-                                                />
-                                                <Text style={styles.textCheckBox}>Femme</Text>
-                                            </View>
-                                        </View>
+                                        <TouchableOpacity
+                                            style={styles.inputContainer}
+                                            onPress={() => changeModalSexeVisibility(true)}
+                                        >
+                                            <Text style={[styles.textPicker, styles.textInput]}>{poste}</Text>
+                                        </TouchableOpacity>
                                     </View>
+                                    <Modal
+                                        transparent={true}
+                                        animationType='fade'
+                                        visible={isModalSexeVisible}
+                                        nRequestClose={() => changeModalSexeVisibility(false)}
+                                    >
+                                        <Picker
+                                            changeModalVisibility={changeModalSexeVisibility}
+                                            setData={setDataSexe}
+                                            options={['Homme', 'Femme']}
+                                        />
+                                    </Modal>
 
+                                    {errorSexe ? (
+                                        <Text style={styles.errors}>Veuillez remplir ce champ</Text>
+                                    ) : null}
 
                                     <View style={styles.inscriptionInnerForm}>
                                         <View style={styles.textInscriptionContainer}>
                                             <Text style={styles.label}>Poids</Text>
                                         </View>
-                                        <View style={styles.inputContainer}>
+                                        <View style={styles.poidsContainer}>
                                             <TextInput
                                                 value={props.values.poids}
                                                 keyboardType="numeric"
-                                                placeholder="en kg"
-                                                placeholderTextColor="black"
                                                 style={styles.textInput}
                                                 onChangeText={props.handleChange('poids')}
                                             />
+                                            <Text style={styles.poidsText}>
+                                                kg
+                                            </Text>
                                         </View>
                                     </View>
 
@@ -188,15 +230,16 @@ const InformationsScreen = (props) => {
                                         <View style={styles.textInscriptionContainer}>
                                             <Text style={styles.label}>Taille</Text>
                                         </View>
-                                        <View style={styles.inputContainer}>
+                                        <View style={styles.poidsContainer}>
                                             <TextInput
                                                 value={props.values.taille}
                                                 style={styles.textInput}
                                                 keyboardType="numeric"
-                                                placeholder="en cm"
-                                                placeholderTextColor="black"
                                                 onChangeText={props.handleChange('taille')}
                                             />
+                                            <Text style={styles.poidsText}>
+                                                cm
+                                            </Text>
                                         </View>
                                     </View>
 
@@ -209,99 +252,42 @@ const InformationsScreen = (props) => {
                                         <View style={styles.textInscriptionContainer}>
                                             <Text style={styles.label}>Poste</Text>
                                         </View>
-
-                                        <View style={styles.checkBoxContainer}>
-                                            <View style={styles.checkboxInner}>
-                                                <BouncyCheckbox
-                                                    size={25}
-                                                    fillColor="red"
-                                                    unfillColor="#FFFFFF"
-                                                    style={styles.checkbox}
-                                                    iconStyle={{ borderColor: "red" }}
-                                                />
-                                                <Text style={styles.textCheckBox}>Defensive Back</Text>
-                                            </View>
-
-                                            <View style={styles.checkboxInner}>
-                                                <BouncyCheckbox
-                                                    size={25}
-                                                    fillColor="red"
-                                                    unfillColor="#FFFFFF"
-                                                    style={styles.checkbox}
-                                                    iconStyle={{ borderColor: "red" }}
-                                                />
-                                                <Text style={styles.textCheckBox}>Defensive Linemen</Text>
-                                            </View>
-
-                                            <View style={styles.checkboxInner}>
-                                                <BouncyCheckbox
-                                                    size={25}
-                                                    fillColor="red"
-                                                    unfillColor="#FFFFFF"
-                                                    style={styles.checkbox}
-                                                    iconStyle={{ borderColor: "red" }}
-                                                />
-                                                <Text style={styles.textCheckBox}>Linebacker</Text>
-                                            </View>
-
-                                            <View style={styles.checkboxInner}>
-                                                <BouncyCheckbox
-                                                    size={25}
-                                                    fillColor="red"
-                                                    unfillColor="#FFFFFF"
-                                                    style={styles.checkbox}
-                                                    iconStyle={{ borderColor: "red" }}
-                                                />
-                                                <Text style={styles.textCheckBox}>Offensive Linemen</Text>
-                                            </View>
-
-                                            <View style={styles.checkboxInner}>
-                                                <BouncyCheckbox
-                                                    size={25}
-                                                    fillColor="red"
-                                                    unfillColor="#FFFFFF"
-                                                    style={styles.checkbox}
-                                                    iconStyle={{ borderColor: "red" }}
-                                                />
-                                                <Text style={styles.textCheckBox}>Quaterback</Text>
-                                            </View>
-
-                                            <View style={styles.checkboxInner}>
-                                                <BouncyCheckbox
-                                                    size={25}
-                                                    fillColor="red"
-                                                    unfillColor="#FFFFFF"
-                                                    style={styles.checkbox}
-                                                    iconStyle={{ borderColor: "red" }}
-                                                />
-                                                <Text style={styles.textCheckBox}>Running back</Text>
-                                            </View>
-
-                                            <View style={styles.checkboxInner}>
-                                                <BouncyCheckbox
-                                                    size={25}
-                                                    fillColor="red"
-                                                    unfillColor="#FFFFFF"
-                                                    style={styles.checkbox}
-                                                    iconStyle={{ borderColor: "red" }}
-                                                />
-                                                <Text style={styles.textCheckBox}>Wide receiver</Text>
-                                            </View>
-                                        </View>
-
+                                        <TouchableOpacity
+                                            style={styles.inputContainer}
+                                            onPress={() => changeModalPosteVisibility(true)}
+                                        >
+                                            <Text style={[styles.textPicker, styles.textInput]}>{sexe}</Text>
+                                        </TouchableOpacity>
                                     </View>
+                                    <Modal
+                                        transparent={true}
+                                        animationType='fade'
+                                        visible={isModalPosteVisible}
+                                        nRequestClose={() => changeModalPosteVisibility(false)}
+                                    >
+                                        <Picker
+                                            changeModalVisibility={changeModalPosteVisibility}
+                                            setData={setDataPoste}
+                                            options={['Defensive Back', 'Defensive Linemen', 'Linebacker', 'Offensive Linemen', 'Quaterback', 'Running back', 'Wide receiver']}
+                                        />
+                                    </Modal>
 
-                                    {props.errors.poste && props.touched.poste ? (
-                                        <Text style={styles.errors}>{props.errors.poste}</Text>
+                                    {errorPoste ? (
+                                        <Text style={styles.errors}>Veuillez remplir ce champ</Text>
                                     ) : null}
 
                                     <TouchableOpacity style={styles.inscriptionButton} onPress={props.handleSubmit}>
                                         <Text style={styles.inscriptionText}>Suivant</Text>
                                     </TouchableOpacity>
+
+
                                 </View>
                             )}
 
+
+
                         </Formik>
+
 
                     </ImageBackground>
 
@@ -309,6 +295,7 @@ const InformationsScreen = (props) => {
 
                 </KeyboardAwareScrollView>
         </TouchableWithoutFeedback>
+        </SafeAreaView>
     );
 };
 
@@ -343,6 +330,18 @@ const styles = StyleSheet.create({
     },
     inputContainer: {
         width: '55%'
+    },
+    poidsContainer: {
+        width: '30%',
+        marginLeft: 10,
+        display: 'flex',
+        marginTop: 5,
+        flexDirection: 'row'
+    },
+    poidsText: {
+        color: 'white',
+        marginTop: 18,
+        marginLeft: 10
     },
     checkbox: {
         marginTop: 10
@@ -386,6 +385,10 @@ const styles = StyleSheet.create({
         width: '100%',
         marginLeft: '10%'
     },
+    textPicker: {
+        paddingLeft:5,
+        paddingTop: 4
+    },
     image: {
         flex: 1,
         justifyContent: "center"
@@ -393,11 +396,19 @@ const styles = StyleSheet.create({
     inscriptionButton: {
         textAlign: 'center',
         marginLeft: '37%',
-        marginBottom: 80
+        marginBottom: 50
     },
     checkboxInner: {
         display: 'flex',
         flexDirection: 'row',
+    },
+    alreadyAccount: {
+        color: 'white',
+        fontSize: 20
+    },
+    connect: {
+        color: 'red',
+        fontSize: 20
     }
 });
 
