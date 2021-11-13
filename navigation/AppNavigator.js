@@ -20,7 +20,7 @@ import RecetteDetailScreen from "../screens/recettes/RecetteDetailScreen";
 import NutritionSportiveScreen from "../screens/nutrition_sportive/NutritionSportiveScreen";
 import EquipementSportifScreen from "../screens/equipement_sportif/EquipementSportifScreen";
 import ProfileScreen from "../screens/profil/ProfileScreen";
-import EntraineurPersonnelScreen from "../screens/others/EntraineurPersonnelScreen";
+import EntraineurPersonnelScreen from "../screens/entraineur_personnel/EntraineurPersonnelScreen";
 import ProgressScreen from "../screens/progress/ProgressScreen";
 import MuscuVideoDay1 from "../screens/preparation_physique/MuscuVideoDay1";
 import MuscuVideoDay2 from "../screens/preparation_physique/MuscuVideoDay2";

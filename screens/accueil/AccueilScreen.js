@@ -102,13 +102,13 @@ const styles = StyleSheet.create({
     abonnementFreeText: {
         color: 'white',
         textAlign: 'center',
-        fontSize: 15,
+        fontSize: 13,
         marginTop: 10
     },
     abonnementFreeTextNut: {
         color: 'white',
         textAlign: 'center',
-        fontSize: 15,
+        fontSize: 13,
     },
     accueilCard: {
         width: 90

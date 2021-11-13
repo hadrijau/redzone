@@ -13,7 +13,6 @@ const EquipementSportifScreen = ({navigation}) => {
 
             <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
-                <Text style={styles.inscriptionBigText}>Equipements sportifs</Text>
                 <ScrollView style={styles.scrollView}>
 
                     <View style={styles.row}>

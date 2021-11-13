@@ -19,9 +19,18 @@ const MusculationScreen = ({navigation}) => {
             <View style={styles.container}>
                 <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
                     <ScrollView>
-                        <Text style={styles.inscriptionBigText}>Musculation</Text>
 
                         <View style={styles.scrollView}>
+
+                            {userData.abonnement !== "Musculation" && userData.abonnement !== "Premium" ?
+                                <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('GererAbonnementScreen')}>
+                                    <ImageBackground
+                                        source={require('../../assets/préparation_physique_verrou.png')}
+                                        style={styles.imageBackground}
+                                    >
+                                    </ImageBackground>
+                                </TouchableOpacity> : <Text/>
+                            }
 
                             <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('MuscuVideoDay1')}>
                                 <ImageBackground
@@ -46,16 +55,6 @@ const MusculationScreen = ({navigation}) => {
                                 >
                                 </ImageBackground>
                             </TouchableOpacity>
-
-                            {userData.abonnement !== "Musculation" && userData.abonnement !== "Premium" ?
-                                <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('GererAbonnementScreen')}>
-                                    <ImageBackground
-                                        source={require('../../assets/préparation_physique_verrou.png')}
-                                        style={styles.imageBackground}
-                                    >
-                                    </ImageBackground>
-                                </TouchableOpacity> : <Text/>
-                            }
 
                             {userData.abonnement !== "Musculation" && userData.abonnement !== "Premium" ?
                                 <TouchableOpacity style={styles.abonnementButton}

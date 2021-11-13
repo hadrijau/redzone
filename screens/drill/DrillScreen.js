@@ -19,8 +19,6 @@ const DrillScreen = ({navigation}) => {
             <View style={styles.container}>
                 <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
-                    <Text style={styles.inscriptionBigText}>Drill</Text>
-
                     <View style={styles.scrollView}>
 
                         {(userData.abonnement !== "Drill" && userData.abonnement !== "Premium") ?

@@ -14,7 +14,6 @@ const NutritionSportiveScreen = ({navigation}) => {
 
             <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
-                <Text style={styles.inscriptionBigText}>Nutrition sportive</Text>
                 <ScrollView style={styles.scrollView}>
 
                     <View style={styles.row}>

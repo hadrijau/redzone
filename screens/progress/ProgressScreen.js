@@ -19,6 +19,7 @@ const ProgressScreen = (props) => {
     const [yards, setYards] = useState([]);
     const [broadJump, setBroadJump] = useState([]);
     const [shuttle, setShuttle] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         firebase.firestore()
@@ -30,6 +31,7 @@ const ProgressScreen = (props) => {
                     setYards(doc.data().Yards)
                     setBroadJump(doc.data().BroadJump)
                     setShuttle(doc.data().Shuttle)
+                    setLoading(false)
                 } else {
                     // doc.data() will be undefined in this case
                     console.log("No such document!");
@@ -41,7 +43,7 @@ const ProgressScreen = (props) => {
 
     console.log(shuttle)
 
-    if (shuttle && broadJump && yards) {
+    if (!loading) {
         return (
             <View style={styles.container}>
                 <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>

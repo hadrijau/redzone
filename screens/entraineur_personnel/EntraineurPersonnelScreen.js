@@ -18,7 +18,6 @@ const EntraineurPersonnelScreen = () => {
                 <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
                     <ScrollView>
-                    <Text style={styles.inscriptionBigText}>Entraineur personnel</Text>
 
                     <Image source={require('../../assets/photo_coach.jpg')} style={styles.img}/>
 
@@ -140,7 +139,7 @@ const styles = StyleSheet.create({
     img: {
         width: 200,
         height: 200,
-        marginLeft: '22%'
+        alignSelf: 'center'
     },
     presentation: {
         color: 'white',
