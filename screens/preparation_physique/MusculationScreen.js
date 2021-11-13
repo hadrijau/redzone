@@ -1,50 +1,79 @@
-import React from 'react';
-import {ImageBackground, Text, TextInput, TouchableOpacity, View, StyleSheet, ScrollView} from 'react-native';
+import React, {useEffect} from 'react';
+import {ImageBackground, Text, TextInput, TouchableOpacity, View, StyleSheet, ScrollView, ActivityIndicator} from 'react-native';
 import {Formik} from "formik";
+import {useDispatch, useSelector} from "react-redux";
+import * as userActions from "../../store/actions/users";
 
 const MusculationScreen = ({navigation}) => {
-    return (
-        <View style={styles.container}>
 
-            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
-                <ScrollView>
-                <Text style={styles.inscriptionBigText}>Musculation</Text>
+    const dispatch = useDispatch();
 
-                <View style={styles.scrollView}>
+    useEffect(() => {
+        dispatch(userActions.fetchUser())
+    }, [dispatch]);
 
-                    <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('MuscuVideoDay1')}>
-                        <ImageBackground
-                            source={require('../../assets/Day_1.png')}
-                            style={styles.imageBackground}
-                        >
-                        </ImageBackground>
-                    </TouchableOpacity>
+    const userData = useSelector(state => state.user.currentUser);
 
-                    <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('MuscuVideoDay2')}>
-                        <ImageBackground
-                            source={require('../../assets/Day_2.png')}
-                            style={styles.imageBackground}
-                        >
-                        </ImageBackground>
-                    </TouchableOpacity>
+    if (userData) {
+        return (
+            <View style={styles.container}>
+                <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                    <ScrollView>
+                        <Text style={styles.inscriptionBigText}>Musculation</Text>
 
-                    <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('MuscuVideoDay3')}>
-                        <ImageBackground
-                            source={require('../../assets/Day_3.png')}
-                            style={styles.imageBackground}
-                        >
-                        </ImageBackground>
-                    </TouchableOpacity>
+                        <View style={styles.scrollView}>
 
-                    <TouchableOpacity style={styles.abonnementButton} onPress={() => navigation.navigate('AbonnementScreen')}>
-                        <Text style={styles.abonnementText}>Pour profiter pleinement de l'application, abonnez-vous !</Text>
-                    </TouchableOpacity>
-                </View>
-                </ScrollView>
-            </ImageBackground>
+                            <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('MuscuVideoDay1')}>
+                                <ImageBackground
+                                    source={require('../../assets/Day_1.png')}
+                                    style={styles.imageBackground}
+                                >
+                                </ImageBackground>
+                            </TouchableOpacity>
 
+                            <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('MuscuVideoDay2')}>
+                                <ImageBackground
+                                    source={require('../../assets/Day_2.png')}
+                                    style={styles.imageBackground}
+                                >
+                                </ImageBackground>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('MuscuVideoDay3')}>
+                                <ImageBackground
+                                    source={require('../../assets/Day_3.png')}
+                                    style={styles.imageBackground}
+                                >
+                                </ImageBackground>
+                            </TouchableOpacity>
+
+                            {userData.abonnement !== "Musculation" || userData.abonnement !== "Premium" ?
+                                <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('GererAbonnementScreen')}>
+                                    <ImageBackground
+                                        source={require('../../assets/préparation_physique_verrou.png')}
+                                        style={styles.imageBackground}
+                                    >
+                                    </ImageBackground>
+                                </TouchableOpacity> : <Text/>
+                            }
+
+                            {userData.abonnement !== "Musculation" || userData.abonnement !== "Premium" ?
+                                <TouchableOpacity style={styles.abonnementButton}
+                                                  onPress={() => navigation.navigate('GererAbonnementScreen')}>
+                                    <Text style={styles.abonnementText}>Pour profiter pleinement de l'application, souscrivez à l'abonnement musculation ! </Text>
+                                </TouchableOpacity> : <Text/>
+                            }
+                        </View>
+                    </ScrollView>
+                </ImageBackground>
+            </View>
+        );
+    } else {
+        return <View>
+            <ActivityIndicator/>
         </View>
-    );
+    }
+
 };
 
 const styles = StyleSheet.create({

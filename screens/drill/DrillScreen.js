@@ -1,38 +1,67 @@
-import React from 'react';
-import {ImageBackground, Text, TextInput, TouchableOpacity, View, StyleSheet, ScrollView} from 'react-native';
+import React, {useEffect} from 'react';
+import {ImageBackground, Text, TextInput, TouchableOpacity, View, StyleSheet, ScrollView, ActivityIndicator} from 'react-native';
 import {Formik} from "formik";
+import {useDispatch, useSelector} from "react-redux";
+import * as userActions from "../../store/actions/users";
 
 const DrillScreen = ({navigation}) => {
-    return (
-        <View style={styles.container}>
-            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
-                <Text style={styles.inscriptionBigText}>Drill</Text>
+    const dispatch = useDispatch();
 
-                <View style={styles.scrollView}>
+    useEffect(() => {
+        dispatch(userActions.fetchUser())
+    }, [dispatch]);
 
-                    <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ViewVideoScreen')}>
-                        <ImageBackground
-                            source={{
-                                uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/image%20dossier%2FAgility%20drill.png?alt=media&token=2857c33f-09d3-4c79-ab79-c870374987a0'
-                            }}
-                            style={styles.imageBackground}
-                        >
-                        </ImageBackground>
-                    </TouchableOpacity>
+    const userData = useSelector(state => state.user.currentUser);
 
-                    <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('AccueilScreen')}>
-                        <Text style={styles.abonnementText}>DRILL</Text>
-                    </TouchableOpacity>
+    if (userData) {
+        return (
+            <View style={styles.container}>
+                <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
-                    <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('AccueilScreen')}>
-                        <Text style={styles.abonnementText}>DRILL</Text>
-                    </TouchableOpacity>
+                    <Text style={styles.inscriptionBigText}>Drill</Text>
 
-                </View>
-            </ImageBackground>
-        </View>
-    );
+                    <View style={styles.scrollView}>
+
+                        {(userData.abonnement !== "Drill" && userData.abonnement !== "Premium") ?
+                            <>
+                            <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('GererAbonnementScreen')}>
+                                <ImageBackground
+                                    source={require('../../assets/drill_verrou.png')}
+                                    style={styles.imageBackground}
+                                >
+                                </ImageBackground>
+                            </TouchableOpacity>
+
+                                <TouchableOpacity style={styles.abonnementButton}
+                                                  onPress={() => navigation.navigate('GererAbonnementScreen')}>
+                                    <Text style={styles.abonnementText}>Pour profiter pleinement de l'application, souscrivez à l'abonnement Drill ! </Text>
+                                </TouchableOpacity>
+                            </>:
+
+                            <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ViewVideoScreen')}>
+                                <ImageBackground
+                                    source={{
+                                        uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/image%20dossier%2FAgility%20drill.png?alt=media&token=2857c33f-09d3-4c79-ab79-c870374987a0'
+                                    }}
+                                    style={styles.imageBackground}
+                                >
+                                </ImageBackground>
+                            </TouchableOpacity>
+                        }
+
+                    </View>
+                </ImageBackground>
+            </View>
+        );
+    } else {
+        return (
+            <View>
+                <ActivityIndicator/>
+            </View>
+        )
+    }
+
 };
 
 const styles = StyleSheet.create({
@@ -42,6 +71,11 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
+    },
+    abonnementButton: {
+        borderColor: 'white',
+        borderWidth: 2,
+        marginTop: 15
     },
     abonnementCard: {
         width: '100%',
@@ -67,11 +101,10 @@ const styles = StyleSheet.create({
         marginTop: 55
     },
     abonnementText: {
-        fontSize: 30,
+        fontSize: 20,
         fontWeight: 'bold',
         color: 'white',
         textAlign: 'center',
-        marginTop: 55
     },
     inscriptionBigText: {
         fontSize: 50,

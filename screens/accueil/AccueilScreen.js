@@ -61,7 +61,7 @@ const AccueilScreen = ({navigation}) => {
                         <Text style={styles.abonnementFreeText}>Equipements</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.accueilCard}>
+                    <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('ClubScreen')}>
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/logo_club.jpg')} style={styles.imageCard}/>
                         </View>

@@ -9,7 +9,8 @@ import {
     Image,
     KeyboardAvoidingView,
     TouchableWithoutFeedback,
-    Keyboard
+    Keyboard,
+    ScrollView
 } from 'react-native';
 import {Formik} from "formik";
 import firebase from "firebase";
@@ -27,7 +28,7 @@ const ProfileScreen = ({navigation}) => {
 
     const userData = useSelector(state => state.user.currentUser)
 
-    console.log(userData)
+    console.log('userdata', userData)
     const initialValues = {
         prenom: userData?.prenom,
         nom: userData?.nom,
@@ -52,8 +53,6 @@ const ProfileScreen = ({navigation}) => {
                 <View style={styles.container}>
                     <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
-
-                            <Text style={styles.inscriptionBigText}>Mon profil</Text>
 
 
                         <Formik
@@ -159,6 +158,7 @@ const ProfileScreen = ({navigation}) => {
                             )}
 
                         </Formik>
+                        <TouchableOpacity style={styles.disconnectButton} onPress={() => navigation.navigate('GererAbonnementScreen')}><Text style={styles.disconnectText}>Gérer mon abonnement</Text></TouchableOpacity>
 
                         <TouchableOpacity style={styles.disconnectButton} onPress={logout}><Text style={styles.disconnectText}>Se déconnecter</Text></TouchableOpacity>
 
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
     disconnectButton: {
         backgroundColor: 'red',
         color: 'white',
-        width: '50%',
+        width: '60%',
         padding: 5,
         marginLeft: '25%',
         marginTop: '5%'

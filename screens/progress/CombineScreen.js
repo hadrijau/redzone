@@ -7,11 +7,13 @@ import {
     Dimensions,
     TextInput,
     ScrollView,
-    TouchableWithoutFeedback, Keyboard, SafeAreaView
+    TouchableWithoutFeedback, Keyboard, SafeAreaView,
+    TouchableOpacity
 } from "react-native";
 import {Video} from "expo-av";
 import {Formik} from "formik";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import firebase from "firebase";
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -26,6 +28,18 @@ const CombineScreen = () => {
         time2: '',
         time3: '',
     }
+
+    const saveData = async (value1, value2, value3) => {
+        await firebase.firestore()
+            .collection("users")
+            .doc(firebase.auth().currentUser.uid)
+            .update({
+                BroadJump: firebase.firestore.FieldValue.arrayUnion(value1),
+                Yards: firebase.firestore.FieldValue.arrayUnion(value2),
+                Shuttle: firebase.firestore.FieldValue.arrayUnion(value3)
+            })
+    }
+
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <KeyboardAwareScrollView
@@ -36,8 +50,8 @@ const CombineScreen = () => {
                 <ScrollView>
                     <Formik
                         initialValues={initialValues}
-                        onSubmit={(values) => {
-                            console.log(values)
+                        onSubmit={async (values) => {
+                            await saveData(values.time1, values.time2, values.time3)
                         }}
                     >
                         {props => (
@@ -110,6 +124,11 @@ const CombineScreen = () => {
                                         />
                                     </View>
                                 </View>
+
+                                <TouchableOpacity style={styles.disconnectButton} onPress={() => props.handleSubmit()}>
+                                    <Text style={styles.disconnectText}>Sauvegarder mes résultats</Text>
+                                </TouchableOpacity>
+
                             </View>
                         )}
 
@@ -168,7 +187,21 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignSelf: 'center',
         marginTop: 5,
-    }
+    },
+    disconnectButton: {
+        backgroundColor: 'red',
+        color: 'white',
+        paddingHorizontal: 10,
+        paddingVertical: 7,
+        marginTop: '5%',
+        marginBottom: '15%',
+        alignSelf: 'center'
+    },
+    disconnectText: {
+        color: 'white',
+        fontSize: 20,
+        textAlign: 'center'
+    },
 });
 
 export default CombineScreen;

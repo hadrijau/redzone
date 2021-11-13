@@ -61,7 +61,11 @@ const SignupScreen = (props) => {
                                         sexe,
                                         poste,
                                         phone,
-                                        nom
+                                        nom,
+                                        BroadJump: 65,
+                                        Yards: 65,
+                                        Shuttle: 65,
+                                        abonnement: 'free'
                                     })
                             })
                     }}

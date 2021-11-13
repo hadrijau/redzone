@@ -27,6 +27,8 @@ import MuscuVideoDay2 from "../screens/preparation_physique/MuscuVideoDay2";
 import MuscuVideoDay3 from "../screens/preparation_physique/MuscuVideoDay3";
 import ForgotPasswordScreen from "../screens/auth/ForgotPasswordScreen";
 import CombineScreen from "../screens/progress/CombineScreen";
+import ClubScreen from "../screens/club/ClubScreen";
+import GererAbonnementScreen from "../screens/abonnement/GererAbonnementScreen";
 const AuthStackNavigator = createNativeStackNavigator();
 const ProfileStackNavigator = createNativeStackNavigator();
 const ProgressStackNavigator = createNativeStackNavigator();
@@ -95,13 +97,7 @@ export const AuthNavigator = () => {
                 header: props => <CustomHeader title="BURNPOWER"/>,
             }}
         />
-        <AuthStackNavigator.Screen
-            name="AbonnementsScreen"
-            component={AbonnementScreen}
-            options={{
-                header: props => <CustomHeader title="BURNPOWER"/>,
-            }}
-        />
+
 
         <AuthStackNavigator.Screen
             name="AccueilScreen"
@@ -148,7 +144,13 @@ const accueilNavigator = () => {
                     header: props => <CustomHeader title="BURNPOWER"/>,
                 }}
             />
-
+            <AccueilStackNavigator.Screen
+                name="GererAbonnementScreen"
+                component={GererAbonnementScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
             <AccueilStackNavigator.Screen
                 name="RecettesScreen"
                 component={RecettesScreen}
@@ -248,13 +250,19 @@ const accueilNavigator = () => {
                 }}
             />
             <AccueilStackNavigator.Screen
+                name="ClubScreen"
+                component={ClubScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+            <AccueilStackNavigator.Screen
                 name="CombineScreen"
                 component={CombineScreen}
                 options={{
                     header: props => <CustomHeader title="BURNPOWER"/>,
                 }}
             />
-
         </AccueilStackNavigator.Navigator>
         )
 }
