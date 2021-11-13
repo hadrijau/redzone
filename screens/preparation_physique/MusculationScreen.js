@@ -47,7 +47,7 @@ const MusculationScreen = ({navigation}) => {
                                 </ImageBackground>
                             </TouchableOpacity>
 
-                            {userData.abonnement !== "Musculation" || userData.abonnement !== "Premium" ?
+                            {userData.abonnement !== "Musculation" && userData.abonnement !== "Premium" ?
                                 <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('GererAbonnementScreen')}>
                                     <ImageBackground
                                         source={require('../../assets/préparation_physique_verrou.png')}
@@ -57,7 +57,7 @@ const MusculationScreen = ({navigation}) => {
                                 </TouchableOpacity> : <Text/>
                             }
 
-                            {userData.abonnement !== "Musculation" || userData.abonnement !== "Premium" ?
+                            {userData.abonnement !== "Musculation" && userData.abonnement !== "Premium" ?
                                 <TouchableOpacity style={styles.abonnementButton}
                                                   onPress={() => navigation.navigate('GererAbonnementScreen')}>
                                     <Text style={styles.abonnementText}>Pour profiter pleinement de l'application, souscrivez à l'abonnement musculation ! </Text>
