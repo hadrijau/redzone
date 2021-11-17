@@ -24,7 +24,7 @@ const MuscuVideoDay1 = () => {
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
-                <Text style={styles.inscriptionBigText}>Muscu Day 1</Text>
+
 
                 {video0 ?        <View style={styles.videoContainer}>
                     <View style={styles.imageContainer}>
@@ -39,11 +39,6 @@ const MuscuVideoDay1 = () => {
                         />
                     </View>
 
-                    {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                        status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                    }>
-                        <AntDesign name="playcircleo" size={50} color="black" />
-                    </TouchableOpacity> : <Text />}
 
                     <View style={styles.playStatus}>
                         <AntDesign name="stepbackward" size={24} color="white"
@@ -75,11 +70,6 @@ const MuscuVideoDay1 = () => {
                         />
                     </View>
 
-                    {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                        status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                    }>
-                        <AntDesign name="playcircleo" size={50} color="black" />
-                    </TouchableOpacity> : <Text />}
 
                     <View style={styles.playStatus}>
                         <AntDesign name="stepbackward" size={24} color="white"
@@ -113,11 +103,6 @@ const MuscuVideoDay1 = () => {
                         />
                     </View>
 
-                    {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                        status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                    }>
-                        <AntDesign name="playcircleo" size={50} color="black" />
-                    </TouchableOpacity> : <Text />}
 
                     <View style={styles.playStatus}>
                         <AntDesign name="stepbackward" size={24} color="white"
@@ -151,11 +136,6 @@ const MuscuVideoDay1 = () => {
                         />
                     </View>
 
-                    {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                        status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                    }>
-                        <AntDesign name="playcircleo" size={50} color="black" />
-                    </TouchableOpacity> : <Text />}
 
                     <View style={styles.playStatus}>
                         <AntDesign name="stepbackward" size={24} color="white"
@@ -190,11 +170,6 @@ const MuscuVideoDay1 = () => {
                         />
                     </View>
 
-                    {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                        status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                    }>
-                        <AntDesign name="playcircleo" size={50} color="black" />
-                    </TouchableOpacity> : <Text />}
 
                     <View style={styles.playStatus}>
                         <AntDesign name="stepbackward" size={24} color="white"
@@ -229,11 +204,6 @@ const MuscuVideoDay1 = () => {
                         />
                     </View>
 
-                    {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                        status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                    }>
-                        <AntDesign name="playcircleo" size={50} color="black" />
-                    </TouchableOpacity> : <Text />}
 
                     <View style={styles.playStatus}>
                         <AntDesign name="stepbackward" size={24} color="white"
@@ -268,11 +238,6 @@ const MuscuVideoDay1 = () => {
                         />
                     </View>
 
-                    {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                        status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                    }>
-                        <AntDesign name="playcircleo" size={50} color="black" />
-                    </TouchableOpacity> : <Text />}
 
                     <View style={styles.playStatus}>
                         <AntDesign name="stepbackward" size={24} color="white"

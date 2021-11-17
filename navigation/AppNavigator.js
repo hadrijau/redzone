@@ -118,7 +118,14 @@ const profileNavigator = () => {
                 name='ProfilScreen'
                 component={ProfileScreen}
                 options={{
-                    headerShown: false
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+            <ProfileStackNavigator.Screen
+                name='AccueilScreen'
+                component={AccueilScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
                 }}
             />
 

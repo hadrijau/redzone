@@ -175,7 +175,7 @@ const AbonnementScreen = (props) => {
                             <TouchableOpacity style={styles.abonnementCard} onPress={() => {
                                 setMakePaymentMuscu(true)
                             }}>
-                                <Text style={styles.abonnementText}>Musculation</Text>
+                                <Text style={styles.abonnementText}>Préparation physique</Text>
                                 <Text style={styles.abonnementTextInner}>10€/mois</Text>
                             </TouchableOpacity>
 

@@ -52,12 +52,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
-
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
 
@@ -88,12 +82,6 @@ const ViewVideoScreen = () => {
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
-
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -128,11 +116,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -167,11 +150,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -206,11 +184,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -245,11 +218,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -289,11 +257,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -326,11 +289,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -365,11 +323,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -404,11 +357,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -443,11 +391,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -482,11 +425,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -526,11 +464,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -563,11 +496,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -602,11 +530,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -641,11 +564,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -680,11 +598,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -719,11 +632,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -763,11 +671,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -800,11 +703,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -839,11 +737,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -878,11 +771,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -917,11 +805,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -956,11 +839,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -1000,11 +878,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -1037,11 +910,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -1076,11 +944,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -1115,11 +978,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -1154,11 +1012,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -1193,11 +1046,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -1237,11 +1085,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -1274,11 +1117,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -1313,11 +1151,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -1352,11 +1185,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -1391,11 +1219,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -1430,11 +1253,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -1474,11 +1292,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -1511,11 +1324,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -1550,11 +1358,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -1589,11 +1392,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -1628,11 +1426,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"
@@ -1667,11 +1460,6 @@ const ViewVideoScreen = () => {
                                 />
                             </View>
 
-                            {!status.isPlaying ?        <TouchableOpacity style={styles.playButton} onPress={() =>
-                                status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                            }>
-                                <AntDesign name="playcircleo" size={50} color="black" />
-                            </TouchableOpacity> : <Text />}
 
                             <View style={styles.playStatus}>
                                 <AntDesign name="stepbackward" size={24} color="white"

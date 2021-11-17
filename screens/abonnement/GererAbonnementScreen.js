@@ -197,6 +197,12 @@ const GererAbonnementScreen = (props) => {
 
     }
 
+    let params = undefined;
+
+    if (props.route.params) {
+        params = props.route.params.entrainement;
+    }
+
     const paymentUI = (props) => {
         if (!makePaymentMuscu && !makePaymentPremium && !makePaymentDrill) {
             if (userData.abonnement === 'free') {
@@ -204,14 +210,32 @@ const GererAbonnementScreen = (props) => {
                     <View style={styles.container}>
                         <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
+
                             <Text style={styles.inscriptionBigText}>Vous avez actuellement l'abonnement {userData.abonnement}</Text>
 
-                            <ScrollView style={styles.scrollView}>
+                            {params === "muscu" ? <ScrollView style={styles.scrollView}>
 
                                 <TouchableOpacity style={styles.abonnementCard} onPress={() => {
                                     setMakePaymentMuscu(true)
                                 }}>
-                                    <Text style={styles.abonnementText}>Musculation</Text>
+                                    <Text style={styles.abonnementText}>Préparation Physique</Text>
+                                    <Text style={styles.abonnementTextInner}>10€/mois</Text>
+                                </TouchableOpacity>
+
+
+                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+                                    setMakePaymentPremium(true)
+                                }}>
+                                    <Text style={styles.abonnementText}>Premium</Text>
+                                    <Text style={styles.abonnementTextInner}>15€/mois</Text>
+                                </TouchableOpacity>
+
+                            </ScrollView> : <ScrollView style={styles.scrollView}>
+
+                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+                                    setMakePaymentMuscu(true)
+                                }}>
+                                    <Text style={styles.abonnementText}>Préparation Physique</Text>
                                     <Text style={styles.abonnementTextInner}>10€/mois</Text>
                                 </TouchableOpacity>
 
@@ -229,7 +253,31 @@ const GererAbonnementScreen = (props) => {
                                     <Text style={styles.abonnementTextInner}>15€/mois</Text>
                                 </TouchableOpacity>
 
-                            </ScrollView>
+                            </ScrollView>}
+
+                            {params === "drill" ? <ScrollView style={styles.scrollView}>
+
+                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+                                    setMakePaymentMuscu(true)
+                                }}>
+                                    <Text style={styles.abonnementText}>Préparation Physique</Text>
+                                    <Text style={styles.abonnementTextInner}>10€/mois</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+                                    setMakePaymentDrill(true)
+                                }}>
+                                    <Text style={styles.abonnementText}>Drill</Text>
+                                    <Text style={styles.abonnementTextInner}>10€/mois</Text>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+                                    setMakePaymentPremium(true)
+                                }}>
+                                    <Text style={styles.abonnementText}>Premium</Text>
+                                    <Text style={styles.abonnementTextInner}>15€/mois</Text>
+                                </TouchableOpacity>
+
+                            </ScrollView> : <Text/>}
                         </ImageBackground>
                     </View>
                 )
@@ -281,7 +329,7 @@ const GererAbonnementScreen = (props) => {
                                 <TouchableOpacity style={styles.abonnementCard} onPress={() => {
                                     setMakePaymentMuscu(true)
                                 }}>
-                                    <Text style={styles.abonnementText}>Musculation</Text>
+                                    <Text style={styles.abonnementText}>Préparation Physique</Text>
                                     <Text style={styles.abonnementTextInner}>10€/mois</Text>
                                 </TouchableOpacity>
 

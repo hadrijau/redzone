@@ -85,6 +85,7 @@ const ClubScreen = () => {
                         onChangeText={(text) => searchFilterFunction(text)}
                 />
 
+
                 {!filteredClubs.includes(search) ?    <FlatList
                     data={filteredClubs}
                     keyExtractor={(item, index) => index.toString()}
