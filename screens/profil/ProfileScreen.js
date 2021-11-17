@@ -33,8 +33,6 @@ const ProfileScreen = ({navigation}) => {
 
     const userData = useSelector(state => state.user.currentUser)
 
-
-    const [sexe, setSexe] = useState("");
     const [poste, setPoste] = useState("")
     console.log('userdata', userData)
     const initialValues = {
@@ -50,13 +48,8 @@ const ProfileScreen = ({navigation}) => {
         firebase.auth().signOut()
     }
 
-    const [isModalSexeVisible, setIsModalSexeVisible] = useState(false);
     const [isModalPosteVisible, setIsModalPosteVisible] = useState(false);
 
-
-    const changeModalSexeVisibility = (bool) => {
-        setIsModalSexeVisible(bool)
-    }
 
     const changeModalPosteVisibility = (bool) => {
         setIsModalPosteVisible(bool)
@@ -64,10 +57,6 @@ const ProfileScreen = ({navigation}) => {
 
     const setDataPoste = async (option) => {
         setPoste(option)
-    }
-
-    const setDataSexe = async (option) => {
-        setSexe(option)
     }
 
 
@@ -97,7 +86,6 @@ const ProfileScreen = ({navigation}) => {
                                             .doc(firebase.auth().currentUser.uid)
                                             .update({
                                                 poste: poste,
-                                                sexe: sexe,
                                                 prenom: values.prenom,
                                                 nom: values.nom,
                                                 age: values.age,
@@ -146,30 +134,6 @@ const ProfileScreen = ({navigation}) => {
                                                 </View>
                                             </View>
 
-                                            {userData?.poste ?             <View style={styles.inscriptionInnerForm}>
-                                                <View style={styles.textInscriptionContainer}>
-                                                    <Text style={styles.label}>Sexe</Text>
-                                                </View>
-                                                <TouchableOpacity
-                                                    style={styles.inputContainer}
-                                                    onPress={() => changeModalSexeVisibility(true)}
-                                                >
-                                                    <Text style={[styles.textPicker, styles.textInput]}>{sexe ? sexe : userData?.sexe}</Text>
-                                                </TouchableOpacity>
-                                            </View> : <Text/> }
-
-                                            <Modal
-                                                transparent={true}
-                                                animationType='fade'
-                                                visible={isModalSexeVisible}
-                                                nRequestClose={() => changeModalSexeVisibility(false)}
-                                            >
-                                                <Picker
-                                                    changeModalVisibility={changeModalSexeVisibility}
-                                                    setData={setDataSexe}
-                                                    options={['Homme', 'Femme']}
-                                                />
-                                            </Modal>
                                             <View style={styles.inscriptionInnerForm}>
                                                 <View style={styles.textInscriptionContainer}>
                                                     <Text style={styles.label}>Poids</Text>

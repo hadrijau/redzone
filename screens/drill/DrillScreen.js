@@ -23,7 +23,9 @@ const DrillScreen = ({navigation}) => {
 
                         {(userData.abonnement !== "Drill" && userData.abonnement !== "Premium") ?
                             <>
-                            <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('GererAbonnementScreen')}>
+                            <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('GererAbonnementScreen', {
+                                entrainement: "drill"
+                            })}>
                                 <ImageBackground
                                     source={require('../../assets/drill_verrou.png')}
                                     style={styles.imageBackground}
@@ -32,7 +34,9 @@ const DrillScreen = ({navigation}) => {
                             </TouchableOpacity>
 
                                 <TouchableOpacity style={styles.abonnementButton}
-                                                  onPress={() => navigation.navigate('GererAbonnementScreen')}>
+                                                  onPress={() => navigation.navigate('GererAbonnementScreen', {
+                                                      entrainement: "drill"
+                                                  })}>
                                     <Text style={styles.abonnementText}>Pour profiter pleinement de l'application, souscrivez à l'abonnement Drill ! </Text>
                                 </TouchableOpacity>
                             </>:

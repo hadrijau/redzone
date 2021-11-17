@@ -206,82 +206,100 @@ const GererAbonnementScreen = (props) => {
     const paymentUI = (props) => {
         if (!makePaymentMuscu && !makePaymentPremium && !makePaymentDrill) {
             if (userData.abonnement === 'free') {
-                return (
-                    <View style={styles.container}>
-                        <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                if (params === "muscu") {
+                    return (
+                        <View style={styles.container}>
+                            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
 
-                            <Text style={styles.inscriptionBigText}>Vous avez actuellement l'abonnement {userData.abonnement}</Text>
+                                <Text style={styles.inscriptionBigText}>Vous avez actuellement l'abonnement {userData.abonnement}</Text>
 
-                            {params === "muscu" ? <ScrollView style={styles.scrollView}>
+                                 <ScrollView style={styles.scrollView}>
 
-                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
-                                    setMakePaymentMuscu(true)
-                                }}>
-                                    <Text style={styles.abonnementText}>Préparation Physique</Text>
-                                    <Text style={styles.abonnementTextInner}>10€/mois</Text>
-                                </TouchableOpacity>
+                                    <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+                                        setMakePaymentMuscu(true)
+                                    }}>
+                                        <Text style={styles.abonnementText}>Préparation Physique</Text>
+                                        <Text style={styles.abonnementTextInner}>10€/mois</Text>
+                                    </TouchableOpacity>
 
 
-                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
-                                    setMakePaymentPremium(true)
-                                }}>
-                                    <Text style={styles.abonnementText}>Premium</Text>
-                                    <Text style={styles.abonnementTextInner}>15€/mois</Text>
-                                </TouchableOpacity>
+                                    <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+                                        setMakePaymentPremium(true)
+                                    }}>
+                                        <Text style={styles.abonnementText}>Premium</Text>
+                                        <Text style={styles.abonnementTextInner}>15€/mois</Text>
+                                    </TouchableOpacity>
 
-                            </ScrollView> : <ScrollView style={styles.scrollView}>
+                                </ScrollView>
+                            </ImageBackground>
+                        </View>
+                    )}
+                if (params === "drill") {
+                    return (
+                        <View style={styles.container}>
+                            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
-                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
-                                    setMakePaymentMuscu(true)
-                                }}>
-                                    <Text style={styles.abonnementText}>Préparation Physique</Text>
-                                    <Text style={styles.abonnementTextInner}>10€/mois</Text>
-                                </TouchableOpacity>
 
-                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
-                                    setMakePaymentDrill(true)
-                                }}>
-                                    <Text style={styles.abonnementText}>Drill</Text>
-                                    <Text style={styles.abonnementTextInner}>10€/mois</Text>
-                                </TouchableOpacity>
+                                <Text style={styles.inscriptionBigText}>Vous avez actuellement l'abonnement {userData.abonnement}</Text>
 
-                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
-                                    setMakePaymentPremium(true)
-                                }}>
-                                    <Text style={styles.abonnementText}>Premium</Text>
-                                    <Text style={styles.abonnementTextInner}>15€/mois</Text>
-                                </TouchableOpacity>
+                                <ScrollView style={styles.scrollView}>
 
-                            </ScrollView>}
+                                    <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+                                        setMakePaymentDrill(true)
+                                    }}>
+                                        <Text style={styles.abonnementText}>Drill</Text>
+                                        <Text style={styles.abonnementTextInner}>10€/mois</Text>
+                                    </TouchableOpacity>
 
-                            {params === "drill" ? <ScrollView style={styles.scrollView}>
+                                    <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+                                        setMakePaymentPremium(true)
+                                    }}>
+                                        <Text style={styles.abonnementText}>Premium</Text>
+                                        <Text style={styles.abonnementTextInner}>15€/mois</Text>
+                                    </TouchableOpacity>
 
-                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
-                                    setMakePaymentMuscu(true)
-                                }}>
-                                    <Text style={styles.abonnementText}>Préparation Physique</Text>
-                                    <Text style={styles.abonnementTextInner}>10€/mois</Text>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
-                                    setMakePaymentDrill(true)
-                                }}>
-                                    <Text style={styles.abonnementText}>Drill</Text>
-                                    <Text style={styles.abonnementTextInner}>10€/mois</Text>
-                                </TouchableOpacity>
+                                </ScrollView>
+                            </ImageBackground>
+                        </View>
+                    )
+                }
+                else {
+                    return (
+                        <View style={styles.container}>
+                            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
-                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
-                                    setMakePaymentPremium(true)
-                                }}>
-                                    <Text style={styles.abonnementText}>Premium</Text>
-                                    <Text style={styles.abonnementTextInner}>15€/mois</Text>
-                                </TouchableOpacity>
 
-                            </ScrollView> : <Text/>}
-                        </ImageBackground>
-                    </View>
-                )
-            } if (userData.abonnement === "Musculation") {
+                                <Text style={styles.inscriptionBigText}>Vous avez actuellement l'abonnement {userData.abonnement}</Text>
+
+                                <ScrollView style={styles.scrollView}>
+                                    <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+                                        setMakePaymentMuscu(true)
+                                    }}>
+                                        <Text style={styles.abonnementText}>Préparation Physique</Text>
+                                        <Text style={styles.abonnementTextInner}>10€/mois</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+                                        setMakePaymentDrill(true)
+                                    }}>
+                                        <Text style={styles.abonnementText}>Drill</Text>
+                                        <Text style={styles.abonnementTextInner}>10€/mois</Text>
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+                                        setMakePaymentPremium(true)
+                                    }}>
+                                        <Text style={styles.abonnementText}>Premium</Text>
+                                        <Text style={styles.abonnementTextInner}>15€/mois</Text>
+                                    </TouchableOpacity>
+
+                                </ScrollView>
+                            </ImageBackground>
+                        </View>
+                    )
+                }
+            }
+             if (userData.abonnement === "Musculation") {
                 return (
 
                     <View style={styles.container}>
