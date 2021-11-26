@@ -307,8 +307,6 @@ const PaymentView = (props) => {
     onCheckStatus(data)
   }
 
-
-
   return <WebView
       javaScriptEnabled={true}
       style={{ flex: 1, backgroundColor: 'black'}}

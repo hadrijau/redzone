@@ -1,12 +1,51 @@
-import React from 'react';
-import {ImageBackground, Text, TextInput, TouchableOpacity, View, StyleSheet, ScrollView, Dimensions} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ImageBackground, Text, TextInput, TouchableOpacity, Image, FlatList, View, StyleSheet, ScrollView, Dimensions} from 'react-native';
 import {Formik} from "formik";
 import EquipementSportifCard from "./components/EquipementSportifCard";
+import firebase from "firebase";
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
 const EquipementSportifScreen = ({navigation}) => {
+
+    const [ridge, setRidge] = useState([]);
+    const [sportus, setSportus] = useState([]);
+
+    useEffect(() => {
+        let getRidge = async () => {
+            await firebase
+                .firestore()
+                .collection('Ridge')
+                .get()
+                .then(snapshot => {
+                    let productsBoosted = snapshot.docs.map(doc => {
+                        const data = doc.data()
+                        const id = doc.id;
+                        return {id, ...data}
+                    })
+                    setRidge(productsBoosted)
+                })
+        }
+        let getSportus = async () => {
+            await firebase
+                .firestore()
+                .collection('SportusCompany')
+                .get().then(snapshot => {
+                    let productsBoosted = snapshot.docs.map(doc => {
+                        const data = doc.data()
+                        const id = doc.id;
+                        return {id, ...data}
+                    })
+                    setSportus(productsBoosted)
+                })
+        }
+        getRidge()
+        getSportus()
+    }, []);
+
+    console.log('ridge', ridge);
+    console.log('sportus', sportus)
 
     return (
         <View style={styles.container}>
@@ -15,33 +54,41 @@ const EquipementSportifScreen = ({navigation}) => {
 
                 <ScrollView style={styles.scrollView}>
 
-                    <View style={styles.row}>
-                       <EquipementSportifCard
-                            image="https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/catalogue%20SportUs%20Compagny%2Fchaussette%20nike%20blanche.jpg?alt=media&token=c52a514c-f6f6-43cd-9c0b-6a75178f157e"
-                       />
-                        <EquipementSportifCard
-                            image="https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/catalogue%20SportUs%20Compagny%2Fchaussette%20nike%20bleu.jpg?alt=media&token=147ce023-c9a5-421d-8266-945b4c981fd6"
-                        />
+                    <View style={styles.imageRidgeContainer}>
+                        <Image source={require('../../assets/logoRidge.png')} style={styles.imageRidge}/>
                     </View>
 
-                    <View style={styles.row}>
-                        <EquipementSportifCard
-                            image="https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/catalogue%20SportUs%20Compagny%2Fchaussette%20nike%20noir.jpg?alt=media&token=4a407220-7a53-4120-b041-f8f524fb58a1"
-                        />
-                        <EquipementSportifCard
-                            image="https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/catalogue%20SportUs%20Compagny%2Fchaussette%20nike%20rouge.jpg?alt=media&token=6ed71f50-ac4d-425c-ba2c-914050a267b7"
-                        />
+                    <FlatList
+                        columnWrapperStyle={{justifyContent: 'space-around'}}
+                        data={ridge}
+                        numColumns={2}
+                        renderItem={({item}) => {
+                            console.log(item)
+                            return (
+                                <EquipementSportifCard image={item.image} handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
+                                    description : item.description, lien : item.lien, prix : item.prix, titre : item.article, image: item.image
+                                })} description={item.description} prix={item.prix} titre={item.article}/>
+                            );
+                        }}
+                    />
+
+                    <View style={styles.imageRidgeContainer}>
+                        <Image source={require('../../assets/logoSportusCompany.png')} style={styles.imageRidge}/>
                     </View>
 
-                    <View style={styles.row}>
-                        <EquipementSportifCard
-                            image="https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/catalogue%20SportUs%20Compagny%2Fchaussette%20nike%20verte.jpg?alt=media&token=abafab7a-5ed2-4a1a-9f4c-85be8b876a76"
-                        />
-                        <EquipementSportifCard
-                            image="https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/catalogue%20SportUs%20Compagny%2Fgatorade%20sachet%206%20gallon.jpg?alt=media&token=aff5c1d3-a176-4b1c-804f-a6625dcfc350"
-                        />
-                    </View>
-
+                    <FlatList
+                        columnWrapperStyle={{justifyContent: 'space-around'}}
+                        data={sportus}
+                        numColumns={2}
+                        renderItem={({item}) => {
+                            console.log(item)
+                            return (
+                                <EquipementSportifCard image={item.image} handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
+                                    description : item.description, lien : item.lien, prix : item.prix, titre : item.article, image: item.image
+                                })} description={item.description} prix={item.prix} titre={item.article}/>
+                            );
+                        }}
+                    />
                 </ScrollView>
 
             </ImageBackground>
@@ -62,11 +109,26 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderColor: 'lightgrey',
         borderWidth: 5,
-        height: 120,
+        height: 150,
         padding: '4%'
     },
     scrollView: {
         flex: 1,
+    },
+    imageRidge: {
+        width: '90%',
+        padding: 5,
+        height: 60,
+        alignSelf: 'center'
+    },
+    imageRidgeContainer: {
+        backgroundColor: 'white',
+        width: windowWidth/1.1,
+        paddingTop: '10%',
+        paddingBottom: '2%',
+        paddingHorizontal: '2%',
+        alignSelf: 'center',
+        marginBottom: '5%'
     },
     abonnementFreeText: {
         fontSize: 20,

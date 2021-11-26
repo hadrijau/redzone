@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, ImageBackground, StyleSheet, TouchableOpacity, Dimensions} from 'react-native';
 import {Video, AVPlaybackStatus} from "expo-av";
 import { AntDesign } from '@expo/vector-icons';
+import Stopwatch from "../../components/Stopwatch";
 
 
 const windowHeight = Dimensions.get('window').height;
@@ -42,7 +43,6 @@ const MuscuVideoDay1 = () => {
 
                     <View style={styles.playStatus}>
                         <AntDesign name="stepbackward" size={24} color="white"
-
                         />
 
                         <AntDesign name="stepforward" size={24} color="white" onPress={() => {
@@ -55,6 +55,8 @@ const MuscuVideoDay1 = () => {
                     <View>
                         <Text style={styles.difficultyText}>Entrainements</Text>
                     </View>
+
+                    <Stopwatch/>
                 </View> : <Text/>}
 
                 {video1 ?        <View style={styles.videoContainer}>
@@ -88,6 +90,8 @@ const MuscuVideoDay1 = () => {
                     <View>
                         <Text style={styles.difficultyText}>Entrainements</Text>
                     </View>
+
+                    <Stopwatch/>
                 </View> : <Text/>}
 
                 {video2 ?        <View style={styles.videoContainer}>
@@ -121,6 +125,8 @@ const MuscuVideoDay1 = () => {
                     <View>
                         <Text style={styles.difficultyText}>Entrainements</Text>
                     </View>
+
+                    <Stopwatch/>
                 </View> : <Text/>}
 
                 {video3 ?        <View style={styles.videoContainer}>
@@ -252,6 +258,8 @@ const MuscuVideoDay1 = () => {
                     <View>
                         <Text style={styles.difficultyText}>Entrainements</Text>
                     </View>
+
+
                 </View> : <Text/>}
 
 

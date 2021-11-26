@@ -29,6 +29,7 @@ import ForgotPasswordScreen from "../screens/auth/ForgotPasswordScreen";
 import CombineScreen from "../screens/progress/CombineScreen";
 import ClubScreen from "../screens/club/ClubScreen";
 import GererAbonnementScreen from "../screens/abonnement/GererAbonnementScreen";
+import EquipementDetailScreen from "../screens/equipement_sportif/EquipementDetailScreen";
 const AuthStackNavigator = createNativeStackNavigator();
 const ProfileStackNavigator = createNativeStackNavigator();
 const ProgressStackNavigator = createNativeStackNavigator();
@@ -230,6 +231,13 @@ const accueilNavigator = () => {
             <AccueilStackNavigator.Screen
                 name="EquipementSportifScreen"
                 component={EquipementSportifScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+            <AccueilStackNavigator.Screen
+                name="EquipementDetailScreen"
+                component={EquipementDetailScreen}
                 options={{
                     header: props => <CustomHeader title="BURNPOWER"/>,
                 }}

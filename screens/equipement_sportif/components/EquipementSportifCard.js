@@ -4,15 +4,15 @@ import {Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View} f
 
 const windowWidth = Dimensions.get('window').width;
 
-const EquipementSportifCard = ({image, navigation}) => {
+const EquipementSportifCard = ({image, handleNavigation, description, lien, prix, titre}) => {
 
     return (
         <View>
-            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('AccueilScreen')}>
+            <TouchableOpacity style={styles.recetteCard} onPress={handleNavigation}>
                 <ImageBackground source={{uri: image}} resizeMode="cover" style={styles.imageBackground}/>
             </TouchableOpacity>
-            <Text style={styles.product}>produit</Text>
-            <Text style={styles.product}>prix</Text>
+            <Text style={styles.product}>{titre}</Text>
+            <Text style={styles.product}>{prix}</Text>
         </View>
     );
 };

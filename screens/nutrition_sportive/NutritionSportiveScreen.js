@@ -1,13 +1,44 @@
-import React from 'react';
-import {ImageBackground, Text, TextInput, TouchableOpacity, View, StyleSheet, ScrollView, Dimensions} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+    ImageBackground,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+    StyleSheet,
+    ScrollView,
+    Dimensions,
+    Image, FlatList
+} from 'react-native';
 import {Formik} from "formik";
 import NutritionSportiveCard from "./components/NutritionSportiveCard";
+import EquipementSportifCard from "../equipement_sportif/components/EquipementSportifCard";
+import firebase from "firebase";
 
-
+const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get('window').width;
 
 const NutritionSportiveScreen = ({navigation}) => {
 
+    const [cf, setCF] = useState([]);
 
+    useEffect(() => {
+        const getCF = async () => {
+            await firebase
+                .firestore()
+                .collection('CF7')
+                .get().then(snapshot => {
+                    console.log(snapshot)
+                    let productsBoosted = snapshot.docs.map(doc => {
+                        const data = doc.data()
+                        const id = doc.id;
+                        return {id, ...data}
+                    })
+                    setCF(productsBoosted)
+                }).catch(err => console.log(err))
+        }
+        getCF()
+    }, []);
 
     return (
         <View style={styles.container}>
@@ -15,21 +46,20 @@ const NutritionSportiveScreen = ({navigation}) => {
             <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
                 <ScrollView style={styles.scrollView}>
-
-                    <View style={styles.row}>
-                        <NutritionSportiveCard image="https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/produit%20nutrition%2F02082018-whey.jpg?alt=media&token=95481326-0c76-4300-b62c-23e8933e943f"/>
-                        <NutritionSportiveCard image="https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/produit%20nutrition%2F22032019-plantilla_gold_bote300g_RX7%20(Medium).png?alt=media&token=65fd7177-c374-4294-81ba-515dceb8f466"/>
-                    </View>
-
-                    <View style={styles.row}>
-                        <NutritionSportiveCard image="https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/produit%20nutrition%2F02082018-whey.jpg?alt=media&token=95481326-0c76-4300-b62c-23e8933e943f"/>
-                        <NutritionSportiveCard image="https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/produit%20nutrition%2F22032019-plantilla_gold_bote300g_RX7%20(Medium).png?alt=media&token=65fd7177-c374-4294-81ba-515dceb8f466"/>
-                    </View>
-
-                    <View style={styles.row}>
-                        <NutritionSportiveCard image="https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/produit%20nutrition%2F02082018-whey.jpg?alt=media&token=95481326-0c76-4300-b62c-23e8933e943f"/>
-                    </View>
-
+                    <Image source={require('../../assets/CF7logo.png')} style={styles.imageRidge}/>
+                    <FlatList
+                        columnWrapperStyle={{justifyContent: 'space-around'}}
+                        data={cf}
+                        numColumns={2}
+                        renderItem={({item}) => {
+                            console.log(item)
+                            return (
+                                <EquipementSportifCard image={item.image} handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
+                                    description : item.description, lien : item.lien, prix : item.prix, titre : item.article, image: item.image
+                                })} description={item.description} prix={item.prix} titre={item.article}/>
+                            );
+                        }}
+                    />
 
                 </ScrollView>
 
@@ -46,8 +76,32 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    recetteCard: {
+        width: windowWidth/2.5,
+        backgroundColor: 'white',
+        borderColor: 'lightgrey',
+        borderWidth: 5,
+        height: 150,
+        padding: '4%'
+    },
     scrollView: {
         flex: 1,
+    },
+    imageRidge: {
+        width: '90%',
+        padding: 5,
+        height: 120,
+        marginTop: 20,
+        alignSelf: 'center'
+    },
+    imageRidgeContainer: {
+        backgroundColor: 'white',
+        width: windowWidth/1.1,
+        paddingTop: '10%',
+        paddingBottom: '2%',
+        paddingHorizontal: '2%',
+        alignSelf: 'center',
+        marginBottom: '5%'
     },
     abonnementFreeText: {
         fontSize: 20,
@@ -72,5 +126,5 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     }
 
-})
+});
 export default NutritionSportiveScreen;
