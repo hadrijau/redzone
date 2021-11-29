@@ -76,7 +76,7 @@ const InformationsScreen = (props) => {
                 >
                 <View style={styles.container}>
 
-                    <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                    <ImageBackground source={require('../../assets/logo_transparent.png')} resizeMode="cover" style={styles.image}>
 
                         <Text style={styles.inscriptionBigText}>Informations</Text>
                         <View style={{display: 'flex', flexDirection: 'row', alignSelf: 'center', marginVertical: 10}}>
@@ -302,23 +302,24 @@ const InformationsScreen = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: 'white',
     },
     formContainer: {
         width: '100%'
     },
     errors: {
-        color: 'white',
+        color: 'black',
         textAlign: 'center',
         marginLeft: 70,
         marginTop: -10
     },
     picker: {
-        backgroundColor: 'white',
+        backgroundColor: 'black',
         width: 200,
         paddingTop: 0
     },
     label: {
-        color: 'white',
+        color: 'black',
         fontSize: 20,
         textAlign: 'right',
         marginBottom: '5%',
@@ -339,7 +340,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     poidsText: {
-        color: 'white',
+        color: 'black',
         marginTop: 18,
         marginLeft: 10
     },
@@ -359,26 +360,26 @@ const styles = StyleSheet.create({
         fontSize: 50,
         fontWeight: 'bold',
         textAlign: 'center',
-        color: 'white'
+        color: 'black'
     },
     checkBoxContainer: {
         width: '55%',
         marginLeft: 20
     },
     passwordForgotText: {
-        color: 'white'
+        color: 'black'
     },
     inscriptionText: {
         color: 'red',
         fontSize: 25
     },
     textCheckBox: {
-        color: 'white',
+        color: 'black',
         fontSize: 20,
         marginTop: 10
     },
     textInput: {
-        backgroundColor: 'white',
+        backgroundColor: 'black',
         height: 30,
         borderRadius: 5,
         marginTop: 15,
@@ -403,7 +404,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     alreadyAccount: {
-        color: 'white',
+        color: 'black',
         fontSize: 20
     },
     connect: {
