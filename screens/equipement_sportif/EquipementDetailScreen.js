@@ -10,14 +10,25 @@ import {
     Dimensions,
     StyleSheet,
 } from 'react-native';
-import { WebView } from 'react-native-webview';
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
 const EquipementDetailScreen = ({navigation, route}) => {
 
 
-    const description = route.params.description
+    const description1 = route.params.description1
+    const description2 = route.params.description2
+    const description3 = route.params.description3
+    const description4 = route.params?.description4
+    const description5 = route.params?.description5
+    const description6 = route.params?.description6
+    const description7 = route.params?.description7
+    const description8 = route.params?.description8
+    const description9 = route.params?.description9
+    const description10 = route.params?.description10
+    const description11 = route.params?.description11
+    const description12 = route.params?.description12
+
     const lien = route.params.lien
     const prix = route.params.prix
     const titre = route.params.titre
@@ -49,16 +60,26 @@ const EquipementDetailScreen = ({navigation, route}) => {
                         <Text style={styles.infoNutrition}>Description</Text>
 
                         <View style={styles.ingredientList}>
-                            <Text style={styles.ingredientText}>{description}</Text>
+                            <Text style={styles.ingredientText}>{description1}</Text>
+                            <Text style={styles.ingredientText}>{description2}</Text>
+                            <Text style={styles.ingredientText}>{description3}</Text>
+                            <Text style={styles.ingredientText}>{description4}</Text>
+                            <Text style={styles.ingredientText}>{description5}</Text>
+                            <Text style={styles.ingredientText}>{description6}</Text>
+                            <Text style={styles.ingredientText}>{description7}</Text>
+                            <Text style={styles.ingredientText}>{description8}</Text>
+                            <Text style={styles.ingredientText}>{description9}</Text>
+                            <Text style={styles.ingredientText}>{description10}</Text>
+                            <Text style={styles.ingredientText}>{description11}</Text>
+                            <Text style={styles.ingredientText}>{description12}</Text>
                         </View>
 
                     </View>
 
-
                     <View>
 
                         <View style={styles.ingredientList}>
-                            <Text style={styles.ingredientText}>{prix}</Text>
+                            <Text style={styles.ingredientText}>Prix : {prix} €</Text>
                         </View>
 
                     </View>
@@ -93,12 +114,14 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     recetteCard: {
-        width: windowWidth,
+        width: windowWidth/1.1,
+        alignSelf: 'center',
         backgroundColor: 'white',
         borderColor: 'lightgrey',
         borderWidth: 5,
+        marginBottom: 10,
         position: 'relative',
-        height: 250,
+        height: 340,
         justifyContent: 'center',
     },
     recetteCardMini: {

@@ -10,6 +10,7 @@ import MusculationScreen from "../screens/preparation_physique/MusculationScreen
 import DrillScreen from "../screens/drill/DrillScreen";
 import RecettesScreen from "../screens/recettes/RecettesScreen";
 import { FontAwesome } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
@@ -30,6 +31,7 @@ import CombineScreen from "../screens/progress/CombineScreen";
 import ClubScreen from "../screens/club/ClubScreen";
 import GererAbonnementScreen from "../screens/abonnement/GererAbonnementScreen";
 import EquipementDetailScreen from "../screens/equipement_sportif/EquipementDetailScreen";
+import ConfirmationProgressScreen from "../screens/progress/ConfirmationProgressScreen";
 const AuthStackNavigator = createNativeStackNavigator();
 const ProfileStackNavigator = createNativeStackNavigator();
 const ProgressStackNavigator = createNativeStackNavigator();
@@ -40,6 +42,15 @@ const CustomHeader = props => {
     return (
         <View style={{width: '100%', alignItems: 'center', paddingLeft: '5%', backgroundColor: 'black'}}>
             <Image source={require('../assets/smallLogo.jpg')} style={{height: 70, width: '80%', marginTop: 50, alignSelf: 'center', marginRight: 20}}/>
+        </View>
+    )
+}
+
+const CustomHeaderWithReturn = props => {
+    return (
+        <View style={{width: '100%', alignItems: 'center', paddingLeft: '5%', backgroundColor: 'black', display: 'flex', flexDirection: 'row'}}>
+            <Feather name="arrow-left" size={24} color="white" onPress={() => props.handleNavigation()} style={{marginTop: 40}}/>
+            <Image source={require('../assets/smallLogo.jpg')} style={{height: 50, width: '70%', marginTop: 50, marginRight: 20, marginLeft: 20}}/>
         </View>
     )
 }
@@ -167,6 +178,13 @@ const accueilNavigator = () => {
                 }}
             />
             <AccueilStackNavigator.Screen
+                name="ConfirmationProgressScreen"
+                component={ConfirmationProgressScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+            <AccueilStackNavigator.Screen
                 name="MusculationScreen"
                 component={MusculationScreen}
                 options={{
@@ -218,7 +236,7 @@ const accueilNavigator = () => {
                 name="RecetteDetailScreen"
                 component={RecetteDetailScreen}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('RecetteScreen')}/>,
                 }}
             />
             <AccueilStackNavigator.Screen
@@ -229,15 +247,15 @@ const accueilNavigator = () => {
                 }}
             />
             <AccueilStackNavigator.Screen
-                name="EquipementSportifScreen"
-                component={EquipementSportifScreen}
+                name="EquipementDetailScreen"
+                component={EquipementDetailScreen}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('EquipementSportifScreen')}/>,
                 }}
             />
             <AccueilStackNavigator.Screen
-                name="EquipementDetailScreen"
-                component={EquipementDetailScreen}
+                name="EquipementSportifScreen"
+                component={EquipementSportifScreen}
                 options={{
                     header: props => <CustomHeader title="BURNPOWER"/>,
                 }}

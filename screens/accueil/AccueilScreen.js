@@ -6,7 +6,7 @@ const AccueilScreen = ({navigation}) => {
 
     return (
         <View style={styles.container}>
-            <ImageBackground source={require('../../assets/logo_transparent.png')} resizeMode="cover" style={styles.image}>
+            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
                 <View style={styles.row}>
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('MusculationScreen')}>
                         <View style={styles.iconContainer}>
@@ -98,17 +98,16 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        backgroundColor: "white"
     },
     abonnementFreeText: {
-        color: 'black',
+        color: 'white',
         textAlign: 'center',
         fontWeight: 'bold',
         fontSize: 13,
         marginTop: 10
     },
     abonnementFreeTextNut: {
-        color: 'black',
+        color: 'white',
         textAlign: 'center',
         fontWeight: 'bold',
         fontSize: 13,

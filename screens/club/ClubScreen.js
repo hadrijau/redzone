@@ -4,8 +4,8 @@ import {
     StyleSheet,
     View,
     TextInput,
-    Modal,
     FlatList,
+    Image,
     Text,
     TouchableOpacity,
     TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView
@@ -18,7 +18,9 @@ const ClubScreen = () => {
     const [clubs, setClubs] = useState([]);
     const [search, setSearch] = useState('');
     const [filteredClubs, setFilteredClubs] = useState([]);
-
+    const [images, setImages] = useState([]);
+    const [image, setImage] = useState('');
+    const [fullData, setFullData] = useState([]);
     useEffect(() => {
         firebase.firestore()
             .collection('clubs')
@@ -27,12 +29,33 @@ const ClubScreen = () => {
                 querySnapshot.forEach((doc) => {
                     // doc.data() is never undefined for query doc snapshots
                     setClubs(prevState => [...prevState, doc.data().club])
+                    setImages(prevState => [...prevState, doc.data().image])
+                    setFullData(prevState => [...prevState, doc.data()])
                 });
             })
             .catch((error) => {
                 console.log("Error getting documents: ", error);
             });
-    }, []);
+    }, [image]);
+
+    const getImage = (club) => {
+        console.log('hey')
+        console.log('club', club)
+        firebase
+            .firestore()
+            .collection('clubs')
+            .where("club", "==", club)
+            .get()
+            .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    setImage(doc.data().image)
+                    console.log(doc.id, " => ", doc.data());
+                });
+            })
+            .catch((error) => {
+                console.log("Error getting documents: ", error);
+            });
+    }
 
     const ItemSeparatorView = () => {
         return (
@@ -54,6 +77,7 @@ const ClubScreen = () => {
             // Filter the masterDataSource
             // Update FilteredDataSource
             const newData = clubs.filter(function (item) {
+                console.log('item', item)
                 const itemData = item
                     ? item.toUpperCase()
                     : ''.toUpperCase();
@@ -70,6 +94,8 @@ const ClubScreen = () => {
         }
     };
 
+    console.log('image', image);
+    console.log('search', search);
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <KeyboardAvoidingView
@@ -84,16 +110,22 @@ const ClubScreen = () => {
                         value={search}
                         onChangeText={(text) => searchFilterFunction(text)}
                 />
-
+                {image ?  <Image
+                    style={styles.imageClub}
+                    source={{
+                        uri: image
+                    }}/> : <Text/>}
 
                 {!filteredClubs.includes(search) ?    <FlatList
                     data={filteredClubs}
                     keyExtractor={(item, index) => index.toString()}
                     ItemSeparatorComponent={ItemSeparatorView}
                     renderItem={itemData => {
-                        console.log(itemData.item)
                         return (
-                            <TouchableOpacity onPress={() => setSearch(itemData.item)}>
+                            <TouchableOpacity onPress={async () => {
+                                setSearch(itemData.item)
+                                getImage(itemData.item)
+                            }}>
                                 <Text style={styles.itemStyle}>{itemData.item}</Text>
                             </TouchableOpacity>
                         )
@@ -122,6 +154,12 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         height: 35,
         borderRadius: 10
+    },
+    imageClub: {
+        width: 200,
+        height: 200,
+        alignSelf: 'center',
+        marginTop: 40
     },
     itemStyle: {
         padding: 10,

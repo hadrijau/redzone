@@ -4,7 +4,7 @@ import {Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View} f
 
 const windowWidth = Dimensions.get('window').width;
 
-const EquipementSportifCard = ({image, handleNavigation, description, lien, prix, titre}) => {
+const EquipementSportifCard = ({image, handleNavigation, description1, description2, description3, lien, prix, titre}) => {
 
     return (
         <View>
@@ -12,7 +12,7 @@ const EquipementSportifCard = ({image, handleNavigation, description, lien, prix
                 <ImageBackground source={{uri: image}} resizeMode="cover" style={styles.imageBackground}/>
             </TouchableOpacity>
             <Text style={styles.product}>{titre}</Text>
-            <Text style={styles.product}>{prix}</Text>
+            <Text style={styles.product}>Prix : {prix} €</Text>
         </View>
     );
 };
@@ -22,8 +22,7 @@ const styles = StyleSheet.create({
         width: windowWidth/2.5,
         borderColor: 'lightgrey',
         borderWidth: 3,
-        height: 120,
-        padding: '4%'
+        height: 150,
     },
     imageBackground: {
         width: '100%',

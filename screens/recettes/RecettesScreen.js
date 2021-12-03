@@ -47,7 +47,7 @@ const RecettesScreen = ({navigation}) => {
                             </TouchableOpacity>
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
-                                image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBurger%20Chicken%20Tenders.png?alt=media&token=9a14b1e8-1ed4-4d57-9d60-38510ae3f5da',
+                                image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FDome%20avocat%20saumon.png?alt=media&token=056f310a-7682-458a-978b-3db199d5d465',
                                 ingredient1: '4 tranches de saumon fumé',
                                 ingredient2: '2 avocats',
                                 ingredient3: '2 œufs',
@@ -63,14 +63,10 @@ const RecettesScreen = ({navigation}) => {
                             })}>
                                 <Image
                                     style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBurger%20Chicken%20Tenders.png?alt=media&token=9a14b1e8-1ed4-4d57-9d60-38510ae3f5da"
-                                    }}
+                                    source={require('../../assets/Dome_avocat_saumon_large.png')}
                                 >
                                 </Image>
-                                <Text style={styles.abonnementFreeText}>Dôme avocat saumon</Text>
                             </TouchableOpacity>
-
 
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
@@ -85,7 +81,7 @@ const RecettesScreen = ({navigation}) => {
                                 recette: 'Écraser et mélanger le thon avec le fromage blanc, le romain et le jus de citron.\n' +
                                     'Disposer les feuilles de salade au centre de la tortilla, déposer la préparation au thon, ajouter par-dessus des lamelles d\'avocats puis rouler le wrap.\n',
                                 time: '10min',
-                                name: 'Wraps avocat thon'
+                                name: 'Wrap salade thon'
                             })}>
                                 <Image
                                     style={styles.imageCard}
@@ -94,12 +90,32 @@ const RecettesScreen = ({navigation}) => {
                                     }}
                                 >
                                 </Image>
-                                <Text style={styles.abonnementFreeText}>Wraps avocat thon</Text>
+                                <Text style={styles.abonnementFreeText}>Wraps salade thon</Text>
                             </TouchableOpacity>
 
+                    <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
+                        image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBurger%20Chicken%20Tenders.png?alt=media&token=9a14b1e8-1ed4-4d57-9d60-38510ae3f5da',
+                        ingredient1: '200g de blanc de dinde',
+                        ingredient2: '1 cuillère à soupe de fromage blanc',
+                        ingredient4: '2 tortilla de blé complet',
+                        ingredient7: '4 feuilles de salade',
+                        recette: 'Déposez le fromage blanc sur les tortilla.\n' +
+                            'Disposer les feuilles de salade au centre de la tortilla, roulez une tranche de blanc de dinde, puis rouler le wrap.\n',
+                        time: '10min',
+                        name: 'Wrap blanc de dinde'
+                    })}>
+                        <Image
+                            style={styles.imageCard}
+                            source={{
+                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBurger%20Chicken%20Tenders.png?alt=media&token=9a14b1e8-1ed4-4d57-9d60-38510ae3f5da"
+                            }}
+                        >
+                        </Image>
+                        <Text style={styles.abonnementFreeText}>Wrap blanc de dinde</Text>
+                    </TouchableOpacity>
 
 
-                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
+                    <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBurger%20Chicken%20Tenders.png?alt=media&token=9a14b1e8-1ed4-4d57-9d60-38510ae3f5da',
                                 ingredient1: '200gr de saumon fumé',
                                 ingredient2: '2 tortilla de blé complet',
@@ -118,19 +134,27 @@ const RecettesScreen = ({navigation}) => {
                                 >
                                 </Image>
                                 <Text style={styles.abonnementFreeText}>Wrap saumon</Text>
-                            </TouchableOpacity>
+                    </TouchableOpacity>
 
 
-
-                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen')}>
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
+                                image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2Fboules%20fromage.png?alt=media&token=7c7d4c6a-55fd-4e57-8686-8e6a2dc3df54',
+                                ingredient1: '200gr de saumon fumé',
+                                ingredient2: '2 tortilla de blé complet',
+                                ingredient3: '1 carré de fromage à tartiner',
+                                ingredient4: '4 feuilles de salade',
+                                recette: 'Etaler le carré de fromage à tartiner sur les tortillas, déposer la salade verte par dessus le fromage à tartiner et mettre le saumon fumé couper en dés par dessus.\n' +
+                                    'Rouler et déguster\n',
+                                time: '5min',
+                                name: 'Wrap saumon'
+                            })}>
                                 <Image
                                     style={styles.imageCard}
                                     source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBurger%20Chicken%20Tenders.png?alt=media&token=9a14b1e8-1ed4-4d57-9d60-38510ae3f5da"
+                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBoule%20fromage%20chevre%20large.png?alt=media&token=3faf56c9-facb-4005-a0b1-5cc5e7706837"
                                     }}
                                 >
                                 </Image>
-                                <Text style={styles.abonnementFreeText}>Boule de fromage</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
@@ -240,8 +264,6 @@ const RecettesScreen = ({navigation}) => {
                                 />
                             </TouchableOpacity>
 
-
-
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FChicken%20Tenders.png?alt=media&token=5e4a6ebd-3b75-4dd8-b092-1b558f4d2f59",
                                 ingredient1: "2 blancs de poulet",
@@ -263,101 +285,32 @@ const RecettesScreen = ({navigation}) => {
                                 />
                             </TouchableOpacity>
 
-
-
-                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
-                                image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FChicken%20Tenders.png?alt=media&token=5e4a6ebd-3b75-4dd8-b092-1b558f4d2f59",
-                                ingredient1: "Fleur de sel",
-                                ingredient2: '1 filet de poulet',
-                                ingredient3: "20g de flocon d'avoine",
-                                ingredient4: "1 cuillère à café d'herbe de Provence\n" +
-                                    "1 cuillère à café d'ail en poudre\n",
-                                ingredient5: "Poivre",
-                                ingredient6: "25g de fromage râpé",
-                                ingredient7: "Farine",
-                                ingredient8: "1 oeuf",
-                                ingredient9: "5g d'huile de coco",
-                                recette: 'Aplatir le filet de poulet avec un rouleau à pâtisserie pour former une escalope.\n' +
-                                    'Mélanger dans une assiette les flocons d\'avoine, les herbes de Provence, l\'ail en poudre, le poivre et 20g de fromage râpé pour faire la panure. Place la farine dans un bol. Battre les œufs dans l\'autre bol.\n' +
-                                    'Passer tour à tour le filet de poulet dans la farine, dans l’œuf, puis dans la panure.\n' +
-                                    'Faire chauffer l\'huile de coco et faire cuire le poulet 5 min à feu vif, retourner à mi-cuisson.\n' +
-                                    'Couvrir 5 à 7 min pour finir la cuisson.\n',
-                                time: '20min',
-                                name: 'Escalope milanaise'
-                            })}>
-                                <Image
-                                    style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FChicken%20Tenders.png?alt=media&token=5e4a6ebd-3b75-4dd8-b092-1b558f4d2f59"
-                                    }}
-                                >
-                                </Image>
-                                <Text style={styles.abonnementFreeText}>Escalope milanaise</Text>
-                            </TouchableOpacity>
-
-
-                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
-                                image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FChicken%20Tenders.png?alt=media&token=5e4a6ebd-3b75-4dd8-b092-1b558f4d2f59",
-                                ingredient1: "1 pavé de saumon",
-                                ingredient2: "1 cuillière à soupe d'huile d'olive",
-                                ingredient3: "½ cuillère à d'ail en poudre",
-                                ingredient4: "1 cuillère à café de piment en poudre",
-                                ingredient5: "½ cuillère à café de paprika\n" +
-                                    "½ cuillère à café de gingembre en poudre\n" +
-                                    "¼ d'oignon rouge\n",
-                                ingredient6: "½ poivron",
-                                ingredient7: "Poivre",
-                                recette: 'Préchauffer le four à 200°C\n' +
-                                    '\n' +
-                                    'Retirer la peau du saumon et le découper en gros dés.\n' +
-                                    'Préparer la marinade: mélanger l\'huile d\'olive avec l\'ail, les épices, le gingembre et l\'oignon épluché et émincé. Faire mariner quelque minutes le saumon. Couper le poivron en carrés.\n' +
-                                    'Former  des brochettes en piquant successivement un dés de saumon et un carré de poivron.\n' +
-                                    'Enfourner 9 min.\n',
-                                time: '25min',
-                                name: 'Brochette de saumon'
-                            })}>
-                                <Image
-                                    style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FChicken%20Tenders.png?alt=media&token=5e4a6ebd-3b75-4dd8-b092-1b558f4d2f59"
-                                    }}
-                                >
-                                </Image>
-                                <Text style={styles.abonnementFreeText}>Brochette de saumon</Text>
-                            </TouchableOpacity>
-
-
-
-                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
-                                image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FChicken%20Tenders.png?alt=media&token=5e4a6ebd-3b75-4dd8-b092-1b558f4d2f59",
-                                ingredient1: "3 pavés de saumon",
-                                ingredient2: "250g de nouilles",
-                                ingredient3: "2 courgettes",
-                                ingredient4: "1 citron vert",
-                                ingredient5: "½ oignon",
-                                ingredient6: "huile",
-                                ingredient7: "coriandre",
-                                recette: 'Faire cuire les pavés de saumon à la vapeur.\n' +
-                                    'Coupez les courgettes en dés, pelez puis ciselez le demi-oignon.\n' +
-                                    'Faire bouillir une casserole d\'eau pour les nouilles.\n' +
-                                    'Égouttez et disposez les nouilles dans un bol.\n' +
-                                    'Faire chauffer une cuillère à soupe d\'huile d\'olive dans un wok sur feu moyen à vif, ajouter l\'oignon et faite revenir pendant 3 min. Ajoutez les dés de courgettes et faire revenir pendant 1 min, ajoutez les nouilles et mélangez bien pendant 30 sec.\n' +
-                                    'Émiettez le saumon au-dessus du wok et servez avec la coriandre ciselée et me citron.\n' +
-                                    '\n',
-                                time: '25min',
-                                name: 'Nouilles au saumon'
-                            })}>
-                                <Image
-                                    style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FChicken%20Tenders.png?alt=media&token=5e4a6ebd-3b75-4dd8-b092-1b558f4d2f59"
-                                    }}
-                                >
-                                </Image>
-                                <Text style={styles.abonnementFreeText}>Nouilles au saumon</Text>
-                            </TouchableOpacity>
-
-
+                    <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
+                        image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FNouilles%20au%20poulet.png?alt=media&token=c5b3d4bd-9138-4bef-95fb-8e9c8a5b3755",
+                        ingredient1: "250G de poulet",
+                        ingredient2: '250G de nouilles',
+                        ingredient3: "2 courgettes",
+                        ingredient4: "1 citron vert",
+                        ingredient5: "½ oignon",
+                        ingredient6: "huile",
+                        ingredient7: "coriandre",
+                        recette: 'Faire cuire le poulet coupé en dés.\n' +
+                            'Coupez les courgettes en dés, pelez puis ciselez le demi-oignon.\n' +
+                            'Faire bouillir une casserole d\'eau pour les nouilles.\n' +
+                            'Égouttez et disposez les nouilles dans un bol.\n' +
+                            'Faire chauffer une cuillère à soupe d\'huile d\'olive dans un wok sur feu moyen à vif, ajouter l\'oignon et faite revenir pendant 3 min. Ajoutez les dés de courgettes et faire revenir pendant 1 min, ajoutez les nouilles et mélangez bien pendant 30 sec.\n' +
+                        'Émiettez le saumon au-dessus du wok et servez avec la coriandre ciselée et me citron.\n',
+                        time: '25min',
+                        name: 'Nouilles au poulet'
+                    })}>
+                        <Image
+                            style={styles.imageCard}
+                            source={{
+                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FNouilles%20au%20poulet%20large.png?alt=media&token=35ab3996-e53f-4c79-947b-9a46eec81c51"
+                            }}
+                        >
+                        </Image>
+                    </TouchableOpacity>
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBurger%20Chicken%20Tenders.png?alt=media&token=9a14b1e8-1ed4-4d57-9d60-38510ae3f5da",
@@ -378,9 +331,6 @@ const RecettesScreen = ({navigation}) => {
                                 />
                             </TouchableOpacity>
 
-
-
-
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FPoke%20Bowl%20Poulet%20Avocat-Melon.png?alt=media&token=b343da6d-7e4f-43d1-bfb4-2ddeac830535",
                                 ingredient1: "1 filet de poulet",
@@ -400,35 +350,6 @@ const RecettesScreen = ({navigation}) => {
                                     source={require('../../assets/photos-recettes/PokeBowlPouletAvocat-Melonlarge.png')}
                                 />
                             </TouchableOpacity>
-
-
-                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
-                                image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FPoke%20Bowl%20Poulet%20Avocat-Melon.png?alt=media&token=b343da6d-7e4f-43d1-bfb4-2ddeac830535",
-                                ingredient1: "1 pavé de saumon coupé en dès",
-                                ingredient2: "2 cuillières à soupe de sauce soja",
-                                ingredient3: "Graines de sésame",
-                                ingredient4: "Riz à sushi cuit et refroidi",
-                                ingredient5: "Tranche de mangue",
-                                ingredient6: "Fèves",
-                                ingredient7: "Tranches de concombre",
-                                ingredient8: "Une cuillière à soupe de miel",
-                                recette: 'Coupez le filet de poulet en dés, puis les faire revenir avec un filet de sauce soja sur feu doux entre 5 et 6min.\n' +
-                                    'Coupez la mangue et le concombre en tranche.\n' +
-                                    'Placez le riz à sushi cuit et refroidi au fond d\'un bol, ajoutez des graines de sésame, des tranches de mangue, des tranches de concombre, des fèves et le poulet.\n' +
-                                    'Mettre un filet d\'huile de soja.\n',
-                                time: '20min',
-                                name: 'Poke bowl saumon mangue'
-                            })}>
-                                <Image
-                                    style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FChicken%20Tenders.png?alt=media&token=5e4a6ebd-3b75-4dd8-b092-1b558f4d2f59"
-                                    }}
-                                >
-                                </Image>
-                                <Text style={styles.abonnementFreeText}>Poke bowl saumon mangue</Text>
-                            </TouchableOpacity>
-
 
 
 

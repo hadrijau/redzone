@@ -18,7 +18,7 @@ import firebase from "firebase";
 const windowWidth = Dimensions.get('window').width;
 
 
-const CombineScreen = () => {
+const CombineScreen = (props) => {
 
     const video = React.useRef(null);
     const [status, setStatus] = React.useState({});
@@ -52,6 +52,7 @@ const CombineScreen = () => {
                         initialValues={initialValues}
                         onSubmit={async (values) => {
                             await saveData(values.time1, values.time2, values.time3)
+                            props.navigation.navigate('ConfirmationProgressScreen')
                         }}
                     >
                         {props => (
