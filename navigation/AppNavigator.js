@@ -239,6 +239,7 @@ const accueilNavigator = () => {
                     header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('RecetteScreen')}/>,
                 }}
             />
+
             <AccueilStackNavigator.Screen
                 name="NutritionSportiveScreen"
                 component={NutritionSportiveScreen}

@@ -7,7 +7,6 @@ import { AntDesign } from '@expo/vector-icons';
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
-
 const MuscuVideoDay2 = () => {
 
     const video = React.useRef(null);
@@ -26,20 +25,18 @@ const MuscuVideoDay2 = () => {
         <View style={styles.container}>
             <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
-
                 {video0 ?        <View style={styles.videoContainer}>
                     <View style={styles.imageContainer}>
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%202%2Fpistol%20squat%20jump.mp4?alt=media&token=e02c0a4b-b3f1-411d-ac6a-8cf7d4a0e047'}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%202%2FPompes%20%C3%A9paule.mp4?alt=media&token=36326b35-eb76-4d51-831c-1d313a432c66"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>
-
 
                     <View style={styles.playStatus}>
                         <AntDesign name="stepbackward" size={24} color="white"
@@ -54,7 +51,7 @@ const MuscuVideoDay2 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>Entrainements</Text>
+                        <Text style={styles.difficultyText}>4 séries de 6-12 répétitions, temps de repos 1m30</Text>
                     </View>
                 </View> : <Text/>}
 
@@ -63,7 +60,7 @@ const MuscuVideoDay2 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%202%2Fplanche%20claqu%C3%A9.mp4?alt=media&token=2e31adea-e150-4b6f-8979-d5a508afaa58'}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%202%2FPompes%20Diamant.mp4?alt=media&token=a930f569-994e-459a-8fb9-5585a6e1b6a7"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -87,7 +84,7 @@ const MuscuVideoDay2 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>Entrainements</Text>
+                        <Text style={styles.difficultyText}>4 séries de 6-15 répétitions, temps de repos 1m30</Text>
                     </View>
                 </View> : <Text/>}
 
@@ -97,7 +94,7 @@ const MuscuVideoDay2 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%202%2Fpompe%20sur%C3%A9lev%C3%A9.mp4?alt=media&token=14b15a03-96fd-4082-8b36-8f65c1aa822a'}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%202%2FTraction.mp4?alt=media&token=06599c10-f429-4eee-b395-ed3ef730a411"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -121,7 +118,7 @@ const MuscuVideoDay2 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>Entrainements</Text>
+                        <Text style={styles.difficultyText}>4 série de 6-10 répétitions, temps de repos 1m30</Text>
                     </View>
                 </View> : <Text/>}
 
@@ -131,7 +128,7 @@ const MuscuVideoDay2 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%202%2Fpompe.mp4?alt=media&token=cd6c5e9b-b3dd-4f9c-ab7f-f835e7957153'}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%202%2FThruster%20avec%20Poids.mp4?alt=media&token=a0062d04-5e09-4205-ae55-ea7d2f8d5589"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -155,7 +152,7 @@ const MuscuVideoDay2 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>Entrainements</Text>
+                        <Text style={styles.difficultyText}>4 séries de 15 répétitions, temps de repos 1m</Text>
                     </View>
                 </View> : <Text/>}
 
@@ -165,7 +162,7 @@ const MuscuVideoDay2 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%202%2Frelev%C3%A9%20bassin%201%20jambe.mp4?alt=media&token=dd50f2d5-1ff2-42b6-a6c7-0baf8ce30a2d'}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%202%2FGainage%20coude.mp4?alt=media&token=8ebde1bd-75cc-4eec-a51f-6f51f22d2c1d"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -189,7 +186,7 @@ const MuscuVideoDay2 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>Entrainements</Text>
+                        <Text style={styles.difficultyText}>3 séries de 30 secondes ( gainage ) + enchaîner avec 3 séries de 30 Criss Cross, temps de repos 1m.</Text>
                     </View>
                 </View> : <Text/>}
 
@@ -199,7 +196,7 @@ const MuscuVideoDay2 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%202%2Frussian%20twist.mp4?alt=media&token=b9e849b4-21e1-4629-b742-a72f9a3275a7'}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%202%2FCriss%20Cross%20ABS.mp4?alt=media&token=0f835c90-8a23-4838-919e-cefad324e4f1"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -223,79 +220,12 @@ const MuscuVideoDay2 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>Entrainements</Text>
+                        <Text style={styles.difficultyText}>3 séries de 30 secondes ( gainage ) + enchaîner avec 3 séries de 30 Criss Cross, temps de repos 1m.</Text>
                     </View>
                 </View> : <Text/>}
-
-
-                {video6 ?        <View style={styles.videoContainer}>
-                    <View style={styles.imageContainer}>
-                        <Video
-                            ref={video}
-                            style={styles.imageVideo}
-                            source={{uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%202%2Fsquat%20bulgare.mp4?alt=media&token=0ea5cacd-8076-4aaa-b4bc-fc3bfe4ba375'}}
-                            useNativeControls
-                            resizeMode="contain"
-                            isLooping
-                            onPlaybackStatusUpdate={status => setStatus(() => status)}
-                        />
-                    </View>
-
-
-                    <View style={styles.playStatus}>
-                        <AntDesign name="stepbackward" size={24} color="white"
-                                   onPress={() => {
-                                       setVideo5(true)
-                                       setVideo6(false)
-                                   }}
-                        />
-                        <AntDesign name="stepforward" size={24} color="white" onPress={() => {
-                            setVideo6(false)
-                            setVideo7(true)
-                        }}/>
-                    </View>
-
-
-                    <View>
-                        <Text style={styles.difficultyText}>Entrainements</Text>
-                    </View>
-                </View> : <Text/>}
-
-
-                {video7 ?        <View style={styles.videoContainer}>
-                    <View style={styles.imageContainer}>
-                        <Video
-                            ref={video}
-                            style={styles.imageVideo}
-                            source={{uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%202%2F%C3%A9levaton%20%C3%A9paule.mp4?alt=media&token=bb8bd8e5-ae28-41c8-9c5d-7a47572994e5'}}
-                            useNativeControls
-                            resizeMode="contain"
-                            isLooping
-                            onPlaybackStatusUpdate={status => setStatus(() => status)}
-                        />
-                    </View>
-
-
-                    <View style={styles.playStatus}>
-                        <AntDesign name="stepbackward" size={24} color="white"
-                                   onPress={() => {
-                                       setVideo6(true)
-                                       setVideo7(false)
-                                   }}
-                        />
-                    </View>
-
-
-                    <View>
-                        <Text style={styles.difficultyText}>Entrainements</Text>
-                    </View>
-                </View> : <Text/>}
-
-
 
             </ImageBackground>
         </View>
-
     );
 };
 

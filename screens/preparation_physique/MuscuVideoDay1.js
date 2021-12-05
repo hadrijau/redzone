@@ -8,7 +8,6 @@ import Stopwatch from "../../components/Stopwatch";
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
-
 const MuscuVideoDay1 = () => {
 
     const video = React.useRef(null);
@@ -32,7 +31,7 @@ const MuscuVideoDay1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%201%2Fcrunch.mp4?alt=media&token=2fe46650-563c-4029-ace5-18b086946012'}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%201%2FPompes.mp4?alt=media&token=087a1d9e-d07d-4468-a964-2a99725e7ea0"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -53,10 +52,9 @@ const MuscuVideoDay1 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>Entrainements</Text>
+                        <Text style={styles.difficultyText}>6 Séries de 6-15 répétitions, temps de repos entre chaque série 1m30</Text>
                     </View>
 
-                    <Stopwatch/>
                 </View> : <Text/>}
 
                 {video1 ?        <View style={styles.videoContainer}>
@@ -64,7 +62,7 @@ const MuscuVideoDay1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%201%2Fextension%20mollet.mp4?alt=media&token=d095c4d3-284d-4eaa-8817-9efc4761ea32'}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%201%2Fdips.mp4?alt=media&token=c107f91f-0f34-4622-9061-be5a409ac1ce"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -88,10 +86,10 @@ const MuscuVideoDay1 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>Entrainements</Text>
+                        <Text style={styles.difficultyText}>6 séries de 10-15 répétitions, temps de repos entre chaque série 1m30</Text>
                     </View>
 
-                    <Stopwatch/>
+
                 </View> : <Text/>}
 
                 {video2 ?        <View style={styles.videoContainer}>
@@ -99,7 +97,7 @@ const MuscuVideoDay1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%201%2Fpistol%20squat.mp4?alt=media&token=164a058b-f6bf-40ad-8e11-7b73e89b835e'}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%201%2FRowing%20Invers%C3%A9.mp4?alt=media&token=7faa1d90-ec1e-4f0b-9442-38571110f83b"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -123,10 +121,10 @@ const MuscuVideoDay1 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>Entrainements</Text>
+                        <Text style={styles.difficultyText}>4 séries de 10 répétitions, temps de repos 1m</Text>
                     </View>
 
-                    <Stopwatch/>
+
                 </View> : <Text/>}
 
                 {video3 ?        <View style={styles.videoContainer}>
@@ -134,7 +132,7 @@ const MuscuVideoDay1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%201%2Fpompe%201%20sec.mp4?alt=media&token=c5953f54-95ec-485d-8fd8-2ddfcef31e5e'}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%201%2Fgainage%20planche.mp4?alt=media&token=2526cd69-cdef-46c9-9524-f9e71bc5ffc2"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -158,7 +156,7 @@ const MuscuVideoDay1 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>Entrainements</Text>
+                        <Text style={styles.difficultyText}>4 séries de 30 secondes ( chaque exercice ) enchaîner les deux exercices, temps de repos 30 secondes</Text>
                     </View>
                 </View> : <Text/>}
 
@@ -168,7 +166,7 @@ const MuscuVideoDay1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%201%2Fpompe%20sur%C3%A9lev%C3%A9.mp4?alt=media&token=107e70c6-0cda-4ad4-a310-e13cf86a4ba9'}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%201%2FMountain%20Climbers.mp4?alt=media&token=28f1ecda-a66f-498c-a8e3-90603d86c100"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -192,7 +190,7 @@ const MuscuVideoDay1 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>Entrainements</Text>
+                        <Text style={styles.difficultyText}>4 séries de 30 secondes ( chaque exercice ) enchaîner les deux exercices, temps de repos 30 secondes</Text>
                     </View>
                 </View> : <Text/>}
 
@@ -202,7 +200,7 @@ const MuscuVideoDay1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%201%2Fpompe.mp4?alt=media&token=5369eae1-d4c9-4a73-90b8-e925f172a880'}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%201%2FSuperman.mp4?alt=media&token=4dcef3e6-9702-4054-b221-fdeb62225ebe"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -226,7 +224,7 @@ const MuscuVideoDay1 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>Entrainements</Text>
+                        <Text style={styles.difficultyText}>4 séries de 30 secondes ( chaque exercice ) enchaîner les deux exercices, temps de repos 30 secondes.</Text>
                     </View>
                 </View> : <Text/>}
 
@@ -236,7 +234,7 @@ const MuscuVideoDay1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%201%2Fsquat%20jump.mp4?alt=media&token=e7a01db7-6772-4d8b-a91b-f0e167812e3d'}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDays%201%2FGainage%20coude.mp4?alt=media&token=092ad8eb-cecd-467e-a248-eadb688bc3f5"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -256,13 +254,11 @@ const MuscuVideoDay1 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>Entrainements</Text>
+                        <Text style={styles.difficultyText}>4 séries de 30 secondes ( chaque exercice ) enchaîner les deux exercices, temps de repos 30 secondes.</Text>
                     </View>
 
 
                 </View> : <Text/>}
-
-
 
             </ImageBackground>
         </View>
@@ -300,6 +296,9 @@ const styles = StyleSheet.create({
     difficultyText: {
         textAlign: 'center',
         fontSize: 25,
+        maxWidth: '90%',
+        marginLeft: 15,
+        marginTop: 25,
         color: 'white'
     },
     playButton: {
