@@ -7,20 +7,37 @@ import {
     FlatList,
     Image,
     Text,
+    ScrollView,
     TouchableOpacity,
     TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView
 } from "react-native";
 import firebase from "firebase";
+import {useDispatch, useSelector} from "react-redux";
+import * as userActions from "../../store/actions/users";
 
-const ClubScreen = () => {
+const ClubScreen = ({navigation}) => {
 
-    const [modalOpen, setModalOpen] = useState(false);
     const [clubs, setClubs] = useState([]);
     const [search, setSearch] = useState('');
     const [filteredClubs, setFilteredClubs] = useState([]);
-    const [images, setImages] = useState([]);
     const [image, setImage] = useState('');
-    const [fullData, setFullData] = useState([]);
+    const [adresse, setAdresse] = useState('');
+    const [site, setSite] = useState('jdfjd');
+    const [mail, setMail] = useState('dfdd');
+    const [phone, setPhone] = useState('dfdf');
+    const [region, setRegion] = useState('dfd');
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+            dispatch(userActions.fetchUser())
+        });
+        return unsubscribe
+    }, [dispatch, navigation]);
+
+    const userData = useSelector(state => state.user.currentUser)
+
     useEffect(() => {
         firebase.firestore()
             .collection('clubs')
@@ -28,9 +45,7 @@ const ClubScreen = () => {
             .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     // doc.data() is never undefined for query doc snapshots
-                    setClubs(prevState => [...prevState, doc.data().club])
-                    setImages(prevState => [...prevState, doc.data().image])
-                    setFullData(prevState => [...prevState, doc.data()])
+                    setClubs(prevState => [...prevState, doc.data().name])
                 });
             })
             .catch((error) => {
@@ -39,23 +54,42 @@ const ClubScreen = () => {
     }, [image]);
 
     const getImage = (club) => {
-        console.log('hey')
-        console.log('club', club)
         firebase
             .firestore()
             .collection('clubs')
-            .where("club", "==", club)
+            .where("name", "==", club)
             .get()
             .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
-                    setImage(doc.data().image)
-                    console.log(doc.id, " => ", doc.data());
+                    setImage(doc.data().logo)
+                    setRegion(doc.data().region)
+                    setAdresse(doc.data().adresse)
+                    setSite(doc.data().internet)
+                    setMail(doc.data().mail)
+                    setPhone(doc.data().phone)
                 });
             })
             .catch((error) => {
                 console.log("Error getting documents: ", error);
             });
-    }
+    };
+
+    const saveClub = (region, adresse, site, mail, phone, image) => {
+        firebase
+            .firestore()
+            .collection("users")
+            .doc(firebase.auth().currentUser.uid)
+            .update({
+                regionClub: region,
+                adresseClub: adresse,
+                siteClub: site,
+                mailClub: mail,
+                phoneClub: phone,
+                imageClub: image
+            }).then(() => {
+                console.log("done")
+        }).catch(err => console.log(err))
+    };
 
     const ItemSeparatorView = () => {
         return (
@@ -77,7 +111,6 @@ const ClubScreen = () => {
             // Filter the masterDataSource
             // Update FilteredDataSource
             const newData = clubs.filter(function (item) {
-                console.log('item', item)
                 const itemData = item
                     ? item.toUpperCase()
                     : ''.toUpperCase();
@@ -94,46 +127,80 @@ const ClubScreen = () => {
         }
     };
 
-    console.log('image', image);
-    console.log('search', search);
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <KeyboardAvoidingView
                 style={styles.container}
                 behavior="height"
             >
-        <View style={styles.container}>
-            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
-                <TextInput
-                        style={styles.textInput}
-                        placeholder="Rechercher mon club"
-                        value={search}
-                        onChangeText={(text) => searchFilterFunction(text)}
-                />
-                {image ?  <Image
-                    style={styles.imageClub}
-                    source={{
-                        uri: image
-                    }}/> : <Text/>}
+                <View style={styles.container}>
+                    <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                        <ScrollView>
+                            {userData.phoneClub ? <View>
+                                <Image
+                                    style={styles.imageClub}
+                                    source={{
+                                        uri: userData.imageClub ? userData.imageClub : image
+                                    }}/>
+                                <Text style={styles.infoClub}>Région : {userData.regionClub ? userData.regionClub : region}</Text>
+                                <Text style={styles.infoClub}>Adresse : {userData.adresseClub ? userData.adresseClub : adresse}</Text>
+                                <Text style={styles.infoClub}>Site : {userData.siteClub ? userData.siteClub : site}</Text>
+                                <Text style={styles.infoClub}>Mail : {userData.mailClub ? userData.mailClub : mail}</Text>
+                                <Text style={styles.infoClub}>Téléphone : {userData.phoneClub ? userData.phoneClub : phone}</Text>
 
-                {!filteredClubs.includes(search) ?    <FlatList
-                    data={filteredClubs}
-                    keyExtractor={(item, index) => index.toString()}
-                    ItemSeparatorComponent={ItemSeparatorView}
-                    renderItem={itemData => {
-                        return (
-                            <TouchableOpacity onPress={async () => {
-                                setSearch(itemData.item)
-                                getImage(itemData.item)
-                            }}>
-                                <Text style={styles.itemStyle}>{itemData.item}</Text>
-                            </TouchableOpacity>
-                        )
-                    }}
-                /> : <Text/>}
 
-            </ImageBackground>
-        </View>
+                                <TouchableOpacity style={styles.inscriptionButton} onPress={() => navigation.navigate('ChooseClubScreen')}>
+                                    <Text style={styles.inscriptionText}>Changer de club</Text>
+                                </TouchableOpacity>
+                            </View> : <View>
+                                <TextInput
+                                    style={styles.textInput}
+                                    placeholder="Rechercher mon club"
+                                    value={search}
+                                    onChangeText={(text) => searchFilterFunction(text)}
+                                />
+                                {!filteredClubs.includes(search) ?    <FlatList
+                                    data={filteredClubs}
+                                    keyExtractor={(item, index) => index.toString()}
+                                    ItemSeparatorComponent={ItemSeparatorView}
+                                    renderItem={itemData => {
+                                        return (
+                                            <TouchableOpacity onPress={async () => {
+                                                console.log('item', itemData.item)
+                                                setSearch(itemData.item)
+                                                await getImage(itemData.item)
+                                            }}>
+                                                <Text style={styles.itemStyle}>{itemData.item}</Text>
+                                            </TouchableOpacity>
+                                        )
+                                    }}
+                                /> : <Text/>}
+                                {image ? <View>
+                                    <Image
+                                        style={styles.imageClub}
+                                        source={{
+                                            uri: userData.imageClub ? userData.imageClub : image
+                                        }}/>
+                                    <Text style={styles.infoClub}>Région : {userData.regionClub ? userData.regionClub : region}</Text>
+                                    <Text style={styles.infoClub}>Adresse : {userData.adresseClub ? userData.adresseClub : adresse}</Text>
+                                    <Text style={styles.infoClub}>Site : {userData.siteClub ? userData.siteClub : site}</Text>
+                                    <Text style={styles.infoClub}>Mail : {userData.mailClub ? userData.mailClub : mail}</Text>
+                                    <Text style={styles.infoClub}>Téléphone : {userData.phoneClub ? userData.phoneClub : phone}</Text>
+
+
+                                    <TouchableOpacity style={styles.inscriptionButton} onPress={async() => {
+                                        await saveClub(region, adresse, site, mail, phone, image)
+                                        navigation.navigate("ConfirmationClubScreen")
+                                    }}>
+                                        <Text style={styles.inscriptionText}>Sauvegarder mes données</Text>
+                                    </TouchableOpacity>
+                                </View>  : <Text/>}
+                            </View> }
+
+
+                        </ScrollView>
+                    </ImageBackground>
+                </View>
             </KeyboardAvoidingView>
         </TouchableWithoutFeedback>
     );
@@ -164,6 +231,21 @@ const styles = StyleSheet.create({
     itemStyle: {
         padding: 10,
         color: 'white'
+    },
+    infoClub: {
+        color: 'white',
+        fontSize: 20,
+        textAlign: 'center',
+        marginTop: 10
+    },
+    inscriptionButton: {
+        textAlign: 'center',
+        alignSelf: 'center',
+        marginTop: 20
+    },
+    inscriptionText: {
+        color: 'red',
+        fontSize: 25
     },
 });
 

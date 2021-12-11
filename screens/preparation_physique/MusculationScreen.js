@@ -35,7 +35,7 @@ const MusculationScreen = ({navigation}) => {
                             }
 
                             {userData.abonnement === "Musculation" && userData.abonnement !== "Premium" ?
-                                <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('GererAbonnementScreen', {
+                                <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('PreparationPhysiqueScreen', {
                                     entrainement: "muscu"
                                 })}>
                                     <ImageBackground

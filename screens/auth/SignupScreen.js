@@ -65,6 +65,12 @@ const SignupScreen = (props) => {
                                         BroadJump: [0],
                                         Yards: [0],
                                         Shuttle: [0],
+                                        regionClub: '',
+                                        adresseClub: '',
+                                        siteClub: '',
+                                        mailClub: '',
+                                        phoneClub: '',
+                                        imageClub: '',
                                         abonnement: 'free'
                                     })
                             })

@@ -32,6 +32,13 @@ import ClubScreen from "../screens/club/ClubScreen";
 import GererAbonnementScreen from "../screens/abonnement/GererAbonnementScreen";
 import EquipementDetailScreen from "../screens/equipement_sportif/EquipementDetailScreen";
 import ConfirmationProgressScreen from "../screens/progress/ConfirmationProgressScreen";
+import PreparationPhysiqueScreen from "../screens/preparation_physique/PreparationPhysiqueScreen";
+import Jour1Semaine1 from "../screens/preparation_physique/Jour1Semaine1";
+import Jour2Semaine2 from "../screens/preparation_physique/Jour2Semaine2";
+import Jour1Semaine2 from "../screens/preparation_physique/Jour1Semaine2";
+import JourSelectionScreen from "../screens/preparation_physique/JourSelectionScreen";
+import ChooseClubScreen from "../screens/club/ChooseClubScreen";
+import ConfirmationClubScreen from "../screens/club/ConfirmationClubScreen";
 const AuthStackNavigator = createNativeStackNavigator();
 const ProfileStackNavigator = createNativeStackNavigator();
 const ProgressStackNavigator = createNativeStackNavigator();
@@ -66,10 +73,17 @@ export const progressNavigator = () => {
                 }}
             />
             <ProgressStackNavigator.Screen
+                name="ConfirmationProgressScreen"
+                component={ConfirmationProgressScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+            <ProgressStackNavigator.Screen
                 name="CombineScreen"
                 component={CombineScreen}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('ProgressScreen')}/>,
                 }}
             />
         </ProgressStackNavigator.Navigator>
@@ -212,7 +226,7 @@ const accueilNavigator = () => {
                 name="MuscuVideoDay1"
                 component={MuscuVideoDay1}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('MusculationScreen')}/>,
                 }}
             />
 
@@ -220,7 +234,7 @@ const accueilNavigator = () => {
                 name="MuscuVideoDay2"
                 component={MuscuVideoDay2}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('MusculationScreen')}/>,
                 }}
             />
 
@@ -228,10 +242,9 @@ const accueilNavigator = () => {
                 name="MuscuVideoDay3"
                 component={MuscuVideoDay3}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('MusculationScreen')}/>,
                 }}
             />
-
             <AccueilStackNavigator.Screen
                 name="RecetteDetailScreen"
                 component={RecetteDetailScreen}
@@ -239,7 +252,48 @@ const accueilNavigator = () => {
                     header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('RecetteScreen')}/>,
                 }}
             />
-
+            <AccueilStackNavigator.Screen
+                name="PreparationPhysiqueScreen"
+                component={PreparationPhysiqueScreen}
+                options={{
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('MusculationScreen')}/>,
+                }}
+            />
+            <AccueilStackNavigator.Screen
+                name="Jour1Semaine1"
+                component={Jour1Semaine1}
+                options={{
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.goBack()}/>,
+                }}
+            />
+            <AccueilStackNavigator.Screen
+                name="Jour1Semaine2"
+                component={Jour1Semaine2}
+                options={{
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.goBack()}/>,
+                }}
+            />
+            <AccueilStackNavigator.Screen
+                name="Jour2Semaine1"
+                component={Jour1Semaine1}
+                options={{
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.goBack()}/>,
+                }}
+            />
+            <AccueilStackNavigator.Screen
+                name="Jour2Semaine2"
+                component={Jour2Semaine2}
+                options={{
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.goBack()}/>,
+                }}
+            />
+            <AccueilStackNavigator.Screen
+                name="JourSelectionScreen"
+                component={JourSelectionScreen}
+                options={{
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('PreparationPhysiqueScreen')}/>,
+                }}
+            />
             <AccueilStackNavigator.Screen
                 name="NutritionSportiveScreen"
                 component={NutritionSportiveScreen}
@@ -291,10 +345,24 @@ const accueilNavigator = () => {
                 }}
             />
             <AccueilStackNavigator.Screen
+                name="ChooseClubScreen"
+                component={ChooseClubScreen}
+                options={{
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('ClubScreen')}/>,
+                }}
+            />
+            <AccueilStackNavigator.Screen
+                name="ConfirmationClubScreen"
+                component={ConfirmationClubScreen}
+                options={{
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('ClubScreen')}/>,
+                }}
+            />
+            <AccueilStackNavigator.Screen
                 name="CombineScreen"
                 component={CombineScreen}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('ProgressScreen')}/>,
                 }}
             />
         </AccueilStackNavigator.Navigator>

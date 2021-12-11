@@ -4,7 +4,6 @@ import {Video, AVPlaybackStatus} from "expo-av";
 import { AntDesign } from '@expo/vector-icons';
 import Stopwatch from "../../components/Stopwatch";
 
-
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
@@ -21,10 +20,12 @@ const MuscuVideoDay1 = () => {
     const [video5, setVideo5] = useState(false);
     const [video6, setVideo6] = useState(false);
 
+    const [isStopwatchStart, setIsStopwatchStart] = useState(false);
+    const [resetStopwatch, setResetStopwatch] = useState(false);
+
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
-
 
                 {video0 ?        <View style={styles.videoContainer}>
                     <View style={styles.imageContainer}>
@@ -50,10 +51,12 @@ const MuscuVideoDay1 = () => {
                         }}/>
                     </View>
 
-
                     <View>
-                        <Text style={styles.difficultyText}>6 Séries de 6-15 répétitions, temps de repos entre chaque série 1m30</Text>
+                        <Text style={styles.difficultyText}>Séries : 6</Text>
+                        <Text style={styles.difficultyText}>Répétitions : 6-15</Text>
+                        <Text style={styles.difficultyText}>Récupération : 1m30 </Text>
                     </View>
+
 
                 </View> : <Text/>}
 
@@ -84,11 +87,11 @@ const MuscuVideoDay1 = () => {
                         }}/>
                     </View>
 
-
                     <View>
-                        <Text style={styles.difficultyText}>6 séries de 10-15 répétitions, temps de repos entre chaque série 1m30</Text>
+                        <Text style={styles.difficultyText}>Séries : 6</Text>
+                        <Text style={styles.difficultyText}>Répétitions : 6-15</Text>
+                        <Text style={styles.difficultyText}>Récupération : 1m30 </Text>
                     </View>
-
 
                 </View> : <Text/>}
 
@@ -120,8 +123,11 @@ const MuscuVideoDay1 = () => {
                     </View>
 
 
+
                     <View>
-                        <Text style={styles.difficultyText}>4 séries de 10 répétitions, temps de repos 1m</Text>
+                        <Text style={styles.difficultyText}>Séries : 4</Text>
+                        <Text style={styles.difficultyText}>Répétitions : 10</Text>
+                        <Text style={styles.difficultyText}>Récupération : 1m</Text>
                     </View>
 
 
@@ -155,9 +161,13 @@ const MuscuVideoDay1 = () => {
                     </View>
 
 
+
                     <View>
-                        <Text style={styles.difficultyText}>4 séries de 30 secondes ( chaque exercice ) enchaîner les deux exercices, temps de repos 30 secondes</Text>
+                        <Text style={styles.difficultyText}>Séries : 4</Text>
+                        <Text style={styles.difficultyText}>Temps : 30s</Text>
+                        <Text style={styles.difficultyText}>Récupération : 30s</Text>
                     </View>
+
                 </View> : <Text/>}
 
 
@@ -190,8 +200,11 @@ const MuscuVideoDay1 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>4 séries de 30 secondes ( chaque exercice ) enchaîner les deux exercices, temps de repos 30 secondes</Text>
+                        <Text style={styles.difficultyText}>Séries : 4</Text>
+                        <Text style={styles.difficultyText}>Temps : 30s</Text>
+                        <Text style={styles.difficultyText}>Récupération : 30s</Text>
                     </View>
+
                 </View> : <Text/>}
 
 
@@ -224,7 +237,9 @@ const MuscuVideoDay1 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>4 séries de 30 secondes ( chaque exercice ) enchaîner les deux exercices, temps de repos 30 secondes.</Text>
+                        <Text style={styles.difficultyText}>Séries : 4</Text>
+                        <Text style={styles.difficultyText}>Temps : 30s</Text>
+                        <Text style={styles.difficultyText}>Récupération : 30s</Text>
                     </View>
                 </View> : <Text/>}
 
@@ -254,11 +269,20 @@ const MuscuVideoDay1 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>4 séries de 30 secondes ( chaque exercice ) enchaîner les deux exercices, temps de repos 30 secondes.</Text>
+                        <Text style={styles.difficultyText}>Séries : 4</Text>
+                        <Text style={styles.difficultyText}>Temps : 30s</Text>
+                        <Text style={styles.difficultyText}>Récupération : 30s</Text>
                     </View>
 
 
                 </View> : <Text/>}
+
+                <Stopwatch
+                    isStopwatchStart={isStopwatchStart}
+                    resetStopwatch={resetStopwatch}
+                    setIsStopwatchStart={setIsStopwatchStart}
+                    setResetStopwatch={setResetStopwatch}
+                />
 
             </ImageBackground>
         </View>
@@ -295,7 +319,7 @@ const styles = StyleSheet.create({
     },
     difficultyText: {
         textAlign: 'center',
-        fontSize: 25,
+        fontSize: 20,
         maxWidth: '90%',
         marginLeft: 15,
         marginTop: 25,

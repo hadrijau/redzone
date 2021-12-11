@@ -1,9 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, Image, ImageBackground, ScrollView, TouchableOpacity, StyleSheet} from 'react-native';
+import {useDispatch, useSelector} from "react-redux";
+import * as userActions from "../../store/actions/users";
 
 
 const AccueilScreen = ({navigation}) => {
 
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+            dispatch(userActions.fetchUser())
+        });
+        return unsubscribe
+    }, [dispatch, navigation]);
+
+    const userData = useSelector(state => state.user.currentUser)
+
+    console.log(userData)
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>

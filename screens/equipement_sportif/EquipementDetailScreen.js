@@ -15,7 +15,6 @@ const windowWidth = Dimensions.get('window').width;
 
 const EquipementDetailScreen = ({navigation, route}) => {
 
-
     const description1 = route.params.description1
     const description2 = route.params.description2
     const description3 = route.params.description3
@@ -55,34 +54,36 @@ const EquipementDetailScreen = ({navigation, route}) => {
                         />
                     </TouchableOpacity>
 
-                    <Text style={styles.abonnementFreeTextBig}>{titre}</Text>
-                    <View>
+                        <Text style={styles.abonnementFreeTextBig}>{titre}</Text>
                         <Text style={styles.infoNutrition}>Description</Text>
 
                         <View style={styles.ingredientList}>
                             <Text style={styles.ingredientText}>{description1}</Text>
                             <Text style={styles.ingredientText}>{description2}</Text>
                             <Text style={styles.ingredientText}>{description3}</Text>
-                            <Text style={styles.ingredientText}>{description4}</Text>
-                            <Text style={styles.ingredientText}>{description5}</Text>
-                            <Text style={styles.ingredientText}>{description6}</Text>
-                            <Text style={styles.ingredientText}>{description7}</Text>
-                            <Text style={styles.ingredientText}>{description8}</Text>
-                            <Text style={styles.ingredientText}>{description9}</Text>
-                            <Text style={styles.ingredientText}>{description10}</Text>
-                            <Text style={styles.ingredientText}>{description11}</Text>
-                            <Text style={styles.ingredientText}>{description12}</Text>
+                            {description4 && <Text style={styles.ingredientText}>{description4}</Text>}
+                            {description5 &&                             <Text style={styles.ingredientText}>{description5}</Text>
+                            }
+                            {description6 &&                             <Text style={styles.ingredientText}>{description6}</Text>
+                            }
+                            {description7 &&                             <Text style={styles.ingredientText}>{description7}</Text>
+                            }
+                            {description8 &&                             <Text style={styles.ingredientText}>{description8}</Text>
+                            }
+                            {description9 &&                             <Text style={styles.ingredientText}>{description9}</Text>
+                            }
+                            {description10 &&                             <Text style={styles.ingredientText}>{description10}</Text>
+                            }
+                            {description11 &&                             <Text style={styles.ingredientText}>{description11}</Text>
+                            }
+                            {description12 &&                             <Text style={styles.ingredientText}>{description12}</Text>
+                            }
                         </View>
 
-                    </View>
-
-                    <View>
 
                         <View style={styles.ingredientList}>
                             <Text style={styles.ingredientText}>Prix : {prix} €</Text>
                         </View>
-
-                    </View>
 
                     <TouchableOpacity style={styles.acheter} onPress={() => loadInBrowser(lien)}>
                         <Text style={styles.ingredientText}>Acheter</Text>

@@ -75,9 +75,7 @@ const InformationsScreen = (props) => {
                     style={styles.container}
                 >
                 <View style={styles.container}>
-
-                    <ImageBackground source={require('../../assets/logo_transparent.png')} resizeMode="cover" style={styles.image}>
-
+                    <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
                         <Text style={styles.inscriptionBigText}>Informations</Text>
                         <View style={{display: 'flex', flexDirection: 'row', alignSelf: 'center', marginVertical: 10}}>
                             <Text style={styles.alreadyAccount}>Déjà un compte ? </Text>
@@ -302,24 +300,24 @@ const InformationsScreen = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: 'black',
     },
     formContainer: {
         width: '100%'
     },
     errors: {
-        color: 'black',
+        color: 'white',
         textAlign: 'center',
         marginLeft: 70,
         marginTop: -10
     },
     picker: {
-        backgroundColor: 'black',
+        backgroundColor: 'white',
         width: 200,
         paddingTop: 0
     },
     label: {
-        color: 'black',
+        color: 'white',
         fontSize: 20,
         textAlign: 'right',
         marginBottom: '5%',
@@ -340,7 +338,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     poidsText: {
-        color: 'black',
+        color: 'white',
         marginTop: 18,
         marginLeft: 10
     },
@@ -360,26 +358,26 @@ const styles = StyleSheet.create({
         fontSize: 50,
         fontWeight: 'bold',
         textAlign: 'center',
-        color: 'black'
+        color: 'white'
     },
     checkBoxContainer: {
         width: '55%',
         marginLeft: 20
     },
     passwordForgotText: {
-        color: 'black'
+        color: 'white'
     },
     inscriptionText: {
         color: 'red',
         fontSize: 25
     },
     textCheckBox: {
-        color: 'black',
+        color: 'white',
         fontSize: 20,
         marginTop: 10
     },
     textInput: {
-        backgroundColor: 'black',
+        backgroundColor: 'white',
         height: 30,
         borderRadius: 5,
         marginTop: 15,
@@ -404,7 +402,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     alreadyAccount: {
-        color: 'black',
+        color: 'white',
         fontSize: 20
     },
     connect: {

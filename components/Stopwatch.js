@@ -12,12 +12,9 @@ import {
 // importing library to use Stopwatch and Timer
 import {Stopwatch, Timer} from 'react-native-stopwatch-timer';
 
-const App = () => {
-    const [isTimerStart, setIsTimerStart] = useState(false);
-    const [isStopwatchStart, setIsStopwatchStart] = useState(false);
-    const [timerDuration, setTimerDuration] = useState(90000);
-    const [resetTimer, setResetTimer] = useState(false);
-    const [resetStopwatch, setResetStopwatch] = useState(false);
+const App = (props) => {
+
+    const {isStopwatchStart, resetStopwatch, setIsStopwatchStart, setResetStopwatch} = props
 
     return (
         <SafeAreaView style={styles.container}>
@@ -53,24 +50,6 @@ const App = () => {
                         <Text style={styles.buttonText}>RESET</Text>
                     </TouchableHighlight>
                 </View>
-                <View style={styles.sectionStyle}>
-                    <TouchableHighlight
-                        onPress={() => {
-                            setIsTimerStart(!isTimerStart);
-                            setResetTimer(false);
-                        }}>
-                        <Text style={styles.buttonText}>
-                            {!isTimerStart ? 'START' : 'STOP'}
-                        </Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight
-                        onPress={() => {
-                            setIsTimerStart(false);
-                            setResetTimer(true);
-                        }}>
-                        <Text style={styles.buttonText}>RESET</Text>
-                    </TouchableHighlight>
-                </View>
             </View>
         </SafeAreaView>
     );
@@ -81,7 +60,6 @@ export default App;
 const styles = StyleSheet.create({
     container: {
         padding: 10,
-        marginTop: 30,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -93,11 +71,8 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     sectionStyle: {
-        flex: 1,
-        marginTop: 32,
         alignItems: 'center',
         justifyContent: 'center',
-
     },
     buttonText: {
         fontSize: 20,
