@@ -29,11 +29,6 @@ const RecetteDetailScreen = ({title, navigation, route}) => {
                                 uri: image
                             }}
                         />
-                        <Text style={styles.abonnementFreeTextBig}>{name}</Text>
-                        <View style={styles.infoContainer}>
-                            <Text>{time}</Text>
-                            <Text>Facile</Text>
-                        </View>
                     </TouchableOpacity>
 
                 <View>
@@ -112,7 +107,7 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0,
-        height: 170,
+        height: "100%",
         justifyContent: 'center',
         alignItems: 'center'
     },

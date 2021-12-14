@@ -37,6 +37,7 @@ const Jour1Semaine1 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>
@@ -67,6 +68,7 @@ const Jour1Semaine1 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>
@@ -101,6 +103,7 @@ const Jour1Semaine1 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>
@@ -137,6 +140,7 @@ const Jour1Semaine1 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>
@@ -173,6 +177,7 @@ const Jour1Semaine1 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>
@@ -208,6 +213,7 @@ const Jour1Semaine1 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>
@@ -242,6 +248,7 @@ const Jour1Semaine1 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>

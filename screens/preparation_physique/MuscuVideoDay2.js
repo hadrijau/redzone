@@ -39,6 +39,7 @@ const MuscuVideoDay2 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>
@@ -73,6 +74,7 @@ const MuscuVideoDay2 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>
@@ -109,6 +111,7 @@ const MuscuVideoDay2 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>
@@ -145,6 +148,7 @@ const MuscuVideoDay2 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>
@@ -181,6 +185,7 @@ const MuscuVideoDay2 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>
@@ -217,6 +222,7 @@ const MuscuVideoDay2 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>

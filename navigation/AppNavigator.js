@@ -69,7 +69,7 @@ export const progressNavigator = () => {
                 name="ProgressScreen"
                 component={ProgressScreen}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.goBack()}/>,
                 }}
             />
             <ProgressStackNavigator.Screen
@@ -188,7 +188,7 @@ const accueilNavigator = () => {
                 name="RecettesScreen"
                 component={RecettesScreen}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('AccueilScreen')}/>,
                 }}
             />
             <AccueilStackNavigator.Screen
@@ -202,7 +202,7 @@ const accueilNavigator = () => {
                 name="MusculationScreen"
                 component={MusculationScreen}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('AccueilScreen')}/>,
                 }}
             />
 
@@ -210,7 +210,7 @@ const accueilNavigator = () => {
                 name="DrillScreen"
                 component={DrillScreen}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('AccueilScreen')}/>,
                 }}
             />
 
@@ -249,7 +249,7 @@ const accueilNavigator = () => {
                 name="RecetteDetailScreen"
                 component={RecetteDetailScreen}
                 options={{
-                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('RecetteScreen')}/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('RecettesScreen')}/>,
                 }}
             />
             <AccueilStackNavigator.Screen
@@ -298,7 +298,7 @@ const accueilNavigator = () => {
                 name="NutritionSportiveScreen"
                 component={NutritionSportiveScreen}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('AccueilScreen')}/>,
                 }}
             />
             <AccueilStackNavigator.Screen
@@ -312,21 +312,21 @@ const accueilNavigator = () => {
                 name="EquipementSportifScreen"
                 component={EquipementSportifScreen}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('AccueilScreen')}/>,
                 }}
             />
             <AccueilStackNavigator.Screen
                 name="ProfileScreen"
                 component={ProfileScreen}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('AccueilScreen')}/>,
                 }}
             />
             <AccueilStackNavigator.Screen
                 name="EntraineurPersonnelScreen"
                 component={EntraineurPersonnelScreen}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('AccueilScreen')}/>,
                 }}
             />
 
@@ -334,14 +334,14 @@ const accueilNavigator = () => {
                 name="ProgressScreen"
                 component={ProgressScreen}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('AccueilScreen')}/>,
                 }}
             />
             <AccueilStackNavigator.Screen
                 name="ClubScreen"
                 component={ClubScreen}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('AccueilScreen')}/>,
                 }}
             />
             <AccueilStackNavigator.Screen

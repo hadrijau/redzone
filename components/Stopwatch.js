@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-
-// import all the components we are going to use
+import { Entypo } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import {
     SafeAreaView,
     StyleSheet,
@@ -20,6 +20,7 @@ const App = (props) => {
         <SafeAreaView style={styles.container}>
             <View style={styles.container}>
                 <View style={styles.sectionStyle}>
+                    <Entypo name="controller-play" size={45} color="red" style={styles.playIcon} onPress={() => setIsStopwatchStart(true)}/>
                     <Stopwatch
                         laps
                         msecs
@@ -33,22 +34,20 @@ const App = (props) => {
                             console.log(time);
                         }}
                     />
-                    <TouchableHighlight
+                    <AntDesign name="pausecircleo" size={45} color="red" style={styles.pause} onPress={() => setIsStopwatchStart(false)}/>
+
+                    {/* <TouchableHighlight
                         onPress={() => {
                             setIsStopwatchStart(!isStopwatchStart);
                             setResetStopwatch(false);
                         }}>
+
                         <Text style={styles.buttonText}>
                             {!isStopwatchStart ? 'START' : 'STOP'}
                         </Text>
+
                     </TouchableHighlight>
-                    <TouchableHighlight
-                        onPress={() => {
-                            setIsStopwatchStart(false);
-                            setResetStopwatch(true);
-                        }}>
-                        <Text style={styles.buttonText}>RESET</Text>
-                    </TouchableHighlight>
+                    */}
                 </View>
             </View>
         </SafeAreaView>
@@ -63,6 +62,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    pause: {
+        marginLeft: 20
+    },
+    playIcon: {
+        marginRight: 10
+    },
     title: {
         textAlign: 'center',
         fontSize: 20,
@@ -72,7 +77,9 @@ const styles = StyleSheet.create({
     },
     sectionStyle: {
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
+        display: 'flex',
+        flexDirection: 'row',
     },
     buttonText: {
         fontSize: 20,

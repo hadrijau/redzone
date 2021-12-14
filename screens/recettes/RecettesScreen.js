@@ -18,10 +18,10 @@ const RecettesScreen = ({navigation}) => {
                             <TouchableOpacity onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 name: 'Toast d\'avocat',
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FToast%20Avocat%20Oeuf.png?alt=media&token=876236cc-956e-4f8a-9506-db8e24f22f10',
-                                ingredient2: '1 œuf',
-                                ingredient3: '60g de pain complet',
-                                ingredient4: '½ avocat',
-                                ingredient5: '50g de blanc de poulet/dinde cuit ( ou jambon blanc )',
+                                ingredient1: '1 œuf',
+                                ingredient2: '60g de pain complet',
+                                ingredient3: '½ avocat',
+                                ingredient4: '50g de blanc de poulet/dinde cuit ( ou jambon blanc )',
                                 recette: 'Répartir sur deux tranches de pain complet le demi avocat haché, le blanc de poulet/dinde ( ou jambon blanc ) et émincé l’œuf poché dessus.',
                                 time: '10min'
                             })} style={styles.recetteCard}>

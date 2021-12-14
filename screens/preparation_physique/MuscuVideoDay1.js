@@ -36,6 +36,7 @@ const MuscuVideoDay1 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>
@@ -69,6 +70,7 @@ const MuscuVideoDay1 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>
@@ -104,6 +106,7 @@ const MuscuVideoDay1 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>
@@ -142,6 +145,7 @@ const MuscuVideoDay1 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>
@@ -180,6 +184,7 @@ const MuscuVideoDay1 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>
@@ -217,6 +222,7 @@ const MuscuVideoDay1 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>
@@ -253,6 +259,7 @@ const MuscuVideoDay1 = () => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={status => setStatus(() => status)}
                         />
                     </View>

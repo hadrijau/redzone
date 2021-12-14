@@ -22,19 +22,7 @@ const MusculationScreen = ({navigation}) => {
 
                         <View style={styles.scrollView}>
 
-                            {userData.abonnement !== "Musculation" && userData.abonnement !== "Premium" ?
-                                <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('GererAbonnementScreen', {
-                                    entrainement: "muscu"
-                                })}>
-                                    <ImageBackground
-                                        source={require('../../assets/préparation_physique_verrou.png')}
-                                        style={styles.imageBackground}
-                                    >
-                                    </ImageBackground>
-                                </TouchableOpacity> : <Text/>
-                            }
-
-                            {userData.abonnement === "Musculation" && userData.abonnement !== "Premium" ?
+                            {userData.abonnement === "Musculation" || userData.abonnement === "Premium" ?
                                 <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('PreparationPhysiqueScreen', {
                                     entrainement: "muscu"
                                 })}>
@@ -43,7 +31,15 @@ const MusculationScreen = ({navigation}) => {
                                         style={styles.imageBackground}
                                     >
                                     </ImageBackground>
-                                </TouchableOpacity> : <Text/>
+                                </TouchableOpacity> :  <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('GererAbonnementScreen', {
+                                    entrainement: "muscu"
+                                })}>
+                                    <ImageBackground
+                                        source={require('../../assets/préparation_physique_verrou.png')}
+                                        style={styles.imageBackground}
+                                    >
+                                    </ImageBackground>
+                                </TouchableOpacity>
                             }
 
                             <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('MuscuVideoDay1')}>
