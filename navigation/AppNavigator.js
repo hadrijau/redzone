@@ -218,7 +218,7 @@ const accueilNavigator = () => {
                 name="ViewVideoScreen"
                 component={ViewVideoScreen}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('DrillScreen')}/>,
                 }}
             />
 

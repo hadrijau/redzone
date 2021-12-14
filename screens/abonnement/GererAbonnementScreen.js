@@ -1,5 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import {ImageBackground, Text, TextInput, TouchableOpacity, View, StyleSheet, ScrollView, ActivityIndicator} from 'react-native';
+import {
+    ImageBackground,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+    StyleSheet,
+    ScrollView,
+    ActivityIndicator,
+    Image, Dimensions
+} from 'react-native';
 import {Formik} from "formik";
 import firebase from "firebase";
 import axios from 'axios';
@@ -7,7 +17,7 @@ import {useDispatch, useSelector} from "react-redux";
 import * as userActions from "../../store/actions/users";
 
 import {PaymentView} from "../../components/PaymentView";
-
+const windowWidth = Dimensions.get('window').width;
 const GererAbonnementScreen = (props) => {
 
     const dispatch = useDispatch();
@@ -216,20 +226,30 @@ const GererAbonnementScreen = (props) => {
 
                                  <ScrollView style={styles.scrollView}>
 
-                                    <TouchableOpacity style={styles.abonnementCard} onPress={() => {
-                                        setMakePaymentMuscu(true)
-                                    }}>
-                                        <Text style={styles.abonnementText}>Préparation Physique</Text>
-                                        <Text style={styles.abonnementTextInner}>10€/mois</Text>
-                                    </TouchableOpacity>
+                                     <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                         setMakePaymentMuscu(true)
+                                     }}>
+                                         <Image
+                                             style={styles.imageCard}
+                                             source={{
+                                                 uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
+                                             }}
+                                         >
+                                         </Image>
+                                     </TouchableOpacity>
 
 
-                                    <TouchableOpacity style={styles.abonnementCard} onPress={() => {
-                                        setMakePaymentPremium(true)
-                                    }}>
-                                        <Text style={styles.abonnementText}>Premium</Text>
-                                        <Text style={styles.abonnementTextInner}>15€/mois</Text>
-                                    </TouchableOpacity>
+                                     <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                         setMakePaymentPremium(true)
+                                     }}>
+                                         <Image
+                                             style={styles.imageCard}
+                                             source={{
+                                                 uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
+                                             }}
+                                         >
+                                         </Image>
+                                     </TouchableOpacity>
 
                                 </ScrollView>
                             </ImageBackground>
@@ -245,18 +265,29 @@ const GererAbonnementScreen = (props) => {
 
                                 <ScrollView style={styles.scrollView}>
 
-                                    <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
                                         setMakePaymentDrill(true)
                                     }}>
-                                        <Text style={styles.abonnementText}>Drill</Text>
-                                        <Text style={styles.abonnementTextInner}>10€/mois</Text>
+                                        <Image
+                                            style={styles.imageCard}
+                                            source={{
+                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F2%5B1%5D.png?alt=media&token=21ed90a3-2718-498a-9b10-57d50b170b12"
+                                            }}
+                                        >
+                                        </Image>
                                     </TouchableOpacity>
 
-                                    <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+
+                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
                                         setMakePaymentPremium(true)
                                     }}>
-                                        <Text style={styles.abonnementText}>Premium</Text>
-                                        <Text style={styles.abonnementTextInner}>15€/mois</Text>
+                                        <Image
+                                            style={styles.imageCard}
+                                            source={{
+                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
+                                            }}
+                                        >
+                                        </Image>
                                     </TouchableOpacity>
 
                                 </ScrollView>
@@ -273,24 +304,40 @@ const GererAbonnementScreen = (props) => {
                                 <Text style={styles.inscriptionBigText}>Vous avez actuellement l'abonnement {userData.abonnement}</Text>
 
                                 <ScrollView style={styles.scrollView}>
-                                    <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
                                         setMakePaymentMuscu(true)
                                     }}>
-                                        <Text style={styles.abonnementText}>Préparation Physique</Text>
-                                        <Text style={styles.abonnementTextInner}>10€/mois</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={styles.abonnementCard} onPress={() => {
-                                        setMakePaymentDrill(true)
-                                    }}>
-                                        <Text style={styles.abonnementText}>Drill</Text>
-                                        <Text style={styles.abonnementTextInner}>10€/mois</Text>
+                                        <Image
+                                            style={styles.imageCard}
+                                            source={{
+                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
+                                            }}
+                                        >
+                                        </Image>
                                     </TouchableOpacity>
 
-                                    <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                        setMakePaymentDrill(true)
+                                    }}>
+                                        <Image
+                                            style={styles.imageCard}
+                                            source={{
+                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F2%5B1%5D.png?alt=media&token=21ed90a3-2718-498a-9b10-57d50b170b12"
+                                            }}
+                                        >
+                                        </Image>
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
                                         setMakePaymentPremium(true)
                                     }}>
-                                        <Text style={styles.abonnementText}>Premium</Text>
-                                        <Text style={styles.abonnementTextInner}>15€/mois</Text>
+                                        <Image
+                                            style={styles.imageCard}
+                                            source={{
+                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
+                                            }}
+                                        >
+                                        </Image>
                                     </TouchableOpacity>
 
                                 </ScrollView>
@@ -309,18 +356,28 @@ const GererAbonnementScreen = (props) => {
 
                             <ScrollView style={styles.scrollView}>
 
-                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+                                <TouchableOpacity style={styles.recetteCard} onPress={() => {
                                     setMakePaymentDrill(true)
                                 }}>
-                                    <Text style={styles.abonnementText}>Drill</Text>
-                                    <Text style={styles.abonnementTextInner}>10€/mois</Text>
+                                    <Image
+                                        style={styles.imageCard}
+                                        source={{
+                                            uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F2%5B1%5D.png?alt=media&token=21ed90a3-2718-498a-9b10-57d50b170b12"
+                                        }}
+                                    >
+                                    </Image>
                                 </TouchableOpacity>
 
-                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+                                <TouchableOpacity style={styles.recetteCard} onPress={() => {
                                     setMakePaymentPremium(true)
                                 }}>
-                                    <Text style={styles.abonnementText}>Premium</Text>
-                                    <Text style={styles.abonnementTextInner}>15€/mois</Text>
+                                    <Image
+                                        style={styles.imageCard}
+                                        source={{
+                                            uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
+                                        }}
+                                    >
+                                    </Image>
                                 </TouchableOpacity>
 
                                 <TouchableOpacity style={styles.abonnementCard} onPress={() => {
@@ -344,18 +401,28 @@ const GererAbonnementScreen = (props) => {
 
                             <ScrollView style={styles.scrollView}>
 
-                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+                                <TouchableOpacity style={styles.recetteCard} onPress={() => {
                                     setMakePaymentMuscu(true)
                                 }}>
-                                    <Text style={styles.abonnementText}>Préparation Physique</Text>
-                                    <Text style={styles.abonnementTextInner}>10€/mois</Text>
+                                    <Image
+                                        style={styles.imageCard}
+                                        source={{
+                                            uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
+                                        }}
+                                    >
+                                    </Image>
                                 </TouchableOpacity>
 
-                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
+                                <TouchableOpacity style={styles.recetteCard} onPress={() => {
                                     setMakePaymentPremium(true)
                                 }}>
-                                    <Text style={styles.abonnementText}>Premium</Text>
-                                    <Text style={styles.abonnementTextInner}>15€/mois</Text>
+                                    <Image
+                                        style={styles.imageCard}
+                                        source={{
+                                            uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
+                                        }}
+                                    >
+                                    </Image>
                                 </TouchableOpacity>
 
                                 <TouchableOpacity style={styles.abonnementCard} onPress={() => {
@@ -506,6 +573,25 @@ const styles = StyleSheet.create({
         fontSize: 25,
         color: 'white',
         textAlign: 'center',
+    },
+    recetteCard: {
+        width: windowWidth/1,
+        backgroundColor: 'white',
+        borderColor: 'lightgrey',
+        borderWidth: 2,
+        height: 180,
+        marginBottom: 3
+    },
+    imageCard: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        height: '100%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     scrollView: {
         height: '100%'

@@ -70,7 +70,7 @@ const RecettesScreen = ({navigation}) => {
 
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
-                                image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBurger%20Chicken%20Tenders.png?alt=media&token=9a14b1e8-1ed4-4d57-9d60-38510ae3f5da',
+                                image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FWrap%20Thon%20Fromage.png?alt=media&token=43f9dbe9-f62a-499c-b0bc-cd10c817e32a',
                                 ingredient1: '200g de thon',
                                 ingredient2: '1 cuillère à soupe de fromage blanc',
                                 ingredient3: '½ cuillère à café de romarin',
@@ -86,15 +86,14 @@ const RecettesScreen = ({navigation}) => {
                                 <Image
                                     style={styles.imageCard}
                                     source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBurger%20Chicken%20Tenders.png?alt=media&token=9a14b1e8-1ed4-4d57-9d60-38510ae3f5da"
+                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FWrap%20Thon%20Fromage%20large.png?alt=media&token=f2b11ad6-cf24-4552-b986-16af496bb49e"
                                     }}
                                 >
                                 </Image>
-                                <Text style={styles.abonnementFreeText}>Wraps salade thon</Text>
                             </TouchableOpacity>
 
                     <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
-                        image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBurger%20Chicken%20Tenders.png?alt=media&token=9a14b1e8-1ed4-4d57-9d60-38510ae3f5da',
+                        image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FWrap%20blanc%20de%20dinde.png?alt=media&token=7da9c12d-12e4-47ad-92fc-2fe29ff11c20',
                         ingredient1: '200g de blanc de dinde',
                         ingredient2: '1 cuillère à soupe de fromage blanc',
                         ingredient4: '2 tortilla de blé complet',
@@ -107,16 +106,15 @@ const RecettesScreen = ({navigation}) => {
                         <Image
                             style={styles.imageCard}
                             source={{
-                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBurger%20Chicken%20Tenders.png?alt=media&token=9a14b1e8-1ed4-4d57-9d60-38510ae3f5da"
+                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FWrap%20blanc%20de%20dinde%20large.png?alt=media&token=cc3b0fff-3602-4931-9289-97bf9231c172"
                             }}
                         >
                         </Image>
-                        <Text style={styles.abonnementFreeText}>Wrap blanc de dinde</Text>
                     </TouchableOpacity>
 
 
                     <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
-                                image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBurger%20Chicken%20Tenders.png?alt=media&token=9a14b1e8-1ed4-4d57-9d60-38510ae3f5da',
+                                image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FWrap%20Saumon.png?alt=media&token=4a1dda0e-80f4-470c-9bf0-66dfdb19bfdc',
                                 ingredient1: '200gr de saumon fumé',
                                 ingredient2: '2 tortilla de blé complet',
                                 ingredient3: '1 carré de fromage à tartiner',
@@ -129,11 +127,10 @@ const RecettesScreen = ({navigation}) => {
                                 <Image
                                     style={styles.imageCard}
                                     source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBurger%20Chicken%20Tenders.png?alt=media&token=9a14b1e8-1ed4-4d57-9d60-38510ae3f5da"
+                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2Fwrap%20saumon%20fromage%20large.png?alt=media&token=70771e8e-1eb7-445a-b04c-cc10743cb359"
                                     }}
                                 >
                                 </Image>
-                                <Text style={styles.abonnementFreeText}>Wrap saumon</Text>
                     </TouchableOpacity>
 
 
