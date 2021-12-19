@@ -14,6 +14,8 @@ import {
 import firebase from "firebase";
 import {useDispatch, useSelector} from "react-redux";
 import * as userActions from "../../store/actions/users";
+import * as DocumentPicker from 'expo-document-picker';
+import { WebView } from 'react-native-webview';
 
 const ClubScreen = ({navigation}) => {
 
@@ -38,6 +40,7 @@ const ClubScreen = ({navigation}) => {
 
     const userData = useSelector(state => state.user.currentUser)
 
+    console.log("data", userData)
     useEffect(() => {
         firebase.firestore()
             .collection('clubs')
@@ -127,16 +130,63 @@ const ClubScreen = ({navigation}) => {
         }
     };
 
+    // --- Upload file --- //
+    const [url, setUrl] = useState("");
+
+    const pickDocument = async () => {
+        let result = await DocumentPicker.getDocumentAsync({});
+        return result.uri
+    }
+
+    const uploadFile = async (uri) => {
+        const response = await fetch(uri);
+        const blob = await response.blob();
+
+        const task = firebase
+            .storage()
+            .ref()
+            .child(`licences/${firebase.auth().currentUser.uid}/${Math.random().toString(36)}`)
+            .put(blob)
+
+        const taskProgress = snapshot => {
+            console.log(`transferred: ${snapshot.bytesTransferred}`)
+        }
+
+        const taskCompleted = () => {
+            task.snapshot.ref.getDownloadURL().then((snapshot) => {
+                saveData(snapshot)
+                console.log(snapshot)
+            })
+        }
+
+        const taskError = snapshot => {
+            console.log(snapshot)
+        }
+
+        task.on("state_changed", taskProgress, taskError, taskCompleted)
+    }
+
+    const saveData = async (url) => {
+        await firebase.firestore()
+            .collection("users")
+            .doc(firebase.auth().currentUser.uid)
+            .update({
+                licence: url
+            })
+    }
+
+    const PdfReader = ({ url: uri }) => <WebView style={{ width: "90%", height: 250, marginVertical: 20, alignSelf: 'center'}} source={{ uri }} />
+
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            {userData.phoneClub ?
+            <ScrollView style={styles.container}>
             <KeyboardAvoidingView
                 style={styles.container}
                 behavior="height"
             >
-                <View style={styles.container}>
                     <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
-                        <ScrollView>
-                            {userData.phoneClub ? <View>
+                              <View>
                                 <Image
                                     style={styles.imageClub}
                                     source={{
@@ -152,7 +202,27 @@ const ClubScreen = ({navigation}) => {
                                 <TouchableOpacity style={styles.inscriptionButton} onPress={() => navigation.navigate('ChooseClubScreen')}>
                                     <Text style={styles.inscriptionText}>Changer de club</Text>
                                 </TouchableOpacity>
-                            </View> : <View>
+
+                                {userData.licence ?  <PdfReader url={userData.licence} /> :    <TouchableOpacity style={[styles.inscriptionButton, {marginBottom: 100}]} onPress={async () => {
+                                    await pickDocument().then((result) => uploadFile(result)).then(() => {
+                                        navigation.navigate("ConfirmationClubScreen", {option: "licence"})
+                                    })
+                                    console.log("url", url)
+                                }}>
+                                    <Text style={styles.inscriptionText}>Uploader ma licence</Text>
+                                </TouchableOpacity>}
+
+
+                            </View>
+                    </ImageBackground>
+            </KeyboardAvoidingView>
+            </ScrollView>:
+                <KeyboardAvoidingView
+                    style={styles.container}
+                    behavior="height"
+                >
+                    <View style={styles.container}>
+                        <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
                                 <TextInput
                                     style={styles.textInput}
                                     placeholder="Rechercher mon club"
@@ -190,18 +260,16 @@ const ClubScreen = ({navigation}) => {
 
                                     <TouchableOpacity style={styles.inscriptionButton} onPress={async() => {
                                         await saveClub(region, adresse, site, mail, phone, image)
-                                        navigation.navigate("ConfirmationClubScreen")
+                                        navigation.navigate("ConfirmationClubScreen", {option: "club"})
                                     }}>
                                         <Text style={styles.inscriptionText}>Sauvegarder mes données</Text>
                                     </TouchableOpacity>
-                                </View>  : <Text/>}
-                            </View> }
+                                </View> : <Text/>}
+                        </ImageBackground>
+                            </View>
+                    </KeyboardAvoidingView>
+              }
 
-
-                        </ScrollView>
-                    </ImageBackground>
-                </View>
-            </KeyboardAvoidingView>
         </TouchableWithoutFeedback>
     );
 };

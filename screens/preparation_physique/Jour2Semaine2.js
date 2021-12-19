@@ -57,6 +57,7 @@ const Jour2Semaine1 = () => {
                         <Text style={styles.difficultyText}>Band Triceps 3 ways</Text>
                     </View>
 
+
                 </View> : <Text/>}
 
                 {video1 ?        <View style={styles.videoContainer}>
@@ -91,6 +92,9 @@ const Jour2Semaine1 = () => {
                         <Text style={styles.difficultyText}>DL Drop Landing</Text>
                     </View>
 
+                    <View>
+                        <Text style={styles.difficultyText}>Séries : 3*6</Text>
+                    </View>
 
                 </View> : <Text/>}
 
@@ -129,6 +133,11 @@ const Jour2Semaine1 = () => {
                     </View>
 
 
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 211</Text>
+                        <Text style={styles.difficultyText}>Séries x répétitions : 3*8 par jambe</Text>
+                    </View>
+
                 </View> : <Text/>}
 
                 {video3 ?        <View style={styles.videoContainer}>
@@ -165,6 +174,11 @@ const Jour2Semaine1 = () => {
                         <Text style={styles.difficultyText}>Goblet box Squat</Text>
                     </View>
 
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 411</Text>
+                        <Text style={styles.difficultyText}>Séries x répétitions : 2*12 / 2*10</Text>
+                    </View>
+
                 </View> : <Text/>}
 
 
@@ -199,6 +213,10 @@ const Jour2Semaine1 = () => {
 
                     <View>
                         <Text style={styles.difficultyText}>Hip Bridge ISo</Text>
+                    </View>
+
+                    <View>
+                        <Text style={styles.difficultyText}>Séries x répétitions : 3*1 minute</Text>
                     </View>
 
                 </View> : <Text/>}

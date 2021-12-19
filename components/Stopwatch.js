@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Entypo } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import {
     SafeAreaView,
     StyleSheet,
@@ -49,6 +50,7 @@ const App = (props) => {
                     </TouchableHighlight>
                     */}
                 </View>
+                <Ionicons name="ios-refresh-circle" size={45} color="red" onPress={() => setResetStopwatch(true)}/>
             </View>
         </SafeAreaView>
     );

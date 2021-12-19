@@ -157,7 +157,7 @@ const ChooseClubScreen = ({navigation}) => {
 
                     <TouchableOpacity style={styles.inscriptionButton} onPress={async () => {
                         await saveClub(region, adresse, site, mail, phone, image)
-                        navigation.navigate("ConfirmationClubScreen")
+                        navigation.navigate("ConfirmationClubScreen", {option: "club"})
                     }}>
                         <Text style={styles.inscriptionText}>Sauvegarder mes données</Text>
                     </TouchableOpacity>

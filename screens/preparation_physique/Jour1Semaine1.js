@@ -33,7 +33,7 @@ const Jour1Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%201%2FAdductor%20PLank.mp4?alt=media&token=fcdc0259-571a-4eca-b642-73e4965e87d1"}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDL%20Calf%20Raise.mp4?alt=media&token=f9a15f57-8a6c-428a-9b12-a0716c8fedef"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -55,6 +55,10 @@ const Jour1Semaine1 = () => {
 
                     <View>
                         <Text style={styles.difficultyText}>Adductor Plank</Text>
+                    </View>
+
+                    <View>
+                        <Text style={styles.difficultyText}>Temps : 30s</Text>
                     </View>
 
                 </View> : <Text/>}
@@ -91,6 +95,10 @@ const Jour1Semaine1 = () => {
                         <Text style={styles.difficultyText}>Bank TKE</Text>
                     </View>
 
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 222</Text>
+                        <Text style={styles.difficultyText}>Séries : 2*15/  1*12 </Text>
+                    </View>
 
                 </View> : <Text/>}
 
@@ -236,6 +244,13 @@ const Jour1Semaine1 = () => {
                     <View>
                         <Text style={styles.difficultyText}>Int_Ext Iso 90° Flexion</Text>
                     </View>
+
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 121</Text>
+                        <Text style={styles.difficultyText}>Séries : 3*10 par bras</Text>
+                        <Text style={styles.difficultyText}>Articulation travaillée : Omoplates</Text>
+                    </View>
+
                 </View> : <Text/>}
 
 
@@ -316,7 +331,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         maxWidth: '90%',
         marginLeft: 15,
-        marginTop: 25,
+        marginTop: 10,
         color: 'white'
     },
     playButton: {

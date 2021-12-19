@@ -57,6 +57,10 @@ const Jour1Semaine2 = () => {
                         <Text style={styles.difficultyText}>Adductor Plank</Text>
                     </View>
 
+                    <View>
+                        <Text style={styles.difficultyText}>Temps : 30s</Text>
+                    </View>
+
                 </View> : <Text/>}
 
                 {video1 ?        <View style={styles.videoContainer}>
@@ -91,6 +95,10 @@ const Jour1Semaine2 = () => {
                         <Text style={styles.difficultyText}>Bank TKE</Text>
                     </View>
 
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 222</Text>
+                        <Text style={styles.difficultyText}>Séries : 2*15/  1*12 </Text>
+                    </View>
 
                 </View> : <Text/>}
 
@@ -236,6 +244,13 @@ const Jour1Semaine2 = () => {
                     <View>
                         <Text style={styles.difficultyText}>Int_Ext Iso 90° Flexion</Text>
                     </View>
+
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 121</Text>
+                        <Text style={styles.difficultyText}>Séries : 3*10 par bras</Text>
+                        <Text style={styles.difficultyText}>Articulation travaillée : Omoplates</Text>
+                    </View>
+
                 </View> : <Text/>}
 
 
@@ -316,7 +331,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         maxWidth: '90%',
         marginLeft: 15,
-        marginTop: 25,
+        marginTop: 10,
         color: 'white'
     },
     playButton: {

@@ -39,6 +39,7 @@ import Jour1Semaine2 from "../screens/preparation_physique/Jour1Semaine2";
 import JourSelectionScreen from "../screens/preparation_physique/JourSelectionScreen";
 import ChooseClubScreen from "../screens/club/ChooseClubScreen";
 import ConfirmationClubScreen from "../screens/club/ConfirmationClubScreen";
+import ChooseDaysScreen from "../screens/preparation_physique/ChooseDaysScreen";
 const AuthStackNavigator = createNativeStackNavigator();
 const ProfileStackNavigator = createNativeStackNavigator();
 const ProgressStackNavigator = createNativeStackNavigator();
@@ -211,6 +212,14 @@ const accueilNavigator = () => {
                 component={DrillScreen}
                 options={{
                     header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('AccueilScreen')}/>,
+                }}
+            />
+
+            <AccueilStackNavigator.Screen
+                name="ChooseDaysScreen"
+                component={ChooseDaysScreen}
+                options={{
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('MusculationScreen')}/>,
                 }}
             />
 

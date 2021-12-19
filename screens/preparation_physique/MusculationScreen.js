@@ -42,25 +42,9 @@ const MusculationScreen = ({navigation}) => {
                                 </TouchableOpacity>
                             }
 
-                            <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('MuscuVideoDay1')}>
+                            <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ChooseDaysScreen')}>
                                 <ImageBackground
-                                    source={require('../../assets/Day_1.png')}
-                                    style={styles.imageBackground}
-                                >
-                                </ImageBackground>
-                            </TouchableOpacity>
-
-                            <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('MuscuVideoDay2')}>
-                                <ImageBackground
-                                    source={require('../../assets/Day_2.png')}
-                                    style={styles.imageBackground}
-                                >
-                                </ImageBackground>
-                            </TouchableOpacity>
-
-                            <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('MuscuVideoDay3')}>
-                                <ImageBackground
-                                    source={require('../../assets/Day_3.png')}
+                                    source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FPoids%20du%20corps.png?alt=media&token=079bafe0-a252-4618-b87a-632cba2c69f5"}}
                                     style={styles.imageBackground}
                                 >
                                 </ImageBackground>

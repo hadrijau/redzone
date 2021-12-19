@@ -3,10 +3,15 @@ import {View, Text, ImageBackground, StyleSheet, TouchableOpacity} from 'react-n
 
 const ConfirmationClubScreen = (props) => {
 
+    const option = props.route.params.option
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
-                <Text style={styles.progressText}>Votre nouveau club a bien été sauvegardé ! </Text>
+                {option === "club" ?    <Text style={styles.progressText}>
+                    Votre nouveau club a bien été sauvegardé !
+                </Text> :    <Text style={styles.progressText}>
+                    Votre nouvelle licence a bien été sauvegardée !
+                </Text>}
                 <TouchableOpacity style={styles.disconnectButton} onPress={() => props.navigation.navigate('ClubScreen')}>
                     <Text style={styles.disconnectText}>Voir mon club</Text>
                 </TouchableOpacity>

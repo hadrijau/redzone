@@ -69,6 +69,7 @@ const SignupScreen = (props) => {
                                         adresseClub: '',
                                         siteClub: '',
                                         mailClub: '',
+                                        licence: '',
                                         phoneClub: '',
                                         imageClub: '',
                                         abonnement: 'free'

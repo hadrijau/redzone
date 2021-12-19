@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, TextInput, StyleSheet, ImageBackground, TouchableOpacity, Image, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard} from 'react-native';
 import {Formik} from "formik";
 import firebase from "firebase";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 const LoginScreen = ({navigation}) => {
 
@@ -19,16 +20,16 @@ const LoginScreen = ({navigation}) => {
                     <Formik
                         initialValues={initialValues}
                         onSubmit={async (values) => {
-                                console.log(values);
-                                try {
-                                    await firebase
-                                        .auth()
-                                        .signInWithEmailAndPassword(values.email, values.password);
-                                } catch (err) {
-                                    console.log(err);
-                                    setErr(err);
-                                }
-                            }}
+                            console.log(values);
+                            try {
+                                await firebase
+                                    .auth()
+                                    .signInWithEmailAndPassword(values.email, values.password);
+                            } catch (err) {
+                                console.log(err);
+                                setErr(err);
+                            }
+                        }}
                     >
                         {props => (
                             <View style={styles.formContainer}>
@@ -42,6 +43,7 @@ const LoginScreen = ({navigation}) => {
                                 <TextInput
                                     value={props.values.password}
                                     style={styles.textInput}
+                                    secureTextEntry={true}
                                     onChangeText={props.handleChange('password')}
                                 />
 
