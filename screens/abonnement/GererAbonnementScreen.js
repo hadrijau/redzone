@@ -62,26 +62,6 @@ const GererAbonnementScreen = (props) => {
             })
     }, []);
 
-    const desabonnement = async (props) => {
-        try {
-            const stripeResponse = await axios.post('https://roundpower.herokuapp.com/paymentdelete', {
-                subscriptionId : subscriptionId
-            })
-
-            if(stripeResponse){
-                const paid = stripeResponse.data.items.data[0].plan.active;
-                if(paid === true){
-                    await changeAbonnement('free')
-                    setPaymentStatus('ok').catch(err => console.log(err))
-                } else{
-                    setPaymentStatus('pas ok')
-                }
-                console.log(stripeResponse)
-
-            }} catch (error) {
-            console.log(error)
-        }
-    }
 
     const onCheckStatusMuscu = async (paymentResponse) => {
         setPaymentStatus('Votre paiement est en cours de traitement')
@@ -93,10 +73,10 @@ const GererAbonnementScreen = (props) => {
 
         try {
 
-            const stripeResponse = await axios.post('https://stopgene.herokuapp.com/payment', {
+            const stripeResponse = await axios.post('https://your-redzone.herokuapp.com/payment', {
                 email: userData.email,
                 authToken: jsonResponse,
-                planId: 'price_1Imf3rE4O07UQhcfasxQsjQA',
+                planId: 'price_1K8QEFH8PB1EJ6ZT9RhQsGkY',
             })
 
             console.log('TSRIPE RESPONSE', stripeResponse)
@@ -135,10 +115,10 @@ const GererAbonnementScreen = (props) => {
 
         try {
 
-            const stripeResponse = await axios.post('https://stopgene.herokuapp.com/payment', {
+            const stripeResponse = await axios.post('https://your-redzone.herokuapp.com/payment', {
                 email: userData.email,
                 authToken: jsonResponse,
-                planId: 'price_1Imf3rE4O07UQhcfasxQsjQA',
+                planId: 'price_1K8QEWH8PB1EJ6ZTSR1E2pKL',
             })
 
             console.log('TSRIPE RESPONSE', stripeResponse)
@@ -177,10 +157,10 @@ const GererAbonnementScreen = (props) => {
 
         try {
 
-            const stripeResponse = await axios.post('https://stopgene.herokuapp.com/payment', {
+            const stripeResponse = await axios.post('https://your-redzone.herokuapp.com/payment', {
                 email: userData.email,
                 authToken: jsonResponse,
-                planId: 'price_1Imf4HE4O07UQhcfRSK3AcP6',
+                planId: 'price_1K8QEiH8PB1EJ6ZTJcVHE61Z',
             })
 
             console.log('TSRIPE RESPONSE', stripeResponse)
@@ -380,11 +360,6 @@ const GererAbonnementScreen = (props) => {
                                     </Image>
                                 </TouchableOpacity>
 
-                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
-                                    setMakePaymentDrill(true)
-                                }}>
-                                    <Text style={styles.abonnementText}>Se désabonner</Text>
-                                </TouchableOpacity>
 
                             </ScrollView>
                         </ImageBackground>
@@ -508,7 +483,7 @@ const GererAbonnementScreen = (props) => {
                 </View>
 
             }else{
-                return <PaymentView onCheckStatus={onCheckStatusDrill} product={"Abonnement Drill"} amount={10}/>
+                return <PaymentView onCheckStatus={onCheckStatusDrill} product={"Abonnement Drill"} amount={15}/>
             }
         }
 
@@ -536,7 +511,7 @@ const GererAbonnementScreen = (props) => {
                 </View>
 
             }else{
-                return <PaymentView onCheckStatus={onCheckStatusPremium} product={"Abonnement Premium"} amount={15}/>
+                return <PaymentView onCheckStatus={onCheckStatusPremium} product={"Abonnement Premium"} amount={20}/>
             }
         }
 

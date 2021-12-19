@@ -40,7 +40,6 @@ const EntraineurPersonnelScreen = () => {
                                     IBAN: values.email,
                                     BIC: values.message,
                                 });
-
                             }}
                         >
                             {props => (

@@ -8,12 +8,14 @@ import {View,
     SafeAreaView,
     TouchableWithoutFeedback,
     Keyboard,
-    Modal
+    Modal,
+    Image
 } from 'react-native';
 import {Formik} from "formik";
 import * as Yup from 'yup';
 import Picker from "../../components/Picker";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import { useTranslation } from "react-i18next";
 
 const InformationsScreen = (props) => {
 
@@ -68,6 +70,8 @@ const InformationsScreen = (props) => {
     const [errorSexe, setErrorSexe] = useState(false);
     const [errorPoste, setErrorPoste] = useState(false);
 
+    const { i18n, t } = useTranslation();
+
     return (
         <SafeAreaView style={styles.container}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -77,10 +81,20 @@ const InformationsScreen = (props) => {
                 <View style={styles.container}>
                     <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
                         <Text style={styles.inscriptionBigText}>Informations</Text>
+
+                        <View style={styles.flagContainer}>
+                            <TouchableOpacity onPress={() => i18n.changeLanguage("fr")}>
+                                <Image source={require('../../assets/flag-fr.png')} style={styles.flag}/>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity onPress={() => i18n.changeLanguage("en")}>
+                                <Image source={require('../../assets/flag-en.jpg')} style={styles.flag}/>
+                            </TouchableOpacity>
+                        </View>
                         <View style={{display: 'flex', flexDirection: 'row', alignSelf: 'center', marginVertical: 10}}>
-                            <Text style={styles.alreadyAccount}>Déjà un compte ? </Text>
+                            <Text style={styles.alreadyAccount}>{`${t("account")}`}</Text>
                             <TouchableOpacity onPress={() => props.navigation.navigate('LoginScreen')}>
-                                <Text style={styles.connect}>Se connecter</Text>
+                                <Text style={styles.connect}>{`${t("connect")}`}</Text>
                             </TouchableOpacity>
                         </View>
                         <Formik
@@ -408,6 +422,16 @@ const styles = StyleSheet.create({
     connect: {
         color: 'red',
         fontSize: 20
+    },
+    flagContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        marginVertical: 20,
+        justifyContent: 'space-around'
+    },
+    flag: {
+        height: 50,
+        width: 100
     }
 });
 

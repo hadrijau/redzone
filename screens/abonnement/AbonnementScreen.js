@@ -48,10 +48,10 @@ const AbonnementScreen = (props) => {
 
         try {
 
-            const stripeResponse = await axios.post('https://stopgene.herokuapp.com/payment', {
+            const stripeResponse = await axios.post('https://your-redzone.herokuapp.com/payment', {
                 email: userData.email,
                 authToken: jsonResponse,
-                planId: 'price_1Imf3rE4O07UQhcfasxQsjQA',
+                planId: 'price_1K8QEFH8PB1EJ6ZT9RhQsGkY',
             })
 
             console.log('TSRIPE RESPONSE', stripeResponse)
@@ -90,10 +90,10 @@ const AbonnementScreen = (props) => {
 
         try {
 
-            const stripeResponse = await axios.post('https://stopgene.herokuapp.com/payment', {
+            const stripeResponse = await axios.post('https://your-redzone.herokuapp.com/payment', {
                 email: userData.email,
                 authToken: jsonResponse,
-                planId: 'price_1Imf3rE4O07UQhcfasxQsjQA',
+                planId: 'price_1K8QEWH8PB1EJ6ZTSR1E2pKL',
             })
 
             console.log('TSRIPE RESPONSE', stripeResponse)
@@ -132,10 +132,10 @@ const AbonnementScreen = (props) => {
 
         try {
 
-            const stripeResponse = await axios.post('https://stopgene.herokuapp.com/payment', {
+            const stripeResponse = await axios.post('https://your-redzone.herokuapp.com/payment', {
                 email: userData.email,
                 authToken: jsonResponse,
-                planId: 'price_1Imf4HE4O07UQhcfRSK3AcP6',
+                planId: 'price_1K8QEiH8PB1EJ6ZTJcVHE61Z',
             })
 
             console.log('TSRIPE RESPONSE', stripeResponse)
