@@ -27,7 +27,7 @@ const MusculationScreen = ({navigation}) => {
                                     entrainement: "muscu"
                                 })}>
                                     <ImageBackground
-                                        source={require('../../assets/preparation_physique.png')}
+                                        source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F6%5B1%5D.png?alt=media&token=0269fc0c-47b6-4410-a364-b5e07fed7efd"}}
                                         style={styles.imageBackground}
                                     >
                                     </ImageBackground>

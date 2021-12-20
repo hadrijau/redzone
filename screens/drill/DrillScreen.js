@@ -44,7 +44,7 @@ const DrillScreen = ({navigation}) => {
                             <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ViewVideoScreen')}>
                                 <ImageBackground
                                     source={{
-                                        uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/image%20dossier%2FAgility%20drill.png?alt=media&token=2857c33f-09d3-4c79-ab79-c870374987a0'
+                                        uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F3%5B1%5D.png?alt=media&token=a57b41d0-80e5-4ebd-86f0-5c4abfa997d5'
                                     }}
                                     style={styles.imageBackground}
                                 >

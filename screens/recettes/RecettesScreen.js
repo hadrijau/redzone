@@ -17,7 +17,7 @@ const RecettesScreen = ({navigation}) => {
 
                             <TouchableOpacity onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 name: 'Toast d\'avocat',
-                                image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FToast%20Avocat%20Oeuf.png?alt=media&token=876236cc-956e-4f8a-9506-db8e24f22f10',
+                                image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FToast%20avocat%20oeuf.png?alt=media&token=663f2eaa-82ac-4bae-a6f3-4d77cabdda41',
                                 ingredient1: '1 œuf',
                                 ingredient2: '60g de pain complet',
                                 ingredient3: '½ avocat',
@@ -32,7 +32,7 @@ const RecettesScreen = ({navigation}) => {
                             </TouchableOpacity>
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
-                                image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FAvocat%20Oeuf%20Saumon.jpg?alt=media&token=68e895fa-8c21-4729-b9e8-11b5872ea969',
+                                image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FAvocat%20oeuf%20saumon.png?alt=media&token=62fea7fc-5a23-425d-88ba-e899b2d04b42',
                                 ingredient1: '2 œufs',
                                 ingredient2: '1 avocat',
                                 ingredient3: '2 tranches de saumon fumé',
@@ -155,7 +155,7 @@ const RecettesScreen = ({navigation}) => {
                             </TouchableOpacity>
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
-                                image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBagel%20au%20Saumon.jpg?alt=media&token=4046dc58-edcd-4d57-a8b3-9f4ccbc20d51',
+                                image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FBagel%20saumon.png?alt=media&token=58342f30-b1e0-4992-8ac2-10ff4f57dce4',
                                 ingredient1: '1 oeuf',
                                 ingredient2: '1 bagel',
                                 ingredient3: '1 carré de fromage frais',
@@ -172,7 +172,7 @@ const RecettesScreen = ({navigation}) => {
 
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
-                                image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBagel%20au%20Thon.jpg?alt=media&token=0bf61b42-eb72-46f0-87fc-f0d251a15b76',
+                                image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FBagel%20Thon.png?alt=media&token=0a280a48-d4fa-4d2b-a43a-d51d1c033734",
                                 ingredient1: '1 oeuf',
                                 ingredient2: '1 bagel',
                                 ingredient3: '1 carré de fromage frais',
@@ -194,7 +194,7 @@ const RecettesScreen = ({navigation}) => {
 
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
-                                image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FSalade%20Ch%C3%A8vre%20Chaud.png?alt=media&token=4b93846c-5aea-4e90-82b0-d8129093d350',
+                                image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FSalade%20Ch%C3%A8vre%20Chaud.png?alt=media&token=48d0e33e-4eb7-4e78-bee6-4ce208d68a51',
                                 ingredient1: 'Feuilles de salade',
                                 ingredient2: 'Dés de jambon de dinde',
                                 ingredient3: 'Tranche de pain',
@@ -218,7 +218,7 @@ const RecettesScreen = ({navigation}) => {
 
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
-                                image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FQuiche%20thon%20champignon.png?alt=media&token=5d29bb42-45e7-4797-8328-073ba69fd8f2',
+                                image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FQuiche%20thon%20champignon.png?alt=media&token=72d231c0-7265-4c75-93cc-e5ff6ed2a3f0",
                                 ingredient1: '1 pâte à quiche',
                                 ingredient2: '150g de thon',
                                 ingredient3: '150g de champignons de Paris',
@@ -240,7 +240,7 @@ const RecettesScreen = ({navigation}) => {
 
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
-                                image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FNuggets.png?alt=media&token=9b8ddbe0-7ece-4925-9575-1ffc8a05f7fc',
+                                image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FNuggets.png?alt=media&token=75c0a1f9-7809-4170-a588-291e7b0d8d06",
                                 ingredient1: "3 blancs d'oeuf",
                                 ingredient2: '50g de corn-flakes',
                                 ingredient3: '260g de filet de poulet',
@@ -262,7 +262,7 @@ const RecettesScreen = ({navigation}) => {
                             </TouchableOpacity>
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
-                                image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FChicken%20Tenders.png?alt=media&token=5e4a6ebd-3b75-4dd8-b092-1b558f4d2f59",
+                                image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FPoulet%20tenders.png?alt=media&token=37ab14af-5f38-432d-8003-64400adf7835",
                                 ingredient1: "2 blancs de poulet",
                                 ingredient2: '1 oeuf',
                                 ingredient3: '150g de corn flakes natures',
@@ -310,7 +310,7 @@ const RecettesScreen = ({navigation}) => {
                     </TouchableOpacity>
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
-                                image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBurger%20Chicken%20Tenders.png?alt=media&token=9a14b1e8-1ed4-4d57-9d60-38510ae3f5da",
+                                image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FBurger%20poulet%20tenders.png?alt=media&token=f261994c-e973-4878-8f0c-600307f56eb4",
                                 ingredient1: "170g de filet de poulet",
                                 ingredient2: "Salade verte",
                                 ingredient3: "65g à 85g de pain burger au blé complet",
@@ -329,7 +329,7 @@ const RecettesScreen = ({navigation}) => {
                             </TouchableOpacity>
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
-                                image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FPoke%20Bowl%20Poulet%20Avocat-Melon.png?alt=media&token=b343da6d-7e4f-43d1-bfb4-2ddeac830535",
+                                image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FPoke%20bowl%20poulet%20avocat%20saumon.png?alt=media&token=7fb2ecf5-9e89-401b-9fd4-7c23ffe29120",
                                 ingredient1: "1 filet de poulet",
                                 ingredient2: "2 cuillières à soupe de sauce soja",
                                 ingredient3: "Graines de sésame",
@@ -351,7 +351,7 @@ const RecettesScreen = ({navigation}) => {
 
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
-                                image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FPoke%20Bowl%20Poulet%20Avocat-Melon.png?alt=media&token=b343da6d-7e4f-43d1-bfb4-2ddeac830535",
+                                image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FFrite%20patate%20douce.png?alt=media&token=164edc23-4d4b-43ba-98eb-efa0fdcbdeac",
                                 ingredient1: "1 patate douce",
                                 ingredient2: "2 cuillère à soupe d'huile d'olive",
                                 ingredient3: "1 cuillère à soupe de romarin",

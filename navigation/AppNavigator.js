@@ -40,6 +40,7 @@ import JourSelectionScreen from "../screens/preparation_physique/JourSelectionSc
 import ChooseClubScreen from "../screens/club/ChooseClubScreen";
 import ConfirmationClubScreen from "../screens/club/ConfirmationClubScreen";
 import ChooseDaysScreen from "../screens/preparation_physique/ChooseDaysScreen";
+import CalendrierScreen from "../screens/fffa/CalendrierScreen";
 const AuthStackNavigator = createNativeStackNavigator();
 const ProfileStackNavigator = createNativeStackNavigator();
 const ProgressStackNavigator = createNativeStackNavigator();
@@ -202,6 +203,13 @@ const accueilNavigator = () => {
             <AccueilStackNavigator.Screen
                 name="MusculationScreen"
                 component={MusculationScreen}
+                options={{
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('AccueilScreen')}/>,
+                }}
+            />
+            <AccueilStackNavigator.Screen
+                name="CalendrierScreen"
+                component={CalendrierScreen}
                 options={{
                     header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('AccueilScreen')}/>,
                 }}

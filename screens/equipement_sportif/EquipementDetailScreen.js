@@ -27,6 +27,9 @@ const EquipementDetailScreen = ({navigation, route}) => {
     const description10 = route.params?.description10
     const description11 = route.params?.description11
     const description12 = route.params?.description12
+    const description13 = route.params?.description13
+    const description14 = route.params?.description14
+    const description15 = route.params?.description15
 
     const lien = route.params.lien
     const prix = route.params.prix
@@ -77,6 +80,12 @@ const EquipementDetailScreen = ({navigation, route}) => {
                             {description11 &&                             <Text style={styles.ingredientText}>{description11}</Text>
                             }
                             {description12 &&                             <Text style={styles.ingredientText}>{description12}</Text>
+                            }
+                            {description13 &&                             <Text style={styles.ingredientText}>{description13}</Text>
+                            }
+                            {description14 &&                             <Text style={styles.ingredientText}>{description14}</Text>
+                            }
+                            {description15 &&                             <Text style={styles.ingredientText}>{description15}</Text>
                             }
                         </View>
 

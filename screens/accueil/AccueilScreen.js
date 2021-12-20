@@ -59,7 +59,7 @@ const AccueilScreen = ({navigation}) => {
                         <Text style={styles.abonnementFreeText}>Mes progrès</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.accueilCard}>
+                    <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('CalendrierScreen')}>
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/logo_FFFA.jpg')} style={styles.imageCard}/>
                         </View>

@@ -283,7 +283,7 @@ const EquipementSportifScreen = ({navigation}) => {
                                 description1 : "Gourde gatorade squeeze / ne coule pas, modèle identique au modèle NFL et NCAA",
                                 description2: "Contenance d'environ 1L",
                                 description3: "Code d'achat ( en remplacement du code promo ): YRZ23",
-                                lien : 'https://sportuscompany.com/produit/gourde-gatorade-gx/',
+                                lien : 'https://sportuscompany.com/produit/gourde-gatorade-squeeze/',
                                 prix : 15,
                                 titre : 'GOURDE GATORADE',
                                 image : "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/catalogue%20SportUs%20Compagny%2Fgourde%20gatorade%20squeeze.jpg?alt=media&token=61102e77-0211-41c6-9ee2-9a9e20d62873"
@@ -378,7 +378,7 @@ const EquipementSportifScreen = ({navigation}) => {
                                 description11: "1 sachet de 6 gallon vous offrira 23 gourde\n" +
                                     "à raison d une gourde par training soit 12 semaines /3 mois d entraînement !!\n",
                                 description12: "Code d'achat ( en remplacement du code promo ): YRZ23",
-                                lien : 'https://sportuscompany.com/produit/pods-gx-gatorade/',
+                                lien : 'https://sportuscompany.com/produit/gatorade-sachet-6-gallon/',
                                 prix : 40,
                                 titre : 'GATORADE SACHET',
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/catalogue%20SportUs%20Compagny%2Fgatorade%20sachet%206%20gallon.jpg?alt=media&token=aff5c1d3-a176-4b1c-804f-a6625dcfc350"
@@ -401,7 +401,7 @@ const EquipementSportifScreen = ({navigation}) => {
                                 description8: "- FRUIT PUNCH",
                                 description9: "- GLACIER FREEZE",
                                 description10: "PRODUIT SUR COMMANDE AVEC UN DELAI D’ATTENTE DE 2 SEMAINES MINIMUM",
-                                lien : 'https://sportuscompany.com/produit/nike-socks-vapor-crew-2-0/',
+                                lien : 'https://sportuscompany.com/produit/pods-gx-gatorade/',
                                 prix : 12,
                                 titre : 'PODS GX GATORADE',
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/catalogue%20SportUs%20Compagny%2Fpods%20GX%20gatorade.jpeg?alt=media&token=dacc4878-ed81-4d9b-8005-d8cb0defe1ad"
