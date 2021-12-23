@@ -16,6 +16,7 @@ import * as Yup from 'yup';
 import Picker from "../../components/Picker";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import { useTranslation } from "react-i18next";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const InformationsScreen = (props) => {
 
@@ -30,7 +31,7 @@ const InformationsScreen = (props) => {
         nom: '',
         prenom: ''
     }
-
+    const { i18n, t } = useTranslation();
     const InformationsSchema = Yup.object().shape({
         phone: Yup.string()
             .required('Ce champ est requis'),
@@ -46,8 +47,8 @@ const InformationsScreen = (props) => {
             .required('Ce champ est requis'),
     });
 
-    const [sexe, setSexe] = useState('Choisir');
-    const [poste, setPoste] = useState('Choisir');
+    const [sexe, setSexe] = useState(`${t("choisir")}`);
+    const [poste, setPoste] = useState(`${t("choisir")}`);
     const [isModalSexeVisible, setIsModalSexeVisible] = useState(false);
     const [isModalPosteVisible, setIsModalPosteVisible] = useState(false);
 
@@ -70,7 +71,8 @@ const InformationsScreen = (props) => {
     const [errorSexe, setErrorSexe] = useState(false);
     const [errorPoste, setErrorPoste] = useState(false);
 
-    const { i18n, t } = useTranslation();
+
+
 
     return (
         <SafeAreaView style={styles.container}>
@@ -83,11 +85,15 @@ const InformationsScreen = (props) => {
                         <Text style={styles.inscriptionBigText}>Informations</Text>
 
                         <View style={styles.flagContainer}>
-                            <TouchableOpacity onPress={() => i18n.changeLanguage("fr")}>
+                            <TouchableOpacity onPress={() => {
+                                i18n.changeLanguage("fr").then(() =>  AsyncStorage.setItem("lang", "fr"));
+                            }}>
                                 <Image source={require('../../assets/flag-fr.png')} style={styles.flag}/>
                             </TouchableOpacity>
 
-                            <TouchableOpacity onPress={() => i18n.changeLanguage("en")}>
+                            <TouchableOpacity onPress={() => {
+                                i18n.changeLanguage("en").then(() =>  AsyncStorage.setItem("lang", "en"));
+                            }}>
                                 <Image source={require('../../assets/flag-en.jpg')} style={styles.flag}/>
                             </TouchableOpacity>
                         </View>
@@ -122,7 +128,7 @@ const InformationsScreen = (props) => {
                                 <View style={styles.formContainer}>
                                     <View style={styles.inscriptionInnerForm}>
                                         <View style={styles.textInscriptionContainer}>
-                                            <Text style={styles.label}>Nom</Text>
+                                            <Text style={styles.label}>{`${t("nom")}`}</Text>
                                         </View>
                                         <View style={styles.inputContainer}>
                                             <TextInput
@@ -138,7 +144,7 @@ const InformationsScreen = (props) => {
 
                                     <View style={styles.inscriptionInnerForm}>
                                         <View style={styles.textInscriptionContainer}>
-                                            <Text style={styles.label}>Prénom</Text>
+                                            <Text style={styles.label}>{`${t("prenom")}`}</Text>
                                         </View>
                                         <View style={styles.inputContainer}>
                                             <TextInput
@@ -155,7 +161,7 @@ const InformationsScreen = (props) => {
 
                                     <View style={styles.inscriptionInnerForm}>
                                         <View style={styles.textInscriptionContainer}>
-                                            <Text style={styles.label}>Téléphone</Text>
+                                            <Text style={styles.label}>{`${t("phone")}`}</Text>
                                         </View>
                                         <View style={styles.inputContainer}>
                                             <TextInput
@@ -173,7 +179,7 @@ const InformationsScreen = (props) => {
 
                                     <View style={styles.inscriptionInnerForm}>
                                         <View style={styles.textInscriptionContainer}>
-                                            <Text style={styles.label}>Age</Text>
+                                            <Text style={styles.label}>{`${t("age")}`}</Text>
                                         </View>
                                         <View style={styles.inputContainer}>
                                             <TextInput
@@ -191,7 +197,7 @@ const InformationsScreen = (props) => {
 
                                     <View style={styles.inscriptionInnerForm}>
                                         <View style={styles.textInscriptionContainer}>
-                                            <Text style={styles.label}>Sexe</Text>
+                                            <Text style={styles.label}>{`${t("sexe")}`}</Text>
                                         </View>
                                         <TouchableOpacity
                                             style={styles.inputContainer}
@@ -209,17 +215,17 @@ const InformationsScreen = (props) => {
                                         <Picker
                                             changeModalVisibility={changeModalSexeVisibility}
                                             setData={setDataSexe}
-                                            options={['Homme', 'Femme']}
+                                            options={[`${t("homme")}`, `${t("femme")}`]}
                                         />
                                     </Modal>
 
                                     {errorSexe ? (
-                                        <Text style={styles.errors}>Veuillez remplir ce champ</Text>
+                                        <Text style={styles.errors}>{`${t("remplir")}`}</Text>
                                     ) : null}
 
                                     <View style={styles.inscriptionInnerForm}>
                                         <View style={styles.textInscriptionContainer}>
-                                            <Text style={styles.label}>Poids</Text>
+                                            <Text style={styles.label}>{`${t("poids")}`}</Text>
                                         </View>
                                         <View style={styles.poidsContainer}>
                                             <TextInput
@@ -240,7 +246,7 @@ const InformationsScreen = (props) => {
 
                                     <View style={styles.inscriptionInnerForm}>
                                         <View style={styles.textInscriptionContainer}>
-                                            <Text style={styles.label}>Taille</Text>
+                                            <Text style={styles.label}>{`${t("taille")}`}</Text>
                                         </View>
                                         <View style={styles.poidsContainer}>
                                             <TextInput
@@ -262,7 +268,7 @@ const InformationsScreen = (props) => {
 
                                     <View style={styles.inscriptionInnerForm}>
                                         <View style={styles.textInscriptionContainer}>
-                                            <Text style={styles.label}>Poste</Text>
+                                            <Text style={styles.label}>{`${t("poste")}`}</Text>
                                         </View>
                                         <TouchableOpacity
                                             style={styles.inputContainer}
@@ -285,11 +291,11 @@ const InformationsScreen = (props) => {
                                     </Modal>
 
                                     {errorPoste ? (
-                                        <Text style={styles.errors}>Veuillez remplir ce champ</Text>
+                                        <Text style={styles.errors}>{`${t("remplir")}`}</Text>
                                     ) : null}
 
                                     <TouchableOpacity style={styles.inscriptionButton} onPress={props.handleSubmit}>
-                                        <Text style={styles.inscriptionText}>Suivant</Text>
+                                        <Text style={styles.inscriptionText}>{`${t("suivant")}`}</Text>
                                     </TouchableOpacity>
 
 

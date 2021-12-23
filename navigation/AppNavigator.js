@@ -41,6 +41,7 @@ import ChooseClubScreen from "../screens/club/ChooseClubScreen";
 import ConfirmationClubScreen from "../screens/club/ConfirmationClubScreen";
 import ChooseDaysScreen from "../screens/preparation_physique/ChooseDaysScreen";
 import CalendrierScreen from "../screens/fffa/CalendrierScreen";
+import NutritionDetailScreen from "../screens/nutrition_sportive/NutritionDetailScreen";
 const AuthStackNavigator = createNativeStackNavigator();
 const ProfileStackNavigator = createNativeStackNavigator();
 const ProgressStackNavigator = createNativeStackNavigator();
@@ -205,6 +206,13 @@ const accueilNavigator = () => {
                 component={MusculationScreen}
                 options={{
                     header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('AccueilScreen')}/>,
+                }}
+            />
+            <AccueilStackNavigator.Screen
+                name="NutritionDetailScreen"
+                component={NutritionDetailScreen}
+                options={{
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('NutritionDetailScreen')}/>,
                 }}
             />
             <AccueilStackNavigator.Screen

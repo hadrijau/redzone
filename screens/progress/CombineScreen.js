@@ -14,6 +14,7 @@ import {Video} from "expo-av";
 import {Formik} from "formik";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import firebase from "firebase";
+import {useTranslation} from "react-i18next";
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -39,7 +40,7 @@ const CombineScreen = (props) => {
                 Shuttle: firebase.firestore.FieldValue.arrayUnion(value3)
             })
     }
-
+    const { i18n, t } = useTranslation();
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <KeyboardAwareScrollView
@@ -127,7 +128,7 @@ const CombineScreen = (props) => {
                                 </View>
 
                                 <TouchableOpacity style={styles.disconnectButton} onPress={() => props.handleSubmit()}>
-                                    <Text style={styles.disconnectText}>Sauvegarder mes résultats</Text>
+                                    <Text style={styles.disconnectText}>{t("sauvegarder")}</Text>
                                 </TouchableOpacity>
 
                             </View>

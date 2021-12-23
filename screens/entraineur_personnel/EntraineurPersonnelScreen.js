@@ -2,6 +2,7 @@ import React from 'react';
 import {ImageBackground, ScrollView, Text, TouchableOpacity, View, StyleSheet, Image, TextInput} from "react-native";
 import {Formik} from "formik";
 import axios from 'axios';
+import {useTranslation} from "react-i18next";
 
 const EntraineurPersonnelScreen = () => {
 
@@ -12,6 +13,7 @@ const EntraineurPersonnelScreen = () => {
         message: ''
     }
 
+    const { i18n, t } = useTranslation();
     return (
             <View style={styles.container}>
 
@@ -21,15 +23,7 @@ const EntraineurPersonnelScreen = () => {
 
                     <Image source={require('../../assets/photo_coach.jpg')} style={styles.img}/>
 
-                    <Text style={styles.presentation}>Après sa carrière dans le football américain et ayant fait ses études dans la préparation physique, Arnaud est parti aux USA pour augmenter son savoir dans ce domaine.
-
-                        Il effectue un séjour de 4 ans à Miami. Pendant celui-ci, il a eu la chance d’évoluer auprès de ce qui se fait de mieux dans notre sport. Il prépare des joueurs NFL, Superbowl Champs et Pro Bowler. il fais aussi la préparation de joueurs universitaire pour la Draft.
-                        Il travaille aussi dans les 2 plus grosses Universités de la ville: Miami Hurricanes et Florida International Univesity.
-
-                        Maintenant en France, Arnaud veux partager son expérience et aider le maximum de joueurs à atteindre leurs objectifs.
-
-
-                    </Text>
+                    <Text style={styles.presentation}>{t("Entraineur1")}</Text>
                     <Text style={[styles.presentation, styles.marginBottom]}>Train Like A Pro</Text>
 
                     <View>
@@ -46,7 +40,7 @@ const EntraineurPersonnelScreen = () => {
                                 <View>
                                     <View style={styles.formContainer}>
                                         <View style={styles.inscriptionInnerForm}>
-                                                <Text style={styles.label}>Nom :</Text>
+                                                <Text style={styles.label}>{t("nom")}</Text>
                                             <View style={styles.inputContainer}>
                                                 <TextInput
                                                     value={props.values.nom}
@@ -61,7 +55,7 @@ const EntraineurPersonnelScreen = () => {
                                         ) : null}
 
                                         <View style={styles.inscriptionInnerForm}>
-                                                <Text style={styles.label}>Email :</Text>
+                                                <Text style={styles.label}>{t("mail")}</Text>
                                             <View style={styles.inputContainer}>
                                                 <TextInput
                                                     value={props.values.email}
@@ -76,7 +70,7 @@ const EntraineurPersonnelScreen = () => {
                                         ) : null}
 
                                         <View style={styles.inscriptionInnerForm}>
-                                                <Text style={styles.label}>Sujet :</Text>
+                                                <Text style={styles.label}>{t("sujet")}</Text>
                                             <View style={styles.inputContainer}>
                                                 <TextInput
                                                     value={props.values.sujet}
@@ -105,7 +99,7 @@ const EntraineurPersonnelScreen = () => {
 
 
                                         <TouchableOpacity style={styles.inscriptionButton} onPress={props.handleSubmit}>
-                                            <Text style={styles.inscriptionText}>Envoyer la demande</Text>
+                                            <Text style={styles.inscriptionText}>{t("demande")}</Text>
                                         </TouchableOpacity>
 
 

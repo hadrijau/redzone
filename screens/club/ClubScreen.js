@@ -16,6 +16,7 @@ import {useDispatch, useSelector} from "react-redux";
 import * as userActions from "../../store/actions/users";
 import * as DocumentPicker from 'expo-document-picker';
 import { WebView } from 'react-native-webview';
+import {useTranslation} from "react-i18next";
 
 const ClubScreen = ({navigation}) => {
 
@@ -174,7 +175,7 @@ const ClubScreen = ({navigation}) => {
                 licence: url
             })
     }
-
+    const { i18n, t } = useTranslation();
     const PdfReader = ({ url: uri }) => <WebView style={{ width: "90%", height: 250, marginVertical: 20, alignSelf: 'center'}} source={{ uri }} />
 
     return (
@@ -192,15 +193,15 @@ const ClubScreen = ({navigation}) => {
                                     source={{
                                         uri: userData.imageClub ? userData.imageClub : image
                                     }}/>
-                                <Text style={styles.infoClub}>Région : {userData.regionClub ? userData.regionClub : region}</Text>
-                                <Text style={styles.infoClub}>Adresse : {userData.adresseClub ? userData.adresseClub : adresse}</Text>
-                                <Text style={styles.infoClub}>Site : {userData.siteClub ? userData.siteClub : site}</Text>
-                                <Text style={styles.infoClub}>Mail : {userData.mailClub ? userData.mailClub : mail}</Text>
-                                <Text style={styles.infoClub}>Téléphone : {userData.phoneClub ? userData.phoneClub : phone}</Text>
+                                <Text style={styles.infoClub}>{`${t("region")}`} : {userData.regionClub ? userData.regionClub : region}</Text>
+                                <Text style={styles.infoClub}>{`${t("adress")}`} : {userData.adresseClub ? userData.adresseClub : adresse}</Text>
+                                <Text style={styles.infoClub}>{`${t("site")}`} : {userData.siteClub ? userData.siteClub : site}</Text>
+                                <Text style={styles.infoClub}>{`${t("mail")}`} : {userData.mailClub ? userData.mailClub : mail}</Text>
+                                <Text style={styles.infoClub}>{`${t("phone")}`} : {userData.phoneClub ? userData.phoneClub : phone}</Text>
 
 
                                 <TouchableOpacity style={styles.inscriptionButton} onPress={() => navigation.navigate('ChooseClubScreen')}>
-                                    <Text style={styles.inscriptionText}>Changer de club</Text>
+                                    <Text style={styles.inscriptionText}>{t("changeClub")}</Text>
                                 </TouchableOpacity>
 
                                 {userData.licence ?  <PdfReader url={userData.licence} /> :    <TouchableOpacity style={[styles.inscriptionButton, {marginBottom: 100}]} onPress={async () => {
@@ -209,7 +210,7 @@ const ClubScreen = ({navigation}) => {
                                     })
                                     console.log("url", url)
                                 }}>
-                                    <Text style={styles.inscriptionText}>Uploader ma licence</Text>
+                                    <Text style={styles.inscriptionText}>{t("licence")}</Text>
                                 </TouchableOpacity>}
 
 
@@ -251,18 +252,18 @@ const ClubScreen = ({navigation}) => {
                                         source={{
                                             uri: userData.imageClub ? userData.imageClub : image
                                         }}/>
-                                    <Text style={styles.infoClub}>Région : {userData.regionClub ? userData.regionClub : region}</Text>
-                                    <Text style={styles.infoClub}>Adresse : {userData.adresseClub ? userData.adresseClub : adresse}</Text>
-                                    <Text style={styles.infoClub}>Site : {userData.siteClub ? userData.siteClub : site}</Text>
-                                    <Text style={styles.infoClub}>Mail : {userData.mailClub ? userData.mailClub : mail}</Text>
-                                    <Text style={styles.infoClub}>Téléphone : {userData.phoneClub ? userData.phoneClub : phone}</Text>
+                                    <Text style={styles.infoClub}>{`${t("region")}`} : {userData.regionClub ? userData.regionClub : region}</Text>
+                                    <Text style={styles.infoClub}>{`${t("adress")}`} : {userData.adresseClub ? userData.adresseClub : adresse}</Text>
+                                    <Text style={styles.infoClub}>{`${t("site")}`} : {userData.siteClub ? userData.siteClub : site}</Text>
+                                    <Text style={styles.infoClub}>{`${t("mail")}`} : {userData.mailClub ? userData.mailClub : mail}</Text>
+                                    <Text style={styles.infoClub}>{`${t("phone")}`} : {userData.phoneClub ? userData.phoneClub : phone}</Text>
 
 
                                     <TouchableOpacity style={styles.inscriptionButton} onPress={async() => {
                                         await saveClub(region, adresse, site, mail, phone, image)
                                         navigation.navigate("ConfirmationClubScreen", {option: "club"})
                                     }}>
-                                        <Text style={styles.inscriptionText}>Sauvegarder mes données</Text>
+                                        <Text style={styles.inscriptionText}>{t("sauvegarder")}</Text>
                                     </TouchableOpacity>
                                 </View> : <Text/>}
                         </ImageBackground>

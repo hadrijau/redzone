@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import {LineChart} from 'react-native-chart-kit'
 import firebase from "firebase";
+import {useTranslation} from "react-i18next";
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -20,7 +21,7 @@ const ProgressScreen = (props) => {
     const [broadJump, setBroadJump] = useState([]);
     const [shuttle, setShuttle] = useState([]);
     const [loading, setLoading] = useState(true);
-
+    const { i18n, t } = useTranslation();
     useEffect(() => {
         firebase.firestore()
             .collection('users')
@@ -84,7 +85,7 @@ const ProgressScreen = (props) => {
                         <View style={styles.combineContainer}>
                             <Text style={styles.combineText}>Combine</Text>
                             <TouchableOpacity style={styles.seTester} onPress={() => props.navigation.navigate('CombineScreen')}>
-                                <Text style={styles.seTesterText}>Se tester</Text>
+                                <Text style={styles.seTesterText}>{t("tester")}</Text>
                             </TouchableOpacity>
                         </View>
 

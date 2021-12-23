@@ -3,11 +3,13 @@ import {ImageBackground, Text, TextInput, TouchableOpacity, View, StyleSheet, Sc
 import {Formik} from "formik";
 import {useDispatch, useSelector} from "react-redux";
 import * as userActions from "../../store/actions/users";
+import {useTranslation} from "react-i18next";
+import i18next from "i18next";
 
 const MusculationScreen = ({navigation}) => {
 
     const dispatch = useDispatch();
-
+    const { i18n, t } = useTranslation();
     useEffect(() => {
         dispatch(userActions.fetchUser())
     }, [dispatch]);
@@ -26,28 +28,44 @@ const MusculationScreen = ({navigation}) => {
                                 <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('PreparationPhysiqueScreen', {
                                     entrainement: "muscu"
                                 })}>
-                                    <ImageBackground
-                                        source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F6%5B1%5D.png?alt=media&token=0269fc0c-47b6-4410-a364-b5e07fed7efd"}}
+                                    {i18next.language === "en" ? <ImageBackground
+                                        source={require('../../assets/physical_preparation.png')}
                                         style={styles.imageBackground}
                                     >
-                                    </ImageBackground>
+                                    </ImageBackground> : <ImageBackground
+                                        source={require('../../assets/preparation_physique.png')}
+                                        style={styles.imageBackground}
+                                    >
+                                    </ImageBackground>}
+
                                 </TouchableOpacity> :  <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('GererAbonnementScreen', {
                                     entrainement: "muscu"
                                 })}>
-                                    <ImageBackground
+                                    {i18next.language === "en" ?  <ImageBackground
+                                        source={require('../../assets/physical_preparation_lock.png')}
+                                        style={styles.imageBackground}
+                                    >
+                                    </ImageBackground> :  <ImageBackground
                                         source={require('../../assets/préparation_physique_verrou.png')}
                                         style={styles.imageBackground}
                                     >
-                                    </ImageBackground>
+                                    </ImageBackground>}
+
                                 </TouchableOpacity>
                             }
 
                             <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ChooseDaysScreen')}>
-                                <ImageBackground
-                                    source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FPoids%20du%20corps.png?alt=media&token=079bafe0-a252-4618-b87a-632cba2c69f5"}}
+                                {i18next.language === "en" ? <ImageBackground
+                                    source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FBody%20weight.png?alt=media&token=f07c575c-c26e-4378-bb20-0a6e036eec1b"}}
                                     style={styles.imageBackground}
                                 >
-                                </ImageBackground>
+                                </ImageBackground> :
+                                    <ImageBackground
+                                        source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FPoids%20du%20corps.png?alt=media&token=079bafe0-a252-4618-b87a-632cba2c69f5"}}
+                                        style={styles.imageBackground}
+                                    >
+                                    </ImageBackground>}
+
                             </TouchableOpacity>
 
                             {userData.abonnement !== "Musculation" && userData.abonnement !== "Premium" ?
@@ -55,7 +73,7 @@ const MusculationScreen = ({navigation}) => {
                                                   onPress={() => navigation.navigate('GererAbonnementScreen', {
                                                       entrainement: "muscu"
                                                   })}>
-                                    <Text style={styles.abonnementText}>Pour profiter pleinement de l'application, souscrivez à l'abonnement préparation physique ! </Text>
+                                    <Text style={styles.abonnementText}>{`${t("profiter")}`}</Text>
                                 </TouchableOpacity> : <Text/>
                             }
                         </View>

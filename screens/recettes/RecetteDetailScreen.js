@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, ImageBackground, TouchableOpacity, Dimensions, StyleSheet, ScrollView, Image} from 'react-native';
+import {useTranslation} from "react-i18next";
 
 
 const windowHeight = Dimensions.get('window').height;
@@ -7,6 +8,7 @@ const windowWidth = Dimensions.get('window').width;
 
 const RecetteDetailScreen = ({title, navigation, route}) => {
 
+    const { i18n, t } = useTranslation();
     const time = route.params.time;
     const ingredient1 = route.params.ingredient1;
     const ingredient2 = route.params.ingredient2;
@@ -32,7 +34,7 @@ const RecetteDetailScreen = ({title, navigation, route}) => {
                     </TouchableOpacity>
 
                 <View>
-                    <Text style={styles.infoNutrition}>Ingrédients</Text>
+                    <Text style={styles.infoNutrition}>{t("ingredients")}</Text>
 
                     <View style={styles.ingredientList}>
                         <Text style={styles.ingredientText}>* {ingredient1}</Text>
@@ -48,7 +50,7 @@ const RecetteDetailScreen = ({title, navigation, route}) => {
 
 
                 <View style={styles.recetteContainer}>
-                    <Text style={styles.infoNutrition}>Recette</Text>
+                    <Text style={styles.infoNutrition}>{t("recette")}</Text>
 
                     <Text style={styles.recette}>{recette}</Text>
                 </View>

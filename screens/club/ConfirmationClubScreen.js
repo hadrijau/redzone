@@ -1,19 +1,21 @@
 import React from 'react';
 import {View, Text, ImageBackground, StyleSheet, TouchableOpacity} from 'react-native';
+import {useTranslation} from "react-i18next";
 
 const ConfirmationClubScreen = (props) => {
 
+    const { i18n, t } = useTranslation();
     const option = props.route.params.option
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
                 {option === "club" ?    <Text style={styles.progressText}>
-                    Votre nouveau club a bien été sauvegardé !
+                    {t("save1")}
                 </Text> :    <Text style={styles.progressText}>
-                    Votre nouvelle licence a bien été sauvegardée !
+                    {t("save2")}
                 </Text>}
                 <TouchableOpacity style={styles.disconnectButton} onPress={() => props.navigation.navigate('ClubScreen')}>
-                    <Text style={styles.disconnectText}>Voir mon club</Text>
+                    <Text style={styles.disconnectText}>{t("club1")}</Text>
                 </TouchableOpacity>
             </ImageBackground>
         </View>

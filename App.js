@@ -12,6 +12,7 @@ import {initReactI18next, useTranslation} from "react-i18next";
 import i18n from "i18next";
 import * as en from './translations/en.json';
 import * as fr from './translations/fr.json';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBmckJtSmZNsuU-200xoo3acPAB2VNrDCU",
@@ -46,24 +47,29 @@ export default function App() {
   };
 
   useEffect(() => {
-    i18n.use(initReactI18next).init({
-      resources,
-      //language to use if translations in user language are not available
-      fallbackLng: "fr",
-      interpolation: {
-        escapeValue: false, // not needed for react!!
-      },
-    });
-    firebase.auth().onAuthStateChanged((user) => {
-      if (!user) {
-        setIsLoaded(true);
-        setIsLoggedIn(false)
-      } else {
-        setIsLoaded(true);
-        setIsLoggedIn(true)
-      }
-    })
-  })
+    const launch = async () => {
+      AsyncStorage.setItem("lang", "fr");
+      firebase.auth().onAuthStateChanged((user) => {
+        if (!user) {
+          setIsLoaded(true);
+          setIsLoggedIn(false)
+        } else {
+          setIsLoaded(true);
+          setIsLoggedIn(true)
+        }
+      })
+      const lang = await AsyncStorage.getItem("lang");
+      await i18n.use(initReactI18next).init({
+        resources,
+        //language to use if translations in user language are not available
+        fallbackLng: lang,
+        interpolation: {
+          escapeValue: false, // not needed for react!!
+        },
+      });
+    }
+    launch()
+  }, []);
 
   if (!loaded) {
     return <ActivityIndicator/>

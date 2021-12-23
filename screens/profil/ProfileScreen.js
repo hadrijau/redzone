@@ -17,6 +17,7 @@ import firebase from "firebase";
 import {useDispatch, useSelector} from "react-redux";
 import * as userActions from "../../store/actions/users";
 import Picker from "../../components/Picker";
+import {useTranslation} from "react-i18next";
 
 const ProfileScreen = ({navigation}) => {
 
@@ -61,7 +62,7 @@ const ProfileScreen = ({navigation}) => {
 
 
     const [updated, setUpdated] = useState(false);
-
+    const { i18n, t } = useTranslation();
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <KeyboardAvoidingView
@@ -99,7 +100,7 @@ const ProfileScreen = ({navigation}) => {
                                         <View style={styles.formContainer}>
                                             <View style={styles.inscriptionInnerForm}>
                                                 <View style={styles.textInscriptionContainer}>
-                                                    <Text style={styles.label}>Prénom</Text>
+                                                    <Text style={styles.label}>{t("prenom")}</Text>
                                                 </View>
                                                 <View style={styles.inputContainer}>
                                                     <TextInput
@@ -111,7 +112,7 @@ const ProfileScreen = ({navigation}) => {
                                             </View>
                                             <View style={styles.inscriptionInnerForm}>
                                                 <View style={styles.textInscriptionContainer}>
-                                                    <Text style={styles.label}>Nom</Text>
+                                                    <Text style={styles.label}>{t("nom")}</Text>
                                                 </View>
                                                 <View style={styles.inputContainer}>
                                                     <TextInput
@@ -123,7 +124,7 @@ const ProfileScreen = ({navigation}) => {
                                             </View>
                                             <View style={styles.inscriptionInnerForm}>
                                                 <View style={styles.textInscriptionContainer}>
-                                                    <Text style={styles.label}>Age</Text>
+                                                    <Text style={styles.label}>{t("age")}</Text>
                                                 </View>
                                                 <View style={styles.inputContainer}>
                                                     <TextInput
@@ -136,7 +137,7 @@ const ProfileScreen = ({navigation}) => {
 
                                             <View style={styles.inscriptionInnerForm}>
                                                 <View style={styles.textInscriptionContainer}>
-                                                    <Text style={styles.label}>Poids</Text>
+                                                    <Text style={styles.label}>{t("poids")}</Text>
                                                 </View>
                                                 <View style={styles.inputContainer}>
                                                     <TextInput
@@ -149,7 +150,7 @@ const ProfileScreen = ({navigation}) => {
 
                                             <View style={styles.inscriptionInnerForm}>
                                                 <View style={styles.textInscriptionContainer}>
-                                                    <Text style={styles.label}>Taille</Text>
+                                                    <Text style={styles.label}>{t("taille")}</Text>
                                                 </View>
                                                 <View style={styles.inputContainer}>
                                                     <TextInput
@@ -162,7 +163,7 @@ const ProfileScreen = ({navigation}) => {
 
                                             {userData?.sexe ?          <View style={styles.inscriptionInnerForm}>
                                                 <View style={styles.textInscriptionContainer}>
-                                                    <Text style={styles.label}>Poste</Text>
+                                                    <Text style={styles.label}>{t("poste")}</Text>
                                                 </View>
                                                 <TouchableOpacity
                                                     style={styles.inputContainer}
@@ -185,19 +186,29 @@ const ProfileScreen = ({navigation}) => {
                                                 />
                                             </Modal>
 
+                                            <View style={styles.flagContainer}>
+                                                <TouchableOpacity onPress={() => i18n.changeLanguage("fr")}>
+                                                    <Image source={require('../../assets/flag-fr.png')} style={styles.flag}/>
+                                                </TouchableOpacity>
+
+                                                <TouchableOpacity onPress={() => i18n.changeLanguage("en")}>
+                                                    <Image source={require('../../assets/flag-en.jpg')} style={styles.flag}/>
+                                                </TouchableOpacity>
+                                            </View>
+
                                             <TouchableOpacity style={styles.inscriptionButton} onPress={props.handleSubmit}>
-                                                <Text style={styles.inscriptionText}>Modifier</Text>
+                                                <Text style={styles.inscriptionText}>{t("modifier")}</Text>
                                             </TouchableOpacity>
                                         </View>
                                     )}
 
                                 </Formik>
-                                <TouchableOpacity style={styles.disconnectButton} onPress={() => navigation.navigate('GererAbonnementScreen')}><Text style={styles.disconnectText}>Gérer mon abonnement</Text></TouchableOpacity>
+                                <TouchableOpacity style={styles.disconnectButton} onPress={() => navigation.navigate('GererAbonnementScreen')}><Text style={styles.disconnectText}>{t("abonnement")}</Text></TouchableOpacity>
 
-                                <TouchableOpacity style={styles.disconnectButton} onPress={logout}><Text style={styles.disconnectText}>Se déconnecter</Text></TouchableOpacity>
+                                <TouchableOpacity style={styles.disconnectButton} onPress={logout}><Text style={styles.disconnectText}>{t("deconnect")}</Text></TouchableOpacity>
                             </ScrollView> : <View>
-                                <Text style={styles.changeDone}>Vos changements ont bien été pris en compte !</Text>
-                                <TouchableOpacity style={styles.disconnectButton} onPress={() => navigation.navigate('AccueilScreen')}><Text style={styles.disconnectText}>Retour au menu principal</Text></TouchableOpacity>
+                                <Text style={styles.changeDone}>{t("changements")}</Text>
+                                <TouchableOpacity style={styles.disconnectButton} onPress={() => navigation.navigate('AccueilScreen')}><Text style={styles.disconnectText}>{t("menu")}</Text></TouchableOpacity>
                             </View>}
                     </ScrollView>
                     </ImageBackground>
@@ -241,7 +252,8 @@ const styles = StyleSheet.create({
         width: '60%',
         padding: 5,
         alignSelf: 'center',
-        marginTop: '5%'
+        marginTop: '5%',
+        marginBottom: '5%'
     },
     inscriptionInnerForm: {
         display: 'flex',
@@ -285,6 +297,16 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: "8%",
         marginBottom: "8%"
+    },
+    flagContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        marginVertical: 20,
+        justifyContent: 'space-around'
+    },
+    flag: {
+        height: 50,
+        width: 100
     },
     changeDone: {
         color: 'white',

@@ -10,6 +10,7 @@ import {
     View
 } from "react-native";
 import firebase from "firebase";
+import {useTranslation} from "react-i18next";
 
 const ChooseClubScreen = ({navigation}) => {
 
@@ -22,7 +23,7 @@ const ChooseClubScreen = ({navigation}) => {
     const [mail, setMail] = useState('dfdd');
     const [phone, setPhone] = useState('dfdf');
     const [region, setRegion] = useState('dfd');
-
+    const { i18n, t } = useTranslation();
     useEffect(() => {
         firebase.firestore()
             .collection('clubs')
@@ -112,6 +113,7 @@ const ChooseClubScreen = ({navigation}) => {
         }
     };
 
+
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <KeyboardAvoidingView
@@ -123,7 +125,7 @@ const ChooseClubScreen = ({navigation}) => {
                         <ScrollView>
                 <TextInput
                     style={styles.textInput}
-                    placeholder="Rechercher mon club"
+                    placeholder={t("lookupClub")}
                     value={search}
                     onChangeText={(text) => searchFilterFunction(text)}
                 />
@@ -149,17 +151,17 @@ const ChooseClubScreen = ({navigation}) => {
                         source={{
                             uri: image
                         }}/>
-                    <Text style={styles.infoClub}>Région : {region}</Text>
-                    <Text style={styles.infoClub}>Adresse : {adresse}</Text>
-                    <Text style={styles.infoClub}>Site : {site}</Text>
-                    <Text style={styles.infoClub}>Mail : {mail}</Text>
-                    <Text style={styles.infoClub}>Téléphone : {phone}</Text>
+                    <Text style={styles.infoClub}>{`${t("region")}`} : {region}</Text>
+                    <Text style={styles.infoClub}>{`${t("adress")}`} : {adresse}</Text>
+                    <Text style={styles.infoClub}>{`${t("site")}`} : {site}</Text>
+                    <Text style={styles.infoClub}>{`${t("mail")}`} : {mail}</Text>
+                    <Text style={styles.infoClub}>{`${t("phone")}`} : {phone}</Text>
 
                     <TouchableOpacity style={styles.inscriptionButton} onPress={async () => {
                         await saveClub(region, adresse, site, mail, phone, image)
                         navigation.navigate("ConfirmationClubScreen", {option: "club"})
                     }}>
-                        <Text style={styles.inscriptionText}>Sauvegarder mes données</Text>
+                        <Text style={styles.inscriptionText}>{`${t("sauvegarder")}`}</Text>
                     </TouchableOpacity>
                 </View>  : <Text/>}
                         </ScrollView>

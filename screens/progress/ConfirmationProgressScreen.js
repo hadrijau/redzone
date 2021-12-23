@@ -1,14 +1,16 @@
 import React from 'react';
 import {View, Text, ImageBackground, StyleSheet, TouchableOpacity} from 'react-native';
+import {useTranslation} from "react-i18next";
 
 const ConfirmationProgressScreen = (props) => {
 
+    const { i18n, t } = useTranslation();
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
-                <Text style={styles.progressText}>Vos progrès ont bien été sauvegardés ! </Text>
+                <Text style={styles.progressText}>{`${t("progressSauvegarde")}`}</Text>
                 <TouchableOpacity style={styles.disconnectButton} onPress={() => props.navigation.navigate('ProgressScreen')}>
-                    <Text style={styles.disconnectText}>Voir mes progrès</Text>
+                    <Text style={styles.disconnectText}>{`${t("voirProgress")}`}</Text>
                 </TouchableOpacity>
             </ImageBackground>
         </View>

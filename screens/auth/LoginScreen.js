@@ -3,6 +3,7 @@ import {View, Text, TextInput, StyleSheet, ImageBackground, TouchableOpacity, Im
 import {Formik} from "formik";
 import firebase from "firebase";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import {useTranslation} from "react-i18next";
 
 const LoginScreen = ({navigation}) => {
 
@@ -12,6 +13,7 @@ const LoginScreen = ({navigation}) => {
     }
 
     const [err, setErr] = useState(null);
+    const { i18n, t } = useTranslation();
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -39,7 +41,7 @@ const LoginScreen = ({navigation}) => {
                                     style={styles.textInput}
                                     onChangeText={props.handleChange('email')}
                                 />
-                                <Text style={styles.label}>Mot de passe</Text>
+                                <Text style={styles.label}>{`${t("mail")}`}</Text>
                                 <TextInput
                                     value={props.values.password}
                                     style={styles.textInput}
@@ -48,15 +50,15 @@ const LoginScreen = ({navigation}) => {
                                 />
 
                                 {err ? (
-                                    <Text style={styles.err}>Vos identifiants sont incorrects</Text>
+                                    <Text style={styles.err}>{`${t("incorrect")}`}</Text>
                                 ) : (
                                     <Text />
                                 )}
                                 <TouchableOpacity style={styles.passwordForgot} onPress={() => navigation.navigate('ForgotPasswordScreen')}>
-                                    <Text style={styles.passwordForgotText}>Mot de passe oublié</Text>
+                                    <Text style={styles.passwordForgotText}>{`${t("forgotPassword")}`}</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.inscriptionButton} onPress={props.handleSubmit}>
-                                    <Text style={styles.inscriptionText}>Se connecter</Text>
+                                    <Text style={styles.inscriptionText}>{`${t("connecter")}`}</Text>
                                 </TouchableOpacity>
                             </View>
                         )}

@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import {Formik} from "formik";
 import firebase from "firebase";
+import {useTranslation} from "react-i18next";
 
 
 const ForgotPasswordScreen = (props) => {
@@ -18,12 +19,13 @@ const ForgotPasswordScreen = (props) => {
     };
 
     const [received, setReceived] = useState(false);
+    const { i18n, t } = useTranslation();
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <KeyboardAvoidingView style={styles.container}>
                 <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
-                <Text style={styles.title}>Mot de passe oublié</Text>
+                <Text style={styles.title}>{`${t("forgotPassword")}`}</Text>
                 <Formik
                     initialValues={initialValues}
                     onSubmit={async (values) => {
@@ -44,7 +46,7 @@ const ForgotPasswordScreen = (props) => {
                     {(props) => (
                         <View style={styles.formContainer}>
                             <View>
-                                <Text style={styles.text}>Veuillez rentrer votre email</Text>
+                                <Text style={styles.text}>{`${t("enterEmail")}`}</Text>
                                 <TextInput
                                     placeholder="Email"
                                     keyboardType="email-address"
@@ -60,16 +62,16 @@ const ForgotPasswordScreen = (props) => {
                                 style={styles.buttonContainer}
                                 onPress={props.handleSubmit}
                             >
-                                <Text style={styles.createCompte}>Réinitialiser mon mot de passe</Text>
+                                <Text style={styles.createCompte}>{`${t("mdp")}`}</Text>
                             </TouchableOpacity>
                         </View>
                     )}
                 </Formik>
 
                 {received ?      <View style={styles.receivedEmail}>
-                    <Text style={styles.receivedText}>Vous avez reçu un email de réinitialisation ! </Text>
+                    <Text style={styles.receivedText}>{`${t("rei")}`}</Text>
                     <TouchableOpacity style={styles.buttonContainer} onPress={() => props.navigation.navigate('LoginScreen')}>
-                        <Text style={styles.createCompte}>Retour à la page de connexion</Text>
+                        <Text style={styles.createCompte}>{`${t("return")}`}</Text>
                     </TouchableOpacity>
                 </View> : <Text/>}
 

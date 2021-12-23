@@ -1,18 +1,20 @@
 import React from 'react';
 import {Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {useTranslation} from "react-i18next";
 
 
 const windowWidth = Dimensions.get('window').width;
 
 const EquipementSportifCard = ({image, handleNavigation, description1, description2, description3, lien, prix, titre}) => {
 
+    const { i18n, t } = useTranslation();
     return (
         <View>
             <TouchableOpacity style={styles.recetteCard} onPress={handleNavigation}>
                 <ImageBackground source={{uri: image}} resizeMode="cover" style={styles.imageBackground}/>
             </TouchableOpacity>
             <Text style={styles.product}>{titre}</Text>
-            <Text style={styles.product}>Prix : {prix} €</Text>
+            <Text style={styles.product}>{t("prix")} : {prix} €</Text>
         </View>
     );
 };

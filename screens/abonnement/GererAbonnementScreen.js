@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {
     ImageBackground,
     Text,
-    TextInput,
     TouchableOpacity,
     View,
     StyleSheet,
@@ -10,14 +9,16 @@ import {
     ActivityIndicator,
     Image, Dimensions
 } from 'react-native';
-import {Formik} from "formik";
 import firebase from "firebase";
 import axios from 'axios';
 import {useDispatch, useSelector} from "react-redux";
 import * as userActions from "../../store/actions/users";
-
 import {PaymentView} from "../../components/PaymentView";
+import {useTranslation} from "react-i18next";
+import i18next from "i18next";
+
 const windowWidth = Dimensions.get('window').width;
+
 const GererAbonnementScreen = (props) => {
 
     const dispatch = useDispatch();
@@ -27,17 +28,15 @@ const GererAbonnementScreen = (props) => {
     }, [dispatch]);
 
     const userData = useSelector(state => state.user.currentUser)
-
     console.log(userData);
     const [subscriptionId, setSubscriptionId] = useState('');
     const [response, setResponse ] = useState()
-    const [annuel, setAnnuel] = useState(false);
-    const [ makePayment, setMakePayment ] = useState(false)
     const [paymentStatus, setPaymentStatus] = useState('')
     const [ makePaymentMuscu, setMakePaymentMuscu ] = useState(false);
     const [ makePaymentDrill, setMakePaymentDrill ] = useState(false);
     const [ makePaymentPremium, setMakePaymentPremium ] = useState(false);
 
+    const { i18n, t } = useTranslation();
 
     const changeAbonnement = async (abonnement) => {
         await firebase
@@ -202,20 +201,25 @@ const GererAbonnementScreen = (props) => {
                             <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
 
-                                <Text style={styles.inscriptionBigText}>Vous avez actuellement l'abonnement {userData.abonnement}</Text>
+                                <Text style={styles.inscriptionBigText}>{`${t("actuel")}`} {userData.abonnement}</Text>
 
                                  <ScrollView style={styles.scrollView}>
 
                                      <TouchableOpacity style={styles.recetteCard} onPress={() => {
                                          setMakePaymentMuscu(true)
                                      }}>
-                                         <Image
+                                         {i18next.language === "en" ?    <Image
+                                             style={styles.imageCard}
+                                             source={{
+                                                 uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F5%5B1%5D.png?alt=media&token=f6dcf403-9046-4bb0-a205-323d89fe34b6"
+                                             }}
+                                         /> :    <Image
                                              style={styles.imageCard}
                                              source={{
                                                  uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
                                              }}
-                                         >
-                                         </Image>
+                                         />}
+
                                      </TouchableOpacity>
 
 
@@ -403,7 +407,7 @@ const GererAbonnementScreen = (props) => {
                                 <TouchableOpacity style={styles.abonnementCard} onPress={() => {
                                     setMakePaymentDrill(true)
                                 }}>
-                                    <Text style={styles.abonnementText}>Se désabonner</Text>
+                                    <Text style={styles.abonnementText}>{t("desabonnement")}</Text>
                                 </TouchableOpacity>
 
                             </ScrollView>
@@ -417,14 +421,14 @@ const GererAbonnementScreen = (props) => {
                     <View style={styles.container}>
                         <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
-                            <Text style={styles.inscriptionBigText}>Vous avez actuellement l'abonnement {userData.abonnement}</Text>
+                            <Text style={styles.inscriptionBigText}>{t('actuel')} {userData.abonnement}</Text>
 
                             <ScrollView style={styles.scrollView}>
 
                                 <TouchableOpacity style={styles.abonnementCard} onPress={() => {
                                     setMakePaymentDrill(true)
                                 }}>
-                                    <Text style={styles.abonnementText}>Se désabonner</Text>
+                                    <Text style={styles.abonnementText}>{t("desabonnement")}</Text>
                                 </TouchableOpacity>
                             </ScrollView>
                         </ImageBackground>
@@ -439,17 +443,17 @@ const GererAbonnementScreen = (props) => {
                     <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
                         {paymentStatus === 'Votre paiement est en cours de traitement' ?
                             <View>
-                                <Text style={styles.paymentStatusText}>{ paymentStatus}</Text>
+                                <Text style={styles.paymentStatusText}>{t("encours")}</Text>
                                 <ActivityIndicator />
                             </View> : <Text></Text>}
 
                         {paymentStatus === 'Votre paiement a été validé ! Bienvenue chez RoundPower' ?
                             <View>
                                 <View style={styles.finContainer}>
-                                    <Text style={styles.paymentStatusText2}>Votre paiement a été validé ! Profitez de vos nouvelles vidéos !</Text>
+                                    <Text style={styles.paymentStatusText2}>{t("validatePayment")}</Text>
                                 </View>
                                 <TouchableOpacity onPress={() => props.navigation.navigate('AccueilScreen')} style={styles.button}>
-                                    <Text style={styles.buttonText}>Retour au menu principal</Text>
+                                    <Text style={styles.buttonText}>{t("menu")}</Text>
                                 </TouchableOpacity>
                             </View> : <Text></Text>}
                     </ImageBackground>
@@ -466,17 +470,17 @@ const GererAbonnementScreen = (props) => {
                     <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
                         {paymentStatus === 'Votre paiement est en cours de traitement' ?
                             <View>
-                                <Text style={styles.paymentStatusText}>{ paymentStatus}</Text>
+                                <Text style={styles.paymentStatusText}>{t("encours")}</Text>
                                 <ActivityIndicator />
                             </View> : <Text></Text>}
 
                         {paymentStatus === 'Votre paiement a été validé ! Bienvenue chez RoundPower' ?
                             <View>
                                 <View style={styles.finContainer}>
-                                    <Text style={styles.paymentStatusText2}>Votre paiement a été validé ! Profitez de vos nouvelles vidéos !</Text>
+                                    <Text style={styles.paymentStatusText2}>{t("validatePayment")}</Text>
                                 </View>
                                 <TouchableOpacity onPress={() => props.navigation.navigate('AccueilScreen')} style={styles.button}>
-                                    <Text style={styles.buttonText}>Retour au menu principal</Text>
+                                    <Text style={styles.buttonText}>{t("menu")}</Text>
                                 </TouchableOpacity>
                             </View> : <Text></Text>}
                     </ImageBackground>
@@ -494,17 +498,17 @@ const GererAbonnementScreen = (props) => {
 
                         {paymentStatus === 'Votre paiement est en cours de traitement' ?
                             <View>
-                                <Text style={styles.paymentStatusText}>{ paymentStatus}</Text>
+                                <Text style={styles.paymentStatusText}>{t("encours")}</Text>
                                 <ActivityIndicator />
                             </View> : <Text></Text>}
 
                         {paymentStatus === 'Votre paiement a été validé ! Bienvenue chez RoundPower' ?
                             <View>
                                 <View style={styles.finContainer}>
-                                    <Text style={styles.paymentStatusText2}>Votre paiement a été validé ! Profitez de vos nouvelles vidéos !</Text>
+                                    <Text style={styles.paymentStatusText2}>{t("validatePayment")}</Text>
                                 </View>
                                 <TouchableOpacity onPress={() => props.navigation.navigate('AccueilScreen')} style={styles.button}>
-                                    <Text style={styles.buttonText}>Retour au menu principal</Text>
+                                    <Text style={styles.buttonText}>{t("menu")}</Text>
                                 </TouchableOpacity>
                             </View> : <Text></Text>}
                     </ImageBackground>
@@ -514,7 +518,6 @@ const GererAbonnementScreen = (props) => {
                 return <PaymentView onCheckStatus={onCheckStatusPremium} product={"Abonnement Premium"} amount={20}/>
             }
         }
-
 
     }
 

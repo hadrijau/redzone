@@ -3,6 +3,7 @@ import {ImageBackground, Text, TextInput, TouchableOpacity, Image, FlatList, Vie
 import {Formik} from "formik";
 import EquipementSportifCard from "./components/EquipementSportifCard";
 import firebase from "firebase";
+import {useTranslation} from "react-i18next";
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
@@ -11,6 +12,8 @@ const EquipementSportifScreen = ({navigation}) => {
 
     const [ridge, setRidge] = useState([]);
     const [sportus, setSportus] = useState([]);
+
+    const { i18n, t } = useTranslation();
 
     useEffect(() => {
         let getRidge = async () => {
@@ -61,12 +64,12 @@ const EquipementSportifScreen = ({navigation}) => {
                     <View style={styles.row}>
                         <EquipementSportifCard
                             handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
-                                description1 : "Chaussure de loisirs très confortable, parfaite pour le coaching ou le matériel de voyage",
-                                description2: "- CoolKnit® 2.0 supérieur",
-                                description3: "- Œillets en silicone et renforts avant des chaussures",
-                                description4: "- Semelle extérieure en EVA,",
-                                description5: "Couleur : - Noir",
-                                description6: " Code d'achat ( en remplacement du code promo ): YRZ40",
+                                description1 : `${t("Equipements1.2")}`,
+                                description2: `${t("Equipements1.3")}`,
+                                description3: `${t("Equipements1.4")}`,
+                                description4: `${t("Equipements1.5")}`,
+                                description5: `${t("Equipements1.6")}`,
+                                description6: `${t("Equipements1.7")}`,
                                 lien : 'https://ridge-sports.com/produit/edge-trunners/',
                                 prix : 69,
                                 titre : 'EDGE TRUNNERS',
@@ -79,9 +82,9 @@ const EquipementSportifScreen = ({navigation}) => {
 
                         <EquipementSportifCard
                             handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
-                                description1 : "Chaussures très légères conçues pour la vitesse et la flexibilité,",
-                                description2: " Couleur : - Marine - Orange - Rouge - Blanc",
-                                description3: " Code d'achat ( en remplacement du code promo ): YRZ40",
+                                description1 : `${t("Equipements2.1")}`,
+                                description2: `${t("Equipements2.2")}`,
+                                description3: `${t("Equipements2.3")}`,
                                 lien : 'https://ridge-sports.com/produit/cleats-glide/',
                                 prix : 69,
                                 titre : 'CRAMPONS RIDGE',
@@ -96,11 +99,11 @@ const EquipementSportifScreen = ({navigation}) => {
                     <View style={styles.row}>
                         <EquipementSportifCard
                             handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
-                                description1 : "– Zones clés renforcées : cheville,sous le pied et le talon",
-                                description2: "– Maille sur le dessus du pied",
-                                description3: "– Mélange coton/polyamide",
-                                description4: "– Tissu à séchage rapide et anti-odeur",
-                                description5: "Code d'achat ( en remplacement du code promo ): YRZ40",
+                                description1 : `${t("Equipements3.2")}`,
+                                description2: `${t("Equipements3.3")}`,
+                                description3: `${t("Equipements3.4")}`,
+                                description4: `${t("Equipements3.5")}`,
+                                description5: `${t("Equipements2.3")}`,
                                 lien : 'https://ridge-sports.com/produit/prime-socks/',
                                 prix : 16,
                                 titre : 'CHAUSSETTES PRIME',
@@ -108,17 +111,16 @@ const EquipementSportifScreen = ({navigation}) => {
                             })}
                             image="https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Catalogue%20ridge%2Fsocks.jpg?alt=media&token=cc054b37-c601-438f-a1b7-82c8cd6cc382"
                             prix={16}
-                            titre="CHAUSSETTES PRIME"
+                            titre={t("Equipements3.1")}
                         />
 
                         <EquipementSportifCard
                             handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
-                                description1 : "Couleurs : - GRIS/NOIR - ORANGE/NOIR - PIX CAMO ROUGE/NOIR",
-                                description2: "- PIX CAMO BLANC/NOIR\n" +
-                                    "- BLANC/ORANGE",
-                                description3: " - ROUGE/NOIR - VEGAS OR/NOIR - BLANC/VEGAS OR",
-                                description4: " - BLANC/ROUGE - BLANC/JAUNE - YELLOW/NOIR",
-                                description5: "Code d'achat ( en remplacement du code promo ): YRZ40\n",
+                                description1 : `${t("Equipements4.2")}`,
+                                description2: `${t("Equipements4.3")}`,
+                                description3: `${t("Equipements4.4")}`,
+                                description4: `${t("Equipements4.5")}`,
+                                description5: `${t("Equipements2.3")}`,
                                 lien : 'https://ridge-sports.com/produit/ridge-skill-players-prime-1-0-gloves/',
                                 prix : 39,
                                 titre : 'PRIME 1.0 GANTS',
@@ -133,9 +135,9 @@ const EquipementSportifScreen = ({navigation}) => {
                     <View style={styles.row}>
                         <EquipementSportifCard
                             handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
-                                description1 : "Logo avant 3D Construction à 6 panneaux arrière maillés",
-                                description2: "Fermeture Snapback OSFM",
-                                description3: "Code d'achat ( en remplacement du code promo ): YRZ40",
+                                description1 : `${t("Equipements5.1")}`,
+                                description2: `${t("Equipements5.2")}`,
+                                description3: `${t("Equipements5.3")}`,
                                 lien : 'https://ridge-sports.com/produit/mesh-hat/',
                                 prix : 25,
                                 titre : 'CASQUETTE RIDGE',
@@ -148,10 +150,10 @@ const EquipementSportifScreen = ({navigation}) => {
 
                         <EquipementSportifCard
                             handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
-                                description1 : "Polyester tissé,",
-                                description2: "cordon de serrage,",
-                                description3: "logo, 3D US taille",
-                                description4: "Code d'achat ( en remplacement du code promo ): YRZ40",
+                                description1 : `${t("Equipements6.2")}`,
+                                description2: `${t("Equipements6.3")}`,
+                                description3: `${t("Equipements6.4")}`,
+                                description4: `${t("Equipements2.3")}`,
                                 lien : 'https://ridge-sports.com/produit/trianing-shorts/',
                                 prix : 35,
                                 titre : 'SHORT RIDGE',
@@ -166,12 +168,11 @@ const EquipementSportifScreen = ({navigation}) => {
                     <View style={styles.row}>
                         <EquipementSportifCard
                             handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
-                                description1 : "Tissu épais avec mousse haute densité et ceinture en caoutchouc,",
-                                description2: " Tailles USA",
-                                description3: "En doute entre 2 tailles",
-                                description4: "prenez la plus petite taille car le tissu est très élastique",
-                                description5: "En doute entre 2 tailles, prenez la plus petite taille car le tissu est très élastique ",
-                                description6: "Code d'achat ( en remplacement du code promo ): YRZ40",
+                                description1 : `${t("Equipements7.2")}`,
+                                description2: `${t("Equipements7.3")}`,
+                                description3: `${t("Equipements7.4")}`,
+                                description4: `${t("Equipements7.5")}`,
+                                description6: `${t("Equipements2.3")}`,
                                 lien : 'https://ridge-sports.com/produit/girdle/',
                                 prix : 45,
                                 titre : 'GIRDLE',
@@ -184,10 +185,10 @@ const EquipementSportifScreen = ({navigation}) => {
 
                         <EquipementSportifCard
                             handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
-                                description1 : "Polyester tissé,",
-                                description2: "cordon de serrage,",
-                                description3: "logo, 3D US taille",
-                                description4: "Code d'achat ( en remplacement du code promo ): YRZ40",
+                                description1 : `${t("Equipements8.2")}`,
+                                description2: `${t("Equipements8.3")}`,
+                                description3: `${t("Equipements8.4")}`,
+                                description4: `${t("Equipements2.3")}`,
                                 lien : 'https://ridge-sports.com/produit/trianing-shorts/',
                                 prix : 35,
                                 titre : 'SHORT RIDGE',
@@ -202,20 +203,20 @@ const EquipementSportifScreen = ({navigation}) => {
                     <View style={styles.row}>
                         <EquipementSportifCard
                             handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
-                                description1 : "100% Moisutre mèche polyester",
-                                description2: "Poches latérales, zippées",
-                                description3: "Capuche avec cordon de serrage",
-                                description4: "Côté bosselé pour une meilleure amplitude de mouvement",
-                                description5: "Dimensionnement européen",
-                                description6: "Code d'achat ( en remplacement du code promo ): YRZ40",
+                                description1 : `${t("Equipements9.2")}`,
+                                description2: `${t("Equipements9.3")}`,
+                                description3: `${t("Equipements9.4")}`,
+                                description4: `${t("Equipements9.5")}`,
+                                description5: `${t("Equipements9.6")}`,
+                                description6: `${t("Equipements2.3")}`,
                                 lien : 'https://ridge-sports.com/produit/short-sleeve-hoodie/',
                                 prix : 35,
-                                titre : 'Sweat à capuche',
+                                titre : `${t("Equipements9.1")}`,
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Catalogue%20ridge%2Fshort-sleeve-hoodie.jpg?alt=media&token=09bf506b-57b6-403e-99b4-5b55bc155297"
                             })}
                             image="https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Catalogue%20ridge%2Fshort-sleeve-hoodie.jpg?alt=media&token=09bf506b-57b6-403e-99b4-5b55bc155297"
                             prix={35}
-                            titre="Sweat à capuche"
+                            titre={t("Equipements9.1")}
                         />
                     </View>
 
@@ -226,8 +227,8 @@ const EquipementSportifScreen = ({navigation}) => {
                     <View style={styles.row}>
                         <EquipementSportifCard
                             handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
-                                description1 : "Serviette GATORADE, la même qu’utilise les joueurs pro en NFL ou NCAA,",
-                                description2: "Code d'achat ( en remplacement du code promo ): YRZ23",
+                                description1 : `${t("Equipements10.2")}`,
+                                description2: `${t("Equipements10.3")}`,
                                 lien : 'https://sportuscompany.com/produit/serviette-gatorade-on-field/',
                                 prix : 23,
                                 titre : 'SERVIETTE GATORADE',
@@ -240,10 +241,10 @@ const EquipementSportifScreen = ({navigation}) => {
 
                         <EquipementSportifCard
                             handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
-                                description1 : "Démarque toi sur le bord du terrain avec ta gourde GATORADE GX.",
-                                description2: "Conçue pour être utilisé avec les PODS GX que vous devez ajouter en choix de personnalisation, il s'agit du goût, elle est aussi compatible avec la poudre classique GATORADE.",
-                                description3: "Contenance d'environ 1L",
-                                description4: "Code d'achat ( en remplacement du code promo ): YRZ23",
+                                description1 : `${t("Equipements11.2")}`,
+                                description2: `${t("Equipements11.3")}`,
+                                description3: `${t("Equipements11.4")}`,
+                                description4: `${t("Equipements2.3")}`,
                                 lien : 'https://sportuscompany.com/produit/gourde-gatorade-gx/',
                                 prix : 35,
                                 titre : 'GOURDE GATORADE GX',
@@ -258,16 +259,13 @@ const EquipementSportifScreen = ({navigation}) => {
                     <View style={styles.row}>
                         <EquipementSportifCard
                             handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
-                                description1 : "La NIKE VAPOR CREW SOCKS 2.0 est LA paire de chaussette que tout joueur de FOOTBALL AMERICAIN devrait porter. ",
-                                description2: "Montante mi mollet avec un double élastique, elle est épaisse sur tout le pied et plus légère sur la voûte plantaire pour un confort exceptionnel.",
-                                description3: "Renforcé sur le tendon d’Achille pour protéger votre cheville.",
-                                description4: "En training et en match elle sera votre meilleure alliée.",
-                                description5: "MEDIUM = 37 à 42\n" +
-                                    "\tLARGE = 42 à 46\n" +
-                                    "\tXLARGE = 46 et +\n",
-                                description6: "\tRétrécie après de nombreux lavage donc ne pas hésiter à prendre une taille juste au dessus si vous êtes dans la taille haute\n" +
-                                    "\t( exemple si tu chausses du 44.5 ou 45 , prends une paire en XL)\n",
-                                description7: "Code d'achat ( en remplacement du code promo ): YRZ23",
+                                description1 : `${t("Equipements12.2")}`,
+                                description2: `${t("Equipements12.3")}`,
+                                description3: `${t("Equipements12.4")}`,
+                                description4: `${t("Equipements12.5")}`,
+                                description5: `${t("Equipements12.6")}`,
+                                description6: `${t("Equipements12.7")}`,
+                                description7: `${t("Equipements2.3")}`,
                                 lien : 'https://sportuscompany.com/produit/nike-socks-vapor-crew-2-0/',
                                 prix : 8,
                                 titre : 'NIKE SOCKS VAPOR',
@@ -280,9 +278,9 @@ const EquipementSportifScreen = ({navigation}) => {
 
                         <EquipementSportifCard
                             handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
-                                description1 : "Gourde gatorade squeeze / ne coule pas, modèle identique au modèle NFL et NCAA",
-                                description2: "Contenance d'environ 1L",
-                                description3: "Code d'achat ( en remplacement du code promo ): YRZ23",
+                                description1 : `${t("Equipements13.2")}`,
+                                description2: `${t("Equipements13.3")}`,
+                                description3: `${t("Equipements2.3")}`,
                                 lien : 'https://sportuscompany.com/produit/gourde-gatorade-squeeze/',
                                 prix : 15,
                                 titre : 'GOURDE GATORADE',
@@ -297,16 +295,13 @@ const EquipementSportifScreen = ({navigation}) => {
                     <View style={styles.row}>
                         <EquipementSportifCard
                             handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
-                                description1 : "La NIKE VAPOR CREW SOCKS 2.0 est LA paire de chaussette que tout joueur de FOOTBALL AMERICAIN devrait porter. ",
-                                description2: "Montante mi mollet avec un double élastique, elle est épaisse sur tout le pied et plus légère sur la voûte plantaire pour un confort exceptionnel.",
-                                description3: "Renforcé sur le tendon d’Achille pour protéger votre cheville.",
-                                description4: "En training et en match elle sera votre meilleure alliée.",
-                                description5: "MEDIUM = 37 à 42\n" +
-                                    "\tLARGE = 42 à 46\n" +
-                                    "\tXLARGE = 46 et +\n",
-                                description6: "\tRétrécie après de nombreux lavage donc ne pas hésiter à prendre une taille juste au dessus si vous êtes dans la taille haute\n" +
-                                    "\t( exemple si tu chausses du 44.5 ou 45 , prends une paire en XL)\n",
-                                description7: "Code d'achat ( en remplacement du code promo ): YRZ23",
+                                description1 : `${t("Equipements12.2")}`,
+                                description2: `${t("Equipements12.3")}`,
+                                description3: `${t("Equipements12.4")}`,
+                                description4: `${t("Equipements12.5")}`,
+                                description5: `${t("Equipements12.6")}`,
+                                description6: `${t("Equipements12.7")}`,
+                                description7: `${t("Equipements2.3")}`,
                                 lien : 'https://sportuscompany.com/produit/nike-socks-vapor-crew-2-0/',
                                 prix : 8,
                                 titre : 'NIKE SOCKS VAPOR',
@@ -319,16 +314,13 @@ const EquipementSportifScreen = ({navigation}) => {
 
                         <EquipementSportifCard
                             handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
-                                description1 : "La NIKE VAPOR CREW SOCKS 2.0 est LA paire de chaussette que tout joueur de FOOTBALL AMERICAIN devrait porter. ",
-                                description2: "Montante mi mollet avec un double élastique, elle est épaisse sur tout le pied et plus légère sur la voûte plantaire pour un confort exceptionnel.",
-                                description3: "Renforcé sur le tendon d’Achille pour protéger votre cheville.",
-                                description4: "En training et en match elle sera votre meilleure alliée.",
-                                description5: "MEDIUM = 37 à 42\n" +
-                                    "\tLARGE = 42 à 46\n" +
-                                    "\tXLARGE = 46 et +\n",
-                                description6: "\tRétrécie après de nombreux lavage donc ne pas hésiter à prendre une taille juste au dessus si vous êtes dans la taille haute\n" +
-                                    "\t( exemple si tu chausses du 44.5 ou 45 , prends une paire en XL)\n",
-                                description7: "Code d'achat ( en remplacement du code promo ): YRZ23",
+                                description1 : `${t("Equipements12.2")}`,
+                                description2: `${t("Equipements12.3")}`,
+                                description3: `${t("Equipements12.4")}`,
+                                description4: `${t("Equipements12.5")}`,
+                                description5: `${t("Equipements12.6")}`,
+                                description6: `${t("Equipements12.7")}`,
+                                description7: `${t("Equipements2.3")}`,
                                 lien : 'https://sportuscompany.com/produit/nike-socks-vapor-crew-2-0/',
                                 prix : 8,
                                 titre : 'NIKE SOCKS VAPOR',
@@ -343,16 +335,13 @@ const EquipementSportifScreen = ({navigation}) => {
                     <View style={styles.row}>
                         <EquipementSportifCard
                             handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
-                                description1 : "La NIKE VAPOR CREW SOCKS 2.0 est LA paire de chaussette que tout joueur de FOOTBALL AMERICAIN devrait porter. ",
-                                description2: "Montante mi mollet avec un double élastique, elle est épaisse sur tout le pied et plus légère sur la voûte plantaire pour un confort exceptionnel.",
-                                description3: "Renforcé sur le tendon d’Achille pour protéger votre cheville.",
-                                description4: "En training et en match elle sera votre meilleure alliée.",
-                                description5: "MEDIUM = 37 à 42\n" +
-                                    "\tLARGE = 42 à 46\n" +
-                                    "\tXLARGE = 46 et +\n",
-                                description6: "\tRétrécie après de nombreux lavage donc ne pas hésiter à prendre une taille juste au dessus si vous êtes dans la taille haute\n" +
-                                    "\t( exemple si tu chausses du 44.5 ou 45 , prends une paire en XL)\n",
-                                description7: "Code d'achat ( en remplacement du code promo ): YRZ23",
+                                description1 : `${t("Equipements12.2")}`,
+                                description2: `${t("Equipements12.3")}`,
+                                description3: `${t("Equipements12.4")}`,
+                                description4: `${t("Equipements12.5")}`,
+                                description5: `${t("Equipements12.6")}`,
+                                description6: `${t("Equipements12.7")}`,
+                                description7: `${t("Equipements2.3")}`,
                                 lien : 'https://sportuscompany.com/produit/nike-socks-vapor-crew-2-0/',
                                 prix : 8,
                                 titre : 'NIKE SOCKS VAPOR',
@@ -365,18 +354,17 @@ const EquipementSportifScreen = ({navigation}) => {
 
                         <EquipementSportifCard
                             handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
-                                description1 : "La Formule est basée sur la recherche datant de 1967 et contient les électrolytes et les glucides nécessaires pour aider les athlètes à atteindre leur meilleure performance en leur garantissant une meilleure récupération et une meilleure hydratation. GATORADE aide à maintenir une performance maximale.",
-                                description2: "GATORADE est rapidement absorbé dans la circulation sanguine pour aider à prévenir la déshydratation, hyperthermie et la fatigue musculaire lors d’un effort physique prolongé.",
-                                description3: "Choisissez parmi les différents goûts disponibles:",
-                                description4: "- ORANGE",
-                                description5: "- LEMON-LIME",
-                                description6: "- FRUIT PUNCH",
-                                description7: "- GLACIER FREEZE",
-                                description8: "- RIPTIDE RUSH",
-                                description9: "6 gallon = 22.71 Litres",
-                                description10: "Achetez votre gourde gatorade 1L et faites votre mélange avant le training !",
-                                description11: "1 sachet de 6 gallon vous offrira 23 gourde\n" +
-                                    "à raison d une gourde par training soit 12 semaines /3 mois d entraînement !!\n",
+                                description1 : `${t("Equipements17.2")}`,
+                                description2: `${t("Equipements17.3")}`,
+                                description3: `${t("Equipements17.4")}`,
+                                description4: `${t("Equipements17.5")}`,
+                                description5: `${t("Equipements17.6")}`,
+                                description6: `${t("Equipements17.7")}`,
+                                description7: `${t("Equipements17.8")}`,
+                                description8: `${t("Equipements17.9")}`,
+                                description9: `${t("Equipements17.10")}`,
+                                description10: `${t("Equipements17.11")}`,
+                                description11: `${t("Equipements17.12")}`,
                                 description12: "Code d'achat ( en remplacement du code promo ): YRZ23",
                                 lien : 'https://sportuscompany.com/produit/gatorade-sachet-6-gallon/',
                                 prix : 40,
@@ -392,15 +380,15 @@ const EquipementSportifScreen = ({navigation}) => {
                     <View style={styles.row}>
                         <EquipementSportifCard
                             handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
-                                description1 : "Donnez du goût à votre entraînement et apportez une hydratation complémentaire à vos muscles.",
-                                description3: "Les PODS GX sont un concentrés de Gatorade à mélanger avec de l’eau.",
-                                description4: "Utilisable uniquement avec la GOURDE GATORADE GX",
-                                description5: "Chaque paquet contient 4 PODS du même goût.",
-                                description6: "- KIWI / STRAWBERRY",
-                                description7: "- STRAWBERRY / RASPBERRY",
-                                description8: "- FRUIT PUNCH",
-                                description9: "- GLACIER FREEZE",
-                                description10: "PRODUIT SUR COMMANDE AVEC UN DELAI D’ATTENTE DE 2 SEMAINES MINIMUM",
+                                description1 : `${t("Equipements18.2")}`,
+                                description3: `${t("Equipements18.3")}`,
+                                description4: `${t("Equipements18.4")}`,
+                                description5: `${t("Equipements18.5")}`,
+                                description6: `${t("Equipements18.6")}`,
+                                description7: `${t("Equipements18.7")}`,
+                                description8: `${t("Equipements18.8")}`,
+                                description9: `${t("Equipements18.9")}`,
+                                description10: `${t("Equipements18.10")}`,
                                 lien : 'https://sportuscompany.com/produit/pods-gx-gatorade/',
                                 prix : 12,
                                 titre : 'PODS GX GATORADE',
@@ -413,16 +401,13 @@ const EquipementSportifScreen = ({navigation}) => {
 
                         <EquipementSportifCard
                             handleNavigation={() => navigation.navigate('EquipementDetailScreen', {
-                                description1 : "La NIKE VAPOR CREW SOCKS 2.0 est LA paire de chaussette que tout joueur de FOOTBALL AMERICAIN devrait porter. ",
-                                description2: "Montante mi mollet avec un double élastique, elle est épaisse sur tout le pied et plus légère sur la voûte plantaire pour un confort exceptionnel.",
-                                description3: "Renforcé sur le tendon d’Achille pour protéger votre cheville.",
-                                description4: "En training et en match elle sera votre meilleure alliée.",
-                                description5: "MEDIUM = 37 à 42\n" +
-                                    "\tLARGE = 42 à 46\n" +
-                                    "\tXLARGE = 46 et +\n",
-                                description6: "\tRétrécie après de nombreux lavage donc ne pas hésiter à prendre une taille juste au dessus si vous êtes dans la taille haute\n" +
-                                    "\t( exemple si tu chausses du 44.5 ou 45 , prends une paire en XL)\n",
-                                description7: "Code d'achat ( en remplacement du code promo ): YRZ23",
+                                description1 : `${t("Equipements12.2")}`,
+                                description2: `${t("Equipements12.3")}`,
+                                description3: `${t("Equipements12.4")}`,
+                                description4: `${t("Equipements12.5")}`,
+                                description5: `${t("Equipements12.6")}`,
+                                description6: `${t("Equipements12.7")}`,
+                                description7: `${t("Equipements2.3")}`,
                                 lien : 'https://sportuscompany.com/produit/nike-socks-vapor-crew-2-0/',
                                 prix : 8,
                                 titre : 'NIKE SOCKS VAPOR',

@@ -3,6 +3,7 @@ import {View, Text, TextInput, StyleSheet, ImageBackground, TouchableOpacity, Im
 import {Formik} from "formik";
 import firebase from 'firebase';
 import * as Yup from "yup";
+import {useTranslation} from "react-i18next";
 
 const SignupScreen = (props) => {
 
@@ -33,6 +34,7 @@ const SignupScreen = (props) => {
     });
 
     console.log(age, sexe, poids, taille, poste)
+    const { i18n, t } = useTranslation();
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -81,7 +83,7 @@ const SignupScreen = (props) => {
                         <View style={styles.formContainer}>
                             <View style={styles.inscriptionInnerForm}>
                                 <View style={styles.textInscriptionContainer}>
-                                    <Text style={styles.label}>Adresse Email</Text>
+                                    <Text style={styles.label}>{`${t("mail")}`}</Text>
                                 </View>
                                 <View style={styles.inputContainer}>
                                     <TextInput
@@ -98,7 +100,7 @@ const SignupScreen = (props) => {
 
                             <View style={styles.inscriptionInnerForm}>
                                 <View style={styles.textInscriptionContainer}>
-                                    <Text style={styles.label}>Mot de passe</Text>
+                                    <Text style={styles.label}>{`${t("password")}`}</Text>
                                 </View>
                                 <View style={styles.inputContainer}>
                                     <TextInput
@@ -116,7 +118,7 @@ const SignupScreen = (props) => {
 
                             <View style={styles.inscriptionInnerForm}>
                                 <View style={styles.textInscriptionContainer}>
-                                    <Text style={styles.label}>Confirmation du mot de passe</Text>
+                                    <Text style={styles.label}>{`${t("confirmPassword")}`}</Text>
                                 </View>
                                 <View style={styles.inputContainer}>
                                     <TextInput
@@ -133,7 +135,7 @@ const SignupScreen = (props) => {
                             ) : null}
 
                             <TouchableOpacity style={styles.inscriptionButton} onPress={props.handleSubmit}>
-                                <Text style={styles.inscriptionText}>S'inscrire</Text>
+                                <Text style={styles.inscriptionText}>{`${t("signup")}`}</Text>
                             </TouchableOpacity>
 
 

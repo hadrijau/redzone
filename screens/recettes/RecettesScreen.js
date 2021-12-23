@@ -1,11 +1,14 @@
 import React from 'react';
 import {ImageBackground, Text, TextInput, Image, TouchableOpacity, View, StyleSheet, ScrollView, Dimensions} from 'react-native';
 import {Formik} from "formik";
+import {useTranslation} from "react-i18next";
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
 const RecettesScreen = ({navigation}) => {
+
+    const { i18n, t } = useTranslation();
 
     return (
         <View style={styles.container}>
@@ -16,13 +19,13 @@ const RecettesScreen = ({navigation}) => {
 
 
                             <TouchableOpacity onPress={() => navigation.navigate('RecetteDetailScreen', {
-                                name: 'Toast d\'avocat',
+                                name: `${t("Recettes1.1")}`,
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FToast%20avocat%20oeuf.png?alt=media&token=663f2eaa-82ac-4bae-a6f3-4d77cabdda41',
-                                ingredient1: '1 œuf',
-                                ingredient2: '60g de pain complet',
-                                ingredient3: '½ avocat',
-                                ingredient4: '50g de blanc de poulet/dinde cuit ( ou jambon blanc )',
-                                recette: 'Répartir sur deux tranches de pain complet le demi avocat haché, le blanc de poulet/dinde ( ou jambon blanc ) et émincé l’œuf poché dessus.',
+                                ingredient1: `${t("Recettes1.2")}`,
+                                ingredient2: `${t("Recettes1.3")}`,
+                                ingredient3: `${t("Recettes1.4")}`,
+                                ingredient4: `${t("Recettes1.5")}`,
+                                recette: `${t("Recettes1.6")}`,
                                 time: '10min'
                             })} style={styles.recetteCard}>
                                 <Image
@@ -33,12 +36,12 @@ const RecettesScreen = ({navigation}) => {
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FAvocat%20oeuf%20saumon.png?alt=media&token=62fea7fc-5a23-425d-88ba-e899b2d04b42',
-                                ingredient1: '2 œufs',
-                                ingredient2: '1 avocat',
-                                ingredient3: '2 tranches de saumon fumé',
-                                recette: 'Préchauffer le four à 180°C. Séparer les blanc du jaune, ouvrir l\'avocat en deux, mettre les jaunes d’œufs ( sans les cassés ) dans le creux des avocats, émincé les tranches de saumon fumé et recouvrir les avocats. Enfourner pendant 5min.',
+                                ingredient1: `${t("Recettes2.2")}`,
+                                ingredient2: `${t("Recettes2.3")}`,
+                                ingredient3: `${t("Recettes2.4")}`,
+                                recette: `${t("Recettes2.5")}`,
                                 time: '10min',
-                                name: 'Avocat saumon'
+                                name: `${t("Recettes2.1")}`
                             })}>
                                 <Image
                                     style={styles.imageCard}
@@ -48,18 +51,14 @@ const RecettesScreen = ({navigation}) => {
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FDome%20avocat%20saumon.png?alt=media&token=056f310a-7682-458a-978b-3db199d5d465',
-                                ingredient1: '4 tranches de saumon fumé',
-                                ingredient2: '2 avocats',
-                                ingredient3: '2 œufs',
-                                ingredient4: '2 toasts de pain complet',
-                                ingredient5: '1 cuillère a café de citron',
-                                recette: 'Prendre deux bols tapisser le fond des tranches de saumon.\n' +
-                                    'Dans un bol mettre les avocats et écrasé avec une fourchette en rajoutant le citron.\n' +
-                                    'Prendre une casserole et faire des œufs pochés.\n' +
-                                    'Prendre les tranches de pain complet et les découper a la forme des bols.\n' +
-                                    'Une fois les œufs pochés fais,les déposés au fond des bols, recouvrir du guacamole puis mettre les tranches de pain complet par dessus puis retourner le tout sur une assiette.\n',
+                                ingredient1: `${t("Recettes3.2")}`,
+                                ingredient2: `${t("Recettes3.3")}`,
+                                ingredient3: `${t("Recettes3.4")}`,
+                                ingredient4: `${t("Recettes3.5")}`,
+                                ingredient5: `${t("Recettes3.6")}`,
+                                recette: `${t("Recettes3.7")}`,
                                 time: '10min',
-                                name: 'Dôme avocat saumon'
+                                name: `${t("Recettes3.1")}`
                             })}>
                                 <Image
                                     style={styles.imageCard}
@@ -71,17 +70,16 @@ const RecettesScreen = ({navigation}) => {
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FWrap%20Thon%20Fromage.png?alt=media&token=43f9dbe9-f62a-499c-b0bc-cd10c817e32a',
-                                ingredient1: '200g de thon',
-                                ingredient2: '1 cuillère à soupe de fromage blanc',
-                                ingredient3: '½ cuillère à café de romarin',
-                                ingredient4: '2 tortilla de blé complet',
-                                ingredient5: '½ avocat',
-                                ingredient6: '1 citron vert',
-                                ingredient7: '4 feuilles de salade',
-                                recette: 'Écraser et mélanger le thon avec le fromage blanc, le romain et le jus de citron.\n' +
-                                    'Disposer les feuilles de salade au centre de la tortilla, déposer la préparation au thon, ajouter par-dessus des lamelles d\'avocats puis rouler le wrap.\n',
+                                ingredient1: `${t("Recettes4.2")}`,
+                                ingredient2: `${t("Recettes4.3")}`,
+                                ingredient3: `${t("Recettes4.4")}`,
+                                ingredient4: `${t("Recettes4.5")}`,
+                                ingredient5: `${t("Recettes4.6")}`,
+                                ingredient6: `${t("Recettes4.7")}`,
+                                ingredient7: `${t("Recettes4.8")}`,
+                                recette: `${t("Recettes4.9")}`,
                                 time: '10min',
-                                name: 'Wrap salade thon'
+                                name: `${t("Recettes4.1")}`
                             })}>
                                 <Image
                                     style={styles.imageCard}
@@ -94,14 +92,13 @@ const RecettesScreen = ({navigation}) => {
 
                     <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                         image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FWrap%20blanc%20de%20dinde.png?alt=media&token=7da9c12d-12e4-47ad-92fc-2fe29ff11c20',
-                        ingredient1: '200g de blanc de dinde',
-                        ingredient2: '1 cuillère à soupe de fromage blanc',
-                        ingredient4: '2 tortilla de blé complet',
-                        ingredient7: '4 feuilles de salade',
-                        recette: 'Déposez le fromage blanc sur les tortilla.\n' +
-                            'Disposer les feuilles de salade au centre de la tortilla, roulez une tranche de blanc de dinde, puis rouler le wrap.\n',
+                        ingredient1: `${t("Recettes5.2")}`,
+                        ingredient2: `${t("Recettes5.3")}`,
+                        ingredient3: `${t("Recettes5.4")}`,
+                        ingredient4: `${t("Recettes5.5")}`,
+                        recette: `${t("Recettes5.6")}`,
                         time: '10min',
-                        name: 'Wrap blanc de dinde'
+                        name: `${t("Recettes5.1")}`
                     })}>
                         <Image
                             style={styles.imageCard}
@@ -115,14 +112,13 @@ const RecettesScreen = ({navigation}) => {
 
                     <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FWrap%20Saumon.png?alt=media&token=4a1dda0e-80f4-470c-9bf0-66dfdb19bfdc',
-                                ingredient1: '200gr de saumon fumé',
-                                ingredient2: '2 tortilla de blé complet',
-                                ingredient3: '1 carré de fromage à tartiner',
-                                ingredient4: '4 feuilles de salade',
-                                recette: 'Etaler le carré de fromage à tartiner sur les tortillas, déposer la salade verte par dessus le fromage à tartiner et mettre le saumon fumé couper en dés par dessus.\n' +
-                                    'Rouler et déguster\n',
+                                ingredient1: `${t("Recettes6.2")}`,
+                                ingredient2: `${t("Recettes6.3")}`,
+                                ingredient3: `${t("Recettes6.4")}`,
+                                ingredient4: `${t("Recettes6.5")}`,
+                                recette: `${t("Recettes6.6")}`,
                                 time: '5min',
-                                name: 'Wrap saumon'
+                                name: `${t("Recettes6.1")}`
                             })}>
                                 <Image
                                     style={styles.imageCard}
@@ -135,34 +131,14 @@ const RecettesScreen = ({navigation}) => {
 
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
-                                image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2Fboules%20fromage.png?alt=media&token=7c7d4c6a-55fd-4e57-8686-8e6a2dc3df54',
-                                ingredient1: '200gr de saumon fumé',
-                                ingredient2: '2 tortilla de blé complet',
-                                ingredient3: '1 carré de fromage à tartiner',
-                                ingredient4: '4 feuilles de salade',
-                                recette: 'Etaler le carré de fromage à tartiner sur les tortillas, déposer la salade verte par dessus le fromage à tartiner et mettre le saumon fumé couper en dés par dessus.\n' +
-                                    'Rouler et déguster\n',
-                                time: '5min',
-                                name: 'Wrap saumon'
-                            })}>
-                                <Image
-                                    style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBoule%20fromage%20chevre%20large.png?alt=media&token=3faf56c9-facb-4005-a0b1-5cc5e7706837"
-                                    }}
-                                >
-                                </Image>
-                            </TouchableOpacity>
-
-                            <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FBagel%20saumon.png?alt=media&token=58342f30-b1e0-4992-8ac2-10ff4f57dce4',
-                                ingredient1: '1 oeuf',
-                                ingredient2: '1 bagel',
-                                ingredient3: '1 carré de fromage frais',
-                                ingredient4: '2 tranches de saumon fumé',
-                                recette: 'Faire cuire un œuf sur le plat dans la poêle. Couper le bagel en deux et le faire chauffer quelques minute dans le grille-pain. Tartiner une tranches de bagel avec le fromage frais,puis la salade lavée, les tranches de saumon fumés, l’œuf et refermer avec la seconde tranche de bagel.',
+                                ingredient1: `${t("Recettes7.2")}`,
+                                ingredient2: `${t("Recettes7.3")}`,
+                                ingredient3: `${t("Recettes7.4")}`,
+                                ingredient4: `${t("Recettes7.5")}`,
+                                recette: `${t("Recettes7.6")}`,
                                 time: '5min',
-                                name: 'Bagel saumon fumé'
+                                name: `${t("Recettes7.1")}`
                             })}>
                                 <Image
                                     style={styles.imageCard}
@@ -173,16 +149,13 @@ const RecettesScreen = ({navigation}) => {
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FBagel%20Thon.png?alt=media&token=0a280a48-d4fa-4d2b-a43a-d51d1c033734",
-                                ingredient1: '1 oeuf',
-                                ingredient2: '1 bagel',
-                                ingredient3: '1 carré de fromage frais',
-                                ingredient4: '1/2 boite de thon',
-                                recette: '\n' +
-                                    'Faire cuire un œuf sur le plat dans la poêle\n' +
-                                    'Couper le bagel en deux et le faire chauffer quelques minute dans le grille-pain.\n' +
-                                    'Tartiner une tranches de bagel avec le fromage frais,puis ajouter la salade lavée, le thon émietté, l’œuf et refermer avec la seconde tranche de bagel.\n',
+                                ingredient1: `${t("Recettes8.2")}`,
+                                ingredient2: `${t("Recettes8.3")}`,
+                                ingredient3: `${t("Recettes8.4")}`,
+                                ingredient4: `${t("Recettes8.5")}`,
+                                recette: `${t("Recettes8.6")}`,
                                 time: '10min',
-                                name: 'Bagel au thon'
+                                name: `${t("Recettes8.1")}`
                             })}>
                                 <Image
                                     style={styles.imageCard}
@@ -195,19 +168,15 @@ const RecettesScreen = ({navigation}) => {
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FSalade%20Ch%C3%A8vre%20Chaud.png?alt=media&token=48d0e33e-4eb7-4e78-bee6-4ce208d68a51',
-                                ingredient1: 'Feuilles de salade',
-                                ingredient2: 'Dés de jambon de dinde',
-                                ingredient3: 'Tranche de pain',
-                                ingredient4: '1/2 bûche de fromage de chèvre',
-                                ingredient5: "1 cuillère à soupe de Miel\n" +
-                                    "1 cuillère à soupe d'huile d'olive\n" +
-                                    "1 cuillère à soupe de vinaigre\n",
-                                ingredient6: "1 tomate",
-                                recette: 'Couper des rondelles de fromage de chèvre et disposer les sur les tranches de pain, mettre au four pendant 10min.\n' +
-                                    'Préparer dans une assiette les feuilles de salade, la tomate couper en morceaux, les champignons émincer ainsi que les dès de jambon de dinde. Assaisonné d\'une cuillère à souper d\'huile d\'olive et de vinaigre, saler poivrer.\n' +
-                                    'Sortir du four des tranches de pain avec le chèvre et déposez les la salade, badigeonner d\'une cuillère à soupe de miel.\n',
+                                ingredient1: `${t("Recettes9.2")}`,
+                                ingredient2: `${t("Recettes9.3")}`,
+                                ingredient3: `${t("Recettes9.4")}`,
+                                ingredient4: `${t("Recettes9.5")}`,
+                                ingredient5: `${t("Recettes9.6")}`,
+                                ingredient6: `${t("Recettes9.7")}`,
+                                recette: `${t("Recettes9.8")}`,
                                 time: '10min',
-                                name: 'Salade de chèvre chaud'
+                                name: `${t("Recettes9.1")}`
                             })}>
                                 <Image
                                     style={styles.imageCard}
@@ -219,17 +188,15 @@ const RecettesScreen = ({navigation}) => {
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FQuiche%20thon%20champignon.png?alt=media&token=72d231c0-7265-4c75-93cc-e5ff6ed2a3f0",
-                                ingredient1: '1 pâte à quiche',
-                                ingredient2: '150g de thon',
-                                ingredient3: '150g de champignons de Paris',
-                                ingredient4: '3 oeufs',
-                                ingredient5: "20 cl de crème légère",
-                                ingredient6: "Sel et poivre",
-                                recette: 'Préchauffer le four a 180°\n' +
-                                    '\n' +
-                                    'Mettre la pâte dans un plat a quiche et faire des empreintes de fourchette dans le fond. Émincer les champignons de paris et le thon, déposez-les sur le fond de la quiche. Battre dans un bol les 3 œufs avec une pincer de sel, de poivre et la crème légère. Mettre le tout dans la quiche et enfourner pendant 15min\n',
+                                ingredient1: `${t("Recettes10.2")}`,
+                                ingredient2: `${t("Recettes10.3")}`,
+                                ingredient3: `${t("Recettes10.4")}`,
+                                ingredient4: `${t("Recettes10.5")}`,
+                                ingredient5: `${t("Recettes10.6")}`,
+                                ingredient6: `${t("Recettes10.7")}`,
+                                recette: `${t("Recettes10.8")}`,
                                 time: '20min',
-                                name: 'Quiche Thon Champignons'
+                                name: `${t("Recettes10.1")}`
                             })}>
                                 <Image
                                     style={styles.imageCard}
@@ -241,19 +208,13 @@ const RecettesScreen = ({navigation}) => {
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FNuggets.png?alt=media&token=75c0a1f9-7809-4170-a588-291e7b0d8d06",
-                                ingredient1: "3 blancs d'oeuf",
-                                ingredient2: '50g de corn-flakes',
-                                ingredient3: '260g de filet de poulet',
-                                ingredient4: 'Sel et poivre',
-                                recette: 'Préchauffer le four à 180°C.\n' +
-                                    '\n' +
-                                    'Préparer 2 bols pour constituer la panure. Dans le premier bol, mettre le jaune d \' œuf Saler généreusement et poivrer. Dans le deuxième bol, verser et écraser les Corn-flakes .\n' +
-                                    '\n' +
-                                    'Préparer le blanc de poulet en retirant les parties blanches, puis le découper en lamelles d\'environ 1 ou 2cm d\'épaisseur.\n' +
-                                    '\n' +
-                                    'Tremper tour à tour les lamelles de poulet dans le jaune  d\'œufs, puis dans les corn-flakes afin de bien les recouvrir. Les déposer délicatement dans un grand plat et enfourner 20 à 25 min.\n',
+                                ingredient1: `${t("Recettes11.2")}`,
+                                ingredient2: `${t("Recettes11.3")}`,
+                                ingredient3: `${t("Recettes11.4")}`,
+                                ingredient4: `${t("Recettes11.5")}`,
+                                recette: `${t("Recettes11.6")}`,
                                 time: '30min',
-                                name: 'Nuggets de Poulet'
+                                name: `${t("Recettes11.1")}`
                             })}>
                                 <Image
                                     style={styles.imageCard}
@@ -263,18 +224,13 @@ const RecettesScreen = ({navigation}) => {
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FPoulet%20tenders.png?alt=media&token=37ab14af-5f38-432d-8003-64400adf7835",
-                                ingredient1: "2 blancs de poulet",
-                                ingredient2: '1 oeuf',
-                                ingredient3: '150g de corn flakes natures',
-                                ingredient4: 'Sel et poivre',
-                                recette: 'Préchauffer le four à 180°C.\n' +
-                                    '\n' +
-                                    'Découpez les blancs de poulet en batons de 1 cm de large environ.\n' +
-                                    'Dans un bol, battez le jaune d\'œuf.\n' +
-                                    'Dans un saladier, écrasez bien finement le corn flakes avec le sel et le poivre.\n' +
-                                    'Trempez les émincés de poulet dans le mélange liquide, puis dans les céréales et déposez-les sur une plaque de four.\n',
+                                ingredient1: `${t("Recettes12.2")}`,
+                                ingredient2: `${t("Recettes12.3")}`,
+                                ingredient3: `${t("Recettes12.4")}`,
+                                ingredient4: `${t("Recettes12.5")}`,
+                                recette: `${t("Recettes12.6")}`,
                                 time: '30min',
-                                name: 'Chicken tender'
+                                name: `${t("Recettes12.1")}`
                             })}>
                                 <Image
                                     style={styles.imageCard}
@@ -284,21 +240,16 @@ const RecettesScreen = ({navigation}) => {
 
                     <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                         image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FNouilles%20au%20poulet.png?alt=media&token=c5b3d4bd-9138-4bef-95fb-8e9c8a5b3755",
-                        ingredient1: "250G de poulet",
-                        ingredient2: '250G de nouilles',
-                        ingredient3: "2 courgettes",
-                        ingredient4: "1 citron vert",
-                        ingredient5: "½ oignon",
-                        ingredient6: "huile",
-                        ingredient7: "coriandre",
-                        recette: 'Faire cuire le poulet coupé en dés.\n' +
-                            'Coupez les courgettes en dés, pelez puis ciselez le demi-oignon.\n' +
-                            'Faire bouillir une casserole d\'eau pour les nouilles.\n' +
-                            'Égouttez et disposez les nouilles dans un bol.\n' +
-                            'Faire chauffer une cuillère à soupe d\'huile d\'olive dans un wok sur feu moyen à vif, ajouter l\'oignon et faite revenir pendant 3 min. Ajoutez les dés de courgettes et faire revenir pendant 1 min, ajoutez les nouilles et mélangez bien pendant 30 sec.\n' +
-                        'Émiettez le saumon au-dessus du wok et servez avec la coriandre ciselée et me citron.\n',
+                        ingredient1: `${t("Recettes13.2")}`,
+                        ingredient2: `${t("Recettes13.3")}`,
+                        ingredient3: `${t("Recettes13.4")}`,
+                        ingredient4: `${t("Recettes13.5")}`,
+                        ingredient5: `${t("Recettes13.6")}`,
+                        ingredient6: `${t("Recettes13.7")}`,
+                        ingredient7: `${t("Recettes13.8")}`,
+                        recette: `${t("Recettes13.9")}`,
                         time: '25min',
-                        name: 'Nouilles au poulet'
+                        name: `${t("Recettes13.1")}`
                     })}>
                         <Image
                             style={styles.imageCard}
@@ -311,16 +262,15 @@ const RecettesScreen = ({navigation}) => {
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FBurger%20poulet%20tenders.png?alt=media&token=f261994c-e973-4878-8f0c-600307f56eb4",
-                                ingredient1: "170g de filet de poulet",
-                                ingredient2: "Salade verte",
-                                ingredient3: "65g à 85g de pain burger au blé complet",
-                                ingredient4: "½ tomate",
-                                ingredient5: "2 poulet tenders fait maison",
-                                ingredient6: "Sel et poivre",
-                                recette: 'Préparer et faire chauffer au four vos tenders de poulet, pendant ce temps, faire chauffer les pains burger au grille-pain.\n' +
-                                    'Superposer 1 tranche de pain burger, le tenders de poulet ( sauce au choix ), des feuilles de salade et quelques tranches de tomate, placer la seconde tranche de pain sur le dessus pour fermer le burger.\n',
+                                ingredient1: `${t("Recettes14.2")}`,
+                                ingredient2: `${t("Recettes14.3")}`,
+                                ingredient3: `${t("Recettes14.4")}`,
+                                ingredient4: `${t("Recettes14.5")}`,
+                                ingredient5: `${t("Recettes14.6")}`,
+                                ingredient6: `${t("Recettes14.7")}`,
+                                recette: `${t("Recettes14.8")}`,
                                 time: '20min',
-                                name: 'Burger au poulet tenders'
+                                name: `${t("Recettes14.1")}`
                             })}>
                                 <Image
                                     style={styles.imageCard}
@@ -330,17 +280,16 @@ const RecettesScreen = ({navigation}) => {
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FPoke%20bowl%20poulet%20avocat%20saumon.png?alt=media&token=7fb2ecf5-9e89-401b-9fd4-7c23ffe29120",
-                                ingredient1: "1 filet de poulet",
-                                ingredient2: "2 cuillières à soupe de sauce soja",
-                                ingredient3: "Graines de sésame",
-                                ingredient4: "Riz à sushi cuit et refroidi",
-                                ingredient5: "Tranche de concombre",
-                                ingredient6: "Melon coupé en dés.",
-                                ingredient7: "Tranches d'avocat\n",
-                                recette: 'Coupez le pavé de saumon en dés, faire cuire a feu doux avec 1 cuillère à soupe de sauce soja et des graines de sésame.\n' +
-                                    'Placez le riz au fond d\'un bol, ajoutez des graines de sésame, des tranches de concombre, le melon, des tranches d\'avocat et le saumon assaisonné.\n',
+                                ingredient1: `${t("Recettes15.2")}`,
+                                ingredient2: `${t("Recettes15.3")}`,
+                                ingredient3: `${t("Recettes15.4")}`,
+                                ingredient4: `${t("Recettes15.5")}`,
+                                ingredient5: `${t("Recettes15.6")}`,
+                                ingredient6: `${t("Recettes15.7")}`,
+                                ingredient7: `${t("Recettes15.8")}`,
+                                recette: `${t("Recettes15.9")}`,
                                 time: '20min',
-                                name: 'Poke bowl poulet avocat/melon'
+                                name: `${t("Recettes15.1")}`
                             })}>
                                 <Image
                                     style={styles.imageCard}
@@ -352,23 +301,40 @@ const RecettesScreen = ({navigation}) => {
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FFrite%20patate%20douce.png?alt=media&token=164edc23-4d4b-43ba-98eb-efa0fdcbdeac",
-                                ingredient1: "1 patate douce",
-                                ingredient2: "2 cuillère à soupe d'huile d'olive",
-                                ingredient3: "1 cuillère à soupe de romarin",
-                                ingredient4: "1 cuillère à café de sel",
-                                ingredient5: "1 cuillère à café de poivre",
-                                recette: 'Préchauffer le four a 220°C\n' +
-                                    'Coupez la patate douce en frites et mélangez-les dans un saladier avec l\'huile d\'olive, le romain, le sel et le poivre.\n' +
-                                    'Disposez en une couche sur une plate recouverte de papier cuisson.\n' +
-                                    'Faite cuire 20-25min, en retournant à mi-cuisson.\n',
+                                ingredient1: `${t("Recettes16.2")}`,
+                                ingredient2: `${t("Recettes16.3")}`,
+                                ingredient3: `${t("Recettes16.4")}`,
+                                ingredient4: `${t("Recettes16.5")}`,
+                                ingredient5: `${t("Recettes16.6")}`,
+                                recette: `${t("Recettes16.7")}`,
                                 time: '30min',
-                                name: 'Frites de patate douce'
+                                name: `${t("Recettes16.1")}`
                             })}>
                                 <Image
                                     style={styles.imageCard}
                                     source={require('../../assets/photos-recettes/Fritepatatedoucelarge.png')}
                                 />
                             </TouchableOpacity>
+
+
+                    <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
+                        image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2Fboules%20fromage.png?alt=media&token=7c7d4c6a-55fd-4e57-8686-8e6a2dc3df54',
+                        ingredient1: `${t("Recettes17.2")}`,
+                        ingredient2: `${t("Recettes17.3")}`,
+                        ingredient3: `${t("Recettes17.4")}`,
+                        ingredient4: `${t("Recettes17.5")}`,
+                        recette: `${t("Recettes17.6")}`,
+                        time: '5min',
+                        name: `${t("Recettes17.1")}`
+                    })}>
+                        <Image
+                            style={styles.imageCard}
+                            source={{
+                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBoule%20fromage%20chevre%20large.png?alt=media&token=3faf56c9-facb-4005-a0b1-5cc5e7706837"
+                            }}
+                        >
+                        </Image>
+                    </TouchableOpacity>
 
                 </ScrollView>
 

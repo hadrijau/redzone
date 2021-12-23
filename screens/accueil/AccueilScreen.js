@@ -2,11 +2,14 @@ import React, {useEffect} from 'react';
 import {View, Text, Image, ImageBackground, ScrollView, TouchableOpacity, StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from "react-redux";
 import * as userActions from "../../store/actions/users";
+import {useTranslation} from "react-i18next";
+import i18next from "i18next";
 
 
 const AccueilScreen = ({navigation}) => {
 
     const dispatch = useDispatch();
+    const { i18n, t } = useTranslation();
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
@@ -17,7 +20,10 @@ const AccueilScreen = ({navigation}) => {
 
     const userData = useSelector(state => state.user.currentUser)
 
-    console.log(userData)
+    console.log(userData);
+
+    console.log('doc', i18next.language);
+
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
@@ -26,21 +32,21 @@ const AccueilScreen = ({navigation}) => {
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/logo_muscu.jpg')} style={styles.imageCard}/>
                         </View>
-                        <Text style={styles.abonnementFreeText}>Préparation physique</Text>
+                        <Text style={styles.abonnementFreeText}>{`${t("prepaPhysique")}`}</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('DrillScreen')}>
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/logo_drill.jpg')} style={styles.imageCard}/>
                         </View>
-                        <Text style={styles.abonnementFreeText}>Drill</Text>
+                        <Text style={styles.abonnementFreeText}>{`${t("drill")}`}</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('RecettesScreen')}>
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/logo_diet.jpg')} style={styles.imageCard}/>
                         </View>
-                        <Text style={styles.abonnementFreeText}>Recettes</Text>
+                        <Text style={styles.abonnementFreeText}>{`${t("recettes")}`}</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -49,14 +55,14 @@ const AccueilScreen = ({navigation}) => {
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/logo_profil.jpg')} style={styles.imageCard}/>
                         </View>
-                        <Text style={styles.abonnementFreeText}>Mon profil</Text>
+                        <Text style={styles.abonnementFreeText}>{`${t("profil")}`}</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('ProgressScreen')}>
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/logo_progres.jpg')} style={styles.imageCard}/>
                         </View>
-                        <Text style={styles.abonnementFreeText}>Mes progrès</Text>
+                        <Text style={styles.abonnementFreeText}>{`${t("progress")}`}</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('CalendrierScreen')}>
@@ -72,22 +78,22 @@ const AccueilScreen = ({navigation}) => {
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/logo_equipement.jpg')} style={styles.imageCard}/>
                         </View>
-                        <Text style={styles.abonnementFreeText}>Equipements</Text>
+                        <Text style={styles.abonnementFreeText}>{`${t("equipements")}`}</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('ClubScreen')}>
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/logo_club.jpg')} style={styles.imageCard}/>
                         </View>
-                        <Text style={styles.abonnementFreeText}>Mon club</Text>
+                        <Text style={styles.abonnementFreeText}>{`${t("club")}`}</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('NutritionSportiveScreen')}>
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/logo_nutrition_sportive.jpg')} style={styles.imageCard}/>
                         </View>
-                        <Text style={styles.abonnementFreeTextNut}>Nutrition</Text>
-                        <Text style={styles.abonnementFreeTextNut}>sportive</Text>
+                        <Text style={styles.abonnementFreeTextNut}>{`${t("nutrition")}`}</Text>
+                        <Text style={styles.abonnementFreeTextNut}>{`${t("sportive")}`}</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -96,7 +102,7 @@ const AccueilScreen = ({navigation}) => {
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/logo_entraineurs_persos.jpg')} style={styles.imageCard}/>
                         </View>
-                        <Text style={styles.abonnementFreeText}>Entraineurs personnels</Text>
+                        <Text style={styles.abonnementFreeText}>{`${t("entraineursPersonnels")}`}</Text>
                     </TouchableOpacity>
 
                 </View>

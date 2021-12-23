@@ -3,11 +3,12 @@ import {ImageBackground, Text, TextInput, TouchableOpacity, View, StyleSheet, Sc
 import {Formik} from "formik";
 import {useDispatch, useSelector} from "react-redux";
 import * as userActions from "../../store/actions/users";
+import {useTranslation} from "react-i18next";
 
 const DrillScreen = ({navigation}) => {
 
     const dispatch = useDispatch();
-
+    const { i18n, t } = useTranslation();
     useEffect(() => {
         dispatch(userActions.fetchUser())
     }, [dispatch]);
@@ -37,7 +38,7 @@ const DrillScreen = ({navigation}) => {
                                                   onPress={() => navigation.navigate('GererAbonnementScreen', {
                                                       entrainement: "drill"
                                                   })}>
-                                    <Text style={styles.abonnementText}>Pour profiter pleinement de l'application, souscrivez à l'abonnement Drill ! </Text>
+                                    <Text style={styles.abonnementText}>{t("profiter2")}</Text>
                                 </TouchableOpacity>
                             </>:
 
