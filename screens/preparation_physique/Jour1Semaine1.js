@@ -33,7 +33,7 @@ const Jour1Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FDL%20Calf%20Raise.mp4?alt=media&token=f9a15f57-8a6c-428a-9b12-a0716c8fedef"}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%201%2FAdductor%20PLank.mp4?alt=media&token=fcdc0259-571a-4eca-b642-73e4965e87d1"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -107,7 +107,7 @@ const Jour1Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            souce={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%201%2FDB%20SA%20Floor.mp4?alt=media&token=a32c709d-10f2-4a88-b2b0-76324ea51d55"}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%201%2FDB%20SA%20Floor.mp4?alt=media&token=a32c709d-10f2-4a88-b2b0-76324ea51d55"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -144,7 +144,7 @@ const Jour1Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            souce={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%201%2FDB%20incline.mp4?alt=media&token=0b5c8f8e-da01-4907-92f2-e95cdf46b298"}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%201%2FDB%20incline.mp4?alt=media&token=0b5c8f8e-da01-4907-92f2-e95cdf46b298"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -181,7 +181,7 @@ const Jour1Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            souce={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%201%2FDL%20Calf%20Raise.mp4?alt=media&token=c047e07c-7b44-497d-9cf1-891a307c0566"}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%201%2FDL%20Calf%20Raise.mp4?alt=media&token=c047e07c-7b44-497d-9cf1-891a307c0566"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -217,7 +217,7 @@ const Jour1Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            souce={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%201%2FInt_Ext%20Iso%2090%C2%B0%20Flexion.mp4?alt=media&token=366a4693-dc1e-49f0-8def-5dc4b06e27a0"}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%201%2FInt_Ext%20Iso%2090%C2%B0%20Flexion.mp4?alt=media&token=366a4693-dc1e-49f0-8def-5dc4b06e27a0"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping

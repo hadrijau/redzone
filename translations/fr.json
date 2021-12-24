@@ -23,6 +23,8 @@
   "suivant": "Suivant",
   "remplir": "Veuillez remplir ce champ",
   "mail": "Adresse Email",
+  "mail2": "Mail",
+  "mailSend": "Votre email a bien été envoyé",
   "inscription": "Inscription",
   "password": "Mot de passe ",
   "confirmPassword": "Confirmation du mot de passe",

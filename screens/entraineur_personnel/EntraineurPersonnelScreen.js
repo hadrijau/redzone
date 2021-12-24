@@ -1,10 +1,21 @@
 import React from 'react';
-import {ImageBackground, ScrollView, Text, TouchableOpacity, View, StyleSheet, Image, TextInput} from "react-native";
+import {
+    ImageBackground,
+    ScrollView,
+    Text,
+    TouchableOpacity,
+    View,
+    StyleSheet,
+    Image,
+    TextInput,
+    SafeAreaView, TouchableWithoutFeedback, Keyboard
+} from "react-native";
 import {Formik} from "formik";
 import axios from 'axios';
 import {useTranslation} from "react-i18next";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
-const EntraineurPersonnelScreen = () => {
+const EntraineurPersonnelScreen = (props) => {
 
     const initialValues = {
         nom: '',
@@ -15,7 +26,12 @@ const EntraineurPersonnelScreen = () => {
 
     const { i18n, t } = useTranslation();
     return (
-            <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <KeyboardAwareScrollView
+                    style={styles.container}
+                >
+                    <View style={styles.container}>
 
                 <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
@@ -30,10 +46,18 @@ const EntraineurPersonnelScreen = () => {
                         <Formik
                             initialValues={initialValues}
                             onSubmit={async values => {
-                                 await axios.post("https://kval-backend.herokuapp.com/send", {
-                                    IBAN: values.email,
-                                    BIC: values.message,
-                                });
+                                await axios.post(
+                                    "https://your-redzone.herokuapp.com/send",
+                                    {
+                                        subject: `${values.sujet}`,
+                                        html_output: `<div><p><br></p> 
+<p>Message : ${values.message}</p>
+<p>Mail : ${values.email}</p>
+<p>Nom : ${values.nom}</p>
+<hr>
+</div>`
+                            })
+                                props.navigation.navigate("ConfirmationEmailScreen")
                             }}
                         >
                             {props => (
@@ -55,7 +79,7 @@ const EntraineurPersonnelScreen = () => {
                                         ) : null}
 
                                         <View style={styles.inscriptionInnerForm}>
-                                                <Text style={styles.label}>{t("mail")}</Text>
+                                                <Text style={styles.label}>{t("mail2")}</Text>
                                             <View style={styles.inputContainer}>
                                                 <TextInput
                                                     value={props.values.email}
@@ -111,6 +135,9 @@ const EntraineurPersonnelScreen = () => {
                     </ScrollView>
                 </ImageBackground>
             </View>
+                </KeyboardAwareScrollView>
+            </TouchableWithoutFeedback>
+        </SafeAreaView>
     );
 };
 

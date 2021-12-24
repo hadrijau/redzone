@@ -42,6 +42,7 @@ import ConfirmationClubScreen from "../screens/club/ConfirmationClubScreen";
 import ChooseDaysScreen from "../screens/preparation_physique/ChooseDaysScreen";
 import CalendrierScreen from "../screens/fffa/CalendrierScreen";
 import NutritionDetailScreen from "../screens/nutrition_sportive/NutritionDetailScreen";
+import ConfirmationEmailScreen from "../screens/entraineur_personnel/ConfirmationEmailScreen";
 const AuthStackNavigator = createNativeStackNavigator();
 const ProfileStackNavigator = createNativeStackNavigator();
 const ProgressStackNavigator = createNativeStackNavigator();
@@ -282,6 +283,14 @@ const accueilNavigator = () => {
                 component={PreparationPhysiqueScreen}
                 options={{
                     header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('MusculationScreen')}/>,
+                }}
+            />
+
+            <AccueilStackNavigator.Screen
+                name="ConfirmationEmailScreen"
+                component={ConfirmationEmailScreen}
+                options={{
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('EntraineurPersonnelScreen')}/>,
                 }}
             />
             <AccueilStackNavigator.Screen

@@ -253,9 +253,7 @@ const RecettesScreen = ({navigation}) => {
                     })}>
                         <Image
                             style={styles.imageCard}
-                            source={{
-                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FNouilles%20au%20poulet%20large.png?alt=media&token=35ab3996-e53f-4c79-947b-9a46eec81c51"
-                            }}
+                            source={require("../../assets/Nouilles_au_poulet_large.png")}
                         >
                         </Image>
                     </TouchableOpacity>
@@ -329,9 +327,7 @@ const RecettesScreen = ({navigation}) => {
                     })}>
                         <Image
                             style={styles.imageCard}
-                            source={{
-                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Photo%20Id%C3%A9e%20Recette%2FBoule%20fromage%20chevre%20large.png?alt=media&token=3faf56c9-facb-4005-a0b1-5cc5e7706837"
-                            }}
+                            source={require('../../assets/Boule_fromage_chevre_large.png')}
                         >
                         </Image>
                     </TouchableOpacity>

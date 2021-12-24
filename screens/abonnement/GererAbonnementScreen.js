@@ -245,7 +245,7 @@ const GererAbonnementScreen = (props) => {
                             <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
 
-                                <Text style={styles.inscriptionBigText}>Vous avez actuellement l'abonnement {userData.abonnement}</Text>
+                                <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
 
                                 <ScrollView style={styles.scrollView}>
 
@@ -285,7 +285,7 @@ const GererAbonnementScreen = (props) => {
                             <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
 
-                                <Text style={styles.inscriptionBigText}>Vous avez actuellement l'abonnement {userData.abonnement}</Text>
+                                <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
 
                                 <ScrollView style={styles.scrollView}>
                                     <TouchableOpacity style={styles.recetteCard} onPress={() => {
@@ -336,7 +336,7 @@ const GererAbonnementScreen = (props) => {
                     <View style={styles.container}>
                         <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
-                            <Text style={styles.inscriptionBigText}>Vous avez actuellement l'abonnement {userData.abonnement}</Text>
+                            <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
 
                             <ScrollView style={styles.scrollView}>
 
@@ -376,7 +376,7 @@ const GererAbonnementScreen = (props) => {
                     <View style={styles.container}>
                         <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
-                            <Text style={styles.inscriptionBigText}>Vous avez actuellement l'abonnement {userData.abonnement}</Text>
+                            <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
 
                             <ScrollView style={styles.scrollView}>
 
