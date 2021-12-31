@@ -33,7 +33,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            souce={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2FBand%20Triceps%203%20ways.mp4?alt=media&token=ce1518f1-5a6b-4e14-b7e5-53c8ff40bd3a"}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%202%2FJour%204%2FBand%20Triceps%203%20ways.mp4?alt=media&token=ede9ec43-6b30-45b5-af35-c8414c0c736b"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -57,6 +57,11 @@ const Jour2Semaine1 = () => {
                         <Text style={styles.difficultyText}>Band Triceps 3 ways</Text>
                     </View>
 
+
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 111</Text>
+                        <Text style={styles.difficultyText}>Séries : 3*8 par exercices</Text>
+                    </View>
 
                 </View> : <Text/>}
 
@@ -103,7 +108,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            souce={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2FGoblet%20Split%20Sq.mp4?alt=media&token=c303969f-7d26-4d96-82dc-4d0aaf7c7ae4"}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%202%2FJour%204%2FGoblet%20Split%20Sq.mp4?alt=media&token=d58d46d8-0a18-4509-87df-e9c4cb02e407"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -145,7 +150,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            souce={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2FGoblet%20box%20Squat.mp4?alt=media&token=33bd644f-3228-47e7-9ed6-39a240af7c76"}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%202%2FJour%204%2FGoblet%20box%20Squat.mp4?alt=media&token=3a04ab88-21cb-4e0e-aab2-c719032ab7ba"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -187,7 +192,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            souce={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2FHip%20Bridge%20ISo.mp4?alt=media&token=364bc08c-b653-4047-bfda-3c8bf173d582"}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%202%2FJour%204%2FHip%20Bridge%20ISo.mp4?alt=media&token=9d02b651-18f1-49f0-bb66-68eedb483e39"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -227,7 +232,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            souce={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2FInvert%20Body%20row.mp4?alt=media&token=570a3274-731c-4fb4-924d-b53bf9a7e014"}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%202%2FJour%204%2FInvert%20Body%20row.mp4?alt=media&token=491e090c-a01d-4072-ae9a-e01bacbcf985"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -262,7 +267,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            souce={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2FSA%20DB%20Shrug%20seat.mp4?alt=media&token=e08f9131-94bd-48b7-a7dd-a968bbb1d2d0"}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%202%2FJour%204%2FSA%20DB%20Shrug%20seat.mp4?alt=media&token=f5c6a8ca-3440-4a38-b210-f6ec27167427"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping

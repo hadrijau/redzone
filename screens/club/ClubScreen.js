@@ -41,7 +41,6 @@ const ClubScreen = ({navigation}) => {
 
     const userData = useSelector(state => state.user.currentUser)
 
-    console.log("data", userData)
     useEffect(() => {
         firebase.firestore()
             .collection('clubs')
@@ -159,11 +158,9 @@ const ClubScreen = ({navigation}) => {
                 console.log(snapshot)
             })
         }
-
         const taskError = snapshot => {
             console.log(snapshot)
         }
-
         task.on("state_changed", taskProgress, taskError, taskCompleted)
     }
 
@@ -237,7 +234,6 @@ const ClubScreen = ({navigation}) => {
                                     renderItem={itemData => {
                                         return (
                                             <TouchableOpacity onPress={async () => {
-                                                console.log('item', itemData.item)
                                                 setSearch(itemData.item)
                                                 await getImage(itemData.item)
                                             }}>

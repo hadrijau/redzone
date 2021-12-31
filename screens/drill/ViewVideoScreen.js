@@ -48,6 +48,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -79,6 +80,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -112,6 +114,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -146,6 +149,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -180,6 +184,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -214,6 +219,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -253,6 +259,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -285,6 +292,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -319,6 +327,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -353,6 +362,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -387,6 +397,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -421,6 +432,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -460,6 +472,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -492,6 +505,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -526,6 +540,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -560,6 +575,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -594,6 +610,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -628,6 +645,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -667,6 +685,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -699,6 +718,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -733,6 +753,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -767,6 +788,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -801,6 +823,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -835,6 +858,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -874,6 +898,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -906,6 +931,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -940,6 +966,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -974,6 +1001,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -1008,6 +1036,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -1042,6 +1071,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -1081,6 +1111,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -1113,6 +1144,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -1147,6 +1179,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -1181,6 +1214,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -1215,6 +1249,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -1249,6 +1284,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -1288,6 +1324,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -1320,6 +1357,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -1354,6 +1392,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -1388,6 +1427,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -1422,6 +1462,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>
@@ -1456,6 +1497,7 @@ const ViewVideoScreen = () => {
                                     useNativeControls
                                     resizeMode="contain"
                                     isLooping
+                                    shouldPlay={true}
                                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 />
                             </View>

@@ -32,7 +32,7 @@ const App = (props) => {
                         options={options}
                         // Options for the styling
                         getTime={(time) => {
-                            console.log(time);
+
                         }}
                     />
                     <AntDesign name="pausecircleo" size={45} color="red" style={styles.pause} onPress={() => setIsStopwatchStart(false)}/>
