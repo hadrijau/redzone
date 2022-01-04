@@ -132,14 +132,22 @@ const ClubScreen = ({navigation}) => {
 
     // --- Upload file --- //
     const [url, setUrl] = useState("");
+    const encode = (uri) => {
+        if (Platform.OS === 'android') return encodeURI(`file://${uri}`)
+        else return uri
+    }
 
     const pickDocument = async () => {
-        let result = await DocumentPicker.getDocumentAsync({});
-        return result.uri
+        let result = await DocumentPicker.getDocumentAsync({
+            type: "application/pdf",
+        });
+        return encode(result.uri)
     }
 
     const uploadFile = async (uri) => {
-        const response = await fetch(uri);
+        console.log('ui', uri.toString())
+        const response = await fetch(uri.toString());
+        console.log('response', response);
         const blob = await response.blob();
 
         const task = firebase
@@ -175,6 +183,7 @@ const ClubScreen = ({navigation}) => {
     const { i18n, t } = useTranslation();
     const PdfReader = ({ url: uri }) => <WebView style={{ width: "90%", height: 250, marginVertical: 20, alignSelf: 'center'}} source={{ uri }} />
 
+    console.log(userData.licence)
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             {userData.phoneClub ?
@@ -201,12 +210,10 @@ const ClubScreen = ({navigation}) => {
                                     <Text style={styles.inscriptionText}>{t("changeClub")}</Text>
                                 </TouchableOpacity>
 
-                                {userData.licence ?  <PdfReader url={userData.licence} /> :    <TouchableOpacity style={[styles.inscriptionButton, {marginBottom: 100}]} onPress={async () => {
-                                    await pickDocument().then((result) => uploadFile(result)).then(() => {
+                                {userData.licence ?  <PdfReader url={userData.licence.toString()} /> :    <TouchableOpacity style={[styles.inscriptionButton, {marginBottom: 100}]} onPress={async () => {
+                                    pickDocument().then((result) => uploadFile(result)).then(() => {
                                         navigation.navigate("ConfirmationClubScreen", {option: "licence"})
-                                    })
-                                    console.log("url", url)
-                                }}>
+                                })}}>
                                     <Text style={styles.inscriptionText}>{t("licence")}</Text>
                                 </TouchableOpacity>}
 

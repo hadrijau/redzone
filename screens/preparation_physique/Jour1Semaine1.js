@@ -136,6 +136,10 @@ const Jour1Semaine1 = () => {
                         <Text style={styles.difficultyText}>DB SA Floor</Text>
                     </View>
 
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 411</Text>
+                        <Text style={styles.difficultyText}>Séries : 12ea</Text>
+                    </View>
 
                 </View> : <Text/>}
 
@@ -171,6 +175,11 @@ const Jour1Semaine1 = () => {
 
                     <View>
                         <Text style={styles.difficultyText}>DB Incline</Text>
+                    </View>
+
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 411</Text>
+                        <Text style={styles.difficultyText}>Séries : 3*10</Text>
                     </View>
 
                 </View> : <Text/>}
@@ -283,6 +292,9 @@ const Jour1Semaine1 = () => {
                         <Text style={styles.difficultyText}>Kneeling Band Punch</Text>
                     </View>
 
+                    <View>
+                        <Text style={styles.difficultyText}>Séries : 10</Text>
+                    </View>
 
                 </View> : <Text/>}
 

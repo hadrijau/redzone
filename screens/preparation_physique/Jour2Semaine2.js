@@ -259,6 +259,12 @@ const Jour2Semaine1 = () => {
                     <View>
                         <Text style={styles.difficultyText}>Invert Body row</Text>
                     </View>
+
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 411</Text>
+                        <Text style={styles.difficultyText}>Séries : 3*15</Text>
+                    </View>
+
                 </View> : <Text/>}
 
 

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {ImageBackground, Text, TextInput, Image, TouchableOpacity, View, StyleSheet, ScrollView, Dimensions} from 'react-native';
 import {Formik} from "formik";
+import RecetteCard from "./components/RecetteCard";
 import {useTranslation} from "react-i18next";
-
+import i18next from "i18next";
+import firebase from "firebase";
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
@@ -10,11 +12,29 @@ const RecettesScreen = ({navigation}) => {
 
     const { i18n, t } = useTranslation();
 
+    const [recettes, setRecettes] = useState([]);
+
+    useEffect(() => {
+        firebase
+            .firestore()
+            .collection("RecetteFrench")
+            .get().then((querySnapshot) => {
+                const recettes = [];
+            querySnapshot.forEach((doc) => {
+                recettes.push(doc.data())
+            })
+            setRecettes(recettes);
+        });
+    }, []);
+
+    console.log('recettes', recettes);
+
     return (
         <View style={styles.container}>
 
             <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
+                {i18next.language === "en" ?
                 <ScrollView style={styles.scrollView}>
 
 
@@ -162,9 +182,6 @@ const RecettesScreen = ({navigation}) => {
                                     source={require('../../assets/photos-recettes/BagelauThonlarge.jpg.png')}
                                 />
                             </TouchableOpacity>
-
-
-
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => navigation.navigate('RecetteDetailScreen', {
                                 image: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/recette-temps%2FSalade%20Ch%C3%A8vre%20Chaud.png?alt=media&token=48d0e33e-4eb7-4e78-bee6-4ce208d68a51',
@@ -332,7 +349,39 @@ const RecettesScreen = ({navigation}) => {
                         </Image>
                     </TouchableOpacity>
 
-                </ScrollView>
+                </ScrollView> : <ScrollView style={styles.scrollView}>
+
+                        {recettes.map((recette, index) => {
+                            return (
+                                <RecetteCard
+                                    key={index}
+                                    handlePress={() => navigation.navigate('RecetteDetailScreen', {
+                                        name: recette.name,
+                                        image: recette.imageTemps,
+                                        ingredient1: recette.ingredient1,
+                                        ingredient2: recette.ingredient2,
+                                        ingredient3: recette.ingredient3,
+                                        ingredient4: recette?.ingredient4,
+                                        ingredient5: recette?.ingredient5,
+                                        ingredient6: recette?.ingredient6,
+                                        ingredient7: recette?.ingredient7,
+                                        recette: recette.recette
+                                    })}
+                                    name={recette.name}
+                                    image={recette.image}
+                                    recette={recette.recette}
+                                    ingredient1={recette.ingredient1}
+                                    ingredient2={recette.ingredient2}
+                                    ingredient3={recette.ingredient3}
+                                    ingredient4={recette?.ingredient4}
+                                    ingredient5={recette?.ingredient5}
+                                    ingredient6={recette?.ingredient6}
+                                    ingredient7={recette?.ingredient7}
+                                    imageTemps={recette.imageTemps}
+                                />
+                            )
+                        })}
+                    </ScrollView>}
 
             </ImageBackground>
         </View>

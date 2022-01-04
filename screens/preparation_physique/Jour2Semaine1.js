@@ -57,6 +57,10 @@ const Jour2Semaine1 = () => {
                         <Text style={styles.difficultyText}>Band Triceps 3 ways</Text>
                     </View>
 
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 111</Text>
+                        <Text style={styles.difficultyText}>Séries : 3*8ea</Text>
+                    </View>
 
                 </View> : <Text/>}
 
@@ -251,6 +255,11 @@ const Jour2Semaine1 = () => {
 
                     <View>
                         <Text style={styles.difficultyText}>Invert Body row</Text>
+                    </View>
+
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 411</Text>
+                        <Text style={styles.difficultyText}>Séries : 3*15</Text>
                     </View>
                 </View> : <Text/>}
 
