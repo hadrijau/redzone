@@ -4,13 +4,13 @@ import {useDispatch, useSelector} from "react-redux";
 import * as userActions from "../../store/actions/users";
 import {useTranslation} from "react-i18next";
 import i18next from "i18next";
-
+import { LogBox } from 'react-native';
 
 const AccueilScreen = ({navigation}) => {
 
     const dispatch = useDispatch();
     const { i18n, t } = useTranslation();
-
+    LogBox.ignoreAllLogs();
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
             dispatch(userActions.fetchUser())

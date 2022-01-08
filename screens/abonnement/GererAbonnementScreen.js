@@ -29,7 +29,9 @@ const GererAbonnementScreen = (props) => {
 
     const userData = useSelector(state => state.user.currentUser)
     console.log(userData);
-    const [subscriptionId, setSubscriptionId] = useState('');
+
+    const [loading, setLoading] = useState(false);
+
     const [response, setResponse ] = useState()
     const [paymentStatus, setPaymentStatus] = useState('')
     const [ makePaymentMuscu, setMakePaymentMuscu ] = useState(false);
@@ -37,6 +39,9 @@ const GererAbonnementScreen = (props) => {
     const [ makePaymentPremium, setMakePaymentPremium ] = useState(false);
 
     const { i18n, t } = useTranslation();
+
+
+    let subscriptionId = userData.subscriptionId
 
     const changeAbonnement = async (abonnement) => {
         await firebase
@@ -48,19 +53,40 @@ const GererAbonnementScreen = (props) => {
             })
     };
 
-
-    useEffect(() => {
-        firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid)
-            .get()
-            .then((snapshot) => {
-                if (snapshot.exists) {
-                    setSubscriptionId(snapshot.data().subscriptionId)
-                } else {
-                    console.log('does not exists')
-                }
+    const updateSubscriptionUser = async (subscription) => {
+        await firebase
+            .firestore()
+            .collection('users')
+            .doc(firebase.auth().currentUser.uid)
+            .update({
+                subscriptionId: subscription
             })
-    }, []);
+    };
 
+    const desabonnement = async () => {
+        setLoading(true)
+        try {
+            const stripeResponse = await axios.post('https://your-redzone.herokuapp.com/paymentdelete', {
+                subscriptionId : subscriptionId
+            })
+
+
+            if(stripeResponse){
+                console.log('stripe', stripeResponse)
+                const paid = stripeResponse.data.items.data[0].plan.active;
+                if(paid === true){
+                    await changeAbonnement("free")
+                    setLoading(false)
+                    props.navigation.navigate("ConfirmationDesabonnementScreen")
+                } else{
+                    setPaymentStatus('pas ok')
+                }
+                console.log(stripeResponse)
+
+            }} catch (error) {
+            console.log(error)
+        }
+    }
 
     const onCheckStatusMuscu = async (paymentResponse) => {
         setPaymentStatus('Votre paiement est en cours de traitement')
@@ -85,6 +111,7 @@ const GererAbonnementScreen = (props) => {
                 console.log(stripeResponse)
                 const paid = stripeResponse.data.items.data[0].plan.active;
                 if(paid === true){
+                    await updateSubscriptionUser(stripeResponse.data.id)
                     await changeAbonnement('Musculation')
                     setPaymentStatus('Votre paiement a été validé ! Bienvenue chez RoundPower')
                 }else{
@@ -94,8 +121,6 @@ const GererAbonnementScreen = (props) => {
             }else{
                 setPaymentStatus('Le paiement a échoué')
             }
-
-
         } catch (error) {
 
             console.log(error)
@@ -127,22 +152,18 @@ const GererAbonnementScreen = (props) => {
                 console.log(stripeResponse.data.items.data[0].plan.active)
                 const paid = stripeResponse.data.items.data[0].plan.active;
                 if(paid === true){
+                    await updateSubscriptionUser(stripeResponse.data.id)
                     await changeAbonnement('Drill')
                     setPaymentStatus('Votre paiement a été validé ! Bienvenue chez RoundPower')
                 }else{
                     setPaymentStatus('Le paiement a échoué')
                 }
-
             }else{
                 setPaymentStatus('Le paiement a échoué')
             }
-
-
         } catch (error) {
-
             console.log(error)
             setPaymentStatus('Le paiement a échoué')
-
         }
     }
 
@@ -169,6 +190,7 @@ const GererAbonnementScreen = (props) => {
                 console.log(stripeResponse.data.items.data[0].plan.active)
                 const paid = stripeResponse.data.items.data[0].plan.active;
                 if(paid === true){
+                    await updateSubscriptionUser(stripeResponse.data.id)
                     await changeAbonnement('Premium')
                     setPaymentStatus('Votre paiement a été validé ! Bienvenue chez RoundPower')
                 }else{
@@ -363,7 +385,11 @@ const GererAbonnementScreen = (props) => {
                                     >
                                     </Image>
                                 </TouchableOpacity>
-
+                                <TouchableOpacity style={styles.abonnementCard} onPress={async () => {
+                                    await desabonnement()
+                                }}>
+                                    <Text style={styles.abonnementText}>{t("desabonnement")}</Text>
+                                </TouchableOpacity>
 
                             </ScrollView>
                         </ImageBackground>
@@ -404,8 +430,8 @@ const GererAbonnementScreen = (props) => {
                                     </Image>
                                 </TouchableOpacity>
 
-                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
-                                    setMakePaymentDrill(true)
+                                <TouchableOpacity style={styles.abonnementCard} onPress={async () => {
+                                    await desabonnement()
                                 }}>
                                     <Text style={styles.abonnementText}>{t("desabonnement")}</Text>
                                 </TouchableOpacity>
@@ -425,8 +451,8 @@ const GererAbonnementScreen = (props) => {
 
                             <ScrollView style={styles.scrollView}>
 
-                                <TouchableOpacity style={styles.abonnementCard} onPress={() => {
-                                    setMakePaymentDrill(true)
+                                <TouchableOpacity style={styles.abonnementCard} onPress={async () => {
+                                    await desabonnement()
                                 }}>
                                     <Text style={styles.abonnementText}>{t("desabonnement")}</Text>
                                 </TouchableOpacity>
@@ -521,9 +547,24 @@ const GererAbonnementScreen = (props) => {
 
     }
 
-    return (<View style={styles.container}>
-        {paymentUI(props)}
-    </View>)
+    if (loading) {
+        return (
+            <View style={styles.container}>
+                <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                        <View>
+                            <Text style={styles.paymentStatusText}>{t("patientez")}</Text>
+                            <ActivityIndicator />
+                        </View>
+                </ImageBackground>
+            </View>
+
+        )
+    } else {
+        return (<View style={styles.container}>
+            {paymentUI(props)}
+        </View>)
+    }
+
 };
 
 const styles = StyleSheet.create({

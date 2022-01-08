@@ -43,6 +43,8 @@ import ChooseDaysScreen from "../screens/preparation_physique/ChooseDaysScreen";
 import CalendrierScreen from "../screens/fffa/CalendrierScreen";
 import NutritionDetailScreen from "../screens/nutrition_sportive/NutritionDetailScreen";
 import ConfirmationEmailScreen from "../screens/entraineur_personnel/ConfirmationEmailScreen";
+import Jour2Semaine1 from "../screens/preparation_physique/Jour2Semaine1";
+import ConfirmationDesabonnementScreen from "../screens/abonnement/ConfirmationDesabonnementScreen";
 const AuthStackNavigator = createNativeStackNavigator();
 const ProfileStackNavigator = createNativeStackNavigator();
 const ProgressStackNavigator = createNativeStackNavigator();
@@ -158,7 +160,13 @@ const profileNavigator = () => {
                     header: props => <CustomHeader title="BURNPOWER"/>,
                 }}
             />
-
+            <ProfileStackNavigator.Screen
+                name="ConfirmationDesabonnementScreen"
+                component={ConfirmationDesabonnementScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
         </ProfileStackNavigator.Navigator>
         )
 
@@ -184,6 +192,13 @@ const accueilNavigator = () => {
             <AccueilStackNavigator.Screen
                 name="GererAbonnementScreen"
                 component={GererAbonnementScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+            <AccueilStackNavigator.Screen
+                name="ConfirmationDesabonnementScreen"
+                component={ConfirmationDesabonnementScreen}
                 options={{
                     header: props => <CustomHeader title="BURNPOWER"/>,
                 }}
@@ -309,7 +324,7 @@ const accueilNavigator = () => {
             />
             <AccueilStackNavigator.Screen
                 name="Jour2Semaine1"
-                component={Jour1Semaine1}
+                component={Jour2Semaine1}
                 options={{
                     header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.goBack()}/>,
                 }}

@@ -6,14 +6,19 @@ const windowWidth = Dimensions.get('window').width;
 
 const JourSelectionScreen = ({navigation, route}) => {
 
-    const semaine = route.params.semaine
+    let semaine;
+    let entrainement;
+    if (route.params) {
+        entrainement = route.params.entrainement;
+        semaine = route.params.semaine;
+    }
 
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
 
                 {semaine === 1 ? <View>
-                    <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('Jour1Semaine1')}>
+                    <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('Jour1Semaine1', {entrainement: entrainement, video: "Jour1Semaine1"})}>
                         {i18next.language === "en" ?  <ImageBackground
                             source={require('../../assets/Day_1.png')}
                             style={styles.imageBackground}
@@ -27,7 +32,7 @@ const JourSelectionScreen = ({navigation, route}) => {
 
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('Jour2Semaine1')}>
+                    <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('Jour2Semaine1', {entrainement: entrainement, video: "Jour2Semaine1"})}>
                         {i18next.language === "en" ?   <ImageBackground
                             source={require('../../assets/Day2.png')}
                             style={styles.imageBackground}
@@ -42,7 +47,7 @@ const JourSelectionScreen = ({navigation, route}) => {
                     </TouchableOpacity>
                 </View> :
                     <View>
-                        <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('Jour1Semaine2')}>
+                        <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('Jour1Semaine2', {entrainement: entrainement, video: "Jour1Semaine2"})}>
                             {i18next.language === "en" ?  <ImageBackground
                                 source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%202%2FJour%203%2FDay%203.png?alt=media&token=dc5364d8-7327-48c8-b639-8674c3bf3562"}}
                                 style={styles.imageBackground}
@@ -56,7 +61,7 @@ const JourSelectionScreen = ({navigation, route}) => {
 
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('Jour2Semaine2')}>
+                        <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('Jour2Semaine2', {entrainement: entrainement, video: "Jour2Semaine2"})}>
                             {i18next.language === "en" ? <ImageBackground
                                 source={require('../../assets/day4.png')}
                                 style={styles.imageBackground}

@@ -1,10 +1,11 @@
-import React, {useEffect} from 'react';
-import {ImageBackground, Text, TextInput, TouchableOpacity, View, StyleSheet, ScrollView, ActivityIndicator} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ImageBackground, Text, TextInput, TouchableOpacity, View, StyleSheet, ScrollView, ActivityIndicator, FlatList} from 'react-native';
 import {Formik} from "formik";
 import {useDispatch, useSelector} from "react-redux";
 import * as userActions from "../../store/actions/users";
 import {useTranslation} from "react-i18next";
 import i18next from "i18next";
+import firebase from "firebase";
 
 const MusculationScreen = ({navigation}) => {
 
@@ -16,6 +17,47 @@ const MusculationScreen = ({navigation}) => {
 
     const userData = useSelector(state => state.user.currentUser);
 
+    const [preparationPhysique, setPreparationPhysique] = useState([]);
+
+    useEffect(() => {
+        firebase
+            .firestore()
+            .collection("PreparationPhysique")
+            .get()
+            .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    setPreparationPhysique(prevState => [...prevState, doc.data()])
+                });
+            });
+    }, []);
+
+
+    const photoNormal = ({ item }) => {
+        return (
+            <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('PreparationPhysiqueScreen', {
+            entrainement: item.name
+        })}>
+           <ImageBackground
+                source={{uri: i18next.language === "en" ? item.photoEn : item.photo}}
+                style={styles.imageBackground}
+            />
+        </TouchableOpacity>
+        )
+    }
+
+    const photoLocked = ({ item }) => {
+        return (
+            <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('GererAbonnementScreen', {
+                entrainement: "muscu"
+            })}>
+                <ImageBackground
+                    source={{uri: i18next.language === "en" ? item.photoLockEn : item.photoLock}}
+                    style={styles.imageBackground}
+                />
+            </TouchableOpacity>
+        )
+    }
+
     if (userData) {
         return (
             <View style={styles.container}>
@@ -24,34 +66,18 @@ const MusculationScreen = ({navigation}) => {
 
                         <View style={styles.scrollView}>
 
+
                             {userData.abonnement === "Musculation" || userData.abonnement === "Premium" ?
-                                <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('PreparationPhysiqueScreen', {
-                                    entrainement: "muscu"
-                                })}>
-                                    {i18next.language === "en" ? <ImageBackground
-                                        source={require('../../assets/physical_preparation.png')}
-                                        style={styles.imageBackground}
-                                    >
-                                    </ImageBackground> : <ImageBackground
-                                        source={require('../../assets/preparation_physique.png')}
-                                        style={styles.imageBackground}
-                                    >
-                                    </ImageBackground>}
-
-                                </TouchableOpacity> :  <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('GererAbonnementScreen', {
-                                    entrainement: "muscu"
-                                })}>
-                                    {i18next.language === "en" ?  <ImageBackground
-                                        source={require('../../assets/physical_preparation_lock.png')}
-                                        style={styles.imageBackground}
-                                    >
-                                    </ImageBackground> :  <ImageBackground
-                                        source={require('../../assets/préparation_physique_verrou.png')}
-                                        style={styles.imageBackground}
-                                    >
-                                    </ImageBackground>}
-
-                                </TouchableOpacity>
+                                <FlatList
+                                    data={preparationPhysique}
+                                    renderItem={photoNormal}
+                                    keyExtractor={item => item.id}
+                                />
+                             :   <FlatList
+                                    data={preparationPhysique}
+                                    renderItem={photoLocked}
+                                    keyExtractor={item => item.id}
+                                />
                             }
 
                             <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ChooseDaysScreen')}>

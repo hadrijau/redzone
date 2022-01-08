@@ -1,13 +1,14 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, ImageBackground, StyleSheet, TouchableOpacity, Dimensions} from 'react-native';
 import {Video, AVPlaybackStatus} from "expo-av";
 import { AntDesign } from '@expo/vector-icons';
 import Stopwatch from "../../components/Stopwatch";
+import firebase from "firebase";
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
-const Jour2Semaine1 = () => {
+const Jour2Semaine2 = ({route}) => {
 
     const video = React.useRef(null);
     const [status, setStatus] = React.useState({});
@@ -19,9 +20,33 @@ const Jour2Semaine1 = () => {
     const [video4, setVideo4] = useState(false);
     const [video5, setVideo5] = useState(false);
     const [video6, setVideo6] = useState(false);
+    const [video7, setVideo7] = useState(false);
+    const [video8, setVideo8] = useState(false);
+    const [video9, setVideo9] = useState(false);
+    const [video10, setVideo10] = useState(false);
 
     const [isStopwatchStart, setIsStopwatchStart] = useState(false);
     const [resetStopwatch, setResetStopwatch] = useState(false);
+
+    const [videoList, setVideoList] = useState([]);
+
+    let entrainement;
+    if (route.params) {
+        entrainement = route.params.entrainement;
+    }
+
+    useEffect(() => {
+        firebase.firestore()
+            .collection(`${entrainement}`)
+            .doc('Jour2Semaine1')
+            .collection("ListeVideos")
+            .get()
+            .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    setVideoList(prevState => [...prevState, doc.data()])
+                });
+            });
+    }, []);
 
     return (
         <View style={styles.container}>
@@ -33,7 +58,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%202%2FJour%204%2FBand%20Triceps%203%20ways.mp4?alt=media&token=ede9ec43-6b30-45b5-af35-c8414c0c736b"}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2F1%20-%20Band%20Lat%20March%20AV%20AR.mp4?alt=media&token=d485f65f-df2f-4314-8439-33092a08eca9"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -54,13 +79,11 @@ const Jour2Semaine1 = () => {
                     </View>
 
                     <View>
-                        <Text style={styles.difficultyText}>Band Triceps 3 ways</Text>
+                        <Text style={styles.difficultyText}>Band Lat March AV AR </Text>
                     </View>
 
-
                     <View>
-                        <Text style={styles.difficultyText}>Tempo : 111</Text>
-                        <Text style={styles.difficultyText}>Séries : 3*8 par exercices</Text>
+                        <Text style={styles.difficultyText}>Repetitions : 10 par exercice</Text>
                     </View>
 
                 </View> : <Text/>}
@@ -70,7 +93,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2FDL%20Drop%20Landing.mp4?alt=media&token=1592b0ec-fa2a-4541-887c-08bf51776a43"}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2F2%20-%20Infant%20Squat.mp4?alt=media&token=2fe30248-1dfc-46d6-9d21-e04b5344604a"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -94,11 +117,11 @@ const Jour2Semaine1 = () => {
                     </View>
 
                     <View>
-                        <Text style={styles.difficultyText}>DL Drop Landing</Text>
+                        <Text style={styles.difficultyText}>Infant Squat</Text>
                     </View>
 
                     <View>
-                        <Text style={styles.difficultyText}>Séries : 3*6</Text>
+                        <Text style={styles.difficultyText}>Repetitions : 5</Text>
                     </View>
 
                 </View> : <Text/>}
@@ -108,7 +131,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%202%2FJour%204%2FGoblet%20Split%20Sq.mp4?alt=media&token=d58d46d8-0a18-4509-87df-e9c4cb02e407"}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2F3%20-%20DL%20Drop%20Landing.mp4?alt=media&token=4df7066a-a780-4815-8fdd-9633322f8a83"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -134,13 +157,11 @@ const Jour2Semaine1 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>Goblet Split Sq</Text>
+                        <Text style={styles.difficultyText}>DL Landing drop</Text>
                     </View>
 
-
                     <View>
-                        <Text style={styles.difficultyText}>Tempo : 211</Text>
-                        <Text style={styles.difficultyText}>Séries x répétitions : 3*8 par jambe</Text>
+                        <Text style={styles.difficultyText}>Repetitions : 3*6</Text>
                     </View>
 
                 </View> : <Text/>}
@@ -150,7 +171,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%202%2FJour%204%2FGoblet%20box%20Squat.mp4?alt=media&token=3a04ab88-21cb-4e0e-aab2-c719032ab7ba"}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2F4%20-%20Goblet%20box%20Squat.mp4?alt=media&token=1970bad6-8497-49d1-834d-34ff8579ce7d"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -183,7 +204,6 @@ const Jour2Semaine1 = () => {
                         <Text style={styles.difficultyText}>Tempo : 411</Text>
                         <Text style={styles.difficultyText}>Séries x répétitions : 2*12 / 2*10</Text>
                     </View>
-
                 </View> : <Text/>}
 
 
@@ -192,7 +212,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%202%2FJour%204%2FHip%20Bridge%20ISo.mp4?alt=media&token=9d02b651-18f1-49f0-bb66-68eedb483e39"}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2F5%20-%20Side%20Lying%20Abd.mp4?alt=media&token=94b3e315-ff8b-4d12-93c3-618d97120106"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -217,11 +237,12 @@ const Jour2Semaine1 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>Hip Bridge ISo</Text>
+                        <Text style={styles.difficultyText}>Side Lying abd</Text>
                     </View>
 
                     <View>
-                        <Text style={styles.difficultyText}>Séries x répétitions : 3*1 minute</Text>
+                        <Text style={styles.difficultyText}>Tempo : 111</Text>
+                        <Text style={styles.difficultyText}>Repetitions : 4*10 par jambe</Text>
                     </View>
 
                 </View> : <Text/>}
@@ -232,7 +253,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%202%2FJour%204%2FInvert%20Body%20row.mp4?alt=media&token=491e090c-a01d-4072-ae9a-e01bacbcf985"}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2F6%20-%20Hip%20Bridge%20ISo.mp4?alt=media&token=e7ffad51-76c3-431d-a8ac-11a3483e8c6a"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -257,14 +278,12 @@ const Jour2Semaine1 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>Invert Body row</Text>
+                        <Text style={styles.difficultyText}>Hip Bridge</Text>
                     </View>
 
                     <View>
-                        <Text style={styles.difficultyText}>Tempo : 411</Text>
-                        <Text style={styles.difficultyText}>Séries : 3*15</Text>
+                        <Text style={styles.difficultyText}>Repetition : 3*1</Text>
                     </View>
-
                 </View> : <Text/>}
 
 
@@ -273,7 +292,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%202%2FJour%204%2FSA%20DB%20Shrug%20seat.mp4?alt=media&token=f5c6a8ca-3440-4a38-b210-f6ec27167427"}}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2F7%20-%20Goblet%20Split%20Sq.mp4?alt=media&token=668fd43e-fcfb-4988-a777-de232f032bec"}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -290,6 +309,170 @@ const Jour2Semaine1 = () => {
                                        setVideo6(false)
                                    }}
                         />
+                        <AntDesign name="stepforward" size={24} color="white" onPress={() => {
+                            setVideo6(false)
+                            setVideo7(true)
+                        }}/>
+                    </View>
+
+                    <View>
+                        <Text style={styles.difficultyText}>Goblet split squat </Text>
+                    </View>
+
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 211</Text>
+                        <Text style={styles.difficultyText}>Repetition : 3*8 par jambe</Text>
+                    </View>
+
+
+                </View> : <Text/>}
+
+                {video7 ?        <View style={styles.videoContainer}>
+                    <View style={styles.imageContainer}>
+                        <Video
+                            ref={video}
+                            style={styles.imageVideo}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2F8%20-%20Standing%20leg%20curl%206''%20iso.mp4?alt=media&token=d032c09a-8b86-4954-a296-01fbb97143eb"}}
+                            useNativeControls
+                            resizeMode="contain"
+                            isLooping
+                            shouldPlay={true}
+                            onPlaybackStatusUpdate={status => setStatus(() => status)}
+                        />
+                    </View>
+
+
+                    <View style={styles.playStatus}>
+                        <AntDesign name="stepbackward" size={24} color="white"
+                                   onPress={() => {
+                                       setVideo6(true)
+                                       setVideo7(false)
+                                   }}
+                        />
+                        <AntDesign name="stepforward" size={24} color="white" onPress={() => {
+                            setVideo7(false)
+                            setVideo8(true)
+                        }}/>
+                    </View>
+
+
+                    <View>
+                        <Text style={styles.difficultyText}>Standing Leg Curl 6” Iso</Text>
+                    </View>
+
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 161</Text>
+                        <Text style={styles.difficultyText}>Repetitions : 3*5 par jambe</Text>
+                    </View>
+
+                </View> : <Text/>}
+
+                {video8 ?        <View style={styles.videoContainer}>
+                    <View style={styles.imageContainer}>
+                        <Video
+                            ref={video}
+                            style={styles.imageVideo}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2F9%20-%20Band%20Triceps%203%20ways.mp4?alt=media&token=dd3a3165-572c-407d-9263-a05148fd4a5e"}}
+                            useNativeControls
+                            resizeMode="contain"
+                            isLooping
+                            shouldPlay={true}
+                            onPlaybackStatusUpdate={status => setStatus(() => status)}
+                        />
+                    </View>
+
+
+                    <View style={styles.playStatus}>
+                        <AntDesign name="stepbackward" size={24} color="white"
+                                   onPress={() => {
+                                       setVideo7(true)
+                                       setVideo8(false)
+                                   }}
+                        />
+                        <AntDesign name="stepforward" size={24} color="white" onPress={() => {
+                            setVideo8(false)
+                            setVideo9(true)
+                        }}/>
+                    </View>
+
+
+                    <View>
+                        <Text style={styles.difficultyText}>Band Triceps 3 ways</Text>
+                    </View>
+
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 111</Text>
+                        <Text style={styles.difficultyText}>Repetitions : 3*8 par exercice</Text>
+                    </View>
+
+                </View> : <Text/>}
+
+                {video9 ?        <View style={styles.videoContainer}>
+                    <View style={styles.imageContainer}>
+                        <Video
+                            ref={video}
+                            style={styles.imageVideo}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2F10%20-%20Invert%20Body%20row.mp4?alt=media&token=e67602a4-7369-44cb-ab03-0c23af3e14a6"}}
+                            useNativeControls
+                            resizeMode="contain"
+                            isLooping
+                            shouldPlay={true}
+                            onPlaybackStatusUpdate={status => setStatus(() => status)}
+                        />
+                    </View>
+
+
+                    <View style={styles.playStatus}>
+                        <AntDesign name="stepbackward" size={24} color="white"
+                                   onPress={() => {
+                                       setVideo8(true)
+                                       setVideo9(false)
+                                   }}
+                        />
+                        <AntDesign name="stepforward" size={24} color="white" onPress={() => {
+                            setVideo9(false)
+                            setVideo10(true)
+                        }}/>
+                    </View>
+
+
+                    <View>
+                        <Text style={styles.difficultyText}>Invert Body Row</Text>
+                    </View>
+
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 411</Text>
+                        <Text style={styles.difficultyText}>Repetitions : 3*15</Text>
+                    </View>
+
+                </View> : <Text/>}
+
+                {video10 ?        <View style={styles.videoContainer}>
+                    <View style={styles.imageContainer}>
+                        <Video
+                            ref={video}
+                            style={styles.imageVideo}
+                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2F11%20-%20SA%20DB%20Shrug%20seat.mp4?alt=media&token=c22855b7-8de8-45bc-b3d4-7ff2a7ced628"}}
+                            useNativeControls
+                            resizeMode="contain"
+                            isLooping
+                            shouldPlay={true}
+                            onPlaybackStatusUpdate={status => setStatus(() => status)}
+                        />
+                    </View>
+
+
+                    <View style={styles.playStatus}>
+                        <AntDesign name="stepbackward" size={24} color="white"
+                                   onPress={() => {
+                                       setVideo9(true)
+                                       setVideo10(false)
+                                   }}
+                        />
+                        <AntDesign name="stepforward" size={24} color="white" onPress={() => {
+                            setVideo10(false)
+                            setVideo11(true)
+                        }}/>
                     </View>
 
 
@@ -297,6 +480,10 @@ const Jour2Semaine1 = () => {
                         <Text style={styles.difficultyText}>SA DB Shrug seat</Text>
                     </View>
 
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 111</Text>
+                        <Text style={styles.difficultyText}>Repetitions : 3*12 par bras</Text>
+                    </View>
 
                 </View> : <Text/>}
 
@@ -364,4 +551,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Jour2Semaine1;
+export default Jour2Semaine2;

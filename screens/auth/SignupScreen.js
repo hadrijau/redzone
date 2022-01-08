@@ -74,6 +74,7 @@ const SignupScreen = (props) => {
                                         licence: '',
                                         phoneClub: '',
                                         imageClub: '',
+                                        subscriptionId: '',
                                         abonnement: 'free'
                                     })
                             })

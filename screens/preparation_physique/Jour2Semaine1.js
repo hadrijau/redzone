@@ -1,13 +1,14 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, ImageBackground, StyleSheet, TouchableOpacity, Dimensions} from 'react-native';
 import {Video, AVPlaybackStatus} from "expo-av";
 import { AntDesign } from '@expo/vector-icons';
 import Stopwatch from "../../components/Stopwatch";
+import firebase from "firebase";
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
-const Jour2Semaine1 = () => {
+const Jour2Semaine1 = ({route}) => {
 
     const video = React.useRef(null);
     const [status, setStatus] = React.useState({});
@@ -19,9 +20,33 @@ const Jour2Semaine1 = () => {
     const [video4, setVideo4] = useState(false);
     const [video5, setVideo5] = useState(false);
     const [video6, setVideo6] = useState(false);
+    const [video7, setVideo7] = useState(false);
+    const [video8, setVideo8] = useState(false);
+    const [video9, setVideo9] = useState(false);
+    const [video10, setVideo10] = useState(false);
 
     const [isStopwatchStart, setIsStopwatchStart] = useState(false);
     const [resetStopwatch, setResetStopwatch] = useState(false);
+
+    const [videoList, setVideoList] = useState([]);
+
+    let entrainement;
+    if (route.params) {
+        entrainement = route.params.entrainement;
+    }
+
+    useEffect(() => {
+        firebase.firestore()
+            .collection(`${entrainement}`)
+            .doc('Jour2Semaine1')
+            .collection("ListeVideos")
+            .get()
+            .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    setVideoList(prevState => [...prevState, doc.data()])
+                });
+            });
+    }, []);
 
     return (
         <View style={styles.container}>
@@ -33,7 +58,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            souce={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2FBand%20Triceps%203%20ways.mp4?alt=media&token=ce1518f1-5a6b-4e14-b7e5-53c8ff40bd3a"}}
+                            source={{uri: videoList[0].video}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -54,12 +79,11 @@ const Jour2Semaine1 = () => {
                     </View>
 
                     <View>
-                        <Text style={styles.difficultyText}>Band Triceps 3 ways</Text>
+                        <Text style={styles.difficultyText}>Band Lat March AV AR </Text>
                     </View>
 
                     <View>
-                        <Text style={styles.difficultyText}>Tempo : 111</Text>
-                        <Text style={styles.difficultyText}>Séries : 3*8ea</Text>
+                        <Text style={styles.difficultyText}>Repetitions : {videoList[0].repetition}</Text>
                     </View>
 
                 </View> : <Text/>}
@@ -69,7 +93,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2FDL%20Drop%20Landing.mp4?alt=media&token=1592b0ec-fa2a-4541-887c-08bf51776a43"}}
+                            source={{uri: videoList[1].video}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -93,11 +117,11 @@ const Jour2Semaine1 = () => {
                     </View>
 
                     <View>
-                        <Text style={styles.difficultyText}>DL Drop Landing</Text>
+                        <Text style={styles.difficultyText}>Infant Squat</Text>
                     </View>
 
                     <View>
-                        <Text style={styles.difficultyText}>Séries : 3*6</Text>
+                        <Text style={styles.difficultyText}>Repetitions : {videoList[1].repetition}</Text>
                     </View>
 
                 </View> : <Text/>}
@@ -107,7 +131,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            souce={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2FGoblet%20Split%20Sq.mp4?alt=media&token=c303969f-7d26-4d96-82dc-4d0aaf7c7ae4"}}
+                            source={{uri: videoList[2].video}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -130,15 +154,12 @@ const Jour2Semaine1 = () => {
                         }}/>
                     </View>
 
-
-
                     <View>
-                        <Text style={styles.difficultyText}>Goblet Split Sq</Text>
+                        <Text style={styles.difficultyText}>DL Landing drop</Text>
                     </View>
 
                     <View>
-                        <Text style={styles.difficultyText}>Tempo : 211</Text>
-                        <Text style={styles.difficultyText}>Séries x répétitions : 3*8 par jambe</Text>
+                        <Text style={styles.difficultyText}>Repetitions : {videoList[2].repetition}</Text>
                     </View>
 
                 </View> : <Text/>}
@@ -148,7 +169,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            souce={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2FGoblet%20box%20Squat.mp4?alt=media&token=33bd644f-3228-47e7-9ed6-39a240af7c76"}}
+                            source={{uri: videoList[3].video}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -179,7 +200,7 @@ const Jour2Semaine1 = () => {
 
                     <View>
                         <Text style={styles.difficultyText}>Tempo : 411</Text>
-                        <Text style={styles.difficultyText}>Séries x répétitions : 2*12 / 2*10</Text>
+                        <Text style={styles.difficultyText}>Repetition : {videoList[3].repetition}</Text>
                     </View>
                 </View> : <Text/>}
 
@@ -189,7 +210,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            souce={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2FHip%20Bridge%20ISo.mp4?alt=media&token=364bc08c-b653-4047-bfda-3c8bf173d582"}}
+                            source={{uri: videoList[4].video}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -214,11 +235,12 @@ const Jour2Semaine1 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>Hip Bridge ISo</Text>
+                        <Text style={styles.difficultyText}>Side Lying abd</Text>
                     </View>
 
                     <View>
-                        <Text style={styles.difficultyText}>Séries x répétitions : 3*1 minute</Text>
+                        <Text style={styles.difficultyText}>Tempo : 111</Text>
+                        <Text style={styles.difficultyText}>Repetitions : {videoList[4].repetition}</Text>
                     </View>
 
                 </View> : <Text/>}
@@ -229,7 +251,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            souce={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2FInvert%20Body%20row.mp4?alt=media&token=570a3274-731c-4fb4-924d-b53bf9a7e014"}}
+                            source={{uri: videoList[5].video}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -254,12 +276,11 @@ const Jour2Semaine1 = () => {
 
 
                     <View>
-                        <Text style={styles.difficultyText}>Invert Body row</Text>
+                        <Text style={styles.difficultyText}>Hip Bridge</Text>
                     </View>
 
                     <View>
-                        <Text style={styles.difficultyText}>Tempo : 411</Text>
-                        <Text style={styles.difficultyText}>Séries : 3*15</Text>
+                        <Text style={styles.difficultyText}>Repetition : {videoList[5].repetition}</Text>
                     </View>
                 </View> : <Text/>}
 
@@ -269,7 +290,7 @@ const Jour2Semaine1 = () => {
                         <Video
                             ref={video}
                             style={styles.imageVideo}
-                            souce={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2FJour%202%2FSA%20DB%20Shrug%20seat.mp4?alt=media&token=e08f9131-94bd-48b7-a7dd-a968bbb1d2d0"}}
+                            source={{uri: videoList[6].video}}
                             useNativeControls
                             resizeMode="contain"
                             isLooping
@@ -286,6 +307,170 @@ const Jour2Semaine1 = () => {
                                        setVideo6(false)
                                    }}
                         />
+                        <AntDesign name="stepforward" size={24} color="white" onPress={() => {
+                            setVideo6(false)
+                            setVideo7(true)
+                        }}/>
+                    </View>
+
+                    <View>
+                        <Text style={styles.difficultyText}>Goblet split squat </Text>
+                    </View>
+
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 211</Text>
+                        <Text style={styles.difficultyText}>Repetition : {videoList[6].repetition}</Text>
+                    </View>
+
+
+                </View> : <Text/>}
+
+                {video7 ?        <View style={styles.videoContainer}>
+                    <View style={styles.imageContainer}>
+                        <Video
+                            ref={video}
+                            style={styles.imageVideo}
+                            source={{uri: videoList[7].video}}
+                            useNativeControls
+                            resizeMode="contain"
+                            isLooping
+                            shouldPlay={true}
+                            onPlaybackStatusUpdate={status => setStatus(() => status)}
+                        />
+                    </View>
+
+
+                    <View style={styles.playStatus}>
+                        <AntDesign name="stepbackward" size={24} color="white"
+                                   onPress={() => {
+                                       setVideo6(true)
+                                       setVideo7(false)
+                                   }}
+                        />
+                        <AntDesign name="stepforward" size={24} color="white" onPress={() => {
+                            setVideo7(false)
+                            setVideo8(true)
+                        }}/>
+                    </View>
+
+
+                    <View>
+                        <Text style={styles.difficultyText}>Standing Leg Curl 6” Iso</Text>
+                    </View>
+
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 161</Text>
+                        <Text style={styles.difficultyText}>Repetitions : {videoList[7].repetition}</Text>
+                    </View>
+
+                </View> : <Text/>}
+
+                {video8 ?        <View style={styles.videoContainer}>
+                    <View style={styles.imageContainer}>
+                        <Video
+                            ref={video}
+                            style={styles.imageVideo}
+                            source={{uri: videoList[8].video}}
+                            useNativeControls
+                            resizeMode="contain"
+                            isLooping
+                            shouldPlay={true}
+                            onPlaybackStatusUpdate={status => setStatus(() => status)}
+                        />
+                    </View>
+
+
+                    <View style={styles.playStatus}>
+                        <AntDesign name="stepbackward" size={24} color="white"
+                                   onPress={() => {
+                                       setVideo7(true)
+                                       setVideo8(false)
+                                   }}
+                        />
+                        <AntDesign name="stepforward" size={24} color="white" onPress={() => {
+                            setVideo8(false)
+                            setVideo9(true)
+                        }}/>
+                    </View>
+
+
+                    <View>
+                        <Text style={styles.difficultyText}>Band Triceps 3 ways</Text>
+                    </View>
+
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 111</Text>
+                        <Text style={styles.difficultyText}>Repetitions : 3*8 par exercice</Text>
+                    </View>
+
+                </View> : <Text/>}
+
+                {video9 ?        <View style={styles.videoContainer}>
+                    <View style={styles.imageContainer}>
+                        <Video
+                            ref={video}
+                            style={styles.imageVideo}
+                            source={{uri: videoList[9].video}}
+                            useNativeControls
+                            resizeMode="contain"
+                            isLooping
+                            shouldPlay={true}
+                            onPlaybackStatusUpdate={status => setStatus(() => status)}
+                        />
+                    </View>
+
+
+                    <View style={styles.playStatus}>
+                        <AntDesign name="stepbackward" size={24} color="white"
+                                   onPress={() => {
+                                       setVideo8(true)
+                                       setVideo9(false)
+                                   }}
+                        />
+                        <AntDesign name="stepforward" size={24} color="white" onPress={() => {
+                            setVideo9(false)
+                            setVideo10(true)
+                        }}/>
+                    </View>
+
+
+                    <View>
+                        <Text style={styles.difficultyText}>Invert Body Row</Text>
+                    </View>
+
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 411</Text>
+                        <Text style={styles.difficultyText}>Repetitions : 3*15</Text>
+                    </View>
+
+                </View> : <Text/>}
+
+                {video10 ?        <View style={styles.videoContainer}>
+                    <View style={styles.imageContainer}>
+                        <Video
+                            ref={video}
+                            style={styles.imageVideo}
+                            source={{uri: videoList[10].video}}
+                            useNativeControls
+                            resizeMode="contain"
+                            isLooping
+                            shouldPlay={true}
+                            onPlaybackStatusUpdate={status => setStatus(() => status)}
+                        />
+                    </View>
+
+
+                    <View style={styles.playStatus}>
+                        <AntDesign name="stepbackward" size={24} color="white"
+                                   onPress={() => {
+                                       setVideo9(true)
+                                       setVideo10(false)
+                                   }}
+                        />
+                        <AntDesign name="stepforward" size={24} color="white" onPress={() => {
+                            setVideo10(false)
+                            setVideo11(true)
+                        }}/>
                     </View>
 
 
@@ -293,6 +478,10 @@ const Jour2Semaine1 = () => {
                         <Text style={styles.difficultyText}>SA DB Shrug seat</Text>
                     </View>
 
+                    <View>
+                        <Text style={styles.difficultyText}>Tempo : 111</Text>
+                        <Text style={styles.difficultyText}>Repetitions : 3*12 par bras</Text>
+                    </View>
 
                 </View> : <Text/>}
 

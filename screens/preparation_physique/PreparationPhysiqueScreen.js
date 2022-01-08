@@ -6,12 +6,18 @@ import i18next from "i18next";
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
-const PreparationPhysiqueScreen = ({navigation}) => {
+
+const PreparationPhysiqueScreen = ({navigation, route}) => {
+
+    let entrainement;
+    if (route.params) {
+        entrainement = route.params.entrainement;
+    }
 
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
-                <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('JourSelectionScreen', {semaine: 1})}>
+                <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('JourSelectionScreen', {semaine: 1, entrainement: entrainement})}>
                     {i18next.language === "en" ?  <ImageBackground
                         source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2Fweek%201.png?alt=media&token=39210f38-7de6-4d22-aca1-6afbfc48efe6"}}
                         style={styles.imageBackground}
@@ -26,7 +32,7 @@ const PreparationPhysiqueScreen = ({navigation}) => {
                     }
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('JourSelectionScreen', {semaine: 2})}>
+                <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('JourSelectionScreen', {semaine: 2, entrainement: entrainement})}>
                     {i18next.language === "en" ?
                         <ImageBackground
                             source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%202%2Fweek%202.png?alt=media&token=9bb59cc6-297f-45d1-bbf5-bcb9924e7484"}}
