@@ -22,6 +22,7 @@ const ProgressScreen = (props) => {
     const [shuttle, setShuttle] = useState([]);
     const [loading, setLoading] = useState(true);
     const { i18n, t } = useTranslation();
+
     useEffect(() => {
         firebase.firestore()
             .collection('users')
@@ -44,6 +45,7 @@ const ProgressScreen = (props) => {
 
     console.log(shuttle)
 
+    console.log('yards', yards)
     if (!loading) {
         return (
             <View style={styles.container}>
