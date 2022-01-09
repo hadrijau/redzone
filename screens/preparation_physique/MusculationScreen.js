@@ -66,6 +66,19 @@ const MusculationScreen = ({navigation}) => {
 
                         <View style={styles.scrollView}>
 
+                            <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ChooseDaysScreen')}>
+                                {i18next.language === "en" ? <ImageBackground
+                                        source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FBody%20weight.png?alt=media&token=f07c575c-c26e-4378-bb20-0a6e036eec1b"}}
+                                        style={styles.imageBackground}
+                                    >
+                                    </ImageBackground> :
+                                    <ImageBackground
+                                        source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FPoids%20du%20corps.png?alt=media&token=079bafe0-a252-4618-b87a-632cba2c69f5"}}
+                                        style={styles.imageBackground}
+                                    >
+                                    </ImageBackground>}
+
+                            </TouchableOpacity>
 
                             {userData.abonnement === "Musculation" || userData.abonnement === "Premium" ?
                                 <FlatList
@@ -80,19 +93,6 @@ const MusculationScreen = ({navigation}) => {
                                 />
                             }
 
-                            <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ChooseDaysScreen')}>
-                                {i18next.language === "en" ? <ImageBackground
-                                    source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FBody%20weight.png?alt=media&token=f07c575c-c26e-4378-bb20-0a6e036eec1b"}}
-                                    style={styles.imageBackground}
-                                >
-                                </ImageBackground> :
-                                    <ImageBackground
-                                        source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FPoids%20du%20corps.png?alt=media&token=079bafe0-a252-4618-b87a-632cba2c69f5"}}
-                                        style={styles.imageBackground}
-                                    >
-                                    </ImageBackground>}
-
-                            </TouchableOpacity>
 
                             {userData.abonnement !== "Musculation" && userData.abonnement !== "Premium" ?
                                 <TouchableOpacity style={styles.abonnementButton}
