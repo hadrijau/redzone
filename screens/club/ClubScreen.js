@@ -20,6 +20,7 @@ import * as DocumentPicker from 'expo-document-picker';
 import { WebView } from 'react-native-webview';
 import {useTranslation} from "react-i18next";
 import { LogBox } from 'react-native';
+import Pdf from 'react-native-pdf';
 
 const ClubScreen = ({navigation}) => {
 
@@ -58,7 +59,7 @@ const ClubScreen = ({navigation}) => {
             .catch((error) => {
                 console.log("Error getting documents: ", error);
             });
-    }, [image]);
+    }, []);
 
     const getImage = (club) => {
         firebase
@@ -134,6 +135,8 @@ const ClubScreen = ({navigation}) => {
         }
     };
 
+    console.log(filteredClubs)
+    console.log('clubs', clubs)
     // --- Upload file --- //
     const [url, setUrl] = useState("");
     const encode = (uri) => {
@@ -187,21 +190,26 @@ const ClubScreen = ({navigation}) => {
 
     const { i18n, t } = useTranslation();
     const PdfReader = ({ url: uri }) => <WebView style={{ width: "100%", height: "100%", marginVertical: 20, alignSelf: 'center', backgroundColor: "red"}} source={{ uri }} />
+    const PdfAndroid = ({uri}) => {
+        return (
+            <Pdf
+                source={uri}
+                onLoadComplete={(numberOfPages, filePath) => {
+                    console.log(`Number of pages: ${numberOfPages}`);
+                }}
+                onPageChanged={(page, numberOfPages) => {
+                    console.log(`Current page: ${page}`);
+                }}
+                onError={(error) => {
+                    console.log(error);
+                }}
+                onPressLink={(uri) => {
+                    console.log(`Link pressed: ${uri}`);
+                }}
+                style={{ width: "100%", height: "100%", marginVertical: 20, alignSelf: 'center', backgroundColor: "red"}}/>
+            )
+    }
 
-    const handleLicencePressed = useCallback(async () => {
-            // Checking if the link is supported for links with custom URL scheme.
-            const supported = await Linking.canOpenURL(userData.licence);
-
-            if (supported) {
-                // Opening the link with some app, if the URL scheme is "http" the web link should be opened
-                // by some browser in the mobile
-                await Linking.openURL(userData.licence);
-            } else {
-                Alert.alert(`Don't know how to open this URL: ${userData.licence}`);
-            }
-        }, [url]);
-
-    console.log(userData.licence)
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 {userData.phoneClub ?
@@ -230,7 +238,7 @@ const ClubScreen = ({navigation}) => {
 
                                     {userData.licence ? <View>
                                         {Platform.OS === "ios" ? <PdfReader source={{uri : userData.licence}}/>
-                                        : <PdfReader source={{uri : userData.licence}}/>
+                                        : <PdfAndroid source={{uri : userData.licence}}/>
                                         }
                                     </View>  :    <TouchableOpacity style={[styles.inscriptionButton, {marginBottom: 100}]} onPress={async () => {
                                         pickDocument().then((result) => uploadFile(result)).then(() => {
