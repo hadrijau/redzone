@@ -151,7 +151,6 @@ const ClubScreen = ({navigation}) => {
     const uploadFile = async (uri) => {
         console.log('ui', uri.toString())
         const response = await fetch(uri.toString());
-        console.log('response', response);
         const blob = await response.blob();
 
         const task = firebase
@@ -167,7 +166,6 @@ const ClubScreen = ({navigation}) => {
         const taskCompleted = () => {
             task.snapshot.ref.getDownloadURL().then((snapshot) => {
                 saveData(snapshot)
-                console.log(snapshot)
             })
         }
         const taskError = snapshot => {
@@ -186,22 +184,8 @@ const ClubScreen = ({navigation}) => {
     }
 
     const { i18n, t } = useTranslation();
-    const PdfReader = ({ url: uri }) => <WebView style={{ width: "100%", height: "100%", marginVertical: 20, alignSelf: 'center', backgroundColor: "red"}} source={{ uri }} />
+    const PdfReader = ({ url: uri }) => <WebView style={{ width: "90%", height: 250, marginVertical: 20, alignSelf: 'center'}} source={{ uri }} />
 
-    const handleLicencePressed = useCallback(async () => {
-            // Checking if the link is supported for links with custom URL scheme.
-            const supported = await Linking.canOpenURL(userData.licence);
-
-            if (supported) {
-                // Opening the link with some app, if the URL scheme is "http" the web link should be opened
-                // by some browser in the mobile
-                await Linking.openURL(userData.licence);
-            } else {
-                Alert.alert(`Don't know how to open this URL: ${userData.licence}`);
-            }
-        }, [url]);
-
-    console.log(userData.licence)
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 {userData.phoneClub ?
@@ -228,11 +212,10 @@ const ClubScreen = ({navigation}) => {
                                         <Text style={styles.inscriptionText}>{t("changeClub")}</Text>
                                     </TouchableOpacity>
 
-                                    {userData.licence ? <View>
-                                        {Platform.OS === "ios" ? <PdfReader source={{uri : userData.licence}}/>
-                                        : <PdfReader source={{uri : userData.licence}}/>
-                                        }
-                                    </View>  :    <TouchableOpacity style={[styles.inscriptionButton, {marginBottom: 100}]} onPress={async () => {
+                                    {userData.licence ?
+                                         <PdfReader source={{uri : "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/licences%2FY5g4S1o9RQSKeKmiwaQF7xIVdZi1%2F0.7b2d3vouyj7?alt=media&token=f25a5c57-2a2c-4b97-b909-b9dbbd4b4965"}}/>
+                                     :
+                                        <TouchableOpacity style={[styles.inscriptionButton, {marginBottom: 100}]} onPress={async () => {
                                         pickDocument().then((result) => uploadFile(result)).then(() => {
                                             navigation.navigate("ConfirmationClubScreen", {option: "licence"})
                                         })}}>
