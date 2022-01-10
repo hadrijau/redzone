@@ -29,7 +29,6 @@ const JourSelectionScreen = ({navigation, route}) => {
                                 style={styles.imageBackground}
                             >
                             </ImageBackground>}
-
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('Jour2Semaine1', {entrainement: entrainement, video: "Jour2Semaine1"})}>

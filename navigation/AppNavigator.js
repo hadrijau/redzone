@@ -340,7 +340,7 @@ const accueilNavigator = () => {
                 name="JourSelectionScreen"
                 component={JourSelectionScreen}
                 options={{
-                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('PreparationPhysiqueScreen')}/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('MusculationScreen')}/>,
                 }}
             />
             <AccueilStackNavigator.Screen

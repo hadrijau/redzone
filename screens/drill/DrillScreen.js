@@ -1,19 +1,90 @@
-import React, {useEffect} from 'react';
-import {ImageBackground, Text, TextInput, TouchableOpacity, View, StyleSheet, ScrollView, ActivityIndicator} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+    ImageBackground,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+    StyleSheet,
+    ScrollView,
+    ActivityIndicator,
+    FlatList
+} from 'react-native';
 import {Formik} from "formik";
 import {useDispatch, useSelector} from "react-redux";
 import * as userActions from "../../store/actions/users";
 import {useTranslation} from "react-i18next";
+import firebase from "firebase";
+import i18next from "i18next";
 
 const DrillScreen = ({navigation}) => {
 
     const dispatch = useDispatch();
     const { i18n, t } = useTranslation();
+    const [videoDrill, setVideoDrill] = useState([]);
+
+
     useEffect(() => {
         dispatch(userActions.fetchUser())
     }, [dispatch]);
 
     const userData = useSelector(state => state.user.currentUser);
+
+    useEffect(() => {
+        let data = [];
+        const getPhotoDrill = async () => {
+            await firebase.firestore()
+                .collection("Drill")
+                .where("poste", "==", "All")
+                .get()
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        console.log('data', doc.data())
+                        data.push(doc.data())
+                    });
+                });
+            await firebase.firestore()
+                .collection("Drill")
+                .where("poste", "==", `${userData.poste}`)
+                .get()
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        console.log('data', doc.data())
+                        data.push(doc.data())
+                    });
+                });
+            setVideoDrill(data)
+        }
+        getPhotoDrill()
+    }, []);
+
+    const photoNormal = ({ item }) => {
+        return (
+            <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ViewVideoScreen', {
+                poste: item.poste,
+                name: item.name
+            })}>
+                <ImageBackground
+                    source={{uri: item.photo}}
+                    style={styles.imageBackground}
+                />
+            </TouchableOpacity>
+        )
+    }
+
+    const photoLocked = ({ item }) => {
+        return (
+            <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('GererAbonnementScreen', {
+                entrainement: "drill"
+            })}>
+                <ImageBackground
+                    source={{uri: item.photoLock}}
+                    style={styles.imageBackground}
+                />
+            </TouchableOpacity>
+        )
+    }
+
 
     if (userData) {
         return (
@@ -24,15 +95,11 @@ const DrillScreen = ({navigation}) => {
 
                         {(userData.abonnement !== "Drill" && userData.abonnement !== "Premium") ?
                             <>
-                            <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('GererAbonnementScreen', {
-                                entrainement: "drill"
-                            })}>
-                                <ImageBackground
-                                    source={require('../../assets/drill_verrou.png')}
-                                    style={styles.imageBackground}
-                                >
-                                </ImageBackground>
-                            </TouchableOpacity>
+                            <FlatList
+                                data={videoDrill}
+                                renderItem={photoLocked}
+                                keyExtractor={item => item.id}
+                            />
 
                                 <TouchableOpacity style={styles.abonnementButton}
                                                   onPress={() => navigation.navigate('GererAbonnementScreen', {
@@ -42,15 +109,11 @@ const DrillScreen = ({navigation}) => {
                                 </TouchableOpacity>
                             </>:
 
-                            <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ViewVideoScreen')}>
-                                <ImageBackground
-                                    source={{
-                                        uri: 'https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F3%5B1%5D.png?alt=media&token=a57b41d0-80e5-4ebd-86f0-5c4abfa997d5'
-                                    }}
-                                    style={styles.imageBackground}
-                                >
-                                </ImageBackground>
-                            </TouchableOpacity>
+                            <FlatList
+                                data={videoDrill}
+                                renderItem={photoNormal}
+                                keyExtractor={item => item.id}
+                            />
                         }
 
                     </View>
@@ -94,7 +157,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     scrollView: {
-        marginBottom: '40%'
+        marginBottom: 0
     },
     abonnementFreeText: {
         fontSize: 30,
