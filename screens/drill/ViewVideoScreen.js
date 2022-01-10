@@ -109,7 +109,9 @@ const ViewVideoScreen = ({route}) => {
                                     </View>
 
                                     <View>
-                                        <Text style={styles.difficultyText}>Series : {video.serie}</Text>
+                                        {video.serie != "4" && i18next.language === "en" ? <Text style={styles.difficultyText}>Series : {video.serieEn}</Text> :
+                                            <Text style={styles.difficultyText}>Series : {video.serie}</Text>
+                                        }
                                         {video.instruction ? <Text style={styles.difficultyText}>Instructions :  {i18next.language === "en" ? video.instructionEn : video.instruction}</Text> : <Text/> }
                                     </View>
 
