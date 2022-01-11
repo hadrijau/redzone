@@ -7,7 +7,7 @@ const ConfirmationDesabonnementScreen = (props) => {
     const { i18n, t } = useTranslation();
     return (
         <View style={styles.container}>
-            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
                 <Text style={styles.progressText}>{`${t("desabonnementok")}`}</Text>
                 <TouchableOpacity style={styles.disconnectButton} onPress={() => props.navigation.navigate('AccueilScreen')}>
                     <Text style={styles.disconnectText}>{`${t("menu")}`}</Text>

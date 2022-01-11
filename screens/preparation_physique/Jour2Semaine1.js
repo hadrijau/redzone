@@ -57,7 +57,7 @@ const Jour2Semaine1 = ({route}) => {
     if (videoList.length === 0) {
         return (
             <View style={styles.container}>
-                <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
                     <Text style={styles.incoming}>A venir...</Text>
                 </ImageBackground>
             </View>
@@ -65,7 +65,7 @@ const Jour2Semaine1 = ({route}) => {
     } else {
         return (
             <View style={styles.container}>
-                <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
                     {videoList.map((video, index) => {
                         if (index === currentVideo) {

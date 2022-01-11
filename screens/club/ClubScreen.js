@@ -202,7 +202,7 @@ const ClubScreen = ({navigation}) => {
                         style={styles.container}
                         behavior="height"
                     >
-                        <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                        <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
                             <View>
                                 <Image
                                     style={styles.imageClub}
@@ -239,7 +239,7 @@ const ClubScreen = ({navigation}) => {
                     behavior="height"
                 >
                     <View style={styles.container}>
-                        <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                        <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
                             <TextInput
                                 style={styles.textInput}
                                 placeholder="Rechercher mon club"

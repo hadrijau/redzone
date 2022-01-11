@@ -16,7 +16,7 @@ const PreparationPhysiqueScreen = ({navigation, route}) => {
 
     return (
         <View style={styles.container}>
-            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
                 <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('JourSelectionScreen', {semaine: 1, entrainement: entrainement})}>
                     {i18next.language === "en" ?  <ImageBackground
                         source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/Pr%C3%A9paration%20Physique%20g%C3%A9n%C3%A9ral%20tout%20poste%20confondu%2FSemaine%201%2Fweek%201.png?alt=media&token=39210f38-7de6-4d22-aca1-6afbfc48efe6"}}

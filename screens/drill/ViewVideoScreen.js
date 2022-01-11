@@ -65,7 +65,7 @@ const ViewVideoScreen = ({route}) => {
     if (videoDrill.length === 0) {
         return (
             <View style={styles.container}>
-                <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
                     <Text style={styles.incoming}>A venir...</Text>
                 </ImageBackground>
             </View>
@@ -73,7 +73,7 @@ const ViewVideoScreen = ({route}) => {
     } else {
         return (
             <View style={styles.container}>
-                <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
                     {videoDrill.map((video, index) => {
                         console.log('video', video)

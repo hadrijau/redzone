@@ -166,7 +166,7 @@ const AbonnementScreen = (props) => {
         if (!makePaymentMuscu && !makePaymentPremium && !makePaymentDrill) {
             return (
                 <View style={styles.container}>
-                    <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                    <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
                         <Text style={styles.inscriptionBigText}>Abonnements</Text>
 
@@ -202,7 +202,7 @@ const AbonnementScreen = (props) => {
         if (makePaymentMuscu && !makePaymentDrill && !makePaymentPremium) {
             if(response !== undefined){
                 return <View style={styles.container}>
-                    <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                    <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
                     {paymentStatus === 'Votre paiement est en cours de traitement' ?
                         <View>
                             <Text style={styles.paymentStatusText}>{ paymentStatus}</Text>
@@ -229,7 +229,7 @@ const AbonnementScreen = (props) => {
         if (!makePaymentMuscu && makePaymentDrill && !makePaymentPremium) {
             if(response !== undefined){
                 return <View style={styles.container}>
-                    <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                    <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
                     {paymentStatus === 'Votre paiement est en cours de traitement' ?
                         <View>
                             <Text style={styles.paymentStatusText}>{ paymentStatus}</Text>
@@ -256,7 +256,7 @@ const AbonnementScreen = (props) => {
         if (!makePaymentMuscu && !makePaymentDrill && makePaymentPremium) {
             if(response !== undefined){
                 return <View style={styles.container}>
-                    <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                    <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
                     {paymentStatus === 'Votre paiement est en cours de traitement' ?
                         <View>

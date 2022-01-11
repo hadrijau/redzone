@@ -220,7 +220,7 @@ const GererAbonnementScreen = (props) => {
                 if (params === "muscu") {
                     return (
                         <View style={styles.container}>
-                            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
 
                                 <Text style={styles.inscriptionBigText}>{`${t("actuel")}`} {userData.abonnement}</Text>
@@ -264,7 +264,7 @@ const GererAbonnementScreen = (props) => {
                 if (params === "drill") {
                     return (
                         <View style={styles.container}>
-                            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
 
                                 <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
@@ -304,7 +304,7 @@ const GererAbonnementScreen = (props) => {
                 else {
                     return (
                         <View style={styles.container}>
-                            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
 
                                 <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
@@ -356,7 +356,7 @@ const GererAbonnementScreen = (props) => {
                 return (
 
                     <View style={styles.container}>
-                        <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                        <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
                             <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
 
@@ -400,7 +400,7 @@ const GererAbonnementScreen = (props) => {
                 return (
 
                     <View style={styles.container}>
-                        <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                        <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
                             <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
 
@@ -445,7 +445,7 @@ const GererAbonnementScreen = (props) => {
                 return (
 
                     <View style={styles.container}>
-                        <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                        <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
                             <Text style={styles.inscriptionBigText}>{t('actuel')} {userData.abonnement}</Text>
 
@@ -466,7 +466,7 @@ const GererAbonnementScreen = (props) => {
         if (makePaymentMuscu && !makePaymentDrill && !makePaymentPremium) {
             if(response !== undefined){
                 return <View style={styles.container}>
-                    <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                    <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
                         {paymentStatus === 'Votre paiement est en cours de traitement' ?
                             <View>
                                 <Text style={styles.paymentStatusText}>{t("encours")}</Text>
@@ -493,7 +493,7 @@ const GererAbonnementScreen = (props) => {
         if (!makePaymentMuscu && makePaymentDrill && !makePaymentPremium) {
             if(response !== undefined){
                 return <View style={styles.container}>
-                    <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                    <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
                         {paymentStatus === 'Votre paiement est en cours de traitement' ?
                             <View>
                                 <Text style={styles.paymentStatusText}>{t("encours")}</Text>
@@ -520,7 +520,7 @@ const GererAbonnementScreen = (props) => {
         if (!makePaymentMuscu && !makePaymentDrill && makePaymentPremium) {
             if(response !== undefined){
                 return <View style={styles.container}>
-                    <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                    <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
                         {paymentStatus === 'Votre paiement est en cours de traitement' ?
                             <View>
@@ -550,7 +550,7 @@ const GererAbonnementScreen = (props) => {
     if (loading) {
         return (
             <View style={styles.container}>
-                <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
                         <View>
                             <Text style={styles.paymentStatusText}>{t("patientez")}</Text>
                             <ActivityIndicator />

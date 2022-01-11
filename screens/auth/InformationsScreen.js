@@ -71,9 +71,6 @@ const InformationsScreen = (props) => {
     const [errorSexe, setErrorSexe] = useState(false);
     const [errorPoste, setErrorPoste] = useState(false);
 
-
-
-
     return (
         <SafeAreaView style={styles.container}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -81,7 +78,7 @@ const InformationsScreen = (props) => {
                     style={styles.container}
                 >
                 <View style={styles.container}>
-                    <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                    <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
                         <Text style={styles.inscriptionBigText}>Informations</Text>
 
                         <View style={styles.flagContainer}>
@@ -94,7 +91,7 @@ const InformationsScreen = (props) => {
                             <TouchableOpacity onPress={() => {
                                 i18n.changeLanguage("en").then(() =>  AsyncStorage.setItem("lang", "en"));
                             }}>
-                                <Image source={require('../../assets/flag-en.jpg')} style={styles.flag}/>
+                                <Image source={require('../../assets/flag-en.png')} style={styles.flag}/>
                             </TouchableOpacity>
                         </View>
                         <View style={{display: 'flex', flexDirection: 'row', alignSelf: 'center', marginVertical: 10}}>
