@@ -192,7 +192,7 @@ const ProfileScreen = ({navigation}) => {
                                                 </TouchableOpacity>
 
                                                 <TouchableOpacity onPress={() => i18n.changeLanguage("en")}>
-                                                    <Image source={require('../../assets/flag-en.jpg')} style={styles.flag}/>
+                                                    <Image source={require('../../assets/flag-en.png')} style={styles.flag}/>
                                                 </TouchableOpacity>
                                             </View>
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react'
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import { WebView } from 'react-native-webview';
 
-const STRIPE_PK = 'pk_test_51JV1PpH8PB1EJ6ZTLJAz4oRxrrWHXVChwZ9PoVMtzSQdpE52KpfhehmPQvTFntlDsvzKweaCiElDsPfxiIyryPOU00UjdcIkgJ'
+const STRIPE_PK = 'pk_live_51JV1PpH8PB1EJ6ZT8U7wDpkrlw1MTxHiTP6npTVq3iKycpHdlwRVo3ZDbP6c8kBhhOreAaZ6NVoAUOA3apdjICEf0067TDxtBc'
 
 const PaymentView = (props) => {
 
@@ -311,7 +311,7 @@ const PaymentView = (props) => {
       javaScriptEnabled={true}
       style={{ flex: 1, backgroundColor: 'black'}}
       originWhitelist={['*']}
-      source={{ html: htmlContent}}
+      source={{ html: htmlContent, baseUrl: 'https://example.com',}}
       injectedJavaScript={injectedJavaScript}
       onMessage={onMessage}
   />
