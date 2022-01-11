@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     ImageBackground,
     StyleSheet,
@@ -7,8 +7,6 @@ import {
     FlatList,
     Image,
     Text,
-    Linking,
-    Alert,
     ScrollView,
     TouchableOpacity,
     TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView
@@ -19,7 +17,6 @@ import * as userActions from "../../store/actions/users";
 import * as DocumentPicker from 'expo-document-picker';
 import { WebView } from 'react-native-webview';
 import {useTranslation} from "react-i18next";
-import { LogBox } from 'react-native';
 
 const ClubScreen = ({navigation}) => {
 
@@ -34,7 +31,6 @@ const ClubScreen = ({navigation}) => {
     const [region, setRegion] = useState('dfd');
 
     const dispatch = useDispatch();
-    LogBox.ignoreAllLogs();
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
@@ -94,7 +90,7 @@ const ClubScreen = ({navigation}) => {
                 phoneClub: phone,
                 imageClub: image
             }).then(() => {
-                console.log("done")
+            console.log("done")
         }).catch(err => console.log(err))
     };
 
@@ -136,21 +132,14 @@ const ClubScreen = ({navigation}) => {
 
     // --- Upload file --- //
     const [url, setUrl] = useState("");
-    const encode = (uri) => {
-        if (Platform.OS === 'android') return encodeURI(`file://${uri}`)
-        else return uri
-    }
 
     const pickDocument = async () => {
-        let result = await DocumentPicker.getDocumentAsync({
-            type: "application/pdf",
-        });
-        return encode(result.uri)
+        let result = await DocumentPicker.getDocumentAsync({});
+        return result.uri
     }
 
     const uploadFile = async (uri) => {
-        console.log('ui', uri.toString())
-        const response = await fetch(uri.toString());
+        const response = await fetch(uri);
         const blob = await response.blob();
 
         const task = firebase
@@ -166,6 +155,7 @@ const ClubScreen = ({navigation}) => {
         const taskCompleted = () => {
             task.snapshot.ref.getDownloadURL().then((snapshot) => {
                 saveData(snapshot)
+                console.log(snapshot)
             })
         }
         const taskError = snapshot => {
@@ -182,102 +172,100 @@ const ClubScreen = ({navigation}) => {
                 licence: url
             })
     }
-
     const { i18n, t } = useTranslation();
     const PdfReader = ({ url: uri }) => <WebView style={{ width: "90%", height: 250, marginVertical: 20, alignSelf: 'center'}} source={{ uri }} />
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                {userData.phoneClub ?
-                    <ScrollView style={styles.container}>
-                        <KeyboardAvoidingView
-                            style={styles.container}
-                            behavior="height"
-                        >
-                            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
-                                <View>
-                                    <Image
-                                        style={styles.imageClub}
-                                        source={{
-                                            uri: userData.imageClub ? userData.imageClub : image
-                                        }}/>
-                                    <Text style={styles.infoClub}>{`${t("region")}`} : {userData.regionClub ? userData.regionClub : region}</Text>
-                                    <Text style={styles.infoClub}>{`${t("adress")}`} : {userData.adresseClub ? userData.adresseClub : adresse}</Text>
-                                    <Text style={styles.infoClub}>{`${t("site")}`} : {userData.siteClub ? userData.siteClub : site}</Text>
-                                    <Text style={styles.infoClub}>{`${t("mail")}`} : {userData.mailClub ? userData.mailClub : mail}</Text>
-                                    <Text style={styles.infoClub}>{`${t("phone")}`} : {userData.phoneClub ? userData.phoneClub : phone}</Text>
-
-
-                                    <TouchableOpacity style={styles.inscriptionButton} onPress={() => navigation.navigate('ChooseClubScreen')}>
-                                        <Text style={styles.inscriptionText}>{t("changeClub")}</Text>
-                                    </TouchableOpacity>
-
-                                    {userData.licence ?
-                                         <PdfReader source={{uri : "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/licences%2FY5g4S1o9RQSKeKmiwaQF7xIVdZi1%2F0.7b2d3vouyj7?alt=media&token=f25a5c57-2a2c-4b97-b909-b9dbbd4b4965"}}/>
-                                     :
-                                        <TouchableOpacity style={[styles.inscriptionButton, {marginBottom: 100}]} onPress={async () => {
-                                        pickDocument().then((result) => uploadFile(result)).then(() => {
-                                            navigation.navigate("ConfirmationClubScreen", {option: "licence"})
-                                        })}}>
-                                        <Text style={styles.inscriptionText}>{t("licence")}</Text>
-                                    </TouchableOpacity>}
-
-
-                                </View>
-                            </ImageBackground>
-                        </KeyboardAvoidingView>
-                    </ScrollView>:
+            {userData.phoneClub ?
+                <ScrollView style={styles.container}>
                     <KeyboardAvoidingView
                         style={styles.container}
                         behavior="height"
                     >
-                        <View style={styles.container}>
-                            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
-                                <TextInput
-                                    style={styles.textInput}
-                                    placeholder="Rechercher mon club"
-                                    value={search}
-                                    onChangeText={(text) => searchFilterFunction(text)}
-                                />
-                                {!filteredClubs.includes(search) ?    <FlatList
-                                    data={filteredClubs}
-                                    keyExtractor={(item, index) => index.toString()}
-                                    ItemSeparatorComponent={ItemSeparatorView}
-                                    renderItem={itemData => {
-                                        return (
-                                            <TouchableOpacity onPress={async () => {
-                                                setSearch(itemData.item)
-                                                await getImage(itemData.item)
-                                            }}>
-                                                <Text style={styles.itemStyle}>{itemData.item}</Text>
-                                            </TouchableOpacity>
-                                        )
-                                    }}
-                                /> : <Text/>}
-                                {image ? <View>
-                                    <Image
-                                        style={styles.imageClub}
-                                        source={{
-                                            uri: userData.imageClub ? userData.imageClub : image
-                                        }}/>
-                                    <Text style={styles.infoClub}>{`${t("region")}`} : {userData.regionClub ? userData.regionClub : region}</Text>
-                                    <Text style={styles.infoClub}>{`${t("adress")}`} : {userData.adresseClub ? userData.adresseClub : adresse}</Text>
-                                    <Text style={styles.infoClub}>{`${t("site")}`} : {userData.siteClub ? userData.siteClub : site}</Text>
-                                    <Text style={styles.infoClub}>{`${t("mail")}`} : {userData.mailClub ? userData.mailClub : mail}</Text>
-                                    <Text style={styles.infoClub}>{`${t("phone")}`} : {userData.phoneClub ? userData.phoneClub : phone}</Text>
+                        <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                            <View>
+                                <Image
+                                    style={styles.imageClub}
+                                    source={{
+                                        uri: userData.imageClub ? userData.imageClub : image
+                                    }}/>
+                                <Text style={styles.infoClub}>{`${t("region")}`} : {userData.regionClub ? userData.regionClub : region}</Text>
+                                <Text style={styles.infoClub}>{`${t("adress")}`} : {userData.adresseClub ? userData.adresseClub : adresse}</Text>
+                                <Text style={styles.infoClub}>{`${t("site")}`} : {userData.siteClub ? userData.siteClub : site}</Text>
+                                <Text style={styles.infoClub}>{`${t("mail")}`} : {userData.mailClub ? userData.mailClub : mail}</Text>
+                                <Text style={styles.infoClub}>{`${t("phone")}`} : {userData.phoneClub ? userData.phoneClub : phone}</Text>
 
 
-                                    <TouchableOpacity style={styles.inscriptionButton} onPress={async() => {
-                                        await saveClub(region, adresse, site, mail, phone, image)
-                                        navigation.navigate("ConfirmationClubScreen", {option: "club"})
-                                    }}>
-                                        <Text style={styles.inscriptionText}>{t("sauvegarder")}</Text>
-                                    </TouchableOpacity>
-                                </View> : <Text/>}
-                            </ImageBackground>
-                        </View>
+                                <TouchableOpacity style={styles.inscriptionButton} onPress={() => navigation.navigate('ChooseClubScreen')}>
+                                    <Text style={styles.inscriptionText}>{t("changeClub")}</Text>
+                                </TouchableOpacity>
+
+                                {userData.licence ?  <PdfReader url={userData.licence} /> :    <TouchableOpacity style={[styles.inscriptionButton, {marginBottom: 100}]} onPress={async () => {
+                                    await pickDocument().then((result) => uploadFile(result)).then(() => {
+                                        navigation.navigate("ConfirmationClubScreen", {option: "licence"})
+                                    })
+                                    console.log("url", url)
+                                }}>
+                                    <Text style={styles.inscriptionText}>{t("licence")}</Text>
+                                </TouchableOpacity>}
+
+
+                            </View>
+                        </ImageBackground>
                     </KeyboardAvoidingView>
-                }
+                </ScrollView>:
+                <KeyboardAvoidingView
+                    style={styles.container}
+                    behavior="height"
+                >
+                    <View style={styles.container}>
+                        <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                            <TextInput
+                                style={styles.textInput}
+                                placeholder="Rechercher mon club"
+                                value={search}
+                                onChangeText={(text) => searchFilterFunction(text)}
+                            />
+                            {!filteredClubs.includes(search) ?    <FlatList
+                                data={filteredClubs}
+                                keyExtractor={(item, index) => index.toString()}
+                                ItemSeparatorComponent={ItemSeparatorView}
+                                renderItem={itemData => {
+                                    return (
+                                        <TouchableOpacity onPress={async () => {
+                                            setSearch(itemData.item)
+                                            await getImage(itemData.item)
+                                        }}>
+                                            <Text style={styles.itemStyle}>{itemData.item}</Text>
+                                        </TouchableOpacity>
+                                    )
+                                }}
+                            /> : <Text/>}
+                            {image ? <View>
+                                <Image
+                                    style={styles.imageClub}
+                                    source={{
+                                        uri: userData.imageClub ? userData.imageClub : image
+                                    }}/>
+                                <Text style={styles.infoClub}>{`${t("region")}`} : {userData.regionClub ? userData.regionClub : region}</Text>
+                                <Text style={styles.infoClub}>{`${t("adress")}`} : {userData.adresseClub ? userData.adresseClub : adresse}</Text>
+                                <Text style={styles.infoClub}>{`${t("site")}`} : {userData.siteClub ? userData.siteClub : site}</Text>
+                                <Text style={styles.infoClub}>{`${t("mail")}`} : {userData.mailClub ? userData.mailClub : mail}</Text>
+                                <Text style={styles.infoClub}>{`${t("phone")}`} : {userData.phoneClub ? userData.phoneClub : phone}</Text>
+
+
+                                <TouchableOpacity style={styles.inscriptionButton} onPress={async() => {
+                                    await saveClub(region, adresse, site, mail, phone, image)
+                                    navigation.navigate("ConfirmationClubScreen", {option: "club"})
+                                }}>
+                                    <Text style={styles.inscriptionText}>{t("sauvegarder")}</Text>
+                                </TouchableOpacity>
+                            </View> : <Text/>}
+                        </ImageBackground>
+                    </View>
+                </KeyboardAvoidingView>
+            }
 
         </TouchableWithoutFeedback>
     );
@@ -298,14 +286,6 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         height: 35,
         borderRadius: 10
-    },
-    pdfContainer: {
-        width: "50%"
-    },
-    imageLicence: {
-        width: 200,
-        height: 200,
-        backgroundColor: "red"
     },
     imageClub: {
         width: 200,
