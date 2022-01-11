@@ -30,21 +30,21 @@ const AccueilScreen = ({navigation}) => {
                 <View style={styles.row}>
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('MusculationScreen')}>
                         <View style={styles.iconContainer}>
-                            <Image source={require('../../assets/logo_muscu.jpg')} style={styles.imageCard}/>
+                            <Image source={require('../../assets/logo_muscu.png')} style={styles.imageCard}/>
                         </View>
                         <Text style={styles.abonnementFreeText}>{`${t("prepaPhysique")}`}</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('DrillScreen')}>
                         <View style={styles.iconContainer}>
-                            <Image source={require('../../assets/logo_drill.jpg')} style={styles.imageCard}/>
+                            <Image source={require('../../assets/logo_drill.png')} style={styles.imageCard}/>
                         </View>
                         <Text style={styles.abonnementFreeText}>{`${t("drill")}`}</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('RecettesScreen')}>
                         <View style={styles.iconContainer}>
-                            <Image source={require('../../assets/logo_diet.jpg')} style={styles.imageCard}/>
+                            <Image source={require('../../assets/logo_diet.png')} style={styles.imageCard}/>
                         </View>
                         <Text style={styles.abonnementFreeText}>{`${t("recettes")}`}</Text>
                     </TouchableOpacity>
@@ -53,21 +53,21 @@ const AccueilScreen = ({navigation}) => {
                 <View style={styles.row}>
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('ProfileScreen')}>
                         <View style={styles.iconContainer}>
-                            <Image source={require('../../assets/logo_profil.jpg')} style={styles.imageCard}/>
+                            <Image source={require('../../assets/logo_profil.png')} style={styles.imageCard}/>
                         </View>
                         <Text style={styles.abonnementFreeText}>{`${t("profil")}`}</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('ProgressScreen')}>
                         <View style={styles.iconContainer}>
-                            <Image source={require('../../assets/logo_progres.jpg')} style={styles.imageCard}/>
+                            <Image source={require('../../assets/logo_progres.png')} style={styles.imageCard}/>
                         </View>
                         <Text style={styles.abonnementFreeText}>{`${t("progress")}`}</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('CalendrierScreen')}>
                         <View style={styles.iconContainer}>
-                            <Image source={require('../../assets/logo_FFFA.jpg')} style={styles.imageCard}/>
+                            <Image source={require('../../assets/logo_FFFA.png')} style={styles.imageCard}/>
                         </View>
                         <Text style={styles.abonnementFreeText}>FFFA</Text>
                     </TouchableOpacity>
@@ -76,21 +76,21 @@ const AccueilScreen = ({navigation}) => {
                 <View style={styles.row}>
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('EquipementSportifScreen')}>
                         <View style={styles.iconContainer}>
-                            <Image source={require('../../assets/logo_equipement.jpg')} style={styles.imageCard}/>
+                            <Image source={require('../../assets/logo_equipement.png')} style={styles.imageCard}/>
                         </View>
                         <Text style={styles.abonnementFreeText}>{`${t("equipements")}`}</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('ClubScreen')}>
                         <View style={styles.iconContainer}>
-                            <Image source={require('../../assets/logo_club.jpg')} style={styles.imageCard}/>
+                            <Image source={require('../../assets/logo_club.png')} style={styles.imageCard}/>
                         </View>
                         <Text style={styles.abonnementFreeText}>{`${t("club")}`}</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('NutritionSportiveScreen')}>
                         <View style={styles.iconContainer}>
-                            <Image source={require('../../assets/logo_nutrition_sportive.jpg')} style={styles.imageCard}/>
+                            <Image source={require('../../assets/logo_nutrition_sportive.png')} style={styles.imageCard}/>
                         </View>
                         <Text style={styles.abonnementFreeTextNut}>{`${t("nutrition")}`}</Text>
                         <Text style={styles.abonnementFreeTextNut}>{`${t("sportive")}`}</Text>
@@ -100,7 +100,7 @@ const AccueilScreen = ({navigation}) => {
                 <View style={styles.row}>
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('EntraineurPersonnelScreen')}>
                         <View style={styles.iconContainer}>
-                            <Image source={require('../../assets/logo_entraineurs_persos.jpg')} style={styles.imageCard}/>
+                            <Image source={require('../../assets/logo_entraineurs_persos.png')} style={styles.imageCard}/>
                         </View>
                         <Text style={styles.abonnementFreeText}>{`${t("entraineursPersonnels")}`}</Text>
                     </TouchableOpacity>
