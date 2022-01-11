@@ -53,7 +53,7 @@ const EquipementSportifScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
 
-            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
                 <ScrollView style={styles.scrollView}>
 

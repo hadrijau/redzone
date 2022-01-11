@@ -15,7 +15,7 @@ const JourSelectionScreen = ({navigation, route}) => {
 
     return (
         <View style={styles.container}>
-            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
                 {semaine === 1 ? <View>
                     <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('Jour1Semaine1', {entrainement: entrainement, video: "Jour1Semaine1"})}>

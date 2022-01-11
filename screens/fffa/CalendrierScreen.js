@@ -4,7 +4,7 @@ import {View, Text, TextInput, ImageBackground, StyleSheet} from "react-native";
 const CalendrierScreen = () => {
     return (
         <View style={styles.container}>
-            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
                 <Text style={styles.calendar}>Calendrier en construction</Text>
             </ImageBackground>
         </View>

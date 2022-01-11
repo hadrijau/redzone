@@ -7,7 +7,7 @@ const ConfirmationProgressScreen = (props) => {
     const { i18n, t } = useTranslation();
     return (
         <View style={styles.container}>
-            <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
                 <Text style={styles.progressText}>{`${t("progressSauvegarde")}`}</Text>
                 <TouchableOpacity style={styles.disconnectButton} onPress={() => props.navigation.navigate('ProgressScreen')}>
                     <Text style={styles.disconnectText}>{`${t("voirProgress")}`}</Text>

@@ -33,11 +33,11 @@ const EntraineurPersonnelScreen = (props) => {
                 >
                     <View style={styles.container}>
 
-                <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
                     <ScrollView>
 
-                    <Image source={require('../../assets/photo_coach.jpg')} style={styles.img}/>
+                    <Image source={require('../../assets/photo_coach.png')} style={styles.img}/>
 
                     <Text style={styles.presentation}>{t("Entraineur1")}</Text>
                     <Text style={[styles.presentation, styles.marginBottom]}>Train Like A Pro</Text>

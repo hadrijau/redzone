@@ -81,7 +81,7 @@ const InformationsScreen = (props) => {
                     style={styles.container}
                 >
                 <View style={styles.container}>
-                    <ImageBackground source={require('../../assets/bigLogo.jpg')} resizeMode="cover" style={styles.image}>
+                    <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
                         <Text style={styles.inscriptionBigText}>Informations</Text>
 
                         <View style={styles.flagContainer}>
