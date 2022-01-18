@@ -66,16 +66,52 @@ const MusculationScreen = ({navigation}) => {
 
 
                             {userData.abonnement === "Musculation" || userData.abonnement === "Premium" ?
+                                <View>
+                                    {i18next.language === "fr" ? <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ChooseDaysScreen', {
+                                        entrainement: "muscu"
+                                    })}>
+                                        <ImageBackground
+                                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FPoids%20du%20corps.png?alt=media&token=079bafe0-a252-4618-b87a-632cba2c69f5"}}
+                                            style={styles.imageBackground}
+                                        />
+                                    </TouchableOpacity> :
+                                        <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ChooseDaysScreen', {
+                                        entrainement: "muscu"
+                                    })}>
+                                        <ImageBackground
+                                            source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FBody%20weight.png?alt=media&token=f07c575c-c26e-4378-bb20-0a6e036eec1b"}}
+                                            style={styles.imageBackground}
+                                        />
+                                    </TouchableOpacity> }
                                 <FlatList
                                     data={preparationPhysique}
                                     renderItem={photoNormal}
                                     keyExtractor={item => item.id}
                                 />
-                             :   <FlatList
-                                    data={preparationPhysique}
-                                    renderItem={photoLocked}
-                                    keyExtractor={item => item.id}
-                                />
+                                </View>
+                             :         <View>
+                                    {i18next.language === "fr" ? <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ChooseDaysScreen', {
+                                            entrainement: "muscu"
+                                        })}>
+                                            <ImageBackground
+                                                source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FPoids%20du%20corps.png?alt=media&token=079bafe0-a252-4618-b87a-632cba2c69f5"}}
+                                                style={styles.imageBackground}
+                                            />
+                                        </TouchableOpacity> :
+                                        <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ChooseDaysScreen', {
+                                            entrainement: "muscu"
+                                        })}>
+                                            <ImageBackground
+                                                source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FBody%20weight.png?alt=media&token=f07c575c-c26e-4378-bb20-0a6e036eec1b"}}
+                                                style={styles.imageBackground}
+                                            />
+                                        </TouchableOpacity> }
+                                    <FlatList
+                                        data={preparationPhysique}
+                                        renderItem={photoLocked}
+                                        keyExtractor={item => item.id}
+                                    />
+                                </View>
                             }
 
 
