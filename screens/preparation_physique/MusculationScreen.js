@@ -26,11 +26,13 @@ const MusculationScreen = ({navigation}) => {
             .get()
             .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
+                    console.log('doc', doc.data())
                     setPreparationPhysique(prevState => [...prevState, doc.data()])
                 });
             });
     }, []);
 
+    console.log(preparationPhysique)
 
     const photoNormal = ({ item }) => {
         return (

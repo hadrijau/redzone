@@ -1,4 +1,4 @@
-import React from 'react';
+    import React from 'react';
 import {View, Text, TextInput, StyleSheet, ImageBackground, TouchableOpacity, Image, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard} from 'react-native';
 import {Formik} from "formik";
 import firebase from 'firebase';

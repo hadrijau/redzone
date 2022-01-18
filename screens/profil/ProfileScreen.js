@@ -70,8 +70,6 @@ const ProfileScreen = ({navigation}) => {
                 behavior="height"
             >
 
-
-
                 <View style={styles.container}>
 
                     <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
@@ -192,7 +190,7 @@ const ProfileScreen = ({navigation}) => {
                                                 </TouchableOpacity>
 
                                                 <TouchableOpacity onPress={() => i18n.changeLanguage("en")}>
-                                                    <Image source={require('../../assets/flag-en.jpg')} style={styles.flag}/>
+                                                    <Image source={require('../../assets/flag-en.png')} style={styles.flag}/>
                                                 </TouchableOpacity>
                                             </View>
 

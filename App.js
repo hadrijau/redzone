@@ -25,7 +25,7 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
+firebase.firestore().enablePersistence();
 export default function App() {
 
   const rootReducer = combineReducers({
