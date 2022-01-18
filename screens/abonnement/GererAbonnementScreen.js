@@ -6,8 +6,10 @@ import {
     View,
     StyleSheet,
     ScrollView,
+    TextInput,
     ActivityIndicator,
-    Image, Dimensions
+    TouchableWithoutFeedback,
+    Image, Dimensions, Keyboard
 } from 'react-native';
 import firebase from "firebase";
 import axios from 'axios';
@@ -37,6 +39,7 @@ const GererAbonnementScreen = (props) => {
     const [ makePaymentMuscu, setMakePaymentMuscu ] = useState(false);
     const [ makePaymentDrill, setMakePaymentDrill ] = useState(false);
     const [ makePaymentPremium, setMakePaymentPremium ] = useState(false);
+    const [ makePaymentPremiumRed, setMakePaymentPremiumRed ] = useState(false);
 
     const { i18n, t } = useTranslation();
 
@@ -70,6 +73,7 @@ const GererAbonnementScreen = (props) => {
                 subscriptionId : subscriptionId
             })
 
+
             if(stripeResponse){
                 console.log('stripe', stripeResponse)
                 const paid = stripeResponse.data.items.data[0].plan.active;
@@ -100,7 +104,7 @@ const GererAbonnementScreen = (props) => {
             const stripeResponse = await axios.post('https://your-redzone.herokuapp.com/payment', {
                 email: userData.email,
                 authToken: jsonResponse,
-                planId: 'price_1KJ3e1H8PB1EJ6ZTAvseY765',
+                planId: 'price_1K8QEFH8PB1EJ6ZT9RhQsGkY',
             })
 
             console.log('TSRIPE RESPONSE', stripeResponse)
@@ -141,8 +145,8 @@ const GererAbonnementScreen = (props) => {
             const stripeResponse = await axios.post('https://your-redzone.herokuapp.com/payment', {
                 email: userData.email,
                 authToken: jsonResponse,
-                planId: 'price_1KJ3dPH8PB1EJ6ZTLTyCvHl5',
-            });
+                planId: 'price_1K8QEWH8PB1EJ6ZTSR1E2pKL',
+            })
 
             console.log('TSRIPE RESPONSE', stripeResponse)
 
@@ -179,7 +183,7 @@ const GererAbonnementScreen = (props) => {
             const stripeResponse = await axios.post('https://your-redzone.herokuapp.com/payment', {
                 email: userData.email,
                 authToken: jsonResponse,
-                planId: 'price_1KJ3c9H8PB1EJ6ZT3xJemgEG',
+                planId: 'price_1K8QEiH8PB1EJ6ZTJcVHE61Z',
             })
 
             console.log('TSRIPE RESPONSE', stripeResponse)
@@ -204,7 +208,46 @@ const GererAbonnementScreen = (props) => {
             setPaymentStatus('Le paiement a échoué')
 
         }
+    }
 
+    const onCheckStatusPremiumReduit = async (paymentResponse) => {
+        setPaymentStatus('Votre paiement est en cours de traitement')
+        setResponse(paymentResponse)
+
+        let jsonResponse = JSON.parse(paymentResponse);
+        console.log('paymentresponse', paymentResponse)
+        // perform operation to check payment status
+
+        try {
+
+            const stripeResponse = await axios.post('https://your-redzone.herokuapp.com/payment', {
+                email: userData.email,
+                authToken: jsonResponse,
+                planId: 'price_1KJ3fAH8PB1EJ6ZTR9wbARno',
+            })
+
+            console.log('TSRIPE RESPONSE', stripeResponse)
+
+            if(stripeResponse){
+
+                console.log(stripeResponse.data.items.data[0].plan.active)
+                const paid = stripeResponse.data.items.data[0].plan.active;
+                if(paid === true){
+                    await updateSubscriptionUser(stripeResponse.data.id)
+                    await changeAbonnement('Premium')
+                    setPaymentStatus('Votre paiement a été validé ! Bienvenue chez RoundPower')
+                }else{
+                    setPaymentStatus('Le paiement a échoué')
+                }
+
+            }else{
+                setPaymentStatus('Le paiement a échoué')
+            }
+        } catch (error) {
+            console.log(error)
+            setPaymentStatus('Le paiement a échoué')
+
+        }
     }
 
     let params = undefined;
@@ -213,145 +256,229 @@ const GererAbonnementScreen = (props) => {
         params = props.route.params.entrainement;
     }
 
+    const [promoCode, setPromoCode] = useState("");
+    const [goodPromoCode, setGoodPromoCode] = useState(false);
+
     const paymentUI = (props) => {
-        if (!makePaymentMuscu && !makePaymentPremium && !makePaymentDrill) {
+        if (!makePaymentMuscu && !makePaymentPremium && !makePaymentDrill && !makePaymentPremiumRed) {
             if (userData.abonnement === 'free') {
                 if (params === "muscu") {
                     return (
-                        <View style={styles.container}>
-                            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+                        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                            <View style={styles.container}>
+                                <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
+                                    <Text style={styles.inscriptionBigText}>{`${t("actuel")}`} {userData.abonnement}</Text>
 
-                                <Text style={styles.inscriptionBigText}>{`${t("actuel")}`} {userData.abonnement}</Text>
+                                    <TextInput
+                                        placeholder="Entrez code promo"
+                                        placeholderTextColor="white"
+                                        onChangeText={(e) => setPromoCode(e)}
+                                        style={styles.textInput}
+                                    />
+                                    <TouchableOpacity onPress={() => {
+                                        if (promoCode === "YRZ50") {
+                                            setGoodPromoCode(true)
+                                        }
+                                    }}
+                                                      style={styles.buttonContainer}
+                                    >
+                                        <Text style={styles.validate}>Valider</Text>
+                                    </TouchableOpacity>
+                                    <ScrollView style={styles.scrollView}>
 
-                                 <ScrollView style={styles.scrollView}>
+                                        <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                            setMakePaymentMuscu(true)
+                                        }}>
+                                            {i18next.language === "en" ?    <Image
+                                                style={styles.imageCard}
+                                                source={{
+                                                    uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F5%5B1%5D.png?alt=media&token=f6dcf403-9046-4bb0-a205-323d89fe34b6"
+                                                }}
+                                            /> :    <Image
+                                                style={styles.imageCard}
+                                                source={{
+                                                    uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
+                                                }}
+                                            />}
 
-                                     <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                         setMakePaymentMuscu(true)
-                                     }}>
-                                         {i18next.language === "en" ?    <Image
-                                             style={styles.imageCard}
-                                             source={{
-                                                 uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F5%5B1%5D.png?alt=media&token=f6dcf403-9046-4bb0-a205-323d89fe34b6"
-                                             }}
-                                         /> :    <Image
-                                             style={styles.imageCard}
-                                             source={{
-                                                 uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
-                                             }}
-                                         />}
+                                        </TouchableOpacity>
 
-                                     </TouchableOpacity>
+                                        {goodPromoCode ?
+                                            <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                                setMakePaymentPremiumRed(true)
+                                            }}>
+                                                <Image
+                                                    style={styles.imageCard}
+                                                    source={{
+                                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2Fpremium.png?alt=media&token=8c0a0ef8-2a62-454e-97b3-d0d75469df4e"
+                                                    }}
+                                                >
+                                                </Image>
+                                            </TouchableOpacity> : <TouchableOpacity style={styles.recetteCard} onPress={() => setMakePaymentPremium(true)}>
+                                                <Image
+                                                    style={styles.imageCard}
+                                                    source={{
+                                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
+                                                    }}
+                                                >
+                                                </Image>
+                                            </TouchableOpacity>
+                                        }
 
-
-                                     <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                         setMakePaymentPremium(true)
-                                     }}>
-                                         <Image
-                                             style={styles.imageCard}
-                                             source={{
-                                                 uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
-                                             }}
-                                         >
-                                         </Image>
-                                     </TouchableOpacity>
-
-                                </ScrollView>
-                            </ImageBackground>
-                        </View>
+                                    </ScrollView>
+                                </ImageBackground>
+                            </View>
+                        </TouchableWithoutFeedback>
                     )}
                 if (params === "drill") {
                     return (
-                        <View style={styles.container}>
-                            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+                        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                            <View style={styles.container}>
+                                <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
 
-                                <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
+                                    <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
 
-                                <ScrollView style={styles.scrollView}>
-
-                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                        setMakePaymentDrill(true)
-                                    }}>
-                                        <Image
-                                            style={styles.imageCard}
-                                            source={{
-                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F2%5B1%5D.png?alt=media&token=21ed90a3-2718-498a-9b10-57d50b170b12"
-                                            }}
-                                        >
-                                        </Image>
+                                    <TextInput
+                                        placeholder="Entrez code promo"
+                                        placeholderTextColor="white"
+                                        onChangeText={(e) => setPromoCode(e)}
+                                        style={styles.textInput}
+                                    />
+                                    <TouchableOpacity onPress={() => {
+                                        if (promoCode === "YRZ50") {
+                                            setGoodPromoCode(true)
+                                        }
+                                    }}
+                                                      style={styles.buttonContainer}
+                                    >
+                                        <Text style={styles.validate}>Valider</Text>
                                     </TouchableOpacity>
 
+                                    <ScrollView style={styles.scrollView}>
 
-                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                        setMakePaymentPremium(true)
-                                    }}>
-                                        <Image
-                                            style={styles.imageCard}
-                                            source={{
-                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
-                                            }}
-                                        >
-                                        </Image>
-                                    </TouchableOpacity>
+                                        <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                            setMakePaymentDrill(true)
+                                        }}>
+                                            <Image
+                                                style={styles.imageCard}
+                                                source={{
+                                                    uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F2%5B1%5D.png?alt=media&token=21ed90a3-2718-498a-9b10-57d50b170b12"
+                                                }}
+                                            >
+                                            </Image>
+                                        </TouchableOpacity>
 
-                                </ScrollView>
-                            </ImageBackground>
-                        </View>
+
+                                        {goodPromoCode ?
+                                            <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                                setMakePaymentPremiumRed(true)
+                                            }}>
+                                                <Image
+                                                    style={styles.imageCard}
+                                                    source={{
+                                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2Fpremium.png?alt=media&token=8c0a0ef8-2a62-454e-97b3-d0d75469df4e"
+                                                    }}
+                                                >
+                                                </Image>
+                                            </TouchableOpacity> : <TouchableOpacity style={styles.recetteCard} onPress={() => setMakePaymentPremium(true)}>
+                                                <Image
+                                                    style={styles.imageCard}
+                                                    source={{
+                                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
+                                                    }}
+                                                >
+                                                </Image>
+                                            </TouchableOpacity>
+                                        }
+
+                                    </ScrollView>
+                                </ImageBackground>
+                            </View>
+                        </TouchableWithoutFeedback>
                     )
                 }
                 else {
                     return (
-                        <View style={styles.container}>
-                            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+                        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                            <View style={styles.container}>
+                                <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
 
-                                <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
+                                    <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
 
-                                <ScrollView style={styles.scrollView}>
-                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                        setMakePaymentMuscu(true)
-                                    }}>
-                                        <Image
-                                            style={styles.imageCard}
-                                            source={{
-                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
-                                            }}
-                                        >
-                                        </Image>
+                                    <TextInput
+                                        placeholder="Entrez code promo"
+                                        placeholderTextColor="white"
+                                        onChangeText={(e) => setPromoCode(e)}
+                                        style={styles.textInput}
+                                    />
+                                    <TouchableOpacity onPress={() => {
+                                        if (promoCode === "YRZ50") {
+                                            setGoodPromoCode(true)
+                                        }
+                                    }}
+                                                      style={styles.buttonContainer}
+                                    >
+                                        <Text style={styles.validate}>Valider</Text>
                                     </TouchableOpacity>
 
-                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                        setMakePaymentDrill(true)
-                                    }}>
-                                        <Image
-                                            style={styles.imageCard}
-                                            source={{
-                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F2%5B1%5D.png?alt=media&token=21ed90a3-2718-498a-9b10-57d50b170b12"
-                                            }}
-                                        >
-                                        </Image>
-                                    </TouchableOpacity>
+                                    <ScrollView style={styles.scrollView}>
+                                        <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                            setMakePaymentMuscu(true)
+                                        }}>
+                                            <Image
+                                                style={styles.imageCard}
+                                                source={{
+                                                    uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
+                                                }}
+                                            >
+                                            </Image>
+                                        </TouchableOpacity>
 
-                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                        setMakePaymentPremium(true)
-                                    }}>
-                                        <Image
-                                            style={styles.imageCard}
-                                            source={{
-                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
-                                            }}
-                                        >
-                                        </Image>
-                                    </TouchableOpacity>
+                                        <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                            setMakePaymentDrill(true)
+                                        }}>
+                                            <Image
+                                                style={styles.imageCard}
+                                                source={{
+                                                    uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F2%5B1%5D.png?alt=media&token=21ed90a3-2718-498a-9b10-57d50b170b12"
+                                                }}
+                                            >
+                                            </Image>
+                                        </TouchableOpacity>
 
-                                </ScrollView>
-                            </ImageBackground>
-                        </View>
+                                        {goodPromoCode ?
+                                            <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                                setMakePaymentPremiumRed(true)
+                                            }}>
+                                                <Image
+                                                    style={styles.imageCard}
+                                                    source={{
+                                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2Fpremium.png?alt=media&token=8c0a0ef8-2a62-454e-97b3-d0d75469df4e"
+                                                    }}
+                                                >
+                                                </Image>
+                                            </TouchableOpacity> : <TouchableOpacity style={styles.recetteCard} onPress={() => setMakePaymentPremium(true)}>
+                                                <Image
+                                                    style={styles.imageCard}
+                                                    source={{
+                                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
+                                                    }}
+                                                >
+                                                </Image>
+                                            </TouchableOpacity>
+                                        }
+
+                                    </ScrollView>
+                                </ImageBackground>
+                            </View>
+                        </TouchableWithoutFeedback>
                     )
                 }
             }
-             if (userData.abonnement === "Musculation") {
+            if (userData.abonnement === "Musculation") {
                 return (
 
                     <View style={styles.container}>
@@ -462,7 +589,7 @@ const GererAbonnementScreen = (props) => {
             }
         }
 
-        if (makePaymentMuscu && !makePaymentDrill && !makePaymentPremium) {
+        if (makePaymentMuscu && !makePaymentDrill && !makePaymentPremium && !makePaymentPremiumRed) {
             if(response !== undefined){
                 return <View style={styles.container}>
                     <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
@@ -489,7 +616,7 @@ const GererAbonnementScreen = (props) => {
             }
         }
 
-        if (!makePaymentMuscu && makePaymentDrill && !makePaymentPremium) {
+        if (!makePaymentMuscu && makePaymentDrill && !makePaymentPremium && !makePaymentPremiumRed) {
             if(response !== undefined){
                 return <View style={styles.container}>
                     <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
@@ -516,7 +643,7 @@ const GererAbonnementScreen = (props) => {
             }
         }
 
-        if (!makePaymentMuscu && !makePaymentDrill && makePaymentPremium) {
+        if (!makePaymentMuscu && !makePaymentDrill && makePaymentPremium && !makePaymentPremiumRed) {
             if(response !== undefined){
                 return <View style={styles.container}>
                     <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
@@ -544,16 +671,44 @@ const GererAbonnementScreen = (props) => {
             }
         }
 
+        if (!makePaymentMuscu && !makePaymentDrill && !makePaymentPremium && makePaymentPremiumRed) {
+            if(response !== undefined){
+                return <View style={styles.container}>
+                    <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+
+                        {paymentStatus === 'Votre paiement est en cours de traitement' ?
+                            <View>
+                                <Text style={styles.paymentStatusText}>{t("encours")}</Text>
+                                <ActivityIndicator />
+                            </View> : <Text></Text>}
+
+                        {paymentStatus === 'Votre paiement a été validé ! Bienvenue chez RoundPower' ?
+                            <View>
+                                <View style={styles.finContainer}>
+                                    <Text style={styles.paymentStatusText2}>{t("validatePayment")}</Text>
+                                </View>
+                                <TouchableOpacity onPress={() => props.navigation.navigate('AccueilScreen')} style={styles.button}>
+                                    <Text style={styles.buttonText}>{t("menu")}</Text>
+                                </TouchableOpacity>
+                            </View> : <Text></Text>}
+                    </ImageBackground>
+                </View>
+
+            }else{
+                return <PaymentView onCheckStatus={onCheckStatusPremiumReduit} product={"Abonnement Premium"} amount={15}/>
+            }
+        }
+
     }
 
     if (loading) {
         return (
             <View style={styles.container}>
                 <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
-                        <View>
-                            <Text style={styles.paymentStatusText}>{t("patientez")}</Text>
-                            <ActivityIndicator />
-                        </View>
+                    <View>
+                        <Text style={styles.paymentStatusText}>{t("patientez")}</Text>
+                        <ActivityIndicator />
+                    </View>
                 </ImageBackground>
             </View>
 
@@ -653,6 +808,27 @@ const styles = StyleSheet.create({
     buttonText: {
         color: 'white',
         fontSize: 20
+    },
+    textInput : {
+        borderWidth: 1,
+        borderColor: 'white',
+        alignSelf: 'center',
+        paddingHorizontal: 20,
+        paddingVertical: 5,
+        color: 'white'
+    },
+    buttonContainer: {
+        backgroundColor: "red",
+        color: 'white',
+        alignSelf: 'center',
+        paddingHorizontal: 20,
+        paddingVertical: 5,
+        marginVertical: 20
+    },
+    validate: {
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: 18
     }
 })
 export default GererAbonnementScreen;
