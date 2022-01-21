@@ -63,8 +63,6 @@ const MusculationScreen = ({navigation}) => {
                     <ScrollView>
 
                         <View style={styles.scrollView}>
-
-
                             {userData.abonnement === "Musculation" || userData.abonnement === "Premium" ?
                                 <View>
                                     {i18next.language === "fr" ? <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ChooseDaysScreen', {
@@ -192,3 +190,4 @@ const styles = StyleSheet.create({
     }
 })
 export default MusculationScreen;
+
