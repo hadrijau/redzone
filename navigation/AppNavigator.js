@@ -53,7 +53,7 @@ const AppTabNavigator = createBottomTabNavigator();
 
 const CustomHeader = props => {
     return (
-        <View style={{width: '100%', alignItems: 'center', paddingLeft: '5%', backgroundColor: 'black'}}>
+        <View style={{width: '100%', alignItems: 'center', paddingLeft: '5%', backgroundColor: 'black', height: 150}}>
             <Image source={require('../assets/smallLogo.jpg')} style={{height: 70, width: '80%', marginTop: 50, alignSelf: 'center', marginRight: 20}}/>
         </View>
     )
