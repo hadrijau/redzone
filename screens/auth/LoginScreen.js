@@ -35,13 +35,13 @@ const LoginScreen = ({navigation}) => {
                     >
                         {props => (
                             <View style={styles.formContainer}>
-                                <Text style={styles.label}>Email</Text>
+                                <Text style={styles.label}>{`${t("mail")}`}</Text>
                                 <TextInput
                                     value={props.values.email}
                                     style={styles.textInput}
                                     onChangeText={props.handleChange('email')}
                                 />
-                                <Text style={styles.label}>{`${t("mail")}`}</Text>
+                                <Text style={styles.label}>{`${t("password")}`}</Text>
                                 <TextInput
                                     value={props.values.password}
                                     style={styles.textInput}
