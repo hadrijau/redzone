@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {ImageBackground, Text, TextInput, TouchableOpacity, View, StyleSheet, ScrollView, ActivityIndicator, FlatList} from 'react-native';
-import {Formik} from "formik";
+import {ImageBackground, Text, TouchableOpacity, View, StyleSheet, ScrollView, ActivityIndicator, FlatList} from 'react-native';
 import {useDispatch, useSelector} from "react-redux";
 import * as userActions from "../../store/actions/users";
 import {useTranslation} from "react-i18next";
@@ -35,11 +34,11 @@ const MusculationScreen = ({navigation}) => {
     const photoNormal = ({ item }) => {
         return (
             <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('JourSelectionScreen', {semaine: 1, entrainement: item.name})}>
-           <ImageBackground
-                source={{uri: i18next.language === "en" ? item.photoEn : item.photo}}
-                style={styles.imageBackground}
-            />
-        </TouchableOpacity>
+                <ImageBackground
+                    source={{uri: i18next.language === "en" ? item.photoEn : item.photo}}
+                    style={styles.imageBackground}
+                />
+            </TouchableOpacity>
         )
     }
 
@@ -63,19 +62,53 @@ const MusculationScreen = ({navigation}) => {
                     <ScrollView>
 
                         <View style={styles.scrollView}>
-
-
                             {userData.abonnement === "Musculation" || userData.abonnement === "Premium" ?
-                                <FlatList
-                                    data={preparationPhysique}
-                                    renderItem={photoNormal}
-                                    keyExtractor={item => item.id}
-                                />
-                             :   <FlatList
-                                    data={preparationPhysique}
-                                    renderItem={photoLocked}
-                                    keyExtractor={item => item.id}
-                                />
+                                <View>
+                                    {i18next.language === "fr" ? <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ChooseDaysScreen', {
+                                            entrainement: "muscu"
+                                        })}>
+                                            <ImageBackground
+                                                source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FPoids%20du%20corps.png?alt=media&token=079bafe0-a252-4618-b87a-632cba2c69f5"}}
+                                                style={styles.imageBackground}
+                                            />
+                                        </TouchableOpacity> :
+                                        <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ChooseDaysScreen', {
+                                            entrainement: "muscu"
+                                        })}>
+                                            <ImageBackground
+                                                source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FBody%20weight.png?alt=media&token=f07c575c-c26e-4378-bb20-0a6e036eec1b"}}
+                                                style={styles.imageBackground}
+                                            />
+                                        </TouchableOpacity> }
+                                    <FlatList
+                                        data={preparationPhysique}
+                                        renderItem={photoNormal}
+                                        keyExtractor={item => item.id}
+                                    />
+                                </View>
+                                :         <View>
+                                    {i18next.language === "fr" ? <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ChooseDaysScreen', {
+                                            entrainement: "muscu"
+                                        })}>
+                                            <ImageBackground
+                                                source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FPoids%20du%20corps.png?alt=media&token=079bafe0-a252-4618-b87a-632cba2c69f5"}}
+                                                style={styles.imageBackground}
+                                            />
+                                        </TouchableOpacity> :
+                                        <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ChooseDaysScreen', {
+                                            entrainement: "muscu"
+                                        })}>
+                                            <ImageBackground
+                                                source={{uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/musculation%20free%2FBody%20weight.png?alt=media&token=f07c575c-c26e-4378-bb20-0a6e036eec1b"}}
+                                                style={styles.imageBackground}
+                                            />
+                                        </TouchableOpacity> }
+                                    <FlatList
+                                        data={preparationPhysique}
+                                        renderItem={photoLocked}
+                                        keyExtractor={item => item.id}
+                                    />
+                                </View>
                             }
 
 
@@ -154,5 +187,6 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%'
     }
-})
+});
+
 export default MusculationScreen;
