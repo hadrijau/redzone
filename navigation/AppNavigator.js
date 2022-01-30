@@ -12,8 +12,6 @@ import RecettesScreen from "../screens/recettes/RecettesScreen";
 import { FontAwesome } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 
-const windowHeight = Dimensions.get('window').height;
-const windowWidth = Dimensions.get('window').width;
 import { AntDesign } from '@expo/vector-icons';
 import InformationsScreen from "../screens/auth/InformationsScreen";
 import ViewVideoScreen from "../screens/drill/ViewVideoScreen";
@@ -51,10 +49,13 @@ const ProgressStackNavigator = createNativeStackNavigator();
 const AccueilStackNavigator = createNativeStackNavigator();
 const AppTabNavigator = createBottomTabNavigator();
 
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 const CustomHeader = props => {
     return (
         <View style={{width: '100%', alignItems: 'center', paddingLeft: '5%', backgroundColor: 'black'}}>
-            <Image source={require('../assets/smallLogo.jpg')} style={{height: 70, width: '80%', marginTop: 50, alignSelf: 'center', marginRight: 20}}/>
+            <Image source={require('../assets/smallLogo.jpg')} style={{height: windowHeight/12, width: '80%', marginTop: 50, alignSelf: 'center', marginRight: 20}}/>
         </View>
     )
 }
