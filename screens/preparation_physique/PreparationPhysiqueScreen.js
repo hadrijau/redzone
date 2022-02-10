@@ -1,10 +1,7 @@
 import React from 'react';
 import {Dimensions, ImageBackground, StyleSheet, TouchableOpacity, View} from "react-native";
-import {useTranslation} from "react-i18next";
 import i18next from "i18next";
 
-const windowHeight = Dimensions.get('window').height;
-const windowWidth = Dimensions.get('window').width;
 
 
 const PreparationPhysiqueScreen = ({navigation, route}) => {
