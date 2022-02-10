@@ -9,6 +9,7 @@ import {
     Text,
     ScrollView,
     TouchableOpacity,
+    Platform,
     TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView
 } from "react-native";
 import firebase from "firebase";
@@ -17,6 +18,7 @@ import * as userActions from "../../store/actions/users";
 import * as DocumentPicker from 'expo-document-picker';
 import { WebView } from 'react-native-webview';
 import {useTranslation} from "react-i18next";
+import Pdf from 'react-native-pdf';
 
 const ClubScreen = ({navigation}) => {
 
@@ -174,6 +176,25 @@ const ClubScreen = ({navigation}) => {
     }
     const { i18n, t } = useTranslation();
     const PdfReader = ({ url: uri }) => <WebView style={{ width: "90%", height: 250, marginVertical: 20, alignSelf: 'center'}} source={{ uri }} />
+    const PdfAndroid = ({ url: uri }) => {
+        return (
+            <Pdf
+                source={uri}
+                onLoadComplete={(numberOfPages,filePath) => {
+                    console.log(`Number of pages: ${numberOfPages}`);
+                }}
+                onPageChanged={(page,numberOfPages) => {
+                    console.log(`Current page: ${page}`);
+                }}
+                onError={(error) => {
+                    console.log(error);
+                }}
+                onPressLink={(uri) => {
+                    console.log(`Link pressed: ${uri}`);
+                }}
+                style={{ width: "90%", height: 250, marginVertical: 20, alignSelf: 'center'}}/>
+        )
+    }
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -201,7 +222,12 @@ const ClubScreen = ({navigation}) => {
                                     <Text style={styles.inscriptionText}>{t("changeClub")}</Text>
                                 </TouchableOpacity>
 
-                                {userData.licence ?  <PdfReader url={userData.licence} /> :    <TouchableOpacity style={[styles.inscriptionButton, {marginBottom: 100}]} onPress={async () => {
+                                {userData.licence ?  <>
+                                    {Platform.OS === "ios" ?
+                                        <PdfReader url={userData.licence}/> :
+                                        <PdfAndroid url={userData.licence}/>
+                                    }
+                                    </>:    <TouchableOpacity style={[styles.inscriptionButton, {marginBottom: 100}]} onPress={async () => {
                                     await pickDocument().then((result) => uploadFile(result)).then(() => {
                                         navigation.navigate("ConfirmationClubScreen", {option: "licence"})
                                     })
