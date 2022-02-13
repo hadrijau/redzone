@@ -104,7 +104,7 @@ const GererAbonnementScreen = (props) => {
             const stripeResponse = await axios.post('https://your-redzone.herokuapp.com/payment', {
                 email: userData.email,
                 authToken: jsonResponse,
-                planId: 'price_1K8QEFH8PB1EJ6ZT9RhQsGkY',
+                planId: 'price_1KJ3e1H8PB1EJ6ZTAvseY765',
             })
 
             console.log('TSRIPE RESPONSE', stripeResponse)
@@ -145,7 +145,7 @@ const GererAbonnementScreen = (props) => {
             const stripeResponse = await axios.post('https://your-redzone.herokuapp.com/payment', {
                 email: userData.email,
                 authToken: jsonResponse,
-                planId: 'price_1K8QEWH8PB1EJ6ZTSR1E2pKL',
+                planId: 'price_1KJ3dPH8PB1EJ6ZTLTyCvHl5',
             })
 
             console.log('TSRIPE RESPONSE', stripeResponse)
@@ -183,7 +183,7 @@ const GererAbonnementScreen = (props) => {
             const stripeResponse = await axios.post('https://your-redzone.herokuapp.com/payment', {
                 email: userData.email,
                 authToken: jsonResponse,
-                planId: 'price_1K8QEiH8PB1EJ6ZTJcVHE61Z',
+                planId: 'price_1KJ3c9H8PB1EJ6ZT3xJemgEG',
             })
 
             console.log('TSRIPE RESPONSE', stripeResponse)
