@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "yourredzone",
+    "name": "Your Redzone",
     "slug": "yourredzone",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -19,7 +19,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.yourredzone",
-      "buildNumber": "1.0.0",
+      "buildNumber": "1.0.2",
       "infoPlist": {
         "NSCameraUsageDescription": "This app does not use the camera"
       }

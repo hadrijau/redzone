@@ -7,9 +7,10 @@ import {
     StyleSheet,
     ScrollView,
     TextInput,
+    Platform,
     ActivityIndicator,
     TouchableWithoutFeedback,
-    Image, Dimensions, Keyboard
+    Image, Dimensions, Keyboard, Alert
 } from 'react-native';
 import firebase from "firebase";
 import axios from 'axios';
@@ -18,8 +19,13 @@ import * as userActions from "../../store/actions/users";
 import {PaymentView} from "../../components/PaymentView";
 import {useTranslation} from "react-i18next";
 import i18next from "i18next";
+import IAP from "react-native-iap";
 
 const windowWidth = Dimensions.get('window').width;
+
+let purchaseUpdatedListener;
+let purchaseErrorListener;
+let receipt = "";
 
 const GererAbonnementScreen = (props) => {
 
@@ -43,6 +49,89 @@ const GererAbonnementScreen = (props) => {
 
     const { i18n, t } = useTranslation();
 
+
+    const items = Platform.select({
+        ios: ["rp_5999_y", "rp_999_m", "rp_8999_y", "rp_1499_m"],
+        android: [""]
+    });
+
+    const [purchased, setPurchased] = useState(false);
+    const [products, setProducts] = useState({});
+
+    console.log('purchased', purchased);
+
+    const validate = async (receipt) => {
+        const receiptBody = {
+            "receipt-data": receipt,
+            "password": "0b4325f3b3e942b1ae81964461e223db"
+        }
+        await IAP.validateReceiptIos(receiptBody, true).catch(err => console.log(err))
+            .then((receipt) => {
+                try {
+                    console.log('res', receipt)
+                    const renewalHistory = receipt.latest_receipt_info;
+                    console.log('new', renewalHistory)
+                    const expiration = renewalHistory[renewalHistory.length - 1].expires_date_ms;
+                    let expired = Date.now() < expiration;
+                    console.log('expir', expiration)
+                    console.log('expir', expired)
+                    console.log(Date.now())
+                    if (!expired) {
+                        setPurchased(true)
+                    } else {
+                        console.log('hey')
+                    }
+                } catch (err) {
+                    console.log(err)
+                }
+            })
+    }
+
+
+    useEffect(() => {
+        IAP.initConnection().catch((err) => {
+            console.log(err)
+        }).then(() => {
+            console.log("connected to store")
+            IAP.getSubscriptions(items).catch(err => console.log(err))
+                .then((res) => {
+                    console.log("got products")
+                    setProducts(res)
+                    console.log(res)
+                })
+            IAP.getPurchaseHistory().catch(() => {
+
+            }).then((res) => {
+                const receipt = res[res.length - 1].transactionReceipt
+                if (receipt) {
+                    validate(receipt)
+                }
+            })
+        })
+        purchaseErrorListener = IAP.purchaseErrorListener((err) => {
+            if (err['responseCode'] == "2") {
+                console.log('yes')
+            } else {
+                Alert.alert("Une erreur est survenue !")
+            }
+        })
+
+        purchaseUpdatedListener = IAP.purchaseUpdatedListener((purchase) => {
+            try {
+                receipt = purchase.transactionReceipt;
+                if (receipt) {
+                    validate(receipt)
+                }
+                console.log('receipt', receipt);
+            } catch (err) {
+                console.log(err)
+            }
+        })
+
+        return () => {
+            purchaseUpdatedListener.remove();
+        }
+    }, []);
 
     let subscriptionId = userData.subscriptionId
 
@@ -120,7 +209,6 @@ const GererAbonnementScreen = (props) => {
                 }else{
                     setPaymentStatus('Le paiement a échoué')
                 }
-
             }else{
                 setPaymentStatus('Le paiement a échoué')
             }
@@ -239,14 +327,12 @@ const GererAbonnementScreen = (props) => {
                 }else{
                     setPaymentStatus('Le paiement a échoué')
                 }
-
             }else{
                 setPaymentStatus('Le paiement a échoué')
             }
         } catch (error) {
             console.log(error)
             setPaymentStatus('Le paiement a échoué')
-
         }
     }
 
@@ -270,21 +356,6 @@ const GererAbonnementScreen = (props) => {
 
                                 <Text style={styles.inscriptionBigText}>{`${t("actuel")}`} {userData.abonnement}</Text>
 
-                                    <TextInput
-                                        placeholder="Entrez code promo"
-                                        placeholderTextColor="white"
-                                        onChangeText={(e) => setPromoCode(e)}
-                                        style={styles.textInput}
-                                    />
-                                <TouchableOpacity onPress={() => {
-                                    if (promoCode === "YRZ50") {
-                                        setGoodPromoCode(true)
-                                    }
-                                }}
-                                style={styles.buttonContainer}
-                                >
-                                    <Text style={styles.validate}>Valider</Text>
-                                </TouchableOpacity>
                                  <ScrollView style={styles.scrollView}>
 
                                      <TouchableOpacity style={styles.recetteCard} onPress={() => {
@@ -711,11 +782,13 @@ const GererAbonnementScreen = (props) => {
                         </View>
                 </ImageBackground>
             </View>
-
         )
     } else {
         return (<View style={styles.container}>
-            {paymentUI(props)}
+            {Platform.OS === "ios" ? <View>
+
+            </View> : paymentUI(props)}
+
         </View>)
     }
 

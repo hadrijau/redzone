@@ -41,7 +41,7 @@ const LoginScreen = ({navigation}) => {
                                     style={styles.textInput}
                                     onChangeText={props.handleChange('email')}
                                 />
-                                <Text style={styles.label}>{`${t("mail")}`}</Text>
+                                <Text style={styles.label}>{`${t("password")}`}</Text>
                                 <TextInput
                                     value={props.values.password}
                                     style={styles.textInput}
