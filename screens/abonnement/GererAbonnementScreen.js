@@ -239,7 +239,7 @@ const GererAbonnementScreen = (props) => {
             console.log('TSRIPE RESPONSE', stripeResponse)
 
             if(stripeResponse){
-
+x
                 console.log(stripeResponse.data.items.data[0].plan.active)
                 const paid = stripeResponse.data.items.data[0].plan.active;
                 if(paid === true){
