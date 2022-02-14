@@ -769,7 +769,221 @@ x
                 return <PaymentView onCheckStatus={onCheckStatusPremiumReduit} product={"Abonnement Premium"} amount={15}/>
             }
         }
+    }
 
+    const paymentIOS = (props) => {
+        if (userData.abonnement === 'free') {
+            if (params === "muscu") {
+                return (
+                    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                        <View style={styles.container}>
+                            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+
+                                <Text style={styles.inscriptionBigText}>{`${t("actuel")}`} {userData.abonnement}</Text>
+
+                                <ScrollView style={styles.scrollView}>
+
+                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
+
+                                    }}>
+                                        {i18next.language === "en" ?    <Image
+                                            style={styles.imageCard}
+                                            source={{
+                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F5%5B1%5D.png?alt=media&token=f6dcf403-9046-4bb0-a205-323d89fe34b6"
+                                            }}
+                                        /> :    <Image
+                                            style={styles.imageCard}
+                                            source={{
+                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
+                                            }}
+                                        />}
+
+                                    </TouchableOpacity>
+
+                                </ScrollView>
+                            </ImageBackground>
+                        </View>
+                    </TouchableWithoutFeedback>
+                )}
+            if (params === "drill") {
+                return (
+                    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                        <View style={styles.container}>
+                            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+
+
+                                <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
+
+                                <ScrollView style={styles.scrollView}>
+
+                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                        setMakePaymentDrill(true)
+                                    }}>
+                                        <Image
+                                            style={styles.imageCard}
+                                            source={{
+                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F2%5B1%5D.png?alt=media&token=21ed90a3-2718-498a-9b10-57d50b170b12"
+                                            }}
+                                        >
+                                        </Image>
+                                    </TouchableOpacity>
+
+                                </ScrollView>
+                            </ImageBackground>
+                        </View>
+                    </TouchableWithoutFeedback>
+                )
+            }
+            else {
+                return (
+                    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                        <View style={styles.container}>
+                            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+
+
+                                <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
+
+                                <ScrollView style={styles.scrollView}>
+                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                        setMakePaymentMuscu(true)
+                                    }}>
+                                        <Image
+                                            style={styles.imageCard}
+                                            source={{
+                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
+                                            }}
+                                        >
+                                        </Image>
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                        setMakePaymentDrill(true)
+                                    }}>
+                                        <Image
+                                            style={styles.imageCard}
+                                            source={{
+                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F2%5B1%5D.png?alt=media&token=21ed90a3-2718-498a-9b10-57d50b170b12"
+                                            }}
+                                        >
+                                        </Image>
+                                    </TouchableOpacity>
+
+                                </ScrollView>
+                            </ImageBackground>
+                        </View>
+                    </TouchableWithoutFeedback>
+                )
+            }
+        }
+        if (userData.abonnement === "Musculation") {
+            return (
+
+                <View style={styles.container}>
+                    <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+
+                        <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
+
+                        <ScrollView style={styles.scrollView}>
+
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                setMakePaymentDrill(true)
+                            }}>
+                                <Image
+                                    style={styles.imageCard}
+                                    source={{
+                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F2%5B1%5D.png?alt=media&token=21ed90a3-2718-498a-9b10-57d50b170b12"
+                                    }}
+                                >
+                                </Image>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                setMakePaymentPremium(true)
+                            }}>
+                                <Image
+                                    style={styles.imageCard}
+                                    source={{
+                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
+                                    }}
+                                >
+                                </Image>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.abonnementCard} onPress={async () => {
+                                await desabonnement()
+                            }}>
+                                <Text style={styles.abonnementText}>{t("desabonnement")}</Text>
+                            </TouchableOpacity>
+
+                        </ScrollView>
+                    </ImageBackground>
+                </View>
+            )
+        }
+        if (userData.abonnement === "Drill") {
+            return (
+
+                <View style={styles.container}>
+                    <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+
+                        <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
+
+                        <ScrollView style={styles.scrollView}>
+
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                setMakePaymentMuscu(true)
+                            }}>
+                                <Image
+                                    style={styles.imageCard}
+                                    source={{
+                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
+                                    }}
+                                >
+                                </Image>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                setMakePaymentPremium(true)
+                            }}>
+                                <Image
+                                    style={styles.imageCard}
+                                    source={{
+                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
+                                    }}
+                                >
+                                </Image>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.abonnementCard} onPress={async () => {
+                                await desabonnement()
+                            }}>
+                                <Text style={styles.abonnementText}>{t("desabonnement")}</Text>
+                            </TouchableOpacity>
+
+                        </ScrollView>
+                    </ImageBackground>
+                </View>
+            )
+        }
+        if (userData.abonnement === "Premium") {
+            return (
+
+                <View style={styles.container}>
+                    <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+
+                        <Text style={styles.inscriptionBigText}>{t('actuel')} {userData.abonnement}</Text>
+
+                        <ScrollView style={styles.scrollView}>
+
+                            <TouchableOpacity style={styles.abonnementCard} onPress={async () => {
+                                await desabonnement()
+                            }}>
+                                <Text style={styles.abonnementText}>{t("desabonnement")}</Text>
+                            </TouchableOpacity>
+                        </ScrollView>
+                    </ImageBackground>
+                </View>
+            )
+        }
     }
 
     if (loading) {
@@ -783,15 +997,12 @@ x
                 </ImageBackground>
             </View>
         )
-    } else {
+    }
+    else {
         return (<View style={styles.container}>
-            {Platform.OS === "ios" ? <View>
-
-            </View> : paymentUI(props)}
-
+            {Platform.OS === "ios" ? paymentIOS(props) : paymentUI(props)}
         </View>)
     }
-
 };
 
 const styles = StyleSheet.create({
