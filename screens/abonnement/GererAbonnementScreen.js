@@ -10,7 +10,7 @@ import {
     Platform,
     ActivityIndicator,
     TouchableWithoutFeedback,
-    Image, Dimensions, Keyboard, Alert
+    Image, Dimensions, Keyboard, Alert, Linking
 } from 'react-native';
 import firebase from "firebase";
 import axios from 'axios';
@@ -51,7 +51,7 @@ const GererAbonnementScreen = (props) => {
 
 
     const items = Platform.select({
-        ios: ["rp_5999_y", "rp_999_m", "rp_8999_y", "rp_1499_m"],
+        ios: ["rd_999_m", "rd_1499_m", "rd_1999_m"],
         android: [""]
     });
 
@@ -63,7 +63,7 @@ const GererAbonnementScreen = (props) => {
     const validate = async (receipt) => {
         const receiptBody = {
             "receipt-data": receipt,
-            "password": "0b4325f3b3e942b1ae81964461e223db"
+            "password": "302d5205d5a04e04be2241a522caa2d4"
         }
         await IAP.validateReceiptIos(receiptBody, true).catch(err => console.log(err))
             .then((receipt) => {
@@ -133,6 +133,7 @@ const GererAbonnementScreen = (props) => {
         }
     }, []);
 
+    console.log('products', products)
     let subscriptionId = userData.subscriptionId
 
     const changeAbonnement = async (abonnement) => {
@@ -768,7 +769,244 @@ x
                 return <PaymentView onCheckStatus={onCheckStatusPremiumReduit} product={"Abonnement Premium"} amount={15}/>
             }
         }
+    }
 
+    const handleDesabonnement = () => {
+        Linking.openURL('https://apps.apple.com/account/subscriptions')
+    };
+
+    const paymentIOS = (props) => {
+        if (userData.abonnement === 'free') {
+            if (params === "muscu") {
+                return (
+                    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                        <View style={styles.container}>
+                            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+
+                                <Text style={styles.inscriptionBigText}>{`${t("actuel")}`} {userData.abonnement}</Text>
+
+                                <ScrollView style={styles.scrollView}>
+
+                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                        IAP.requestSubscription(products[2]["productId"]).then(() => changeAbonnement('Musculation'))
+                                    }}>
+                                        {i18next.language === "en" ?    <Image
+                                            style={styles.imageCard}
+                                            source={{
+                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F5%5B1%5D.png?alt=media&token=f6dcf403-9046-4bb0-a205-323d89fe34b6"
+                                            }}
+                                        /> :    <Image
+                                            style={styles.imageCard}
+                                            source={{
+                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
+                                            }}
+                                        />}
+
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                        IAP.requestSubscription(products[1]["productId"]).then(() => changeAbonnement('Premium'))
+                                    }}>
+                                        <Image
+                                            style={styles.imageCard}
+                                            source={{
+                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
+                                            }}
+                                        >
+                                        </Image>
+                                    </TouchableOpacity>
+
+                                </ScrollView>
+                            </ImageBackground>
+                        </View>
+                    </TouchableWithoutFeedback>
+                )}
+            if (params === "drill") {
+                return (
+                    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                        <View style={styles.container}>
+                            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+
+
+                                <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
+
+                                <ScrollView style={styles.scrollView}>
+
+                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                        IAP.requestSubscription(products[0]["productId"]).then(() => changeAbonnement('Drill'))
+                                    }}>
+                                        <Image
+                                            style={styles.imageCard}
+                                            source={{
+                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F2%5B1%5D.png?alt=media&token=21ed90a3-2718-498a-9b10-57d50b170b12"
+                                            }}
+                                        >
+                                        </Image>
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                        IAP.requestSubscription(products[1]["productId"]).then(() => changeAbonnement('Premium'))
+                                    }}>
+                                        <Image
+                                            style={styles.imageCard}
+                                            source={{
+                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
+                                            }}
+                                        >
+                                        </Image>
+                                    </TouchableOpacity>
+
+                                </ScrollView>
+                            </ImageBackground>
+                        </View>
+                    </TouchableWithoutFeedback>
+                )
+            }
+            else {
+                return (
+                    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                        <View style={styles.container}>
+                            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+
+
+                                <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
+
+                                <ScrollView style={styles.scrollView}>
+                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                        IAP.requestSubscription(products[2]["productId"]).then(() => changeAbonnement('Musculation'))
+                                    }}>
+                                        <Image
+                                            style={styles.imageCard}
+                                            source={{
+                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
+                                            }}
+                                        >
+                                        </Image>
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                        IAP.requestSubscription(products[0]["productId"]).then(() => changeAbonnement('Drill'))
+                                    }}>
+                                        <Image
+                                            style={styles.imageCard}
+                                            source={{
+                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F2%5B1%5D.png?alt=media&token=21ed90a3-2718-498a-9b10-57d50b170b12"
+                                            }}
+                                        >
+                                        </Image>
+                                    </TouchableOpacity>
+
+                                </ScrollView>
+                            </ImageBackground>
+                        </View>
+                    </TouchableWithoutFeedback>
+                )
+            }
+        }
+        if (userData.abonnement === "Musculation") {
+            return (
+
+                <View style={styles.container}>
+                    <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+
+                        <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
+
+                        <ScrollView style={styles.scrollView}>
+
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                IAP.requestSubscription(products[0]["productId"]).then(() => changeAbonnement('Drill'))
+                            }}>
+                                <Image
+                                    style={styles.imageCard}
+                                    source={{
+                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F2%5B1%5D.png?alt=media&token=21ed90a3-2718-498a-9b10-57d50b170b12"
+                                    }}
+                                >
+                                </Image>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                IAP.requestSubscription(products[1]["productId"]).then(() => changeAbonnement('Premium'))
+                            }}>
+                                <Image
+                                    style={styles.imageCard}
+                                    source={{
+                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
+                                    }}
+                                >
+                                </Image>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.abonnementCard} onPress={handleDesabonnement}
+                            >
+                                <Text style={styles.abonnementText}>{t("desabonnement")}</Text>
+                            </TouchableOpacity>
+
+                        </ScrollView>
+                    </ImageBackground>
+                </View>
+            )
+        }
+        if (userData.abonnement === "Drill") {
+            return (
+
+                <View style={styles.container}>
+                    <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+
+                        <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
+
+                        <ScrollView style={styles.scrollView}>
+
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                IAP.requestSubscription(products[2]["productId"]).then(() => changeAbonnement('Musculation'))
+                            }}>
+                                <Image
+                                    style={styles.imageCard}
+                                    source={{
+                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
+                                    }}
+                                >
+                                </Image>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                IAP.requestSubscription(products[1]["productId"]).then(() => changeAbonnement('Premium'))
+                            }}>
+                                <Image
+                                    style={styles.imageCard}
+                                    source={{
+                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
+                                    }}
+                                >
+                                </Image>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.abonnementCard} onPress={handleDesabonnement}>
+                                <Text style={styles.abonnementText}>{t("desabonnement")}</Text>
+                            </TouchableOpacity>
+
+                        </ScrollView>
+                    </ImageBackground>
+                </View>
+            )
+        }
+        if (userData.abonnement === "Premium") {
+            return (
+
+                <View style={styles.container}>
+                    <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+
+                        <Text style={styles.inscriptionBigText}>{t('actuel')} {userData.abonnement}</Text>
+
+                        <ScrollView style={styles.scrollView}>
+
+                            <TouchableOpacity style={styles.abonnementCard} onPress={handleDesabonnement}>
+                                <Text style={styles.abonnementText}>{t("desabonnement")}</Text>
+                            </TouchableOpacity>
+                        </ScrollView>
+                    </ImageBackground>
+                </View>
+            )
+        }
     }
 
     if (loading) {
@@ -782,15 +1020,27 @@ x
                 </ImageBackground>
             </View>
         )
-    } else {
+    } else if (purchased) {
+        return (
+            <View style={styles.container}>
+                <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+                    <View>
+                        <View style={styles.finContainer}>
+                            <Text style={styles.paymentStatusText2}>{t("validatePayment")}</Text>
+                        </View>
+                        <TouchableOpacity onPress={() => props.navigation.navigate('AccueilScreen')} style={styles.button}>
+                            <Text style={styles.buttonText}>{t("menu")}</Text>
+                        </TouchableOpacity>
+                    </View>
+                </ImageBackground>
+            </View>
+        )
+    }
+    else {
         return (<View style={styles.container}>
-            {Platform.OS === "ios" ? <View>
-
-            </View> : paymentUI(props)}
-
+            {Platform.OS === "ios" ? paymentIOS(props) : paymentUI(props)}
         </View>)
     }
-
 };
 
 const styles = StyleSheet.create({

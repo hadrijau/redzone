@@ -10,7 +10,7 @@ import {
     KeyboardAvoidingView,
     TouchableWithoutFeedback,
     Keyboard,
-    ScrollView, Modal
+    ScrollView, Modal, Linking, Platform
 } from 'react-native';
 import {Formik} from "formik";
 import firebase from "firebase";
@@ -203,7 +203,11 @@ const ProfileScreen = ({navigation}) => {
                                     )}
 
                                 </Formik>
-                                <TouchableOpacity style={styles.disconnectButton} onPress={() => navigation.navigate('GererAbonnementScreen')}><Text style={styles.disconnectText}>{t("abonnement")}</Text></TouchableOpacity>
+                                <TouchableOpacity style={styles.disconnectButton} onPress={() => {
+                                    Platform.OS === "ios" ? Linking.openURL('https://apps.apple.com/account/subscriptions')
+                                        :
+                                    navigation.navigate('GererAbonnementScreen')
+                                }}><Text style={styles.disconnectText}>{t("abonnement")}</Text></TouchableOpacity>
 
                                 <TouchableOpacity style={styles.disconnectButton} onPress={logout}><Text style={styles.disconnectText}>{t("deconnect")}</Text></TouchableOpacity>
                             </ScrollView> : <View>
