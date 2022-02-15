@@ -4,14 +4,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SignupScreen from "../screens/auth/SignupScreen";
 import LoginScreen from "../screens/auth/LoginScreen";
-import AbonnementScreen from "../screens/abonnement/AbonnementScreen";
 import AccueilScreen from "../screens/accueil/AccueilScreen";
 import MusculationScreen from "../screens/preparation_physique/MusculationScreen";
 import DrillScreen from "../screens/drill/DrillScreen";
 import RecettesScreen from "../screens/recettes/RecettesScreen";
 import { FontAwesome } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
-
 import { AntDesign } from '@expo/vector-icons';
 import InformationsScreen from "../screens/auth/InformationsScreen";
 import ViewVideoScreen from "../screens/drill/ViewVideoScreen";
@@ -49,7 +47,6 @@ const ProgressStackNavigator = createNativeStackNavigator();
 const AccueilStackNavigator = createNativeStackNavigator();
 const AppTabNavigator = createBottomTabNavigator();
 
-const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const CustomHeader = props => {
@@ -179,13 +176,6 @@ const accueilNavigator = () => {
             <AccueilStackNavigator.Screen
                 name="AccueilScreen"
                 component={AccueilScreen}
-                options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
-                }}
-            />
-            <AccueilStackNavigator.Screen
-                name="AbonnementScreen"
-                component={AbonnementScreen}
                 options={{
                     header: props => <CustomHeader title="BURNPOWER"/>,
                 }}

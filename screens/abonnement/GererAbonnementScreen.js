@@ -229,7 +229,6 @@ const GererAbonnementScreen = (props) => {
         // perform operation to check payment status
 
         try {
-
             const stripeResponse = await axios.post('https://your-redzone.herokuapp.com/payment', {
                 email: userData.email,
                 authToken: jsonResponse,
