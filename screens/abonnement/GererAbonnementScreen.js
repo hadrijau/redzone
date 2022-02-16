@@ -76,10 +76,10 @@ const GererAbonnementScreen = (props) => {
                     const renewalHistory = receipt.latest_receipt_info;
                     console.log('new', renewalHistory)
                     const expiration = renewalHistory[renewalHistory.length - 1].expires_date_ms;
-                    let expired = Date.now() < expiration;
-                    console.log('expir', expiration)
-                    console.log('expir', expired)
-                    console.log(Date.now())
+                    let expired = Date.now() > expiration;
+                    console.log('expir', expiration);
+                    console.log('expir', expired);
+                    console.log(Date.now());
                     if (!expired) {
                         setPurchased(true)
                     } else {
