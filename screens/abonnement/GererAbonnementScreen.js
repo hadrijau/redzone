@@ -10,7 +10,11 @@ import {
     Platform,
     ActivityIndicator,
     TouchableWithoutFeedback,
-    Image, Dimensions, Keyboard, Alert, Linking
+    Image,
+    Dimensions,
+    Keyboard,
+    Alert,
+    Linking
 } from 'react-native';
 import firebase from "firebase";
 import axios from 'axios';

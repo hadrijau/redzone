@@ -6,6 +6,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "eas-login": "eas login",
+    "run-android": "react-native run-android",
     "build-android": "eas build -p android"
   },
   "dependencies": {

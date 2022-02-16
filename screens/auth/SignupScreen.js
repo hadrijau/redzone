@@ -50,34 +50,38 @@ const SignupScreen = (props) => {
                     initialValues={initialValues}
                     validationSchema={SignupSchema}
                     onSubmit={async (values) => {
-                        await firebase.auth().createUserWithEmailAndPassword(values.email, values.password)
-                            .then(result => {
-                                firebase.firestore().collection("users")
-                                    .doc(firebase.auth().currentUser.uid)
-                                    .set({
-                                        taille,
-                                        poids,
-                                        prenom,
-                                        email: values.email,
-                                        age,
-                                        sexe,
-                                        poste,
-                                        phone,
-                                        nom,
-                                        BroadJump: [0],
-                                        Yards: [0],
-                                        Shuttle: [0],
-                                        regionClub: '',
-                                        adresseClub: '',
-                                        siteClub: '',
-                                        mailClub: '',
-                                        licence: '',
-                                        phoneClub: '',
-                                        imageClub: '',
-                                        subscriptionId: '',
-                                        abonnement: 'free'
-                                    })
-                            })
+                        try {
+                            await firebase.auth().createUserWithEmailAndPassword(values.email, values.password)
+                                .then(result => {
+                                    firebase.firestore().collection("users")
+                                        .doc(firebase.auth().currentUser.uid)
+                                        .set({
+                                            taille,
+                                            poids,
+                                            prenom,
+                                            email: values.email,
+                                            age,
+                                            sexe,
+                                            poste,
+                                            phone,
+                                            nom,
+                                            BroadJump: [0],
+                                            Yards: [0],
+                                            Shuttle: [0],
+                                            regionClub: '',
+                                            adresseClub: '',
+                                            siteClub: '',
+                                            mailClub: '',
+                                            licence: '',
+                                            phoneClub: '',
+                                            imageClub: '',
+                                            subscriptionId: 'bonjour',
+                                            abonnement: 'free'
+                                        })
+                                })
+                        } catch (err) {
+                            console.log(err)
+                        }
                     }}
                 >
                     {props => (

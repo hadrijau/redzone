@@ -48,7 +48,7 @@ export default function App() {
 
   useEffect(() => {
     const launch = async () => {
-      AsyncStorage.setItem("lang", "fr");
+      await AsyncStorage.setItem("lang", "fr");
       firebase.auth().onAuthStateChanged((user) => {
         if (!user) {
           setIsLoaded(true);
