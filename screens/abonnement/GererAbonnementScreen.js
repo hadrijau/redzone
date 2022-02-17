@@ -137,8 +137,11 @@ const GererAbonnementScreen = (props) => {
         }
     }, []);
 
-    console.log('products', products)
-    let subscriptionId = userData.subscriptionId
+    console.log('products', products);
+    let subscriptionId;
+    if (userData.subscriptionId) {
+        subscriptionId = userData.subscriptionId
+    }
 
     const changeAbonnement = async (abonnement) => {
         await firebase
