@@ -214,6 +214,18 @@ const ProfileScreen = ({navigation}) => {
                                 <Text style={styles.changeDone}>{t("changements")}</Text>
                                 <TouchableOpacity style={styles.disconnectButton} onPress={() => navigation.navigate('AccueilScreen')}><Text style={styles.disconnectText}>{t("menu")}</Text></TouchableOpacity>
                             </View>}
+
+                            <View>
+                                <TouchableOpacity onPress={() => navigation.navigate("MentionsLegalesScreen")}>
+                                    <Text>Mentions légales</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() => navigation.navigate("PrivacyPolicyScreen")}>
+                                    <Text>Politique de confidentialité</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() => navigation.navigate("CGUScreen")}>
+                                    <Text>Conditions générales d'utilisation</Text>
+                                </TouchableOpacity>
+                            </View>
                     </ScrollView>
                     </ImageBackground>
 

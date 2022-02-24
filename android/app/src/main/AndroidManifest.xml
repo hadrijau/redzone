@@ -25,5 +25,6 @@
       </intent-filter>
     </activity>
     <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"/>
+    <meta-data android:name="com.bugsnag.android.API_KEY" android:value="09f8727be189bb0a98723f9716b2300e" />
   </application>
 </manifest>

@@ -23,7 +23,6 @@ const InformationsScreen = (props) => {
     const [toggleCheckBox, setToggleCheckBox] = useState(false);
     const [selectedPoste, setSelectedPoste] = useState('');
     const initialValues = {
-        phone: '',
         age: '',
         poids: '',
         taille: '',
@@ -33,8 +32,6 @@ const InformationsScreen = (props) => {
     }
     const { i18n, t } = useTranslation();
     const InformationsSchema = Yup.object().shape({
-        phone: Yup.string()
-            .required('Ce champ est requis'),
         age: Yup.string()
             .required('Ce champ est requis'),
         poids: Yup.string()
@@ -111,7 +108,6 @@ const InformationsScreen = (props) => {
                                     props.navigation.navigate('SignupScreen', {
                                         nom: values.nom,
                                         prenom: values.prenom,
-                                        phone: values.phone,
                                         age: values.age,
                                         sexe: poste,
                                         poids: values.poids,
@@ -154,24 +150,6 @@ const InformationsScreen = (props) => {
 
                                     {props.errors.prenom && props.touched.prenom ? (
                                         <Text style={styles.errors}>{props.errors.prenom}</Text>
-                                    ) : null}
-
-                                    <View style={styles.inscriptionInnerForm}>
-                                        <View style={styles.textInscriptionContainer}>
-                                            <Text style={styles.label}>{`${t("phone")}`}</Text>
-                                        </View>
-                                        <View style={styles.inputContainer}>
-                                            <TextInput
-                                                value={props.values.phone}
-                                                style={styles.textInput}
-                                                keyboardType="numeric"
-                                                onChangeText={props.handleChange('phone')}
-                                            />
-                                        </View>
-                                    </View>
-
-                                    {props.errors.phone && props.touched.phone ? (
-                                        <Text style={styles.errors}>{props.errors.phone}</Text>
                                     ) : null}
 
                                     <View style={styles.inscriptionInnerForm}>

@@ -15,7 +15,6 @@ const SignupScreen = (props) => {
     const poids = props.route.params.poids
     const taille = props.route.params.taille
     const poste = props.route.params.poste
-    const phone = props.route.params.poste
 
     const initialValues = {
         email: '',
@@ -63,7 +62,6 @@ const SignupScreen = (props) => {
                                             age,
                                             sexe,
                                             poste,
-                                            phone,
                                             nom,
                                             BroadJump: [0],
                                             Yards: [0],

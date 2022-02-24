@@ -41,6 +41,9 @@ import NutritionDetailScreen from "../screens/nutrition_sportive/NutritionDetail
 import ConfirmationEmailScreen from "../screens/entraineur_personnel/ConfirmationEmailScreen";
 import Jour2Semaine1 from "../screens/preparation_physique/Jour2Semaine1";
 import ConfirmationDesabonnementScreen from "../screens/abonnement/ConfirmationDesabonnementScreen";
+import CGUScreen from "../screens/profil/CGUScreen";
+import MentionsLegalesScreen from "../screens/profil/MentionsLegalesScreen";
+import PrivacyPolicyScreen from "../screens/profil/PrivacyPolicyScreen";
 const AuthStackNavigator = createNativeStackNavigator();
 const ProfileStackNavigator = createNativeStackNavigator();
 const ProgressStackNavigator = createNativeStackNavigator();
@@ -147,6 +150,27 @@ const profileNavigator = () => {
             <ProfileStackNavigator.Screen
                 name='ProfilScreen'
                 component={ProfileScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+            <ProfileStackNavigator.Screen
+                name='CGUScreen'
+                component={CGUScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+            <ProfileStackNavigator.Screen
+                name='MentionsLegalesScreen'
+                component={MentionsLegalesScreen}
+                options={{
+                    header: props => <CustomHeader title="BURNPOWER"/>,
+                }}
+            />
+            <ProfileStackNavigator.Screen
+                name='PrivacyPolicyScreen'
+                component={PrivacyPolicyScreen}
                 options={{
                     header: props => <CustomHeader title="BURNPOWER"/>,
                 }}
