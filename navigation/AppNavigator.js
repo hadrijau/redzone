@@ -158,21 +158,21 @@ const profileNavigator = () => {
                 name='CGUScreen'
                 component={CGUScreen}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('ProfileScreen')}/>,
                 }}
             />
             <ProfileStackNavigator.Screen
                 name='MentionsLegalesScreen'
                 component={MentionsLegalesScreen}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('ProfileScreen')}/>,
                 }}
             />
             <ProfileStackNavigator.Screen
                 name='PrivacyPolicyScreen'
                 component={PrivacyPolicyScreen}
                 options={{
-                    header: props => <CustomHeader title="BURNPOWER"/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('ProfileScreen')}/>,
                 }}
             />
             <ProfileStackNavigator.Screen

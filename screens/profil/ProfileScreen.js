@@ -217,13 +217,13 @@ const ProfileScreen = ({navigation}) => {
 
                             <View>
                                 <TouchableOpacity onPress={() => navigation.navigate("MentionsLegalesScreen")}>
-                                    <Text>Mentions légales</Text>
+                                    <Text style={styles.mentionsText}>Mentions légales</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={() => navigation.navigate("PrivacyPolicyScreen")}>
-                                    <Text>Politique de confidentialité</Text>
+                                    <Text style={styles.mentionsText}>Politique de confidentialité</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={() => navigation.navigate("CGUScreen")}>
-                                    <Text>Conditions générales d'utilisation</Text>
+                                    <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
                                 </TouchableOpacity>
                             </View>
                     </ScrollView>
@@ -243,6 +243,10 @@ const styles = StyleSheet.create({
     },
     formContainer: {
         width: '100%'
+    },
+    mentionsText: {
+        color: "white",
+        marginVertical: 10
     },
     label: {
         color: 'white',
