@@ -1,5 +1,4 @@
-// import Bugsnag from "@bugsnag/react-native";
-// Bugsnag.start();
+
 
 import 'react-native-gesture-handler';
 import { registerRootComponent } from 'expo';

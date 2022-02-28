@@ -8,7 +8,6 @@ export const fetchUser = () => {
             .get()
             .then((snapshot) => {
                 if (snapshot.exists) {
-                    console.log(snapshot.data())
                     dispatch({type : GET_USER, currentUser: snapshot.data()})
                 } else {
                     console.log('does not exists')

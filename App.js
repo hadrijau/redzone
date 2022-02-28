@@ -25,7 +25,7 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
+firebase.firestore().settings({ experimentalForceLongPolling: true });
 export default function App() {
 
   const rootReducer = combineReducers({
@@ -60,6 +60,7 @@ export default function App() {
       })
       const lang = await AsyncStorage.getItem("lang");
       await i18n.use(initReactI18next).init({
+        compatibilityJSON: 'v3',
         resources,
         //language to use if translations in user language are not available
         fallbackLng: lang,

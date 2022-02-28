@@ -2,20 +2,17 @@ import React, {useEffect, useState} from 'react';
 import {
     ImageBackground,
     Text,
-    TextInput,
     TouchableOpacity,
     View,
     StyleSheet,
-    ScrollView,
     ActivityIndicator,
     FlatList
 } from 'react-native';
-import {Formik} from "formik";
 import {useDispatch, useSelector} from "react-redux";
 import * as userActions from "../../store/actions/users";
 import {useTranslation} from "react-i18next";
 import firebase from "firebase";
-import i18next from "i18next";
+
 
 const DrillScreen = ({navigation}) => {
 
@@ -39,9 +36,12 @@ const DrillScreen = ({navigation}) => {
                 .get()
                 .then((querySnapshot) => {
                     querySnapshot.forEach((doc) => {
+                        console.log("jkdfjdjfdkls")
                         console.log('data', doc.data())
                         data.push(doc.data())
                     });
+                }).catch((error) => {
+                    console.log("Error getting documents: ", error);
                 });
             await firebase.firestore()
                 .collection("Drill")
@@ -58,6 +58,7 @@ const DrillScreen = ({navigation}) => {
         getPhotoDrill()
     }, []);
 
+    console.log("videos", videoDrill)
     const photoNormal = ({ item }) => {
         return (
             <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('ViewVideoScreen', {

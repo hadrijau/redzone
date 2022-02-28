@@ -1,7 +1,5 @@
 PODS:
   - boost-for-react-native (1.63.0)
-  - BugsnagReactNative (7.16.1):
-    - React-Core
   - DoubleConversion (1.1.6)
   - EXApplication (3.2.0):
     - UMCore
@@ -351,7 +349,6 @@ PODS:
   - Yoga (1.14.0)
 
 DEPENDENCIES:
-  - "BugsnagReactNative (from `../node_modules/@bugsnag/react-native`)"
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXApplication (from `../node_modules/expo-application/ios`)
   - EXAV (from `../node_modules/expo-av/ios`)
@@ -414,8 +411,6 @@ SPEC REPOS:
     - boost-for-react-native
 
 EXTERNAL SOURCES:
-  BugsnagReactNative:
-    :path: "../node_modules/@bugsnag/react-native"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   EXApplication:
@@ -527,7 +522,6 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  BugsnagReactNative: bd1c905fb868fae8448a913b87356dbf2b02dc80
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   EXApplication: 9ff2a206009d6e55bca6c20b3f33d07986b51ef3
   EXAV: 67bcc1d0afeb1fab854b206c84b9f2afbd61d0cd
@@ -583,6 +577,6 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: 2be431101b73604e64fbfffcf759336f9d8fccbb
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
-PODFILE CHECKSUM: 627818d7dac6d6164f552f4108d22c97a494db7b
+PODFILE CHECKSUM: 116e407d25108576531e03f285b7641d609ac8cd
 
 COCOAPODS: 1.11.2

@@ -137,7 +137,6 @@ const GererAbonnementScreen = (props) => {
         }
     }, []);
 
-    console.log('products', products);
     let subscriptionId;
     if (userData.subscriptionId) {
         subscriptionId = userData.subscriptionId
@@ -362,6 +361,7 @@ x
                             <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
                                 <Text style={styles.inscriptionBigText}>{`${t("actuel")}`} {userData.abonnement}</Text>
+                                <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
 
                                  <ScrollView style={styles.scrollView}>
 
@@ -791,6 +791,7 @@ x
                             <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
                                 <Text style={styles.inscriptionBigText}>{`${t("actuel")}`} {userData.abonnement}</Text>
+                                <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
 
                                 <ScrollView style={styles.scrollView}>
 
@@ -836,7 +837,7 @@ x
 
 
                                 <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
-
+                                <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
                                 <ScrollView style={styles.scrollView}>
 
                                     <TouchableOpacity style={styles.recetteCard} onPress={() => {
@@ -877,7 +878,7 @@ x
 
 
                                 <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
-
+                                <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
                                 <ScrollView style={styles.scrollView}>
                                     <TouchableOpacity style={styles.recetteCard} onPress={() => {
                                         IAP.requestSubscription(products[2]["productId"]).then(() => changeAbonnement('Musculation'))
@@ -917,7 +918,7 @@ x
                     <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
                         <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
-
+                        <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
                         <ScrollView style={styles.scrollView}>
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => {
@@ -960,7 +961,7 @@ x
                     <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
                         <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
-
+                        <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
                         <ScrollView style={styles.scrollView}>
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => {
@@ -1003,7 +1004,7 @@ x
                     <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
                         <Text style={styles.inscriptionBigText}>{t('actuel')} {userData.abonnement}</Text>
-
+                        <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
                         <ScrollView style={styles.scrollView}>
 
                             <TouchableOpacity style={styles.abonnementCard} onPress={handleDesabonnement}>
@@ -1158,6 +1159,12 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
         fontSize: 18
+    },
+    smallBigText: {
+        fontSize: 15,
+        color: 'white',
+        textAlign: "center",
+        marginBottom: 10
     }
 })
 export default GererAbonnementScreen;
