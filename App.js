@@ -48,7 +48,6 @@ export default function App() {
 
   useEffect(() => {
     const launch = async () => {
-      await AsyncStorage.setItem("lang", "fr");
       firebase.auth().onAuthStateChanged((user) => {
         if (!user) {
           setIsLoaded(true);
@@ -58,12 +57,11 @@ export default function App() {
           setIsLoggedIn(true)
         }
       })
-      const lang = await AsyncStorage.getItem("lang");
       await i18n.use(initReactI18next).init({
         compatibilityJSON: 'v3',
         resources,
         //language to use if translations in user language are not available
-        fallbackLng: lang,
+        fallbackLng: "fr",
         interpolation: {
           escapeValue: false, // not needed for react!!
         },
