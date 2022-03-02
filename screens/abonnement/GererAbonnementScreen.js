@@ -362,8 +362,10 @@ x
 
                                 <Text style={styles.inscriptionBigText}>{`${t("actuel")}`} {userData.abonnement}</Text>
                                 <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
+                                <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
+                                <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
 
-                                 <ScrollView style={styles.scrollView}>
+                                <ScrollView style={styles.scrollView}>
 
                                      <TouchableOpacity style={styles.recetteCard} onPress={() => {
                                          setMakePaymentMuscu(true)
@@ -417,6 +419,9 @@ x
 
 
                                 <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
+                                <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
+                                <Text style={styles.smallBigText}>{`${t("drillAbonnement")}`}</Text>
+                                <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
 
                                 <TextInput
                                     placeholder="Entrez code promo"
@@ -792,6 +797,8 @@ x
 
                                 <Text style={styles.inscriptionBigText}>{`${t("actuel")}`} {userData.abonnement}</Text>
                                 <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
+                                <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
+                                <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
 
                                 <ScrollView style={styles.scrollView}>
 
@@ -838,6 +845,9 @@ x
 
                                 <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
                                 <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
+                                <Text style={styles.smallBigText}>{`${t("drillAbonnement")}`}</Text>
+                                <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
+
                                 <ScrollView style={styles.scrollView}>
 
                                     <TouchableOpacity style={styles.recetteCard} onPress={() => {
@@ -879,6 +889,10 @@ x
 
                                 <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
                                 <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
+                                <Text style={styles.smallBigText}>{`${t("drillAbonnement")}`}</Text>
+                                <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
+                                <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
+
                                 <ScrollView style={styles.scrollView}>
                                     <TouchableOpacity style={styles.recetteCard} onPress={() => {
                                         IAP.requestSubscription(products[2]["productId"]).then(() => changeAbonnement('Musculation'))
@@ -919,6 +933,10 @@ x
 
                         <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
                         <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
+                        <Text style={styles.smallBigText}>{`${t("drillAbonnement")}`}</Text>
+                        <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
+                        <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
+
                         <ScrollView style={styles.scrollView}>
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => {
@@ -962,6 +980,10 @@ x
 
                         <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
                         <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
+                        <Text style={styles.smallBigText}>{`${t("drillAbonnement")}`}</Text>
+                        <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
+                        <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
+
                         <ScrollView style={styles.scrollView}>
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => {
@@ -1005,6 +1027,10 @@ x
 
                         <Text style={styles.inscriptionBigText}>{t('actuel')} {userData.abonnement}</Text>
                         <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
+                        <Text style={styles.smallBigText}>{`${t("drillAbonnement")}`}</Text>
+                        <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
+                        <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
+
                         <ScrollView style={styles.scrollView}>
 
                             <TouchableOpacity style={styles.abonnementCard} onPress={handleDesabonnement}>
