@@ -271,6 +271,27 @@ const accueilNavigator = () => {
             />
 
             <AccueilStackNavigator.Screen
+                name='CGUScreen'
+                component={CGUScreen}
+                options={{
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('GererAbonnementScreen')}/>,
+                }}
+            />
+            <AccueilStackNavigator.Screen
+                name='MentionsLegalesScreen'
+                component={MentionsLegalesScreen}
+                options={{
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('GererAbonnementScreen')}/>,
+                }}
+            />
+            <AccueilStackNavigator.Screen
+                name='PrivacyPolicyScreen'
+                component={PrivacyPolicyScreen}
+                options={{
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('GererAbonnementScreen')}/>,
+                }}
+            />
+            <AccueilStackNavigator.Screen
                 name="ViewVideoScreen"
                 component={ViewVideoScreen}
                 options={{

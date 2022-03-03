@@ -69,13 +69,9 @@ const ProfileScreen = ({navigation}) => {
                 style={styles.container}
                 behavior="height"
             >
-
-
-
-                <View style={styles.container}>
+                <ScrollView style={styles.container}>
 
                     <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
-                        <ScrollView style={styles.container}>
 
                             {!updated ? <ScrollView>
                                 <Formik
@@ -226,10 +222,9 @@ const ProfileScreen = ({navigation}) => {
                                     <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
                                 </TouchableOpacity>
                             </View>
-                    </ScrollView>
                     </ImageBackground>
 
-                </View>
+                </ScrollView>
 
             </KeyboardAvoidingView>
         </TouchableWithoutFeedback>

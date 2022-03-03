@@ -800,6 +800,19 @@ x
                                 <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
                                 <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
 
+
+                                <View>
+                                    <TouchableOpacity onPress={() => props.navigation.navigate("MentionsLegalesScreen")}>
+                                        <Text style={styles.mentionsText}>Mentions légales</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity onPress={() => props.navigation.navigate("PrivacyPolicyScreen")}>
+                                        <Text style={styles.mentionsText}>Politique de confidentialité</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity onPress={() => props.navigation.navigate("CGUScreen")}>
+                                        <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
+                                    </TouchableOpacity>
+                                </View>
+
                                 <ScrollView style={styles.scrollView}>
 
                                     <TouchableOpacity style={styles.recetteCard} onPress={() => {
@@ -848,6 +861,18 @@ x
                                 <Text style={styles.smallBigText}>{`${t("drillAbonnement")}`}</Text>
                                 <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
 
+                                <View>
+                                    <TouchableOpacity onPress={() => props.navigation.navigate("MentionsLegalesScreen")}>
+                                        <Text style={styles.mentionsText}>Mentions légales</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity onPress={() => props.navigation.navigate("PrivacyPolicyScreen")}>
+                                        <Text style={styles.mentionsText}>Politique de confidentialité</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity onPress={() => props.navigation.navigate("CGUScreen")}>
+                                        <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
+                                    </TouchableOpacity>
+                                </View>
+
                                 <ScrollView style={styles.scrollView}>
 
                                     <TouchableOpacity style={styles.recetteCard} onPress={() => {
@@ -893,6 +918,18 @@ x
                                 <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
                                 <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
 
+                                <View>
+                                    <TouchableOpacity onPress={() => props.navigation.navigate("MentionsLegalesScreen")}>
+                                        <Text style={styles.mentionsText}>Mentions légales</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity onPress={() => props.navigation.navigate("PrivacyPolicyScreen")}>
+                                        <Text style={styles.mentionsText}>Politique de confidentialité</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity onPress={() => props.navigation.navigate("CGUScreen")}>
+                                        <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
+                                    </TouchableOpacity>
+                                </View>
+
                                 <ScrollView style={styles.scrollView}>
                                     <TouchableOpacity style={styles.recetteCard} onPress={() => {
                                         IAP.requestSubscription(products[2]["productId"]).then(() => changeAbonnement('Musculation'))
@@ -936,6 +973,18 @@ x
                         <Text style={styles.smallBigText}>{`${t("drillAbonnement")}`}</Text>
                         <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
                         <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
+
+                        <View>
+                            <TouchableOpacity onPress={() => props.navigation.navigate("MentionsLegalesScreen")}>
+                                <Text style={styles.mentionsText}>Mentions légales</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => props.navigation.navigate("PrivacyPolicyScreen")}>
+                                <Text style={styles.mentionsText}>Politique de confidentialité</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => props.navigation.navigate("CGUScreen")}>
+                                <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
+                            </TouchableOpacity>
+                        </View>
 
                         <ScrollView style={styles.scrollView}>
 
@@ -984,6 +1033,18 @@ x
                         <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
                         <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
 
+                        <View>
+                            <TouchableOpacity onPress={() => props.navigation.navigate("MentionsLegalesScreen")}>
+                                <Text style={styles.mentionsText}>Mentions légales</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => props.navigation.navigate("PrivacyPolicyScreen")}>
+                                <Text style={styles.mentionsText}>Politique de confidentialité</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => props.navigation.navigate("CGUScreen")}>
+                                <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
+                            </TouchableOpacity>
+                        </View>
+
                         <ScrollView style={styles.scrollView}>
 
                             <TouchableOpacity style={styles.recetteCard} onPress={() => {
@@ -1030,6 +1091,18 @@ x
                         <Text style={styles.smallBigText}>{`${t("drillAbonnement")}`}</Text>
                         <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
                         <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
+
+                        <View>
+                            <TouchableOpacity onPress={() => props.navigation.navigate("MentionsLegalesScreen")}>
+                                <Text style={styles.mentionsText}>Mentions légales</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => props.navigation.navigate("PrivacyPolicyScreen")}>
+                                <Text style={styles.mentionsText}>Politique de confidentialité</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => props.navigation.navigate("CGUScreen")}>
+                                <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
+                            </TouchableOpacity>
+                        </View>
 
                         <ScrollView style={styles.scrollView}>
 
@@ -1191,6 +1264,10 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: "center",
         marginBottom: 10
+    },
+    mentionsText : {
+        color: 'white',
+        marginTop: 10
     }
 })
 export default GererAbonnementScreen;
