@@ -69,7 +69,7 @@ const GererAbonnementScreen = (props) => {
             "receipt-data": receipt,
             "password": "302d5205d5a04e04be2241a522caa2d4"
         }
-        await IAP.validateReceiptIos(receiptBody, true).catch(err => console.log(err))
+        await IAP.validateReceiptIos(receiptBody, false).catch(err => console.log(err))
             .then((receipt) => {
                 try {
                     console.log('res', receipt)
