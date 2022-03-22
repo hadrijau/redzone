@@ -69,7 +69,7 @@ const GererAbonnementScreen = (props) => {
             "receipt-data": receipt,
             "password": "302d5205d5a04e04be2241a522caa2d4"
         }
-        await IAP.validateReceiptIos(receiptBody, false).catch(err => console.log(err))
+        await IAP.validateReceiptIos(receiptBody, true).catch(err => console.log(err))
             .then((receipt) => {
                 try {
                     console.log('res', receipt)
@@ -788,329 +788,337 @@ x
     };
 
     const paymentIOS = (props) => {
-        if (userData.abonnement === 'free') {
-            if (params === "muscu") {
+        if (products.length > 0 ) {
+            if (userData.abonnement === 'free') {
+                if (params === "muscu") {
+                    return (
+                        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                            <View style={styles.container}>
+                                <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+
+                                    <Text style={styles.inscriptionBigText}>{`${t("actuel")}`} {userData.abonnement}</Text>
+                                    <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
+                                    <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
+                                    <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
+
+
+                                    <View>
+                                        <TouchableOpacity onPress={() => props.navigation.navigate("MentionsLegalesScreen")}>
+                                            <Text style={styles.mentionsText}>Mentions légales</Text>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity onPress={() => props.navigation.navigate("PrivacyPolicyScreen")}>
+                                            <Text style={styles.mentionsText}>Politique de confidentialité</Text>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity onPress={() => props.navigation.navigate("CGUScreen")}>
+                                            <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
+                                        </TouchableOpacity>
+                                    </View>
+
+                                    <ScrollView style={styles.scrollView}>
+
+                                        <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                            IAP.requestSubscription(products[2]["productId"]).then(() => changeAbonnement('Musculation'))
+                                        }}>
+                                            {i18next.language === "en" ?    <Image
+                                                style={styles.imageCard}
+                                                source={{
+                                                    uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F5%5B1%5D.png?alt=media&token=f6dcf403-9046-4bb0-a205-323d89fe34b6"
+                                                }}
+                                            /> :    <Image
+                                                style={styles.imageCard}
+                                                source={{
+                                                    uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
+                                                }}
+                                            />}
+
+                                        </TouchableOpacity>
+
+                                        <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                            IAP.requestSubscription(products[1]["productId"]).then(() => changeAbonnement('Premium'))
+                                        }}>
+                                            <Image
+                                                style={styles.imageCard}
+                                                source={{
+                                                    uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
+                                                }}
+                                            >
+                                            </Image>
+                                        </TouchableOpacity>
+
+                                    </ScrollView>
+                                </ImageBackground>
+                            </View>
+                        </TouchableWithoutFeedback>
+                    )}
+                if (params === "drill") {
+                    return (
+                        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                            <View style={styles.container}>
+                                <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+
+
+                                    <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
+                                    <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
+                                    <Text style={styles.smallBigText}>{`${t("drillAbonnement")}`}</Text>
+                                    <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
+
+                                    <View>
+                                        <TouchableOpacity onPress={() => props.navigation.navigate("MentionsLegalesScreen")}>
+                                            <Text style={styles.mentionsText}>Mentions légales</Text>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity onPress={() => props.navigation.navigate("PrivacyPolicyScreen")}>
+                                            <Text style={styles.mentionsText}>Politique de confidentialité</Text>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity onPress={() => props.navigation.navigate("CGUScreen")}>
+                                            <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
+                                        </TouchableOpacity>
+                                    </View>
+
+                                    <ScrollView style={styles.scrollView}>
+
+                                        <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                            IAP.requestSubscription(products[0]["productId"]).then(() => changeAbonnement('Drill'))
+                                        }}>
+                                            <Image
+                                                style={styles.imageCard}
+                                                source={{
+                                                    uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F2%5B1%5D.png?alt=media&token=21ed90a3-2718-498a-9b10-57d50b170b12"
+                                                }}
+                                            >
+                                            </Image>
+                                        </TouchableOpacity>
+
+                                        <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                            IAP.requestSubscription(products[1]["productId"]).then(() => changeAbonnement('Premium'))
+                                        }}>
+                                            <Image
+                                                style={styles.imageCard}
+                                                source={{
+                                                    uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
+                                                }}
+                                            >
+                                            </Image>
+                                        </TouchableOpacity>
+
+                                    </ScrollView>
+                                </ImageBackground>
+                            </View>
+                        </TouchableWithoutFeedback>
+                    )
+                }
+                else {
+                    return (
+                        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                            <View style={styles.container}>
+                                <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+
+
+                                    <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
+                                    <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
+                                    <Text style={styles.smallBigText}>{`${t("drillAbonnement")}`}</Text>
+                                    <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
+                                    <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
+
+                                    <View>
+                                        <TouchableOpacity onPress={() => props.navigation.navigate("MentionsLegalesScreen")}>
+                                            <Text style={styles.mentionsText}>Mentions légales</Text>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity onPress={() => props.navigation.navigate("PrivacyPolicyScreen")}>
+                                            <Text style={styles.mentionsText}>Politique de confidentialité</Text>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity onPress={() => props.navigation.navigate("CGUScreen")}>
+                                            <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
+                                        </TouchableOpacity>
+                                    </View>
+
+                                    <ScrollView style={styles.scrollView}>
+                                        <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                            IAP.requestSubscription(products[2]["productId"]).then(() => changeAbonnement('Musculation'))
+                                        }}>
+                                            <Image
+                                                style={styles.imageCard}
+                                                source={{
+                                                    uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
+                                                }}
+                                            >
+                                            </Image>
+                                        </TouchableOpacity>
+
+                                        <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                            IAP.requestSubscription(products[0]["productId"]).then(() => changeAbonnement('Drill'))
+                                        }}>
+                                            <Image
+                                                style={styles.imageCard}
+                                                source={{
+                                                    uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F2%5B1%5D.png?alt=media&token=21ed90a3-2718-498a-9b10-57d50b170b12"
+                                                }}
+                                            >
+                                            </Image>
+                                        </TouchableOpacity>
+
+                                    </ScrollView>
+                                </ImageBackground>
+                            </View>
+                        </TouchableWithoutFeedback>
+                    )
+                }
+            }
+            if (userData.abonnement === "Musculation") {
                 return (
-                    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                        <View style={styles.container}>
-                            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
-                                <Text style={styles.inscriptionBigText}>{`${t("actuel")}`} {userData.abonnement}</Text>
-                                <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
-                                <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
-                                <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
+                    <View style={styles.container}>
+                        <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
+                            <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
+                            <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
+                            <Text style={styles.smallBigText}>{`${t("drillAbonnement")}`}</Text>
+                            <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
+                            <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
 
-                                <View>
-                                    <TouchableOpacity onPress={() => props.navigation.navigate("MentionsLegalesScreen")}>
-                                        <Text style={styles.mentionsText}>Mentions légales</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => props.navigation.navigate("PrivacyPolicyScreen")}>
-                                        <Text style={styles.mentionsText}>Politique de confidentialité</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => props.navigation.navigate("CGUScreen")}>
-                                        <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
-                                    </TouchableOpacity>
-                                </View>
+                            <View>
+                                <TouchableOpacity onPress={() => props.navigation.navigate("MentionsLegalesScreen")}>
+                                    <Text style={styles.mentionsText}>Mentions légales</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() => props.navigation.navigate("PrivacyPolicyScreen")}>
+                                    <Text style={styles.mentionsText}>Politique de confidentialité</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() => props.navigation.navigate("CGUScreen")}>
+                                    <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
+                                </TouchableOpacity>
+                            </View>
 
-                                <ScrollView style={styles.scrollView}>
+                            <ScrollView style={styles.scrollView}>
 
-                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                        IAP.requestSubscription(products[2]["productId"]).then(() => changeAbonnement('Musculation'))
-                                    }}>
-                                        {i18next.language === "en" ?    <Image
-                                            style={styles.imageCard}
-                                            source={{
-                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F5%5B1%5D.png?alt=media&token=f6dcf403-9046-4bb0-a205-323d89fe34b6"
-                                            }}
-                                        /> :    <Image
-                                            style={styles.imageCard}
-                                            source={{
-                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
-                                            }}
-                                        />}
+                                <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                    IAP.requestSubscription(products[0]["productId"]).then(() => changeAbonnement('Drill'))
+                                }}>
+                                    <Image
+                                        style={styles.imageCard}
+                                        source={{
+                                            uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F2%5B1%5D.png?alt=media&token=21ed90a3-2718-498a-9b10-57d50b170b12"
+                                        }}
+                                    >
+                                    </Image>
+                                </TouchableOpacity>
 
-                                    </TouchableOpacity>
+                                <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                    IAP.requestSubscription(products[1]["productId"]).then(() => changeAbonnement('Premium'))
+                                }}>
+                                    <Image
+                                        style={styles.imageCard}
+                                        source={{
+                                            uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
+                                        }}
+                                    >
+                                    </Image>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.abonnementCard} onPress={handleDesabonnement}
+                                >
+                                    <Text style={styles.abonnementText}>{t("desabonnement")}</Text>
+                                </TouchableOpacity>
 
-                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                        IAP.requestSubscription(products[1]["productId"]).then(() => changeAbonnement('Premium'))
-                                    }}>
-                                        <Image
-                                            style={styles.imageCard}
-                                            source={{
-                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
-                                            }}
-                                        >
-                                        </Image>
-                                    </TouchableOpacity>
-
-                                </ScrollView>
-                            </ImageBackground>
-                        </View>
-                    </TouchableWithoutFeedback>
-                )}
-            if (params === "drill") {
-                return (
-                    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                        <View style={styles.container}>
-                            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
-
-
-                                <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
-                                <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
-                                <Text style={styles.smallBigText}>{`${t("drillAbonnement")}`}</Text>
-                                <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
-
-                                <View>
-                                    <TouchableOpacity onPress={() => props.navigation.navigate("MentionsLegalesScreen")}>
-                                        <Text style={styles.mentionsText}>Mentions légales</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => props.navigation.navigate("PrivacyPolicyScreen")}>
-                                        <Text style={styles.mentionsText}>Politique de confidentialité</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => props.navigation.navigate("CGUScreen")}>
-                                        <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
-                                    </TouchableOpacity>
-                                </View>
-
-                                <ScrollView style={styles.scrollView}>
-
-                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                        IAP.requestSubscription(products[0]["productId"]).then(() => changeAbonnement('Drill'))
-                                    }}>
-                                        <Image
-                                            style={styles.imageCard}
-                                            source={{
-                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F2%5B1%5D.png?alt=media&token=21ed90a3-2718-498a-9b10-57d50b170b12"
-                                            }}
-                                        >
-                                        </Image>
-                                    </TouchableOpacity>
-
-                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                        IAP.requestSubscription(products[1]["productId"]).then(() => changeAbonnement('Premium'))
-                                    }}>
-                                        <Image
-                                            style={styles.imageCard}
-                                            source={{
-                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
-                                            }}
-                                        >
-                                        </Image>
-                                    </TouchableOpacity>
-
-                                </ScrollView>
-                            </ImageBackground>
-                        </View>
-                    </TouchableWithoutFeedback>
+                            </ScrollView>
+                        </ImageBackground>
+                    </View>
                 )
             }
-            else {
+            if (userData.abonnement === "Drill") {
                 return (
-                    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                        <View style={styles.container}>
-                            <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
+                    <View style={styles.container}>
+                        <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
 
-                                <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
-                                <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
-                                <Text style={styles.smallBigText}>{`${t("drillAbonnement")}`}</Text>
-                                <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
-                                <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
+                            <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
+                            <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
+                            <Text style={styles.smallBigText}>{`${t("drillAbonnement")}`}</Text>
+                            <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
+                            <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
 
-                                <View>
-                                    <TouchableOpacity onPress={() => props.navigation.navigate("MentionsLegalesScreen")}>
-                                        <Text style={styles.mentionsText}>Mentions légales</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => props.navigation.navigate("PrivacyPolicyScreen")}>
-                                        <Text style={styles.mentionsText}>Politique de confidentialité</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => props.navigation.navigate("CGUScreen")}>
-                                        <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
-                                    </TouchableOpacity>
-                                </View>
+                            <View>
+                                <TouchableOpacity onPress={() => props.navigation.navigate("MentionsLegalesScreen")}>
+                                    <Text style={styles.mentionsText}>Mentions légales</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() => props.navigation.navigate("PrivacyPolicyScreen")}>
+                                    <Text style={styles.mentionsText}>Politique de confidentialité</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() => props.navigation.navigate("CGUScreen")}>
+                                    <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
+                                </TouchableOpacity>
+                            </View>
 
-                                <ScrollView style={styles.scrollView}>
-                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                        IAP.requestSubscription(products[2]["productId"]).then(() => changeAbonnement('Musculation'))
-                                    }}>
-                                        <Image
-                                            style={styles.imageCard}
-                                            source={{
-                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
-                                            }}
-                                        >
-                                        </Image>
-                                    </TouchableOpacity>
+                            <ScrollView style={styles.scrollView}>
 
-                                    <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                        IAP.requestSubscription(products[0]["productId"]).then(() => changeAbonnement('Drill'))
-                                    }}>
-                                        <Image
-                                            style={styles.imageCard}
-                                            source={{
-                                                uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F2%5B1%5D.png?alt=media&token=21ed90a3-2718-498a-9b10-57d50b170b12"
-                                            }}
-                                        >
-                                        </Image>
-                                    </TouchableOpacity>
+                                <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                    IAP.requestSubscription(products[2]["productId"]).then(() => changeAbonnement('Musculation'))
+                                }}>
+                                    <Image
+                                        style={styles.imageCard}
+                                        source={{
+                                            uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
+                                        }}
+                                    >
+                                    </Image>
+                                </TouchableOpacity>
 
-                                </ScrollView>
-                            </ImageBackground>
-                        </View>
-                    </TouchableWithoutFeedback>
+                                <TouchableOpacity style={styles.recetteCard} onPress={() => {
+                                    IAP.requestSubscription(products[1]["productId"]).then(() => changeAbonnement('Premium'))
+                                }}>
+                                    <Image
+                                        style={styles.imageCard}
+                                        source={{
+                                            uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
+                                        }}
+                                    >
+                                    </Image>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity style={styles.abonnementCard} onPress={handleDesabonnement}>
+                                    <Text style={styles.abonnementText}>{t("desabonnement")}</Text>
+                                </TouchableOpacity>
+
+                            </ScrollView>
+                        </ImageBackground>
+                    </View>
                 )
             }
-        }
-        if (userData.abonnement === "Musculation") {
+            if (userData.abonnement === "Premium") {
+                return (
+
+                    <View style={styles.container}>
+                        <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+
+                            <Text style={styles.inscriptionBigText}>{t('actuel')} {userData.abonnement}</Text>
+                            <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
+                            <Text style={styles.smallBigText}>{`${t("drillAbonnement")}`}</Text>
+                            <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
+                            <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
+
+                            <View>
+                                <TouchableOpacity onPress={() => props.navigation.navigate("MentionsLegalesScreen")}>
+                                    <Text style={styles.mentionsText}>Mentions légales</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() => props.navigation.navigate("PrivacyPolicyScreen")}>
+                                    <Text style={styles.mentionsText}>Politique de confidentialité</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() => props.navigation.navigate("CGUScreen")}>
+                                    <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
+                                </TouchableOpacity>
+                            </View>
+
+                            <ScrollView style={styles.scrollView}>
+
+                                <TouchableOpacity style={styles.abonnementCard} onPress={handleDesabonnement}>
+                                    <Text style={styles.abonnementText}>{t("desabonnement")}</Text>
+                                </TouchableOpacity>
+                            </ScrollView>
+                        </ImageBackground>
+                    </View>
+                )
+            }
+        } else {
             return (
-
-                <View style={styles.container}>
-                    <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
-
-                        <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
-                        <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
-                        <Text style={styles.smallBigText}>{`${t("drillAbonnement")}`}</Text>
-                        <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
-                        <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
-
-                        <View>
-                            <TouchableOpacity onPress={() => props.navigation.navigate("MentionsLegalesScreen")}>
-                                <Text style={styles.mentionsText}>Mentions légales</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => props.navigation.navigate("PrivacyPolicyScreen")}>
-                                <Text style={styles.mentionsText}>Politique de confidentialité</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => props.navigation.navigate("CGUScreen")}>
-                                <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
-                            </TouchableOpacity>
-                        </View>
-
-                        <ScrollView style={styles.scrollView}>
-
-                            <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                IAP.requestSubscription(products[0]["productId"]).then(() => changeAbonnement('Drill'))
-                            }}>
-                                <Image
-                                    style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F2%5B1%5D.png?alt=media&token=21ed90a3-2718-498a-9b10-57d50b170b12"
-                                    }}
-                                >
-                                </Image>
-                            </TouchableOpacity>
-
-                            <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                IAP.requestSubscription(products[1]["productId"]).then(() => changeAbonnement('Premium'))
-                            }}>
-                                <Image
-                                    style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
-                                    }}
-                                >
-                                </Image>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.abonnementCard} onPress={handleDesabonnement}
-                            >
-                                <Text style={styles.abonnementText}>{t("desabonnement")}</Text>
-                            </TouchableOpacity>
-
-                        </ScrollView>
-                    </ImageBackground>
-                </View>
-            )
-        }
-        if (userData.abonnement === "Drill") {
-            return (
-
-                <View style={styles.container}>
-                    <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
-
-                        <Text style={styles.inscriptionBigText}>{t("actuel")} {userData.abonnement}</Text>
-                        <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
-                        <Text style={styles.smallBigText}>{`${t("drillAbonnement")}`}</Text>
-                        <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
-                        <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
-
-                        <View>
-                            <TouchableOpacity onPress={() => props.navigation.navigate("MentionsLegalesScreen")}>
-                                <Text style={styles.mentionsText}>Mentions légales</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => props.navigation.navigate("PrivacyPolicyScreen")}>
-                                <Text style={styles.mentionsText}>Politique de confidentialité</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => props.navigation.navigate("CGUScreen")}>
-                                <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
-                            </TouchableOpacity>
-                        </View>
-
-                        <ScrollView style={styles.scrollView}>
-
-                            <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                IAP.requestSubscription(products[2]["productId"]).then(() => changeAbonnement('Musculation'))
-                            }}>
-                                <Image
-                                    style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F4%5B1%5D.png?alt=media&token=24b21817-8878-4d0b-aeaa-0354fd9ce089"
-                                    }}
-                                >
-                                </Image>
-                            </TouchableOpacity>
-
-                            <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                IAP.requestSubscription(products[1]["productId"]).then(() => changeAbonnement('Premium'))
-                            }}>
-                                <Image
-                                    style={styles.imageCard}
-                                    source={{
-                                        uri: "https://firebasestorage.googleapis.com/v0/b/redzone-86a3f.appspot.com/o/choix%20abonnements%2F1%5B1%5D.png?alt=media&token=34951170-dd34-462b-809e-5a6842c3505d"
-                                    }}
-                                >
-                                </Image>
-                            </TouchableOpacity>
-
-                            <TouchableOpacity style={styles.abonnementCard} onPress={handleDesabonnement}>
-                                <Text style={styles.abonnementText}>{t("desabonnement")}</Text>
-                            </TouchableOpacity>
-
-                        </ScrollView>
-                    </ImageBackground>
-                </View>
-            )
-        }
-        if (userData.abonnement === "Premium") {
-            return (
-
-                <View style={styles.container}>
-                    <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
-
-                        <Text style={styles.inscriptionBigText}>{t('actuel')} {userData.abonnement}</Text>
-                        <Text style={styles.smallBigText}>{`${t("mensuel")}`}</Text>
-                        <Text style={styles.smallBigText}>{`${t("drillAbonnement")}`}</Text>
-                        <Text style={styles.smallBigText}>{`${t("muscuAbonnement")}`}</Text>
-                        <Text style={styles.smallBigText}>{`${t("premiumAbonnement")}`}</Text>
-
-                        <View>
-                            <TouchableOpacity onPress={() => props.navigation.navigate("MentionsLegalesScreen")}>
-                                <Text style={styles.mentionsText}>Mentions légales</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => props.navigation.navigate("PrivacyPolicyScreen")}>
-                                <Text style={styles.mentionsText}>Politique de confidentialité</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => props.navigation.navigate("CGUScreen")}>
-                                <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
-                            </TouchableOpacity>
-                        </View>
-
-                        <ScrollView style={styles.scrollView}>
-
-                            <TouchableOpacity style={styles.abonnementCard} onPress={handleDesabonnement}>
-                                <Text style={styles.abonnementText}>{t("desabonnement")}</Text>
-                            </TouchableOpacity>
-                        </ScrollView>
-                    </ImageBackground>
+                <View>
+                    <ActivityIndicator />
                 </View>
             )
         }
@@ -1127,7 +1135,7 @@ x
                 </ImageBackground>
             </View>
         )
-    } else if (purchased) {
+    } if (purchased) {
         return (
             <View style={styles.container}>
                 <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
