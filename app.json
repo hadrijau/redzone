@@ -2,7 +2,7 @@
   "expo": {
     "name": "Your Redzone",
     "slug": "yourredzone",
-    "version": "1.0.2",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -34,7 +34,7 @@
         "android.permission.MODIFY_AUDIO_SETTINGS"
       ],
       "package": "com.redzone.redzone",
-      "versionCode": 1
+      "versionCode": 4
     },
     "web": {
       "favicon": "./assets/favicon.png"
