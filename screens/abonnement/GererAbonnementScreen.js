@@ -1119,6 +1119,7 @@ x
             return (
                 <View>
                     <ActivityIndicator />
+                    <Text>Veuillez patientez</Text>
                 </View>
             )
         }
@@ -1153,7 +1154,7 @@ x
     }
     else {
         return (<View style={styles.container}>
-            {Platform.OS === "ios" ? paymentIOS(props) : paymentUI(props)}
+            {paymentIOS(props)}
         </View>)
     }
 };
