@@ -135,8 +135,8 @@ android {
         applicationId 'com.redzone.redzone'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 10
-        versionName "1.0.10"
+        versionCode 15
+        versionName "1.0.15"
         missingDimensionStrategy 'store', 'play'
     }
     packagingOptions {
