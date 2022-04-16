@@ -270,7 +270,9 @@ const InformationsScreen = (props) => {
                                     ) : null}
 
                                     <TouchableOpacity style={styles.inscriptionButton} onPress={props.handleSubmit}>
-                                        <Text style={styles.inscriptionText}>{`${t("suivant")}`}</Text>
+                                        <Text style={styles.inscriptionText}>
+                                            SUIVANT !!!!!!
+                                        </Text>
                                     </TouchableOpacity>
 
 
