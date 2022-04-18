@@ -48,7 +48,7 @@ const GererAbonnementScreen = (props) => {
 
     const items = Platform.select({
         ios: ["rd_999_m", "rd_1499_m", "rd_1999_m"],
-        android: [""]
+        android: ["rd_999_m", "rd_1499_m", "rd_1999_m"]
     });
 
     const [purchased, setPurchased] = useState(false);
@@ -93,10 +93,10 @@ const GererAbonnementScreen = (props) => {
                 .then((res) => {
                     console.log("got products")
                     setProducts(res)
-                    console.log(res)
+                    console.log('res', res)
                 })
-            IAP.getPurchaseHistory().catch(() => {
-
+            IAP.getPurchaseHistory().catch((err) => {
+                console.log('err', err)
             }).then((res) => {
                 const receipt = res[res.length - 1].transactionReceipt
                 if (receipt) {
@@ -150,7 +150,7 @@ const GererAbonnementScreen = (props) => {
     };
 
     const paymentIOS = (props) => {
-        if (products.length > 0 ) {
+        if (products) {
             if (userData.abonnement === 'free') {
                 if (params === "muscu") {
                     return (
