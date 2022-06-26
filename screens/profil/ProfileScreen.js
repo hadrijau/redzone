@@ -34,14 +34,17 @@ const ProfileScreen = ({navigation}) => {
 
     const userData = useSelector(state => state.user.currentUser)
 
-    const [poste, setPoste] = useState("")
+    const [poste, setPoste] = useState(userData?.poste || "");
+    const [championnat, setChampionnat] = useState(userData?.championnat || "");
+
+    console.log('poste', poste)
     console.log('userdata', userData)
     const initialValues = {
-        prenom: userData?.prenom,
-        nom: userData?.nom,
-        age: userData?.age,
-        poids: userData?.poids,
-        taille: userData?.taille,
+        prenom: userData?.prenom || "",
+        nom: userData?.nom || "",
+        age: userData?.age || "",
+        poids: userData?.poids || "",
+        taille: userData?.taille || "",
     }
 
 
@@ -50,16 +53,24 @@ const ProfileScreen = ({navigation}) => {
     }
 
     const [isModalPosteVisible, setIsModalPosteVisible] = useState(false);
+    const [isModalChampionnatVisible, setIsModalChampionnatVisible] = useState(false);
 
 
     const changeModalPosteVisibility = (bool) => {
         setIsModalPosteVisible(bool)
     }
 
+    const changeModalChampionnatVisibility = (bool) => {
+        setIsModalChampionnatVisible(bool)
+    }
+
     const setDataPoste = async (option) => {
         setPoste(option)
     }
 
+    const setDataChampionnat = async (option) => {
+        setChampionnat(option)
+    }
 
     const [updated, setUpdated] = useState(false);
     const { i18n, t } = useTranslation();
@@ -83,6 +94,7 @@ const ProfileScreen = ({navigation}) => {
                                             .doc(firebase.auth().currentUser.uid)
                                             .update({
                                                 poste: poste,
+                                                championnat: championnat,
                                                 prenom: values.prenom,
                                                 nom: values.nom,
                                                 age: values.age,
@@ -157,7 +169,7 @@ const ProfileScreen = ({navigation}) => {
                                                 </View>
                                             </View>
 
-                                            {userData?.sexe ?          <View style={styles.inscriptionInnerForm}>
+                                            {userData?.poste || poste ?          <View style={styles.inscriptionInnerForm}>
                                                 <View style={styles.textInscriptionContainer}>
                                                     <Text style={styles.label}>{t("poste")}</Text>
                                                 </View>
@@ -167,7 +179,27 @@ const ProfileScreen = ({navigation}) => {
                                                 >
                                                     <Text style={[styles.textPicker, styles.textInput]}>{poste ? poste : userData?.poste}</Text>
                                                 </TouchableOpacity>
-                                            </View> : <Text/>}
+                                            </View> : <TouchableOpacity
+                                                onPress={() => changeModalPosteVisibility(true)}
+                                            >
+                                                <Text style={{color: 'white', fontSize: 18, fontWeight: 'bold', textAlign: 'center'}}>Choisir mon poste</Text>
+                                            </TouchableOpacity>}
+
+                                            {userData?.championnat || championnat ?          <View style={styles.inscriptionInnerForm}>
+                                                <View style={styles.textInscriptionContainer}>
+                                                    <Text style={styles.label}>{t("championnat")}</Text>
+                                                </View>
+                                                <TouchableOpacity
+                                                    style={styles.inputContainer}
+                                                    onPress={() => changeModalChampionnatVisibility(true)}
+                                                >
+                                                    <Text style={[styles.textPicker, styles.textInput]}>{championnat ? championnat : userData?.championnat}</Text>
+                                                </TouchableOpacity>
+                                            </View> :  <TouchableOpacity
+                                                onPress={() => changeModalChampionnatVisibility(true)}
+                                            >
+                                                <Text style={{color: 'white', fontSize: 18, fontWeight: 'bold', textAlign: 'center', marginTop: '5%'}}>Choisir mon championnat</Text>
+                                            </TouchableOpacity>}
 
                                             <Modal
                                                 transparent={true}
@@ -179,6 +211,19 @@ const ProfileScreen = ({navigation}) => {
                                                     changeModalVisibility={changeModalPosteVisibility}
                                                     setData={setDataPoste}
                                                     options={['Defensive Back', 'Defensive Linemen', 'Linebacker', 'Offensive Linemen', 'Quaterback', 'Running back', 'Wide receiver']}
+                                                />
+                                            </Modal>
+
+                                            <Modal
+                                                transparent={true}
+                                                animationType='fade'
+                                                visible={isModalChampionnatVisible}
+                                                nRequestClose={() => changeModalChampionnatVisibility(false)}
+                                            >
+                                                <Picker
+                                                    changeModalVisibility={changeModalChampionnatVisibility}
+                                                    setData={setDataChampionnat}
+                                                    options={['Division 1', 'Division 2', 'Division 3']}
                                                 />
                                             </Modal>
 

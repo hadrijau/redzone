@@ -101,14 +101,6 @@ export const AuthNavigator = () => {
     return (
     <AuthStackNavigator.Navigator>
         <AuthStackNavigator.Screen
-            name="InformationsScreen"
-            component={InformationsScreen}
-            options={{
-                header: props => <CustomHeader title="BURNPOWER"/>,
-            }}
-        />
-
-        <AuthStackNavigator.Screen
             name="SignupScreen"
             component={SignupScreen}
             options={{

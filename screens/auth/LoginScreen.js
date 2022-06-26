@@ -60,6 +60,14 @@ const LoginScreen = ({navigation}) => {
                                 <TouchableOpacity style={styles.inscriptionButton} onPress={props.handleSubmit}>
                                     <Text style={styles.inscriptionText}>{`${t("connecter")}`}</Text>
                                 </TouchableOpacity>
+
+                                <View style={styles.viewFlex}>
+                                    <Text style={styles.connexionText}>{`${t("pasencore")}`}</Text>
+                                    <TouchableOpacity onPress={() => navigation.navigate('SignupScreen')}>
+                                        <Text style={[styles.connexionText, styles.underline]}>{`${t("signup")}`}</Text>
+                                    </TouchableOpacity>
+                                </View>
+
                             </View>
                         )}
 
@@ -107,7 +115,21 @@ const styles = StyleSheet.create({
         width: '80%',
         marginLeft: '10%'
     },
-
+    connexionText: {
+        color: 'white',
+        textAlign: 'center',
+        fontSize: 25,
+        marginRight: 10
+    },
+    underline: {
+        textDecorationLine: 'underline'
+    },
+    viewFlex: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginLeft: '25%'
+    },
     inscriptionButton: {
         textAlign: 'center',
         alignSelf: 'center'

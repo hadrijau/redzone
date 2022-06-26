@@ -100,8 +100,12 @@ const Jour1Semaine2 = ({route}) => {
                                     </View>
 
                                     <View>
-                                        <Text style={styles.difficultyText}>Repetitions : {video?.repetition}</Text>
+                                        {video.tempo ? <Text style={styles.difficultyText}>Tempo : {video?.tempo}</Text> : <Text/>}
+                                        {video.time ? <Text style={styles.difficultyText}>Time : {video?.time}</Text> : <Text/>}
+                                        {video.repetition ? <Text style={styles.difficultyText}>Repetitions : {video?.repetition}</Text> : <Text/>}
+                                        {video.recuperation ? <Text style={styles.difficultyText}>Récupération : {video?.recuperation}</Text> : <Text/>}
                                     </View>
+
 
                                 </View>
                             )

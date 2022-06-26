@@ -4,17 +4,12 @@ import {Formik} from "formik";
 import firebase from 'firebase';
 import * as Yup from "yup";
 import {useTranslation} from "react-i18next";
+import {useNavigation} from "@react-navigation/native";
 
 const SignupScreen = (props) => {
 
 
-    const age = props.route.params.age
-    const nom = props.route.params.nom
-    const prenom = props.route.params.prenom
-    const sexe = props.route.params.sexe
-    const poids = props.route.params.poids
-    const taille = props.route.params.taille
-    const poste = props.route.params.poste
+    const navigation = useNavigation();
 
     const initialValues = {
         email: '',
@@ -32,7 +27,6 @@ const SignupScreen = (props) => {
 
     });
 
-    console.log(age, sexe, poids, taille, poste)
     const { i18n, t } = useTranslation();
 
     return (
@@ -55,14 +49,14 @@ const SignupScreen = (props) => {
                                     firebase.firestore().collection("users")
                                         .doc(firebase.auth().currentUser.uid)
                                         .set({
-                                            taille,
-                                            poids,
-                                            prenom,
+                                            taille: '',
+                                            poids: '',
+                                            prenom: '',
                                             email: values.email,
-                                            age,
-                                            sexe,
-                                            poste,
-                                            nom,
+                                            age: '',
+                                            sexe: '',
+                                            poste: '',
+                                            nom: '',
                                             BroadJump: [0],
                                             Yards: [0],
                                             Shuttle: [0],
@@ -141,6 +135,13 @@ const SignupScreen = (props) => {
                                 <Text style={styles.inscriptionText}>{`${t("signup")}`}</Text>
                             </TouchableOpacity>
 
+                            <View style={styles.viewFlex}>
+                                <Text style={styles.connexionText}>{`${t("already")}`}</Text>
+                                <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
+                                    <Text style={[styles.connexionText, styles.underline]}>{`${t("connecter")}`}</Text>
+                                </TouchableOpacity>
+                            </View>
+
 
                         </View>
                     )}
@@ -171,6 +172,15 @@ const styles = StyleSheet.create({
         marginBottom: '5%',
         marginTop: '10%',
     },
+    connexionText: {
+        color: 'white',
+        textAlign: 'center',
+        fontSize: 20,
+        marginRight: 10
+    },
+    underline: {
+        textDecorationLine: 'underline'
+    },
     textInscriptionContainer: {
         width : '35%',
         textAlign: 'right'
@@ -186,6 +196,13 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         marginBottom: '3%'
+    },
+    viewFlex: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginLeft: '8%',
+        marginTop: 15
     },
     inscriptionBigText: {
         fontSize: 50,

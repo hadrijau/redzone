@@ -30,7 +30,6 @@ const MusculationScreen = ({navigation}) => {
             });
     }, []);
 
-    console.log('prepa', preparationPhysique)
 
     const photoNormal = ({ item }) => {
         return (

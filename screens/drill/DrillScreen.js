@@ -87,7 +87,7 @@ const DrillScreen = ({navigation}) => {
     }
 
 
-    if (userData) {
+    if (userData.poste) {
         return (
             <View style={styles.container}>
                 <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
@@ -123,12 +123,13 @@ const DrillScreen = ({navigation}) => {
         );
     } else {
         return (
-            <View>
-                <ActivityIndicator/>
+            <View style={styles.container}>
+                <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
+                    <Text style={styles.chosePoste}>Veuillez choisir un poste dans votre profil afin que nous choisissions les meilleures vidéos adaptées pour vous</Text>
+                </ImageBackground>
             </View>
         )
     }
-
 };
 
 const styles = StyleSheet.create({
@@ -143,6 +144,11 @@ const styles = StyleSheet.create({
         borderColor: 'white',
         borderWidth: 2,
         marginTop: 15
+    },
+    chosePoste: {
+      color: 'white',
+      textAlign: 'center',
+        fontSize: 20
     },
     abonnementCard: {
         width: '100%',

@@ -16,6 +16,18 @@ const EquipementSportifScreen = ({navigation}) => {
     const { i18n, t } = useTranslation();
 
     useEffect(() => {
+        let getPartenaires = async () => {
+            await firebase
+                .firestore()
+                .collection('Partenaires')
+                .get()
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        console.log(doc.id, " => ", doc.data());
+                    });
+                })
+        }
+
         let getRidge = async () => {
             await firebase
                 .firestore()
@@ -45,10 +57,8 @@ const EquipementSportifScreen = ({navigation}) => {
         }
         getRidge()
         getSportus()
+        getPartenaires()
     }, []);
-
-    console.log('ridge', ridge);
-    console.log('sportus', sportus)
 
     return (
         <View style={styles.container}>

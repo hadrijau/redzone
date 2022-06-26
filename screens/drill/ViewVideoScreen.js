@@ -52,6 +52,7 @@ const ViewVideoScreen = ({route}) => {
     }, []);
 
 
+    console.log('videos', videoDrill)
     const [currentVideo, setCurrentVideo] = useState(0);
 
     const previousVideo = (index) => {
