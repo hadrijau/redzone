@@ -64,22 +64,16 @@ const AccueilScreen = ({navigation}) => {
                         </View>
                         <Text style={styles.abonnementFreeText}>{`${t("progress")}`}</Text>
                     </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('CalendrierScreen')}>
-                        <View style={styles.iconContainer}>
-                            <Image source={require('../../assets/logo_FFFA.png')} style={styles.imageCard}/>
-                        </View>
-                        <Text style={styles.abonnementFreeText}>FFFA</Text>
-                    </TouchableOpacity>
-                </View>
-
-                <View style={styles.row}>
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('EquipementSportifScreen')}>
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/logo_equipement.png')} style={styles.imageCard}/>
                         </View>
                         <Text style={styles.abonnementFreeText}>{`${t("equipements")}`}</Text>
                     </TouchableOpacity>
+                </View>
+
+                <View style={styles.row}>
+
 
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('ClubScreen')}>
                         <View style={styles.iconContainer}>
@@ -95,16 +89,12 @@ const AccueilScreen = ({navigation}) => {
                         <Text style={styles.abonnementFreeTextNut}>{`${t("nutrition")}`}</Text>
                         <Text style={styles.abonnementFreeTextNut}>{`${t("sportive")}`}</Text>
                     </TouchableOpacity>
-                </View>
-
-                <View style={styles.row}>
                     <TouchableOpacity style={styles.accueilCard} onPress={() => navigation.navigate('EntraineurPersonnelScreen')}>
                         <View style={styles.iconContainer}>
                             <Image source={require('../../assets/logo_entraineurs_persos.png')} style={styles.imageCard}/>
                         </View>
                         <Text style={styles.abonnementFreeText}>{`${t("entraineursPersonnels")}`}</Text>
                     </TouchableOpacity>
-
                 </View>
             </ImageBackground>
         </View>
@@ -152,7 +142,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         width: '100%',
-        marginBottom: 20
+        marginBottom: '20%'
     }
 })
 
