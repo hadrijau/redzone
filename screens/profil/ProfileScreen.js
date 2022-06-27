@@ -210,7 +210,7 @@ const ProfileScreen = ({navigation}) => {
                                                 <Picker
                                                     changeModalVisibility={changeModalPosteVisibility}
                                                     setData={setDataPoste}
-                                                    options={['Defensive Back', 'Defensive Linemen', 'Linebacker', 'Offensive Linemen', 'Quaterback', 'Running back', 'Wide receiver']}
+                                                    options={['Defensive Back', 'Defensive Linemen', 'Linebacker', 'Offensive Linemen', 'Quaterback', 'Running back', 'Wide receiver', 'Defensive End', 'Safety', 'Tight End', 'Corner Back']}
                                                 />
                                             </Modal>
 
