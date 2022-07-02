@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     },
     difficultyText: {
         textAlign: 'center',
-        fontSize: 25,
+        fontSize: 20,
         color: 'white'
     },
     playButton: {

@@ -5,7 +5,7 @@ import {useTranslation} from "react-i18next";
 
 const windowWidth = Dimensions.get('window').width;
 
-const EquipementSportifCard = ({image, handleNavigation, description1, description2, description3, lien, prix, titre}) => {
+const EquipementSportifCard = ({image, handleNavigation, prix, titre}) => {
 
     const { i18n, t } = useTranslation();
     return (

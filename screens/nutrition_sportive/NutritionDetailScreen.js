@@ -16,9 +16,9 @@ const windowWidth = Dimensions.get('window').width;
 
 const NutritionDetailScreen = ({navigation, route}) => {
 
-    const description1 = route.params.description1
-    const description2 = route.params.description2
-    const description3 = route.params.description3
+    const description1 = route.params?.description1
+    const description2 = route.params?.description2
+    const description3 = route.params?.description3
     const description4 = route.params?.description4
     const description5 = route.params?.description5
     const description6 = route.params?.description6
@@ -32,12 +32,11 @@ const NutritionDetailScreen = ({navigation, route}) => {
     const description14 = route.params?.description14
     const description15 = route.params?.description15
 
-    const lien = route.params.lien
-    const prix = route.params.prix
-    const titre = route.params.titre
-    const image = route.params.image
+    const lien = route.params?.lien
+    const prix = route.params?.prix
+    const titre = route.params?.titre
+    const image = route.params?.image
 
-    const [browser, setBrowser] = useState(false);
 
     console.log(lien)
     const loadInBrowser = (url) => {

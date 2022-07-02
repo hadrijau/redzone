@@ -10,45 +10,8 @@ const windowWidth = Dimensions.get('window').width;
 
 const NutritionSportiveScreen = ({navigation}) => {
 
-    const [ridge, setRidge] = useState([]);
-    const [sportus, setSportus] = useState([]);
-
     const { i18n, t } = useTranslation();
 
-    useEffect(() => {
-        let getRidge = async () => {
-            await firebase
-                .firestore()
-                .collection('Ridge')
-                .get()
-                .then(snapshot => {
-                    let productsBoosted = snapshot.docs.map(doc => {
-                        const data = doc.data()
-                        const id = doc.id;
-                        return {id, ...data}
-                    })
-                    setRidge(productsBoosted)
-                })
-        }
-        let getSportus = async () => {
-            await firebase
-                .firestore()
-                .collection('SportusCompany')
-                .get().then(snapshot => {
-                    let productsBoosted = snapshot.docs.map(doc => {
-                        const data = doc.data()
-                        const id = doc.id;
-                        return {id, ...data}
-                    })
-                    setSportus(productsBoosted)
-                })
-        }
-        getRidge()
-        getSportus()
-    }, []);
-
-    console.log('ridge', ridge);
-    console.log('sportus', sportus)
 
     return (
         <View style={styles.container}>

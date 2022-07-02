@@ -235,7 +235,7 @@ const accueilNavigator = () => {
                 name="NutritionDetailScreen"
                 component={NutritionDetailScreen}
                 options={{
-                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('NutritionDetailScreen')}/>,
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.navigate('NutritionSportiveScreen')}/>,
                 }}
             />
             <AccueilStackNavigator.Screen

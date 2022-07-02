@@ -20,10 +20,6 @@ const AccueilScreen = ({navigation}) => {
 
     const userData = useSelector(state => state.user.currentUser)
 
-    console.log(userData);
-
-    console.log('doc', i18next.language);
-
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
@@ -142,7 +138,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         width: '100%',
-        marginBottom: '20%'
+        marginBottom: '10%'
     }
 })
 

@@ -185,21 +185,6 @@ const ProfileScreen = ({navigation}) => {
                                                 <Text style={{color: 'white', fontSize: 18, fontWeight: 'bold', textAlign: 'center'}}>Choisir mon poste</Text>
                                             </TouchableOpacity>}
 
-                                            {userData?.championnat || championnat ?          <View style={styles.inscriptionInnerForm}>
-                                                <View style={styles.textInscriptionContainer}>
-                                                    <Text style={styles.label}>{t("championnat")}</Text>
-                                                </View>
-                                                <TouchableOpacity
-                                                    style={styles.inputContainer}
-                                                    onPress={() => changeModalChampionnatVisibility(true)}
-                                                >
-                                                    <Text style={[styles.textPicker, styles.textInput]}>{championnat ? championnat : userData?.championnat}</Text>
-                                                </TouchableOpacity>
-                                            </View> :  <TouchableOpacity
-                                                onPress={() => changeModalChampionnatVisibility(true)}
-                                            >
-                                                <Text style={{color: 'white', fontSize: 18, fontWeight: 'bold', textAlign: 'center', marginTop: '5%'}}>Choisir mon championnat</Text>
-                                            </TouchableOpacity>}
 
                                             <Modal
                                                 transparent={true}
