@@ -89,6 +89,7 @@ const ProfileScreen = ({navigation}) => {
                                     initialValues={initialValues}
                                     enableReinitialize
                                     onSubmit={async (values) => {
+                                        console.log("values", values)
                                         await firebase.firestore()
                                             .collection("users")
                                             .doc(firebase.auth().currentUser.uid)
@@ -164,7 +165,7 @@ const ProfileScreen = ({navigation}) => {
                                                     <TextInput
                                                         value={props.values.taille}
                                                         style={styles.textInput}
-                                                        onChange={props.handleChange('taille')}
+                                                        onChangeText={props.handleChange('taille')}
                                                     />
                                                 </View>
                                             </View>

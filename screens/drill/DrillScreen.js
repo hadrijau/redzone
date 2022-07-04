@@ -12,6 +12,7 @@ import {useDispatch, useSelector} from "react-redux";
 import * as userActions from "../../store/actions/users";
 import {useTranslation} from "react-i18next";
 import firebase from "firebase";
+import {GET_USER} from "../../store/actions/users";
 
 
 const DrillScreen = ({navigation}) => {
@@ -20,8 +21,18 @@ const DrillScreen = ({navigation}) => {
     const { i18n, t } = useTranslation();
     const [videoDrill, setVideoDrill] = useState([]);
 
-
     useEffect(() => {
+        firebase.firestore().collection('users')
+            .doc(firebase.auth().currentUser.uid)
+            .get()
+            .then((snapshot) => {
+                if (snapshot.exists) {
+                    console.log('data', snapshot.data())
+                    dispatch({type : GET_USER, currentUser: snapshot.data()})
+                } else {
+                    console.log('does not exists')
+                }
+            })
         dispatch(userActions.fetchUser())
     }, [dispatch]);
 
@@ -45,7 +56,7 @@ const DrillScreen = ({navigation}) => {
                 });
             await firebase.firestore()
                 .collection("Drill")
-                .where("poste", "==", `${userData.poste}`)
+                .where("poste", "==", `${userData?.poste}`)
                 .get()
                 .then((querySnapshot) => {
                     querySnapshot.forEach((doc) => {

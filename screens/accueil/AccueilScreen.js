@@ -5,14 +5,28 @@ import * as userActions from "../../store/actions/users";
 import {useTranslation} from "react-i18next";
 import i18next from "i18next";
 import { LogBox } from 'react-native';
+import firebase from "firebase";
+import {GET_USER} from "../../store/actions/users";
 
 const AccueilScreen = ({navigation}) => {
 
     const dispatch = useDispatch();
     const { i18n, t } = useTranslation();
     LogBox.ignoreAllLogs();
+    console.log('id', firebase.auth().currentUser.uid)
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
+            firebase.firestore().collection('users')
+                .doc(firebase.auth().currentUser.uid)
+                .get()
+                .then((doc) => {
+                    if (doc.exists) {
+                        console.log('data', doc.data())
+                        dispatch({type : GET_USER, currentUser: doc.data()})
+                    } else {
+                        console.log('does not exists')
+                    }
+                })
             dispatch(userActions.fetchUser())
         });
         return unsubscribe
@@ -20,6 +34,7 @@ const AccueilScreen = ({navigation}) => {
 
     const userData = useSelector(state => state.user.currentUser)
 
+    console.log(userData)
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>
