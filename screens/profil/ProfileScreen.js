@@ -74,6 +74,22 @@ const ProfileScreen = ({navigation}) => {
 
     const [updated, setUpdated] = useState(false);
     const { i18n, t } = useTranslation();
+
+    const [done, setDone] = useState(false)
+    const deleteAccount = () => {
+        firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).delete().then(() => {
+            setDone(true)
+            setTimeout(() => {
+                firebase.auth().currentUser.delete().then(() => {
+                    console.log("user deleted")
+                }).catch((error) => {
+                });
+            }, 2000)
+        }).catch((error) => {
+            console.error("Error removing document: ", error);
+        });
+    }
+
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <KeyboardAvoidingView
@@ -253,6 +269,12 @@ const ProfileScreen = ({navigation}) => {
                                     <Text style={styles.mentionsText}>Conditions générales d'utilisation</Text>
                                 </TouchableOpacity>
                             </View>
+
+                        <TouchableOpacity style={styles.inscriptionButton} onPress={deleteAccount}>
+                            <Text style={styles.inscriptionText}>Supprimer mon compte</Text>
+                        </TouchableOpacity>
+
+                        {done && <Text style={styles.delete}>Votre compte a bien été supprimé</Text>}
                     </ImageBackground>
 
                 </ScrollView>
@@ -360,6 +382,11 @@ const styles = StyleSheet.create({
         marginBottom: "20%",
         fontSize: 18,
         marginTop: 40
+    },
+    delete: {
+        color: "white",
+        textAlign: "center",
+        fontSize: 16
     }
 });
 
