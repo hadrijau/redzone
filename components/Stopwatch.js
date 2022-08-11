@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 // importing library to use Stopwatch and Timer
-import {Stopwatch, Timer} from 'react-native-stopwatch-timer';
+import {Stopwatch} from 'react-native-stopwatch-timer';
 
 const App = (props) => {
 
@@ -21,7 +21,10 @@ const App = (props) => {
         <SafeAreaView style={styles.container}>
             <View style={styles.container}>
                 <View style={styles.sectionStyle}>
-                    <Entypo name="controller-play" size={45} color="red" style={styles.playIcon} onPress={() => setIsStopwatchStart(true)}/>
+                    <Entypo name="controller-play" size={45} color="red" style={styles.playIcon} onPress={() => {
+                        setResetStopwatch(false)
+                        setIsStopwatchStart(true)
+                    }}/>
                     <Stopwatch
                         laps
                         msecs
@@ -37,18 +40,7 @@ const App = (props) => {
                     />
                     <AntDesign name="pausecircleo" size={45} color="red" style={styles.pause} onPress={() => setIsStopwatchStart(false)}/>
 
-                    {/* <TouchableHighlight
-                        onPress={() => {
-                            setIsStopwatchStart(!isStopwatchStart);
-                            setResetStopwatch(false);
-                        }}>
 
-                        <Text style={styles.buttonText}>
-                            {!isStopwatchStart ? 'START' : 'STOP'}
-                        </Text>
-
-                    </TouchableHighlight>
-                    */}
                 </View>
                 <Ionicons name="ios-refresh-circle" size={45} color="red" onPress={() => setResetStopwatch(true)}/>
             </View>

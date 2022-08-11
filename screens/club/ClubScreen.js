@@ -10,6 +10,7 @@ import {
     ScrollView,
     TouchableOpacity,
     Platform,
+    Dimensions,
     TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView
 } from "react-native";
 import firebase from "firebase";
@@ -20,7 +21,12 @@ import { WebView } from 'react-native-webview';
 import {useTranslation} from "react-i18next";
 import Pdf from 'react-native-pdf';
 
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 const ClubScreen = ({navigation}) => {
+
+
 
     const [clubs, setClubs] = useState([]);
     const [search, setSearch] = useState('');
@@ -133,38 +139,6 @@ const ClubScreen = ({navigation}) => {
     };
 
     // --- Upload file --- //
-    const [url, setUrl] = useState("");
-
-    const pickDocument = async () => {
-        let result = await DocumentPicker.getDocumentAsync({});
-        return result.uri
-    }
-
-    const uploadFile = async (uri) => {
-        const response = await fetch(uri);
-        const blob = await response.blob();
-
-        const task = firebase
-            .storage()
-            .ref()
-            .child(`licences/${firebase.auth().currentUser.uid}/${Math.random().toString(36)}`)
-            .put(blob)
-
-        const taskProgress = snapshot => {
-            console.log(`transferred: ${snapshot.bytesTransferred}`)
-        }
-
-        const taskCompleted = () => {
-            task.snapshot.ref.getDownloadURL().then((snapshot) => {
-                saveData(snapshot)
-                console.log(snapshot)
-            })
-        }
-        const taskError = snapshot => {
-            console.log(snapshot)
-        }
-        task.on("state_changed", taskProgress, taskError, taskCompleted)
-    }
 
     const saveData = async (url) => {
         await firebase.firestore()
@@ -175,26 +149,6 @@ const ClubScreen = ({navigation}) => {
             })
     }
     const { i18n, t } = useTranslation();
-    const PdfReader = ({ url: uri }) => <WebView style={{ width: "90%", height: 250, marginVertical: 20, alignSelf: 'center'}} source={{ uri }} />
-    const PdfAndroid = ({ url: uri }) => {
-        return (
-            <Pdf
-                source={uri}
-                onLoadComplete={(numberOfPages,filePath) => {
-                    console.log(`Number of pages: ${numberOfPages}`);
-                }}
-                onPageChanged={(page,numberOfPages) => {
-                    console.log(`Current page: ${page}`);
-                }}
-                onError={(error) => {
-                    console.log(error);
-                }}
-                onPressLink={(uri) => {
-                    console.log(`Link pressed: ${uri}`);
-                }}
-                style={{ width: "90%", height: 250, marginVertical: 20, alignSelf: 'center'}}/>
-        )
-    }
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -221,21 +175,6 @@ const ClubScreen = ({navigation}) => {
                                 <TouchableOpacity style={styles.inscriptionButton} onPress={() => navigation.navigate('ChooseClubScreen')}>
                                     <Text style={styles.inscriptionText}>{t("changeClub")}</Text>
                                 </TouchableOpacity>
-
-                                {userData.licence ?  <>
-                                    {Platform.OS === "ios" ?
-                                        <PdfReader url={userData.licence}/> :
-                                        <PdfAndroid url={userData.licence}/>
-                                    }
-                                    </>:    <TouchableOpacity style={[styles.inscriptionButton, {marginBottom: 100}]} onPress={async () => {
-                                    await pickDocument().then((result) => uploadFile(result)).then(() => {
-                                        navigation.navigate("ConfirmationClubScreen", {option: "licence"})
-                                    })
-                                    console.log("url", url)
-                                }}>
-                                    <Text style={styles.inscriptionText}>{t("licence")}</Text>
-                                </TouchableOpacity>}
-
 
                             </View>
                         </ImageBackground>
@@ -304,6 +243,7 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
+        height: windowHeight
     },
     textInput: {
         width: '90%',

@@ -111,7 +111,6 @@ const MusculationScreen = ({navigation}) => {
                                 </View>
                             }
 
-
                             {userData.abonnement !== "Musculation" && userData.abonnement !== "Premium" ?
                                 <TouchableOpacity style={styles.abonnementButton}
                                                   onPress={() => navigation.navigate('GererAbonnementScreen', {

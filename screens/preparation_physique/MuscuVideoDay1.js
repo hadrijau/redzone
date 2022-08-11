@@ -23,6 +23,7 @@ const MuscuVideoDay1 = () => {
     const [isStopwatchStart, setIsStopwatchStart] = useState(false);
     const [resetStopwatch, setResetStopwatch] = useState(false);
 
+    console.log('reset', resetStopwatch)
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../assets/bigLogo.png')} resizeMode="cover" style={styles.image}>

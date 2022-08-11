@@ -149,6 +149,7 @@ const GererAbonnementScreen = (props) => {
         Linking.openURL('https://apps.apple.com/account/subscriptions')
     };
 
+    console.log('products', products[2])
     const paymentIOS = (props) => {
         if (products) {
             if (userData.abonnement === 'free') {
@@ -179,7 +180,7 @@ const GererAbonnementScreen = (props) => {
                                     <ScrollView style={styles.scrollView}>
 
                                         <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                            IAP.requestSubscription(products[2]["productId"]).then(() => changeAbonnement('Musculation'))
+                                            IAP.requestSubscription(products[0]["productId"]).then(() => changeAbonnement('Musculation'))
                                         }}>
                                             {i18next.language === "en" ?    <Image
                                                 style={styles.imageCard}
@@ -239,7 +240,7 @@ const GererAbonnementScreen = (props) => {
                                     <ScrollView style={styles.scrollView}>
 
                                         <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                            IAP.requestSubscription(products[0]["productId"]).then(() => changeAbonnement('Drill'))
+                                            IAP.requestSubscription(products[2]["productId"]).then(() => changeAbonnement('Drill'))
                                         }}>
                                             <Image
                                                 style={styles.imageCard}
