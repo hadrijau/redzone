@@ -17,10 +17,8 @@ import {
     Linking
 } from 'react-native';
 import firebase from "firebase";
-import axios from 'axios';
 import {useDispatch, useSelector} from "react-redux";
 import * as userActions from "../../store/actions/users";
-import {PaymentView} from "../../components/PaymentView";
 import {useTranslation} from "react-i18next";
 import i18next from "i18next";
 import IAP from "react-native-iap";
@@ -32,6 +30,9 @@ let purchaseErrorListener;
 let receipt = "";
 
 const GererAbonnementScreen = (props) => {
+
+    // Muscu : 2
+    // Drill : 0
 
     const dispatch = useDispatch();
 
@@ -296,7 +297,7 @@ const GererAbonnementScreen = (props) => {
 
                                     <ScrollView style={styles.scrollView}>
                                         <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                            IAP.requestSubscription(products[2]["productId"]).then(() => changeAbonnement('Musculation'))
+                                            IAP.requestSubscription(products[0]["productId"]).then(() => changeAbonnement('Musculation'))
                                         }}>
                                             <Image
                                                 style={styles.imageCard}
@@ -308,7 +309,7 @@ const GererAbonnementScreen = (props) => {
                                         </TouchableOpacity>
 
                                         <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                            IAP.requestSubscription(products[0]["productId"]).then(() => changeAbonnement('Drill'))
+                                            IAP.requestSubscription(products[2]["productId"]).then(() => changeAbonnement('Drill'))
                                         }}>
                                             <Image
                                                 style={styles.imageCard}
@@ -353,7 +354,7 @@ const GererAbonnementScreen = (props) => {
                             <ScrollView style={styles.scrollView}>
 
                                 <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                    IAP.requestSubscription(products[0]["productId"]).then(() => changeAbonnement('Drill'))
+                                    IAP.requestSubscription(products[2]["productId"]).then(() => changeAbonnement('Drill'))
                                 }}>
                                     <Image
                                         style={styles.imageCard}
@@ -412,7 +413,7 @@ const GererAbonnementScreen = (props) => {
                             <ScrollView style={styles.scrollView}>
 
                                 <TouchableOpacity style={styles.recetteCard} onPress={() => {
-                                    IAP.requestSubscription(products[2]["productId"]).then(() => changeAbonnement('Musculation'))
+                                    IAP.requestSubscription(products[0]["productId"]).then(() => changeAbonnement('Musculation'))
                                 }}>
                                     <Image
                                         style={styles.imageCard}
