@@ -44,6 +44,7 @@ import ConfirmationDesabonnementScreen from "../screens/abonnement/ConfirmationD
 import CGUScreen from "../screens/profil/CGUScreen";
 import MentionsLegalesScreen from "../screens/profil/MentionsLegalesScreen";
 import PrivacyPolicyScreen from "../screens/profil/PrivacyPolicyScreen";
+import Jour3Semaine1 from "../screens/preparation_physique/Jour3Semaine1";
 const AuthStackNavigator = createNativeStackNavigator();
 const ProfileStackNavigator = createNativeStackNavigator();
 const ProgressStackNavigator = createNativeStackNavigator();
@@ -353,6 +354,13 @@ const accueilNavigator = () => {
             <AccueilStackNavigator.Screen
                 name="Jour2Semaine1"
                 component={Jour2Semaine1}
+                options={{
+                    header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.goBack()}/>,
+                }}
+            />
+            <AccueilStackNavigator.Screen
+                name="Jour3Semaine1"
+                component={Jour3Semaine1}
                 options={{
                     header: props => <CustomHeaderWithReturn title="BURNPOWER" handleNavigation={() => props.navigation.goBack()}/>,
                 }}

@@ -10,7 +10,6 @@ target 'YourRedzone' do
 
   use_react_native!(:path => config["reactNativePath"])
 
-
   # Uncomment to opt-in to using Flipper
   #
   # if !ENV['CI']

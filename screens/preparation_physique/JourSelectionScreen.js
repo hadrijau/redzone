@@ -41,9 +41,24 @@ const JourSelectionScreen = ({navigation, route}) => {
                                 source={require('../../assets/Jour_2.png')}
                                 style={styles.imageBackground}
                             >
-                            </ImageBackground>}
-
+                            </ImageBackground>
+                        }
                     </TouchableOpacity>
+
+                        <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('Jour3Semaine1', {entrainement: entrainement, video: "Jour3Semaine1"})}>
+                            {i18next.language === "en" ?   <ImageBackground
+                                    source={require('../../assets/Day_3_Muscu.png')}
+                                    style={styles.imageBackground}
+                                >
+                                </ImageBackground> :
+                                <ImageBackground
+                                    source={require('../../assets/Jour_3_muscu.png')}
+                                    style={styles.imageBackground}
+                                >
+                                </ImageBackground>
+                            }
+                        </TouchableOpacity>
+
                 </View> :
                     <View>
                         <TouchableOpacity style={styles.abonnementCard} onPress={() => navigation.navigate('Jour1Semaine2', {entrainement: entrainement, video: "Jour1Semaine2"})}>

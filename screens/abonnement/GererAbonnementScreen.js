@@ -31,8 +31,8 @@ let receipt = "";
 
 const GererAbonnementScreen = (props) => {
 
-    // Muscu : 2
-    // Drill : 0
+    // Drill : 2
+    // Muscu : 0
 
     const dispatch = useDispatch();
 
